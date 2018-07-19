@@ -32,6 +32,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>SharedFile\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="InTheHand.Net.Personal">
+      <HintPath>SharedFile\InTheHand.Net.Personal.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SharedFile\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,14 +55,135 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Common\AppConfig.cs" />
+    <Compile Include="Common\AudioManager.cs" />
+    <Compile Include="Common\Bt32FeetDevice.cs" />
+    <Compile Include="Common\CalcReduction.cs" />
+    <Compile Include="Common\ConnectLog.cs" />
+    <Compile Include="Common\KeyboardHooking.cs" />
+    <Compile Include="Common\Log.cs" />
+    <Compile Include="Common\SaveEnergy.cs" />
+    <Compile Include="Common\Service.cs" />
+    <Compile Include="Common\TimeConverter.cs" />
+    <Compile Include="Common\UpdateChecker.cs" />
+    <Compile Include="CustomLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomLabel.Designer.cs">
+      <DependentUpon>CustomLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormScreenSaver.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Form\FormScreenSaver.designer.cs">
+      <DependentUpon>FormScreenSaver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormScreenSaver2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormScreenSaver2.designer.cs">
+      <DependentUpon>FormScreenSaver2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormScreenSaverCancel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormScreenSaverCancel.designer.cs">
+      <DependentUpon>FormScreenSaverCancel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Globals.cs" />
+    <Compile Include="ILanguage.cs" />
+    <Compile Include="languages\GreenLock.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GreenLock.resx</DependentUpon>
+    </Compile>
+    <Compile Include="languages\GreenLock.en-US.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GreenLock.en-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="languages\GreenLock.ko-KR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GreenLock.ko-KR.resx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UC_Controls\Uc_MainConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Controls\Uc_MainConfig.Designer.cs">
+      <DependentUpon>Uc_MainConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Controls\Uc_MainEnergy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Controls\Uc_MainEnergy.Designer.cs">
+      <DependentUpon>Uc_MainEnergy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Controls\Uc_MainSecurity.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Controls\Uc_MainSecurity.Designer.cs">
+      <DependentUpon>Uc_MainSecurity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Controls\Uc_TabEnergy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Controls\Uc_TabEnergy.Designer.cs">
+      <DependentUpon>Uc_TabEnergy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Controls\Uc_TabConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Controls\Uc_TabConfig.Designer.cs">
+      <DependentUpon>Uc_TabConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Controls\Uc_TabMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Controls\Uc_TabMain.Designer.cs">
+      <DependentUpon>Uc_TabMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Controls\Uc_TabSecurity.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Controls\Uc_TabSecurity.Designer.cs">
+      <DependentUpon>Uc_TabSecurity.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CustomLabel.resx">
+      <DependentUpon>CustomLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormScreenSaver.resx">
+      <DependentUpon>FormScreenSaver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormScreenSaver2.resx">
+      <DependentUpon>FormScreenSaver2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormScreenSaverCancel.resx">
+      <DependentUpon>FormScreenSaverCancel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="languages\GreenLock.en-US.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GreenLock.en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="languages\GreenLock.ko-KR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GreenLock.ko-KR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="languages\GreenLock.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GreenLock.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -61,7 +192,29 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UC_Controls\Uc_MainConfig.resx">
+      <DependentUpon>Uc_MainConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Controls\Uc_MainEnergy.resx">
+      <DependentUpon>Uc_MainEnergy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Controls\Uc_MainSecurity.resx">
+      <DependentUpon>Uc_MainSecurity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Controls\Uc_TabEnergy.resx">
+      <DependentUpon>Uc_TabEnergy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Controls\Uc_TabConfig.resx">
+      <DependentUpon>Uc_TabConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Controls\Uc_TabMain.resx">
+      <DependentUpon>Uc_TabMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Controls\Uc_TabSecurity.resx">
+      <DependentUpon>Uc_TabSecurity.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -74,6 +227,99 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\energy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\main.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\security_grp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\security_tab.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\setting.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg_mouseover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\box_energy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_calander.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_energy01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_energy02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_energy03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_energy04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_main01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_smile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_main02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_main03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\line_gray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mainTabbg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KakaoTalk_20180709_130351591.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\main_bg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScreenSaver-2018-06-30.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mainTabbg1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tabConfig.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tabEnergy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tabSecurity.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
