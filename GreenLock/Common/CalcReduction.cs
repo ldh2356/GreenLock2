@@ -185,7 +185,7 @@ namespace GreenLock
 
 
             SaveEnergy.Instance.UsedSec = _usedSec.ToString();
-            SaveEnergy.Instance.
+            SaveEnergy.Instance.UsedOperation = _usedOperation.ToString();
             SaveEnergy.Instance.UsedKwh = _usedKwh;
             SaveEnergy.Instance.UsedCost = _usedCost;
             SaveEnergy.Instance.Co2 = _co2;
