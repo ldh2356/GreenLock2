@@ -12,6 +12,9 @@ using System.Threading;
 using System.Globalization;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using GreenLock.Repository;
+using System.Data.Entity;
+using GreenLock.Dispatcher;
 
 namespace GreenLock
 {
@@ -152,6 +155,11 @@ namespace GreenLock
 
         }
 
+        private IDisposable greenlockEntities()
+        {
+            throw new NotImplementedException();
+        }
+
         #region "에너지 절감량"
         private void _calcReduction_OnMainUpdate(object sender, EventArgs e)
         {
@@ -169,6 +177,11 @@ namespace GreenLock
         /// <param name="e"></param>
         private void Bt32FeetDevice_OnIsSevrice(object sender, EventArgs e)
         {
+            // DB에 기록
+            TimeSheetDispatcher dispatcher = new TimeSheetDispatcher();
+            dispatcher.SetTimeTable(_macAddress, _calcReduction._usedSec.TotalSeconds);
+
+
             Debug.WriteLine("Bt32FeetDevice_OnIsSevrice");
             Debug.WriteLine("_screensaverStatus== " + _screensaverStatus + " _screensaverPasswordflag  ==" + _screensaverPasswordflag);
 
