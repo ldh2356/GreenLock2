@@ -12,6 +12,12 @@ namespace GreenLock
     {
         private StreamWriter sw = null;
 
+        private string GetDateTime()
+        {
+            DateTime NowDate = DateTime.Now;
+            return NowDate.ToString("yyyy-MM-dd HH:mm:ss") + ":" + NowDate.Millisecond.ToString("000");
+        }
+
         public void write(String str)
         {
             string FilePath = Application.StartupPath + @"\Log\DisConnect_" + DateTime.Today.ToString("yyyyMMdd") + ".log";
@@ -52,10 +58,6 @@ namespace GreenLock
             }
         }
 
-        private string GetDateTime()
-        {
-            DateTime NowDate = DateTime.Now;
-            return NowDate.ToString("yyyy-MM-dd HH:mm:ss") + ":" + NowDate.Millisecond.ToString("000");
-        }
+      
     }
 }

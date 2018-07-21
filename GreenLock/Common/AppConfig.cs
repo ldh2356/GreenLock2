@@ -18,7 +18,7 @@ namespace GreenLock
             get { return instance; }
         }
 
-        public string _fileName = Path.Combine(Application.StartupPath, "GreenLock_Energy.xml"); 
+        public string _fileName = Path.Combine(Application.StartupPath, "GreenLock_Config.xml"); 
 
         public string _LocalName;
         public int _TrackBar;
@@ -37,7 +37,6 @@ namespace GreenLock
             get { return _Model; }
             set { _Model = value; }
         }
-
 
 
         public double PcPower
@@ -76,11 +75,9 @@ namespace GreenLock
             set { _SleepMode = value; }
         }
 
-      
 
         public AppConfig()
-        {
-            _fileName = Path.Combine(Application.StartupPath, "GreenLock_Energy.xml");
+        {        
             init();
         }
 
@@ -145,24 +142,24 @@ namespace GreenLock
             if (fileName == null) fileName = _fileName;
             if (!File.Exists(fileName)) return;
 
-            byte[] data = File.ReadAllBytes(fileName);
-            //decrypt
-            DESCryptoServiceProvider rc2 = new DESCryptoServiceProvider();
-            rc2.Key = Skey;
-            rc2.IV = Skey;
-            MemoryStream ms = new MemoryStream();
+            //byte[] data = File.ReadAllBytes(fileName);
+            ////decrypt
+            //DESCryptoServiceProvider rc2 = new DESCryptoServiceProvider();
+            //rc2.Key = Skey;
+            //rc2.IV = Skey;
+            //MemoryStream ms = new MemoryStream();
 
-            CryptoStream cryStream = new CryptoStream(ms, rc2.CreateDecryptor(), CryptoStreamMode.Write);
+            //CryptoStream cryStream = new CryptoStream(ms, rc2.CreateDecryptor(), CryptoStreamMode.Write);
 
-            cryStream.Write(data, 0, data.Length);
-            try
-            {
-                cryStream.FlushFinalBlock();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("D + {0}", ex.Message);
-            }
+            //cryStream.Write(data, 0, data.Length);
+            //try
+            //{
+            //    cryStream.FlushFinalBlock();
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("D + {0}", ex.Message);
+            //}
             //Console.WriteLine("D + {0}", Encoding.UTF8.GetString(ms.GetBuffer()));
 
             //byte[] data1 = ms.ToArray();

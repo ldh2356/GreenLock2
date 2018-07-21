@@ -27,5 +27,13 @@ namespace GreenLock.UC_Controls
             lblTree.Text = GreenLock.languages.GreenLock.tree;
             //throw new NotImplementedException();
         }
+
+        private void Uc_TabEnergy_Paint(object sender, PaintEventArgs e)
+        {
+            lblEnergyAmt.Text = SaveEnergy.Instance.UsedKwh.ToString();
+            lblCostAmt.Text = SaveEnergy.Instance.UsedCost.ToString();
+            lblCo2Amt.Text = SaveEnergy.Instance.Co2.ToString();
+            lblTree.Text = SaveEnergy.Instance.Tree.ToString();
+        }
     }
 }

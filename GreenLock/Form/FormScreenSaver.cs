@@ -6,16 +6,17 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Threading;//.Tasks;
 using System.Runtime.InteropServices;
-using System.Media;
+using System.Threading;//.Tasks;
 using System.Diagnostics;
 
 namespace GreenLock
 {
     public partial class FormScreenSaver : Form
     {
-        int intLLKey;
+        //char[] keyBuffer;
+        //int intLLKey;
+
         public frmMain main;
         public FormScreenSaverCancel formScreenSaverCancel;
 
@@ -38,86 +39,73 @@ namespace GreenLock
 
         public FormScreenSaver(frmMain main)
         {
-            try
-            {
-                InitializeComponent();
-                this.main = main;
-                //main.SetFormScreenSaver(this);
+            InitializeComponent();
+            this.main = main;
+            main.SetFormScreenSaver(this);
 
-                FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-                StartPosition = FormStartPosition.Manual;
-                TopMost = true;
-                ShowInTaskbar = false;
-
-                pb_screenSaver.BringToFront();
-
-                // 키보드 후킹
-                intLLKey = KeyboardHooking.SetHook(KeyboardHooking.hookProc);
-                KeyboardHooking.BlockCtrlAltDel();
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine("ScreenSaverForm_init");
-            }
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            StartPosition = FormStartPosition.Manual;
         }
 
-        // 폼 로드
         private void FormScreenSaver_Load(object sender, EventArgs e)
         {
-            try
-            {
-                // 폼 애니메이션(위에서 아래로)
-                AnimateWindow(this.Handle, 500, AnimateWindowFlags.AW_VER_POSITIVE);
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine("ScreenSaverForm");
-            }
+            // 폼 애니메이션(위에서 아래로)
+            AnimateWindow(this.Handle, 500, AnimateWindowFlags.AW_VER_POSITIVE);
         }
-
-        // 폼 액티베이티드
-        private void FormScreenSaver_Activated(object sender, EventArgs e)
-        {
-            KeyboardHooking.TaskBarHide(); // 작업표시줄 숨김
-        }
-
-        // 폼 클로즈
+        
         private void FormScreenSaver_FormClosing(object sender, FormClosingEventArgs e)
         {
-            try
-            {
-                // 폼 애니메이션(아래서 위로)
-                AnimateWindow(this.Handle, 500,
-                    AnimateWindowFlags.AW_VER_NEGATIVE | AnimateWindowFlags.AW_HIDE);
-
-                if (KeyboardHooking.WINDOWSTATUS == KeyboardHooking.SWP_HIDEWINDOW)
-                {
-                    KeyboardHooking.TaskBarShow(); // 작업표시줄 드러냄
-                }
-
-                // 키보드 후킹 해제
-                KeyboardHooking.UnHookWindowsEx(intLLKey);
-                KeyboardHooking.UnBlockCtrlAltDel();
-
-               
-
-                this.Dispose();
-            }
-            catch(Exception ee)
-            {
-                Console.WriteLine("Saver Closing");
-            }
+            // 폼 애니메이션(아래서 위로)
+            AnimateWindow(this.Handle, 500,
+                AnimateWindowFlags.AW_VER_NEGATIVE | AnimateWindowFlags.AW_HIDE);
         }
 
         private void FormScreenSaver_KeyDown(object sender, KeyEventArgs e)
         {
+
         }
 
-        public void SetFormScreenSaverCancel(FormScreenSaverCancel formScreenSaverCancel)
+
+        /// <summary>
+        /// 폼의 마우스 다운 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pb_screenSaver_MouseDown(object sender, MouseEventArgs e)
         {
-            //this.formScreenSaverCancel = formScreenSaverCancel;
+            try
+            {
+#if DEBUG
+                Debug.WriteLine("폼2 마우스다운");
+#endif
+                //ActivePasswordDialog();
+            }
+            catch (Exception ex)
+            {
+                frmMain._log.write(ex.StackTrace);
+            }
         }
 
+
+        /// <summary>
+        /// 마우스 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pb_screenSaver_Click(object sender, EventArgs e)
+        {
+            try
+            {
+#if DEBUG
+                Debug.WriteLine("폼2 클릭");
+#endif
+                ActivePasswordDialog();
+            }
+            catch (Exception ex)
+            {
+                frmMain._log.write(ex.StackTrace);
+            }
+        }
 
 
         /// <summary>
@@ -142,48 +130,6 @@ namespace GreenLock
         }
 
 
-
-        /// <summary>
-        /// 폼의 마우스 다운 이벤트
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void pb_screenSaver_MouseDown(object sender, MouseEventArgs e)
-        {
-            try
-            {
-#if DEBUG
-                Debug.WriteLine("폼1 마우스다운");
-#endif
-                //ActivePasswordDialog();
-            }
-            catch (Exception ex)
-            {
-                frmMain._log.write(ex.StackTrace);
-            }
-        }
-
-        /// <summary>
-        /// 마우스 클릭 이벤트
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void pb_screenSaver_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-#if DEBUG
-                Debug.WriteLine("폼1 클릭");
-#endif
-                //ActivePasswordDialog();
-            }
-            catch (Exception ex)
-            {
-                frmMain._log.write(ex.StackTrace);
-            }
-        }
-
-
         /// <summary>
         /// 두가지 폼중 하나에 진입했을때 폼을 엑티브 시킨다
         /// </summary>
@@ -194,25 +140,15 @@ namespace GreenLock
             try
             {
 #if DEBUG
-                Debug.WriteLine("폼1 마우스엔터");
+                Debug.WriteLine("폼2 마우스엔터");
 #endif
-               
+                this.BringToFront();
+                this.Activate();
             }
             catch (Exception ex)
             {
-                frmMain._log.write(ex.StackTrace);                
-            }            
+                frmMain._log.write(ex.StackTrace);
+            }
         }
-
-        /// <summary>
-        /// 마우스클릭이벤트
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void pb_screenSaver_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
     }
 }

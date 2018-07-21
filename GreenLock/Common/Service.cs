@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Media;
+using System.IO;
+using System.Windows.Forms;
 
 namespace GreenLock
 {
@@ -30,7 +32,7 @@ namespace GreenLock
 
         public static SoundPlayer Player = new SoundPlayer();
 
-        public static string drivepath = Environment.ExpandEnvironmentVariables("%SystemDrive%") + @"\HansCreative\nnv\GreenLock";
+        public static string drivepath = Application.StartupPath;
         public static string fileName = @"\Alert.wav";
 
         [DllImport("user32.dll")]

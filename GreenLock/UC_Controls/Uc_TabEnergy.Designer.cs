@@ -35,16 +35,16 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblEnergyAmt = new System.Windows.Forms.Label();
             this.lblEnergy = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblCostAmt = new System.Windows.Forms.Label();
             this.lblCost = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblCo2Amt = new System.Windows.Forms.Label();
             this.lblCo2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblTreeAmt = new System.Windows.Forms.Label();
             this.lblTree = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -128,23 +128,23 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.lblEnergyAmt);
             this.panel1.Controls.Add(this.lblEnergy);
             this.panel1.Location = new System.Drawing.Point(40, 400);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 192);
             this.panel1.TabIndex = 30;
             // 
-            // label7
+            // lblEnergyAmt
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label7.Location = new System.Drawing.Point(64, 112);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 45);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "2.90";
+            this.lblEnergyAmt.AutoSize = true;
+            this.lblEnergyAmt.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblEnergyAmt.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblEnergyAmt.Location = new System.Drawing.Point(64, 112);
+            this.lblEnergyAmt.Name = "lblEnergyAmt";
+            this.lblEnergyAmt.Size = new System.Drawing.Size(86, 45);
+            this.lblEnergyAmt.TabIndex = 1;
+            this.lblEnergyAmt.Text = "2.90";
             // 
             // lblEnergy
             // 
@@ -158,23 +158,23 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.lblCostAmt);
             this.panel2.Controls.Add(this.lblCost);
             this.panel2.Location = new System.Drawing.Point(256, 400);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(208, 192);
             this.panel2.TabIndex = 31;
             // 
-            // label8
+            // lblCostAmt
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label8.Location = new System.Drawing.Point(64, 112);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(124, 45);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "530.81";
+            this.lblCostAmt.AutoSize = true;
+            this.lblCostAmt.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblCostAmt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.lblCostAmt.Location = new System.Drawing.Point(64, 112);
+            this.lblCostAmt.Name = "lblCostAmt";
+            this.lblCostAmt.Size = new System.Drawing.Size(124, 45);
+            this.lblCostAmt.TabIndex = 2;
+            this.lblCostAmt.Text = "530.81";
             // 
             // lblCost
             // 
@@ -188,23 +188,23 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label9);
+            this.panel3.Controls.Add(this.lblCo2Amt);
             this.panel3.Controls.Add(this.lblCo2);
             this.panel3.Location = new System.Drawing.Point(496, 400);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(208, 192);
             this.panel3.TabIndex = 31;
             // 
-            // label9
+            // lblCo2Amt
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label9.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label9.Location = new System.Drawing.Point(64, 112);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(86, 45);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "1.23";
+            this.lblCo2Amt.AutoSize = true;
+            this.lblCo2Amt.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblCo2Amt.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblCo2Amt.Location = new System.Drawing.Point(64, 112);
+            this.lblCo2Amt.Name = "lblCo2Amt";
+            this.lblCo2Amt.Size = new System.Drawing.Size(86, 45);
+            this.lblCo2Amt.TabIndex = 3;
+            this.lblCo2Amt.Text = "1.23";
             // 
             // lblCo2
             // 
@@ -218,23 +218,23 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.label10);
+            this.panel4.Controls.Add(this.lblTreeAmt);
             this.panel4.Controls.Add(this.lblTree);
             this.panel4.Location = new System.Drawing.Point(730, 400);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(208, 192);
             this.panel4.TabIndex = 32;
             // 
-            // label10
+            // lblTreeAmt
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label10.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label10.Location = new System.Drawing.Point(72, 112);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(86, 45);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "0.43";
+            this.lblTreeAmt.AutoSize = true;
+            this.lblTreeAmt.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblTreeAmt.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblTreeAmt.Location = new System.Drawing.Point(72, 112);
+            this.lblTreeAmt.Name = "lblTreeAmt";
+            this.lblTreeAmt.Size = new System.Drawing.Size(86, 45);
+            this.lblTreeAmt.TabIndex = 4;
+            this.lblTreeAmt.Text = "0.43";
             // 
             // lblTree
             // 
@@ -265,6 +265,7 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "Uc_TabEnergy";
             this.Size = new System.Drawing.Size(992, 672);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Uc_TabEnergy_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -291,16 +292,16 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblEnergyAmt;
         private System.Windows.Forms.Label lblEnergy;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblCostAmt;
         private System.Windows.Forms.Label lblCost;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblCo2Amt;
         private System.Windows.Forms.Label lblCo2;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblTreeAmt;
         private System.Windows.Forms.Label lblTree;
     }
 }

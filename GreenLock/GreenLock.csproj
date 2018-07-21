@@ -78,12 +78,6 @@
     <Compile Include="Form\FormScreenSaver.designer.cs">
       <DependentUpon>FormScreenSaver.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\FormScreenSaver2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form\FormScreenSaver2.designer.cs">
-      <DependentUpon>FormScreenSaver2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form\FormScreenSaverCancel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,9 +156,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormScreenSaver.resx">
       <DependentUpon>FormScreenSaver.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form\FormScreenSaver2.resx">
-      <DependentUpon>FormScreenSaver2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormScreenSaverCancel.resx">
       <DependentUpon>FormScreenSaverCancel.cs</DependentUpon>

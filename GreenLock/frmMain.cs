@@ -42,8 +42,8 @@ namespace GreenLock
 
         private string _macAddress = string.Empty;
 
-        FormScreenSaver2 screenSaver;
-        FormScreenSaver2 screenSaver2;
+        FormScreenSaver screenSaver;
+        FormScreenSaver screenSaver2;
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern int GetSystemMetrics(int nIndex);
@@ -129,13 +129,13 @@ namespace GreenLock
                 }
             }
 
-              
+            //2. GreenLock 가동   
             AppConfig.Instance.LoadFromFile();
-            //AppConfig.Instance.SaveToFile();
-
+           
             _macAddress = AppConfig.Instance.DeviceAddress;
             _macAddress = "84:2E:27:6B:70:12";
-            //2. GreenLock 가동 
+           
+
             if (_macAddress != "00:00:00:00:00:00")
             {
                 _bt32FeetDevice.GetBtAddr(_macAddress);
@@ -147,13 +147,13 @@ namespace GreenLock
             }
 
             //3. 에너지 세팅 
-            _calcReduction.OnSaveChanged += _calcReduction_OnSaveChanged;
-            _calcReduction.saveChanged();
+            _calcReduction.OnMainUpdate += _calcReduction_OnMainUpdate;
+        
 
         }
 
-        #region "에너지 절감량 계산"
-        private void _calcReduction_OnSaveChanged(object sender, EventArgs e)
+        #region "에너지 절감량"
+        private void _calcReduction_OnMainUpdate(object sender, EventArgs e)
         {
 
             //throw new NotImplementedException();
@@ -183,11 +183,10 @@ namespace GreenLock
                 Thread.Sleep(40);
                 Service.mouse_event(Service.MOUSE_MOVE, 0, -1, 0, UIntPtr.Zero);
 
-                _calcReduction.EndTime = DateTime.Now;
+                _calcReduction.OperationStartTime = DateTime.Now;
+                _calcReduction.ScreenEndTime = DateTime.Now;
 
-                _calcReduction._operationStartTime = DateTime.Now;
-
-
+              
                 //화면보호기 종료
                 screenSaverAllStop();
                 Service.AlertSoundStop();
@@ -213,11 +212,12 @@ namespace GreenLock
 
                 //this.sendPCEnergy("2");
 
+                _screensaverStatus = true;
                 ScreenSaverSetting();
                 Thread.Sleep(100);
-                _screensaverStatus = true;
+               
 
-                _calcReduction.StartTime = DateTime.Now;
+                _calcReduction.ScreenStartTime = DateTime.Now;
 
                 // 모니터 + 본체 절전
                 //if (rbPcMode.Checked)
@@ -366,9 +366,7 @@ namespace GreenLock
             GreenLock.UC_Controls.Uc_TabMain uc_TabMain = new UC_Controls.Uc_TabMain();
             uc_TabMain.MainTabType = MainType.Config;
             this.Controls.Add((Control)uc_TabMain);
-        }
-
-     
+        } 
         #endregion
 
         #region "로컬 함수"
@@ -413,33 +411,35 @@ namespace GreenLock
 
         void ScreenSaverSetting()
         {
-
             try
             {
-                Screen[] screen = Screen.AllScreens;
+                this.Invoke(new System.Windows.Forms.MethodInvoker(delegate ()
+                {
+                    Screen[] screen = Screen.AllScreens;
 
-                // 듀얼모니터를 사용하지않는 경우
-                if (screen.GetLength(0) != 2)
-                {
-                    DualMonitor(screen, 0);
-                }
-                else // 듀얼모니터를 사용하는 경우
-                {
-                    DualMonitor(screen, 0);
-                    DualMonitor(screen, 1);
-                }
+                    // 듀얼모니터를 사용하지않는 경우
+                    if (screen.GetLength(0) != 2)
+                    {
+                        DualMonitor(screen, 0);
+                    }
+                    else // 듀얼모니터를 사용하는 경우
+                    {
+                        DualMonitor(screen, 0);
+                        DualMonitor(screen, 1);
+                    }
+                }));
             }
-            catch (Exception ex)
+            catch (ObjectDisposedException ex)
             {
                 frmMain._log.write(ex.Message);
-            }
+            }    
         }
 
-        public void SetFormScreenSaver2(FormScreenSaver2 screenSaver2)
+        public void SetFormScreenSaver(FormScreenSaver screenSaver)
         {
             try
             {
-                this.screenSaver2 = screenSaver2;
+                this.screenSaver = screenSaver;
             }
             catch (Exception ex)
             {
@@ -457,7 +457,7 @@ namespace GreenLock
 
                 if (screen[primaryNum] == screen[screen1])
                 {
-                    screenSaver = new FormScreenSaver2(this);
+                    screenSaver = new FormScreenSaver(this);
 
                     point = new Point(screen[screen1].Bounds.Location.X, screen[screen1].Bounds.Location.Y);
                     screenSaver.Location = point;
@@ -495,7 +495,7 @@ namespace GreenLock
 
 
                     //int a = GetSystemMetrics(SM_CXVIRTUALSCREEN);
-                    screenSaver2 = new FormScreenSaver2(this);
+                    screenSaver2 = new FormScreenSaver(this);
 
                     point = new Point(screen[screen2].Bounds.Location.X, screen[screen2].Bounds.Location.Y);
                     screenSaver2.Location = point;

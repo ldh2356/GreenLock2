@@ -12,8 +12,8 @@ namespace GreenLock
 {
     public partial class FormScreenSaverCancel : Form
     {
+     
         FormScreenSaver formScreenSaver;
-        FormScreenSaver2 formScreenSaver2;
 
         public FormScreenSaverCancel()
         {
@@ -24,22 +24,22 @@ namespace GreenLock
         {
             InitializeComponent();
             this.formScreenSaver = formScreenSaver;
-            formScreenSaver.SetFormScreenSaverCancel(this); // 없어도 되나? 가보면 주석처리 돼있음
+            //formScreenSaver.SetFormScreenSaverCancel(this); // 없어도 되나? 가보면 주석처리 돼있음
             this.TopMost = true;
         }
 
         
         // 새로 만든거
         // (FormScreenSaver2 에서 클릭 이벤트를 받았을 때 비밀번호 입력 창을 띄워주기 위한 생성자)
-        public FormScreenSaverCancel(FormScreenSaver2 formScreenSaver2)
-        {
-            InitializeComponent();
+        //public FormScreenSaverCancel(FormScreenSaver formScreenSaver2)
+        //{
+        //    InitializeComponent();
 
-            this.formScreenSaver2 = formScreenSaver2;
-            //formScreenSaver2.SetFormScreenSaverCancel(this);
+        //    this.formScreenSaver = formScreenSaver;
+        //    //formScreenSaver2.SetFormScreenSaverCancel(this);
 
-            this.TopMost = true;
-        }
+        //    this.TopMost = true;
+        //}
         
 
         // 취소 버튼
