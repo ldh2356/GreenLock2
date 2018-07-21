@@ -60,6 +60,7 @@
     <Compile Include="Common\Bt32FeetDevice.cs" />
     <Compile Include="Common\CalcReduction.cs" />
     <Compile Include="Common\ConnectLog.cs" />
+    <Compile Include="Common\DpiManager.cs" />
     <Compile Include="Common\KeyboardHooking.cs" />
     <Compile Include="Common\Log.cs" />
     <Compile Include="Common\SaveEnergy.cs" />

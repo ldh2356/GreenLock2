@@ -42,8 +42,8 @@ namespace GreenLock
 
         private string _macAddress = string.Empty;
 
-        FormScreenSaver screenSaver;
-        FormScreenSaver screenSaver2;
+        FormScreenSaver _screenSaver;
+        FormScreenSaver _screenSaver2;
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern int GetSystemMetrics(int nIndex);
@@ -116,7 +116,8 @@ namespace GreenLock
             _bt32FeetDevice.OnIsSevrice += Bt32FeetDevice_OnIsSevrice;
             _bt32FeetDevice.OnNotService += Bt32FeetDevice_OnNotService;
 
-
+            // 모니터 정확 해상도를 받기위한 DPI 세터 추가
+            DpiManager.SetDpiAwareness();
 
             //1. 자동 업데이트 추가 
             if (UpdateChecker.NeedUpdate(this))
@@ -176,23 +177,26 @@ namespace GreenLock
             //스크린 종료
             if (_screensaverStatus == true)
             {
-                //this.sendPCEnergy("3");
+                this.Invoke(new System.Windows.Forms.MethodInvoker(delegate ()
+                {
+                    //this.sendPCEnergy("3");
 
-                // 컴퓨터 절전해제
-                Service.mouse_event(Service.MOUSE_MOVE, 0, 1, 0, UIntPtr.Zero);
-                Thread.Sleep(40);
-                Service.mouse_event(Service.MOUSE_MOVE, 0, -1, 0, UIntPtr.Zero);
+                    // 컴퓨터 절전해제
+                    Service.mouse_event(Service.MOUSE_MOVE, 0, 1, 0, UIntPtr.Zero);
+                    Thread.Sleep(40);
+                    Service.mouse_event(Service.MOUSE_MOVE, 0, -1, 0, UIntPtr.Zero);
 
-                _calcReduction.OperationStartTime = DateTime.Now;
-                _calcReduction.ScreenEndTime = DateTime.Now;
+                    _calcReduction.OperationStartTime = DateTime.Now;
+                    _calcReduction.ScreenEndTime = DateTime.Now;
 
-              
-                //화면보호기 종료
-                screenSaverAllStop();
-                Service.AlertSoundStop();
 
-                _screensaverStatus = false;
-                Service.SendMessage(this.Handle.ToInt32(), Service.WM_SYSCOMMAND, Service.SC_MONITORPOWER, Service.MONITOR_ON);
+                    //화면보호기 종료
+                    screenSaverAllStop();
+                    Service.AlertSoundStop();
+
+                    _screensaverStatus = false;
+                    Service.SendMessage(this.Handle.ToInt32(), Service.WM_SYSCOMMAND, Service.SC_MONITORPOWER, Service.MONITOR_ON);
+                }));
             }
         }
 
@@ -208,7 +212,9 @@ namespace GreenLock
             //화면보호기 시작
             if (_screensaverStatus == false && _screensaverPasswordflag == false)
             {
-                _calcReduction.OperationEndTime = DateTime.Now;
+                this.Invoke(new System.Windows.Forms.MethodInvoker(delegate ()
+                {
+                    _calcReduction.OperationEndTime = DateTime.Now;
 
                 //this.sendPCEnergy("2");
 
@@ -219,16 +225,17 @@ namespace GreenLock
 
                 _calcReduction.ScreenStartTime = DateTime.Now;
 
-                // 모니터 + 본체 절전
-                //if (rbPcMode.Checked)
-                //{
-                //    System.Windows.Forms.Application.SetSuspendState(System.Windows.Forms.PowerState.Suspend, false, false);
-                //}
-                //// 모니터 절전 진입
-                //else
-                //{
-                //    Service.SendMessage(this.Handle.ToInt32(), Service.WM_SYSCOMMAND, Service.SC_MONITORPOWER, Service.MONITOR_OFF);
-                //}
+                    // 모니터 + 본체 절전
+                    //if (rbPcMode.Checked)
+                    //{
+                    //    System.Windows.Forms.Application.SetSuspendState(System.Windows.Forms.PowerState.Suspend, false, false);
+                    //}
+                    //// 모니터 절전 진입
+                    //else
+                    //{
+                    //    Service.SendMessage(this.Handle.ToInt32(), Service.WM_SYSCOMMAND, Service.SC_MONITORPOWER, Service.MONITOR_OFF);
+                    //}
+                }));
             }
         }
 
@@ -385,17 +392,17 @@ namespace GreenLock
         {
             try
             {
-                /*if (screenSaver != null)
+                if (_screenSaver != null)
                 {
-                    screenSaver.Close();
-                    screenSaver = null;
+                    _screenSaver.Close();
+                    _screenSaver = null;
 
-                    if (screenSaver2 != null)
+                    if (_screenSaver2 != null)
                     {
-                        screenSaver2.Close();
-                        screenSaver2 = null;
+                        _screenSaver2.Close();
+                        _screenSaver2 = null;
                     }
-                }*/
+                }
 
                 //MainForm.log.write("screenSaver != null" + (screenSaver != null));
                 //MainForm.log.write("screenSaver2 != null" + (screenSaver2 != null));
@@ -405,29 +412,27 @@ namespace GreenLock
             }
             catch (Exception ex)
             {
-                //_log.write(ex.Message);
+                frmMain._log.write(ex.Message);
             }
         }
 
         void ScreenSaverSetting()
         {
             try
-            {
-                this.Invoke(new System.Windows.Forms.MethodInvoker(delegate ()
-                {
-                    Screen[] screen = Screen.AllScreens;
+            {             
+                Screen[] screen = Screen.AllScreens;
 
-                    // 듀얼모니터를 사용하지않는 경우
-                    if (screen.GetLength(0) != 2)
-                    {
-                        DualMonitor(screen, 0);
-                    }
-                    else // 듀얼모니터를 사용하는 경우
-                    {
-                        DualMonitor(screen, 0);
-                        DualMonitor(screen, 1);
-                    }
-                }));
+                // 듀얼모니터를 사용하지않는 경우
+                if (screen.GetLength(0) != 2)
+                {
+                    DualMonitor(screen, 0);
+                }
+                else // 듀얼모니터를 사용하는 경우
+                {
+                    DualMonitor(screen, 0);
+                    DualMonitor(screen, 1);
+                }
+              
             }
             catch (ObjectDisposedException ex)
             {
@@ -439,7 +444,7 @@ namespace GreenLock
         {
             try
             {
-                this.screenSaver = screenSaver;
+                this._screenSaver = screenSaver;
             }
             catch (Exception ex)
             {
@@ -457,18 +462,18 @@ namespace GreenLock
 
                 if (screen[primaryNum] == screen[screen1])
                 {
-                    screenSaver = new FormScreenSaver(this);
+                    _screenSaver = new FormScreenSaver(this);
 
                     point = new Point(screen[screen1].Bounds.Location.X, screen[screen1].Bounds.Location.Y);
-                    screenSaver.Location = point;
+                    _screenSaver.Location = point;
 
                     //GIF파일의 크기를 메인모니터 크기로 조정
 
                     //screenSaver.pb_screenSaver.Size = new Size(screen[screen1].WorkingArea.Width, screen[screen1].WorkingArea.Height);
 
-                    //screenSaver.Size = new Size(100,100);
-                    screenSaver.Size = new Size(screen[screen1].Bounds.Width, screen[screen1].Bounds.Height);
-                    screenSaver.Show(this);
+                    _screenSaver.Size = new Size(100,100);
+                    //screenSaver.Size = new Size(screen[screen1].Bounds.Width, screen[screen1].Bounds.Height);
+                    _screenSaver.Show(this);
                     //KeyboardHooking.TaskBarHide();
                 }
                 else
@@ -495,14 +500,14 @@ namespace GreenLock
 
 
                     //int a = GetSystemMetrics(SM_CXVIRTUALSCREEN);
-                    screenSaver2 = new FormScreenSaver(this);
+                    _screenSaver2 = new FormScreenSaver(this);
 
                     point = new Point(screen[screen2].Bounds.Location.X, screen[screen2].Bounds.Location.Y);
-                    screenSaver2.Location = point;
+                    _screenSaver2.Location = point;
 
                     //GIF파일의 크기를 서브모니터 크기로 조정
-                    screenSaver2.Size = new Size(screen[screen2].Bounds.Width, screen[screen2].Bounds.Height);
-                    screenSaver2.Show(this);
+                    _screenSaver2.Size = new Size(screen[screen2].Bounds.Width, screen[screen2].Bounds.Height);
+                    _screenSaver2.Show(this);
                 }
             }
             catch (Exception ex)

@@ -264,6 +264,7 @@ namespace GreenLock
         {
             try
             {
+
                 bluetoothDeviceInfo = iAsyncResult.AsyncState as BluetoothDeviceInfo;
 
                 ServiceRecord[] services = bluetoothDeviceInfo.EndGetServiceRecords(iAsyncResult);
@@ -294,7 +295,7 @@ namespace GreenLock
                     LockCount = 0;
                 }
             }
-            catch (Exception)
+            catch (Exception ea)
             {
                 LockCount++;
 
