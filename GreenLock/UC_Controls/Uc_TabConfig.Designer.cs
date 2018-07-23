@@ -51,6 +51,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtAddress6 = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblConnet
@@ -102,13 +106,14 @@
             this.rbAdroid.AutoSize = true;
             this.rbAdroid.BackColor = System.Drawing.Color.Transparent;
             this.rbAdroid.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.rbAdroid.Location = new System.Drawing.Point(280, 96);
+            this.rbAdroid.Location = new System.Drawing.Point(24, 16);
             this.rbAdroid.Name = "rbAdroid";
             this.rbAdroid.Size = new System.Drawing.Size(85, 24);
             this.rbAdroid.TabIndex = 4;
             this.rbAdroid.TabStop = true;
             this.rbAdroid.Text = "Android";
             this.rbAdroid.UseVisualStyleBackColor = false;
+            this.rbAdroid.Click += new System.EventHandler(this.rbAdroid_Click);
             // 
             // lblAddress
             // 
@@ -133,19 +138,21 @@
             this.rbSleepModeMonitor.TabStop = true;
             this.rbSleepModeMonitor.Text = "모니터절전";
             this.rbSleepModeMonitor.UseVisualStyleBackColor = false;
+            this.rbSleepModeMonitor.Click += new System.EventHandler(this.rbSleepModeMonitor_Click);
             // 
             // rbIOS
             // 
             this.rbIOS.AutoSize = true;
             this.rbIOS.BackColor = System.Drawing.Color.Transparent;
             this.rbIOS.Font = new System.Drawing.Font("맑은 고딕", 9F);
-            this.rbIOS.Location = new System.Drawing.Point(424, 96);
+            this.rbIOS.Location = new System.Drawing.Point(168, 16);
             this.rbIOS.Name = "rbIOS";
             this.rbIOS.Size = new System.Drawing.Size(54, 24);
             this.rbIOS.TabIndex = 5;
             this.rbIOS.TabStop = true;
             this.rbIOS.Text = "IOS";
             this.rbIOS.UseVisualStyleBackColor = false;
+            this.rbIOS.Click += new System.EventHandler(this.rbIOS_Click);
             // 
             // rbSleepModeAll
             // 
@@ -159,12 +166,15 @@
             this.rbSleepModeAll.TabStop = true;
             this.rbSleepModeAll.Text = "모니터 + 본체 절전";
             this.rbSleepModeAll.UseVisualStyleBackColor = false;
+            this.rbSleepModeAll.Click += new System.EventHandler(this.rbSleepModeAll_Click);
             // 
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtPassword.Location = new System.Drawing.Point(280, 229);
+            this.txtPassword.MaxLength = 4;
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(136, 27);
             this.txtPassword.TabIndex = 9;
             // 
@@ -184,6 +194,7 @@
             this.txtAddress1.Size = new System.Drawing.Size(32, 27);
             this.txtAddress1.TabIndex = 11;
             this.txtAddress1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAddress1.TextChanged += new System.EventHandler(this.txtAddress1_TextChanged);
             // 
             // txtAddress2
             // 
@@ -193,6 +204,7 @@
             this.txtAddress2.Size = new System.Drawing.Size(32, 27);
             this.txtAddress2.TabIndex = 12;
             this.txtAddress2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAddress2.TextChanged += new System.EventHandler(this.txtAddress1_TextChanged);
             // 
             // label1
             // 
@@ -224,6 +236,7 @@
             this.txtAddress3.Size = new System.Drawing.Size(32, 27);
             this.txtAddress3.TabIndex = 14;
             this.txtAddress3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAddress3.TextChanged += new System.EventHandler(this.txtAddress1_TextChanged);
             // 
             // label3
             // 
@@ -264,6 +277,7 @@
             this.txtAddress5.Size = new System.Drawing.Size(32, 27);
             this.txtAddress5.TabIndex = 18;
             this.txtAddress5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAddress5.TextChanged += new System.EventHandler(this.txtAddress1_TextChanged);
             // 
             // label7
             // 
@@ -284,23 +298,51 @@
             this.txtAddress6.Size = new System.Drawing.Size(32, 27);
             this.txtAddress6.TabIndex = 20;
             this.txtAddress6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAddress6.TextAlignChanged += new System.EventHandler(this.txtAddress1_TextChanged);
             // 
             // btnOK
             // 
-            this.btnOK.Font = new System.Drawing.Font("맑은 고딕", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOK.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnOK.ForeColor = System.Drawing.Color.White;
-            this.btnOK.Location = new System.Drawing.Point(808, 360);
+            this.btnOK.Location = new System.Drawing.Point(672, 336);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(144, 48);
+            this.btnOK.Size = new System.Drawing.Size(130, 40);
             this.btnOK.TabIndex = 22;
             this.btnOK.Text = "확인";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(824, 336);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(130, 40);
+            this.btnCancel.TabIndex = 23;
+            this.btnCancel.Text = "취소";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.rbAdroid);
+            this.panel1.Controls.Add(this.rbIOS);
+            this.panel1.Location = new System.Drawing.Point(256, 80);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(328, 48);
+            this.panel1.TabIndex = 25;
             // 
             // Uc_TabConfig
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::GreenLock.Properties.Resources.tabConfig;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtAddress6);
@@ -318,8 +360,6 @@
             this.Controls.Add(this.rbSleepModeAll);
             this.Controls.Add(this.rbSleepModeMonitor);
             this.Controls.Add(this.lblAddress);
-            this.Controls.Add(this.rbIOS);
-            this.Controls.Add(this.rbAdroid);
             this.Controls.Add(this.lblEnergy);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblSleepMode);
@@ -328,6 +368,8 @@
             this.Name = "Uc_TabConfig";
             this.Size = new System.Drawing.Size(992, 672);
             this.Load += new System.EventHandler(this.Uc_TabConfig_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -358,5 +400,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtAddress6;
         private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.Button btnCancel;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

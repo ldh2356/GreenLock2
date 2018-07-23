@@ -19,60 +19,65 @@ namespace GreenLock
         }
 
         public string _fileName = Path.Combine(Application.StartupPath, "GreenLock_Config.xml"); 
+  
+        private double _pcPower;
+        private double _elecRate; // 추가함
+        private int _totalTime;
+        private string _userPassword;
+        private string _deviceAddress;
+        private int _sleepMode;
+      
+        private int _model;
 
-        public string _LocalName;
-        public int _TrackBar;
-        public double _PcPower;
-        public double _ElecRate; // 추가함
-        public int _TotalTime;
-        public string _UserPassword;
-        public string _DeviceAddress;
-        public int _SleepMode;
-        public bool _MonitorSleepMode;
-        public bool _PcSleepMode;
-        private int _Model;
 
+        /// <summary>
+        /// Model =0 은 안드로이드 Model = 1 IOS
+        /// </summary>
         public int Model
         {
-            get { return _Model; }
-            set { _Model = value; }
+            get { return _model; }
+            set { _model = value; }
         }
 
 
         public double PcPower
         {
-            get { return _PcPower; }
-            set { _PcPower = value; }
+            get { return _pcPower; }
+            set { _pcPower = value; }
         }
-        
+    
         public double ElecRate // 추가함
         {
-            get { return _ElecRate; }
-            set { _ElecRate = value;  }
+            get { return _elecRate; }
+            set { _elecRate = value;  }
         }
 
         public int TotalTime
         {
-            get { return _TotalTime; }
-            set { _TotalTime = value; }
+            get { return _totalTime; }
+            set { _totalTime = value; }
         }
 
         public string UserPassword
         {
-            get { return _UserPassword; }
-            set { _UserPassword = value; }
+            get { return _userPassword; }
+            set { _userPassword = value; }
         }
 
         public string DeviceAddress
         {
-            get { return _DeviceAddress; }
-            set { _DeviceAddress = value; }
+            get { return _deviceAddress; }
+            set { _deviceAddress = value; }
         }
 
+
+        /// <summary>
+        /// SleepMode = 1 인경우 모니터 + 본체,  SleepMode = 0 모니터 절제 
+        /// </summary>
         public int SleepMode
         {
-            get { return _SleepMode; }
-            set { _SleepMode = value; }
+            get { return _sleepMode; }
+            set { _sleepMode = value; }
         }
 
 
@@ -84,13 +89,13 @@ namespace GreenLock
         void init()
         {
          
-            _PcPower = 160; // PC 소비전력 기본값
-            _ElecRate = 183; // 전기요금 기본값
-            _TotalTime = 0;
-            _UserPassword = "0000";
-            _DeviceAddress = "00:00:00:00:00:00";
-            _SleepMode = 0;
-            _Model = 0;
+            _pcPower = 160; // PC 소비전력 기본값
+            _elecRate = 183; // 전기요금 기본값
+            _totalTime = 0;
+            _userPassword = "0000";
+            _deviceAddress = "00:00:00:00:00:00";
+            _sleepMode = 0;
+            _model = 0;
         }
 
         //암호화 키.  8글자로 이루어짐.
@@ -101,9 +106,7 @@ namespace GreenLock
             if (fileName == null) fileName = _fileName;
 
             XElement xe = new XElement("AppConfig");
-
             
-           
             xe.Add(new XElement("TotalTime", TotalTime));
             xe.Add(new XElement("UserPassword", UserPassword));
             xe.Add(new XElement("DeviceAddress", DeviceAddress));
@@ -168,12 +171,12 @@ namespace GreenLock
             XElement xe = XElement.Load(fileName);
             
            
-            _PcPower = double.Parse(xe.Element("PcPower").Value);
-            _TotalTime = int.Parse(xe.Element("TotalTime").Value);
-            _UserPassword = xe.Element("UserPassword").Value;
-            _DeviceAddress = xe.Element("DeviceAddress").Value;
-            _SleepMode = int.Parse(xe.Element("SleepMode").Value);
-            _Model = int.Parse(xe.Element("Model").Value);
+            _pcPower = double.Parse(xe.Element("PcPower").Value);
+            _totalTime = int.Parse(xe.Element("TotalTime").Value);
+            _userPassword = xe.Element("UserPassword").Value;
+            _deviceAddress = xe.Element("DeviceAddress").Value;
+            _sleepMode = int.Parse(xe.Element("SleepMode").Value);
+            _model = int.Parse(xe.Element("Model").Value);
             
             //_PcSleepMode = bool.Parse(xe.Element("PcSleepMode").Value);
             //_MonitorSleepMode = bool.Parse(xe.Element("MonitorSleepMode").Value);
@@ -181,14 +184,14 @@ namespace GreenLock
             // 추가함
             try
             {
-                _ElecRate = double.Parse(xe.Element("ElecRate").Value);
+                _elecRate = double.Parse(xe.Element("ElecRate").Value);
             }
             catch (Exception ex)
             {
                 ex.ToString();
                 //System.Windows.Forms.MessageBox.Show(ex.ToString());
                 xe.Add(new XElement("ElecRate", ElecRate));
-                _ElecRate = double.Parse(xe.Element("ElecRate").Value);
+                _elecRate = double.Parse(xe.Element("ElecRate").Value);
             }
         }
     }

@@ -41,7 +41,7 @@ namespace GreenLock
         {
             InitializeComponent();
             this.main = main;
-            main.SetFormScreenSaver(this);
+            //main.SetFormScreenSaver(this);
 
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             StartPosition = FormStartPosition.Manual;

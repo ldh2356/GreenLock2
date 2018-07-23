@@ -79,28 +79,23 @@ namespace GreenLock
             try
             {
                 // 패스워드가 일치할경우
-                //if (textBox1.Text == MainForm.userPw)
-                //{
-                //    this.Close();
-                //    // 1. 스크린 세이버만 종료
-                //    Screen[] screen = Screen.AllScreens; // 시스템 내 모든 디스플레이 배열을 가져옴
+                if (textBox1.Text == AppConfig.Instance.UserPassword)
+                {
+                    this.Close();
+                    // 1. 스크린 세이버만 종료
+                    Screen[] screen = Screen.AllScreens; // 시스템 내 모든 디스플레이 배열을 가져옴
 
-                //    if(formScreenSaver != null)
-                //    {
-                //        formScreenSaver.main.screenSaverAllStop();
-                //        formScreenSaver.main._screensaverPasswordflag = true;
-                //    }
-                //    else
-                //    {
-                //        formScreenSaver2.main.screenSaverAllStop();
-                //        formScreenSaver2.main._screensaverPasswordflag = true;
-                //    }
-                //}
-                //else
-                //{
-                //    MessageBox.Show("비밀번호가 틀렸습니다. \n다시 입력해 주세요.");
-                //    Service.AlertSoundStart();
-                //}
+                    if (formScreenSaver != null)
+                    {
+                        formScreenSaver.main.screenSaverAllStop();
+                        formScreenSaver.main._screensaverPasswordflag = true;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("비밀번호가 틀렸습니다. \n다시 입력해 주세요.");
+                    Service.AlertSoundStart();
+                }
             }
             catch (Exception ex)
             {

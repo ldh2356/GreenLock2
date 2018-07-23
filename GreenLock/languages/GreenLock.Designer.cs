@@ -70,6 +70,15 @@ namespace GreenLock.languages {
         }
         
         /// <summary>
+        ///   제대로 입력하시오.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string bluetooth_setting_msg {
+            get {
+                return ResourceManager.GetString("bluetooth_setting_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   블루투스 장치를 켜주세요.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string bluetoothOffMsg {

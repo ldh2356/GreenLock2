@@ -210,4 +210,7 @@
   <data name="energy" xml:space="preserve">
     <value>절력값(kW)</value>
   </data>
+  <data name="bluetooth_setting_msg" xml:space="preserve">
+    <value>제대로 입력하시오.</value>
+  </data>
 </root>
