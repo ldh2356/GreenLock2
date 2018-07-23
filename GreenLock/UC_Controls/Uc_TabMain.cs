@@ -18,6 +18,16 @@ namespace GreenLock.UC_Controls
         private Uc_TabSecurity _tabSecurity = new Uc_TabSecurity();
         private Uc_TabConfig _tabConfig = new Uc_TabConfig();
 
+        private frmMain _main;
+
+        public frmMain Main
+        {
+            set
+            {
+                _main = value;
+            }
+        }
+
         public MainType MainTabType
         {
             set
@@ -30,6 +40,8 @@ namespace GreenLock.UC_Controls
         {
             InitializeComponent();
             localization();
+
+           
         }
 
         public void localization()
@@ -37,6 +49,8 @@ namespace GreenLock.UC_Controls
             lblEnegry.Text = GreenLock.languages.GreenLock.main_Energy1;
             lblSecurity.Text = GreenLock.languages.GreenLock.main_Security1;
             lblConfig.Text = GreenLock.languages.GreenLock.main_Config1;
+
+
 
             //lblEnegry.ForeColor = ColorTranslator.FromHtml("#3EE887");
             //lblSecurity.ForeColor = ColorTranslator.FromHtml("#3EE887");
@@ -47,6 +61,9 @@ namespace GreenLock.UC_Controls
 
         private void Uc_TabMain_Load(object sender, EventArgs e)
         {
+
+          
+
             this.pnlMain.Controls.Clear();
             if (_mainTabType == MainType.Energy)
             {
@@ -56,7 +73,10 @@ namespace GreenLock.UC_Controls
             else if (_mainTabType == MainType.Security)
                 this.pnlMain.Controls.Add(_tabSecurity);
             else if (_mainTabType == MainType.Config)
+            {
+                _tabConfig.Main = _main;
                 this.pnlMain.Controls.Add(_tabConfig);
+            }
         }
 
         private void pbClose_Click(object sender, EventArgs e)

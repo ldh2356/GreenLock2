@@ -42,7 +42,7 @@ namespace GreenLock
 
         private string _macAddress = string.Empty;
 
-        FormScreenSaver _screenSaver;
+        FormScreenSaver _screenSaver1;
         FormScreenSaver _screenSaver2;
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
@@ -75,7 +75,16 @@ namespace GreenLock
             SM_CYVIRTUALSCREEN = 79
         }
 
+        public Bt32FeetDevice Bt32FeetDevice
+        {
+            get
+            {
+                return _bt32FeetDevice;
+            }
+        }
+
         #endregion
+
 
 
         public frmMain()
@@ -112,9 +121,7 @@ namespace GreenLock
             lblDate.Text = DateTime.Now.Year +  "."  + DateTime.Now.Month +  "."   + DateTime.Now.Day + " (" + DateTime.Now.ToString("ddd", new CultureInfo(Globals._language)) +  ")";
 
 
-            _bt32FeetDevice.OnErrorService += Bt32FeetDevice_OnErrorService;
-            _bt32FeetDevice.OnIsSevrice += Bt32FeetDevice_OnIsSevrice;
-            _bt32FeetDevice.OnNotService += Bt32FeetDevice_OnNotService;
+
 
             // 모니터 정확 해상도를 받기위한 DPI 세터 추가
             DpiManager.SetDpiAwareness();
@@ -216,25 +223,25 @@ namespace GreenLock
                 {
                     _calcReduction.OperationEndTime = DateTime.Now;
 
-                //this.sendPCEnergy("2");
+                    //this.sendPCEnergy("2");
 
-                _screensaverStatus = true;
-                ScreenSaverSetting();
-                Thread.Sleep(100);
+                    _screensaverStatus = true;
+                    ScreenSaverSetting();
+                    Thread.Sleep(100);
                
 
-                _calcReduction.ScreenStartTime = DateTime.Now;
+                    _calcReduction.ScreenStartTime = DateTime.Now;
 
-                    // 모니터 + 본체 절전
-                    //if (rbPcMode.Checked)
-                    //{
-                    //    System.Windows.Forms.Application.SetSuspendState(System.Windows.Forms.PowerState.Suspend, false, false);
-                    //}
-                    //// 모니터 절전 진입
-                    //else
-                    //{
-                    //    Service.SendMessage(this.Handle.ToInt32(), Service.WM_SYSCOMMAND, Service.SC_MONITORPOWER, Service.MONITOR_OFF);
-                    //}
+                    //모니터 + 본체 절전
+                    if (AppConfig.Instance.SleepMode == 1)
+                    {
+                        System.Windows.Forms.Application.SetSuspendState(System.Windows.Forms.PowerState.Suspend, false, false);
+                    }
+                    // 모니터 절전 진입
+                    else
+                    {
+                        Service.SendMessage(this.Handle.ToInt32(), Service.WM_SYSCOMMAND, Service.SC_MONITORPOWER, Service.MONITOR_OFF);
+                    }
                 }));
             }
         }
@@ -341,6 +348,7 @@ namespace GreenLock
             this.Controls.Clear();
             this.BackgroundImage = null;
             GreenLock.UC_Controls.Uc_TabMain uc_TabMain = new UC_Controls.Uc_TabMain();
+            uc_TabMain.Main = this;
             uc_TabMain.MainTabType = MainType.Energy;
             this.Controls.Add(uc_TabMain);
         }
@@ -356,6 +364,7 @@ namespace GreenLock
             this.Controls.Clear();
             this.BackgroundImage = null;
             GreenLock.UC_Controls.Uc_TabMain uc_TabMain = new UC_Controls.Uc_TabMain();
+            uc_TabMain.Main = this;
             uc_TabMain.MainTabType = MainType.Security;
             this.Controls.Add(uc_TabMain);
         }
@@ -371,7 +380,9 @@ namespace GreenLock
             this.Controls.Clear();
             this.BackgroundImage = null;
             GreenLock.UC_Controls.Uc_TabMain uc_TabMain = new UC_Controls.Uc_TabMain();
+            uc_TabMain.Main = this;
             uc_TabMain.MainTabType = MainType.Config;
+            
             this.Controls.Add((Control)uc_TabMain);
         } 
         #endregion
@@ -392,10 +403,10 @@ namespace GreenLock
         {
             try
             {
-                if (_screenSaver != null)
+                if (_screenSaver1 != null)
                 {
-                    _screenSaver.Close();
-                    _screenSaver = null;
+                    _screenSaver1.Close();
+                    _screenSaver1 = null;
 
                     if (_screenSaver2 != null)
                     {
@@ -444,7 +455,7 @@ namespace GreenLock
         {
             try
             {
-                this._screenSaver = screenSaver;
+                this._screenSaver1 = screenSaver;
             }
             catch (Exception ex)
             {
@@ -462,18 +473,17 @@ namespace GreenLock
 
                 if (screen[primaryNum] == screen[screen1])
                 {
-                    _screenSaver = new FormScreenSaver(this);
+                    _screenSaver1 = new FormScreenSaver(this);
 
                     point = new Point(screen[screen1].Bounds.Location.X, screen[screen1].Bounds.Location.Y);
-                    _screenSaver.Location = point;
+                    _screenSaver1.Location = point;
 
                     //GIF파일의 크기를 메인모니터 크기로 조정
-
                     //screenSaver.pb_screenSaver.Size = new Size(screen[screen1].WorkingArea.Width, screen[screen1].WorkingArea.Height);
 
-                    _screenSaver.Size = new Size(100,100);
+                    _screenSaver1.Size = new Size(100,100);
                     //screenSaver.Size = new Size(screen[screen1].Bounds.Width, screen[screen1].Bounds.Height);
-                    _screenSaver.Show(this);
+                    _screenSaver1.Show(this);
                     //KeyboardHooking.TaskBarHide();
                 }
                 else
@@ -515,6 +525,27 @@ namespace GreenLock
                 frmMain._log.write(ex.Message);
             }
         }
+
+        /// <summary>
+        /// 블루투스 이벤트 등록
+        /// </summary>
+        public void AddEvent()
+        {
+            _bt32FeetDevice.OnErrorService += Bt32FeetDevice_OnErrorService;
+            _bt32FeetDevice.OnIsSevrice += Bt32FeetDevice_OnIsSevrice;
+            _bt32FeetDevice.OnNotService += Bt32FeetDevice_OnNotService;
+        }
+
+        /// <summary>
+        /// 불루투스 이벤트 제거 
+        /// </summary>
+        public void RemoveEvent()
+        {
+            _bt32FeetDevice.OnErrorService -= Bt32FeetDevice_OnErrorService;
+            _bt32FeetDevice.OnIsSevrice -= Bt32FeetDevice_OnIsSevrice;
+            _bt32FeetDevice.OnNotService -= Bt32FeetDevice_OnNotService;
+        }
+
         #endregion
 
     }
