@@ -1,4 +1,6 @@
-﻿namespace GreenLock.UC_Controls
+﻿using DevExpress.XtraCharts;
+
+namespace GreenLock.UC_Controls
 {
     partial class Uc_TabSecurity
     {
@@ -32,17 +34,14 @@
             // 
             // Uc_TabSecurity
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::GreenLock.Properties.Resources.tabSecurity;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "Uc_TabSecurity";
-            this.Size = new System.Drawing.Size(992, 672);
+            this.Size = new System.Drawing.Size(1021, 767);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private DevExpress.XtraCharts.ChartControl ChartControl;
     }
 }
