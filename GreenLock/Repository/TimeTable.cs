@@ -12,13 +12,13 @@ namespace GreenLock.Repository
     using System;
     using System.Collections.Generic;
     
-    public partial class TimeSheet
+    public partial class TimeTable
     {
         public string Id { get; set; }
         public string MacAddress { get; set; }
-        public System.DateTime StartTime { get; set; }
-        public Nullable<System.DateTime> EndTime { get; set; }
-        public Nullable<double> UsedTotalSecond { get; set; }
-        public Nullable<System.DateTime> RegDate { get; set; }
+        public System.DateTime RegDate { get; set; }
+        public Nullable<System.DateTime> StartDate { get; set; }
+        public System.DateTime EndDate { get; set; }
+        public short LockType { get; set; }
     }
 }

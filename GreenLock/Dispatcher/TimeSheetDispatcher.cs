@@ -12,97 +12,139 @@ namespace GreenLock.Dispatcher
     public class TimeSheetDispatcher
     {
         /// <summary>
-        /// 사용시간을 타임 테이블에 기록한다
+        /// 
         /// </summary>
         /// <param name="clientMacAddress"></param>
-        /// <param name="usedTotalSeconds"></param>
-        public void SetTimeTable(string clientMacAddress, double usedTotalSeconds = 0)
+        /// <param name="lockType"></param>
+        /// <param name="isNew"></param>
+        public void SetTimeTable(string clientMacAddress, short lockType, bool isNew = false)
         {
-            using (greenlockEntities context = new greenlockEntities())
+            try
             {
-                using (DbContextTransaction transaction = context.Database.BeginTransaction())
+                using (greenlockEntities context = new greenlockEntities())
                 {
-                    try
+                    using (DbContextTransaction transaction = context.Database.BeginTransaction())
                     {
-                        TimeSheet currentTimeSheet = context.TimeSheets.Where(x => x.MacAddress == clientMacAddress).OrderByDescending(x => x.RegDate).FirstOrDefault();
-
-                        // 기록된 데이터가 아예없는 경우
-                        if (currentTimeSheet == null)
+                        try
                         {
-                            Debug.WriteLine("1");
-                            try
-                            {
-                                TimeSheet addTimeSheet = new TimeSheet
-                                {
-                                    RegDate = DateTime.Now,
-                                    StartTime = DateTime.Now,
-                                    EndTime = DateTime.Now,
-                                    Id = Guid.NewGuid().ToString(),
-                                    MacAddress = clientMacAddress,
-                                    UsedTotalSecond = 0,
-                                };
+                            TimeTable currentTimeSheet = context.TimeTables.Where(x => x.MacAddress == clientMacAddress).OrderByDescending(x => x.RegDate).FirstOrDefault();
 
-                                context.TimeSheets.Add(addTimeSheet);
-                            }
-                            catch (Exception ex)
+                            // 오늘날짜로 기록된 데이터가 아예없거나 신규로 행을 추가시 경우
+                            if (currentTimeSheet == null || isNew)
                             {
-                                frmMain._log.write(ex.StackTrace);
-                            }
-                        }
-                        // 기록된 데이터가 있는경우
-                        else
-                        {
-                            // 오늘날짜로 기록된 데이터가 있는경우
-                            if (Convert.ToDateTime(currentTimeSheet.RegDate).ToString("yyyyMMdd").Equals(DateTime.Today.ToString("yyyyMMdd")))
-                            {
-                                Debug.WriteLine("2");
                                 try
                                 {
-                                    // 총시간 업데이트
-                                    currentTimeSheet.UsedTotalSecond = currentTimeSheet.UsedTotalSecond + usedTotalSeconds;
+                                    // 락 데이터가 들어왔을 경우 
+                                    if (lockType == 1)
+                                    {
+                                        //마지막 행이 락이라면 new 로 들어왔다 하더라도 그에 상관없이 종료타임만 업데이트한다                                        
+                                        if (currentTimeSheet.LockType == lockType)
+                                        {
+                                            // EndTime 을 업데이트한다 
+                                            currentTimeSheet.EndDate = DateTime.Now;
+                                        }
+                                        // 신규 데이터라면 로우를 추가한다
+                                        else if (isNew)
+                                        {
+                                            TimeTable addTimeSheet = new TimeTable
+                                            {
+                                                RegDate = DateTime.Now,
+                                                StartDate = DateTime.Now,
+                                                Id = Guid.NewGuid().ToString(),
+                                                MacAddress = clientMacAddress,
+                                                LockType = lockType,
+                                            };
+
+                                            context.TimeTables.Add(addTimeSheet);
+                                        }
+                                    }
+                                    // 락 데이터가 아닌경우
+                                    else
+                                    {
+                                        TimeTable addTimeSheet = new TimeTable
+                                        {
+                                            RegDate = DateTime.Now,
+                                            StartDate = DateTime.Now,
+                                            Id = Guid.NewGuid().ToString(),
+                                            MacAddress = clientMacAddress,
+                                            LockType = lockType,
+                                        };
+
+                                        context.TimeTables.Add(addTimeSheet);
+                                    }
                                 }
                                 catch (Exception ex)
                                 {
                                     frmMain._log.write(ex.StackTrace);
                                 }
                             }
-                            // 없는경우
+                            // 기록된 데이터가 있는경우
                             else
                             {
-                                Debug.WriteLine("3");
                                 try
                                 {
-                                    TimeSheet addTimeSheet = new TimeSheet
-                                    {
-                                        RegDate = DateTime.Now,
-                                        StartTime = DateTime.Now,
-                                        EndTime = DateTime.Now,
-                                        Id = Guid.NewGuid().ToString(),
-                                        MacAddress = clientMacAddress,
-                                        UsedTotalSecond = 0,
-                                    };
+                                    // 해당하는 락 타입 데이터의 마지막 행을 가져온다 
+                                    TimeTable targetTable = context.TimeTables.Where(x => x.MacAddress == clientMacAddress && x.LockType == lockType).OrderBy(x => x.RegDate).FirstOrDefault();
 
-                                    context.TimeSheets.Add(addTimeSheet);
-                      
+                                    // EndTime 을 업데이트한다 
+                                    targetTable.EndDate = DateTime.Now;
                                 }
                                 catch (Exception ex)
                                 {
                                     frmMain._log.write(ex.StackTrace);
                                 }
                             }
-                        }
 
-                        context.SaveChanges();
-                        transaction.Commit();
-                    }
-                    catch (Exception ex)
-                    {
-                        transaction.Rollback();
-                        Debug.WriteLine(ex.StackTrace);
-                        frmMain._log.write(ex.StackTrace);
+                            context.SaveChanges();
+                            transaction.Commit();
+                            transaction.Dispose();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            transaction.Dispose();
+                            Debug.WriteLine(ex.StackTrace);
+                            frmMain._log.write(ex.StackTrace);
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                frmMain._log.write(ex.StackTrace);
+            }
+        }
+
+
+
+        /// <summary>
+        /// 시간별 데이터를 가져온다
+        /// </summary>
+        /// <param name="clientMacAddress"></param>
+        /// <param name="StartDate"></param>
+        /// <param name="EndDate"></param>
+        /// <returns></returns>
+        public List<TimeTable> GetTimeTable(string clientMacAddress, DateTime startDate, DateTime endDate)
+        {
+            List<TimeTable> list = new List<TimeTable>();
+            try
+            {
+                using (greenlockEntities context = new greenlockEntities())
+                {
+                    DateTime StartTimeParse = new DateTime(startDate.Year, startDate.Month, startDate.Day, 0, 0, 0);
+                    DateTime EndTimeParse = new DateTime(endDate.Year, endDate.Month, endDate.Day, 0, 0, 0).AddDays(1);
+                    list = context.TimeTables.Where(x => x.MacAddress == clientMacAddress &&
+                                                       x.RegDate >= StartTimeParse &&
+                                                       x.RegDate <= EndTimeParse)
+                                                       .OrderBy(x => x.RegDate).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                frmMain._log.write(ex.StackTrace);
+            }
+
+            return list;
         }
 
     }

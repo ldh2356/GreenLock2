@@ -15,6 +15,7 @@ using System.Runtime.InteropServices;
 using GreenLock.Repository;
 using System.Data.Entity;
 using GreenLock.Dispatcher;
+using GreenLock.Common;
 
 namespace GreenLock
 {
@@ -37,6 +38,8 @@ namespace GreenLock
         Bt32FeetDevice _bt32FeetDevice = new Bt32FeetDevice();
 
         CalcReduction _calcReduction = new CalcReduction();
+
+        TimeSheetDispatcher _dispatcher = new TimeSheetDispatcher();
 
         public static Log _log = new Log();
 
@@ -159,6 +162,10 @@ namespace GreenLock
 
             //3. 에너지 세팅 
             _calcReduction.OnMainUpdate += _calcReduction_OnMainUpdate;
+
+            //4. DB세팅
+            DataBaseHelper helper = new DataBaseHelper();
+            helper.EnsureSQLiteFileCreated();
         
 
         }
@@ -184,10 +191,9 @@ namespace GreenLock
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Bt32FeetDevice_OnIsSevrice(object sender, EventArgs e)
-        {
-            // DB에 기록
-            TimeSheetDispatcher dispatcher = new TimeSheetDispatcher();
-            dispatcher.SetTimeTable(_macAddress, _calcReduction._usedSec.TotalSeconds);
+        {          
+            // 언락 데이터 타임 기록
+            _dispatcher.SetTimeTable(_macAddress, 0);
 
 
             Debug.WriteLine("Bt32FeetDevice_OnIsSevrice");
@@ -197,6 +203,14 @@ namespace GreenLock
             //스크린 종료
             if (_screensaverStatus == true)
             {
+                // 언락 새로운 시작 기록
+                _dispatcher.SetTimeTable(_macAddress, 0, true);
+
+
+                // 종료시 end 타임 업데이트 후  새로 row 삽입
+                _dispatcher.SetTimeTable(_macAddress, 0);
+                _dispatcher.SetTimeTable(_macAddress, 1 , true);
+
                 this.Invoke(new System.Windows.Forms.MethodInvoker(delegate ()
                 {
                     //this.sendPCEnergy("3");
@@ -227,11 +241,17 @@ namespace GreenLock
         /// <param name="e"></param>
         private void Bt32FeetDevice_OnNotService(object sender, EventArgs e)
         {
+            // 락 데이터 타임 기록
+            _dispatcher.SetTimeTable(_macAddress, 1);
+
             Debug.WriteLine("Bt32FeetDevice_OnNotService");
             Debug.WriteLine("_screensaverStatus== " + _screensaverStatus + " _screensaverPasswordflag  ==" + _screensaverPasswordflag);
             //화면보호기 시작
             if (_screensaverStatus == false && _screensaverPasswordflag == false)
             {
+                // 락 새로운 시작 기록
+                _dispatcher.SetTimeTable(_macAddress, 1, true);
+
                 this.Invoke(new System.Windows.Forms.MethodInvoker(delegate ()
                 {
                     _calcReduction.OperationEndTime = DateTime.Now;

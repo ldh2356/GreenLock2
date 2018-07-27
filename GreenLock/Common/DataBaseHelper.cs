@@ -32,15 +32,12 @@ namespace GreenLock.Common
                 if (!sqlDirectory.Exists)
                     Directory.CreateDirectory(SQLLITE_DIR_PATH);
 
-                // SQL 라이트 생성파일이 존재하지 않는경우 복사한다                
+                // SQL 라이트 생성파일이 존재하지 않는경우 생성한다                
                 FileInfo sqliteFileInfo = new FileInfo(Path.Combine(SQLLITE_DIR_PATH, SQL_FILE_NAME));
                 if (!sqliteFileInfo.Exists)
                 {
-                    string SQL_FILE_PATH = Path.Combine(System.IO.Directory.GetCurrentDirectory(),SQL_FILE_NAME);
-                    FileInfo copyFile = new FileInfo(SQL_FILE_PATH);
-                    copyFile.CopyTo(Path.Combine(SQLLITE_DIR_PATH, SQL_FILE_NAME));
+                    SQLiteConnection.CreateFile(Path.Combine(SQLLITE_DIR_PATH, SQL_FILE_NAME));       
                 }
-                
             }
             catch (Exception ex)
             {

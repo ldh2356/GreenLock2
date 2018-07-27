@@ -25,6 +25,6 @@ namespace GreenLock.Repository
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<TimeSheet> TimeSheets { get; set; }
+        public virtual DbSet<TimeTable> TimeTables { get; set; }
     }
 }
