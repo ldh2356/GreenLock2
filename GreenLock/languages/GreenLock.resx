@@ -213,4 +213,37 @@
   <data name="bluetooth_setting_msg" xml:space="preserve">
     <value>제대로 입력하시오.</value>
   </data>
+  <data name="Uc_TabSecurity_Graph" xml:space="preserve">
+    <value>그래프로보기</value>
+  </data>
+  <data name="Uc_TabSecurity_Sheet" xml:space="preserve">
+    <value>도표로보기</value>
+  </data>
+  <data name="Uc_TabSecurity_EndDate" xml:space="preserve">
+    <value>종료시간</value>
+  </data>
+  <data name="Uc_TabSecurity_ExcelFilePath" xml:space="preserve">
+    <value>C:\GreenLock\ExportData</value>
+  </data>
+  <data name="Uc_TabSecurity_Excel_WorkSheet_Total" xml:space="preserve">
+    <value>전체시간데이터</value>
+  </data>
+  <data name="Uc_TabSecurity_Lock" xml:space="preserve">
+    <value>잠김</value>
+  </data>
+  <data name="Uc_TabSecurity_LockType" xml:space="preserve">
+    <value>잠금 또는 해제</value>
+  </data>
+  <data name="Uc_TabSecurity_Regdate" xml:space="preserve">
+    <value>등록시간</value>
+  </data>
+  <data name="Uc_TabSecurity_StartDate" xml:space="preserve">
+    <value>시작시간</value>
+  </data>
+  <data name="Uc_TabSecurity_Sum" xml:space="preserve">
+    <value>합</value>
+  </data>
+  <data name="Uc_TabSecurity_Unlock" xml:space="preserve">
+    <value>잠김해제</value>
+  </data>
 </root>

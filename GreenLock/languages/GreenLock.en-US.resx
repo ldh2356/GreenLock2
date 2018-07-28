@@ -268,4 +268,37 @@ from savings</value>
   <data name="energy" xml:space="preserve">
     <value>Energy(kW)</value>
   </data>
+  <data name="Uc_TabSecurity_Graph" xml:space="preserve">
+    <value>Graph</value>
+  </data>
+  <data name="Uc_TabSecurity_Sheet" xml:space="preserve">
+    <value>Sheet</value>
+  </data>
+  <data name="Uc_TabSecurity_EndDate" xml:space="preserve">
+    <value>End Record Time</value>
+  </data>
+  <data name="Uc_TabSecurity_ExcelFilePath" xml:space="preserve">
+    <value>C:\GreenLock\ExportData</value>
+  </data>
+  <data name="Uc_TabSecurity_Excel_WorkSheet_Total" xml:space="preserve">
+    <value>RawData</value>
+  </data>
+  <data name="Uc_TabSecurity_Lock" xml:space="preserve">
+    <value>Lock</value>
+  </data>
+  <data name="Uc_TabSecurity_LockType" xml:space="preserve">
+    <value>Lock / Unlock</value>
+  </data>
+  <data name="Uc_TabSecurity_Regdate" xml:space="preserve">
+    <value>Regist Time</value>
+  </data>
+  <data name="Uc_TabSecurity_StartDate" xml:space="preserve">
+    <value>Start Record Time</value>
+  </data>
+  <data name="Uc_TabSecurity_Sum" xml:space="preserve">
+    <value>Sum</value>
+  </data>
+  <data name="Uc_TabSecurity_Unlock" xml:space="preserve">
+    <value>Unlock</value>
+  </data>
 </root>
