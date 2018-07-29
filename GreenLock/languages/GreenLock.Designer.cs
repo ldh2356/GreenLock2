@@ -19,7 +19,7 @@ namespace GreenLock.languages {
     // 클래스에서 자동으로 생성되었습니다.
     // 멤버를 추가하거나 제거하려면 .ResX 파일을 편집한 다음 /str 옵션을 사용하여 ResGen을
     // 다시 실행하거나 VS 프로젝트를 다시 빌드하십시오.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class GreenLock {
@@ -327,6 +327,105 @@ namespace GreenLock.languages {
         public static string tree {
             get {
                 return ResourceManager.GetString("tree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   종료시간과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string Uc_TabSecurity_EndDate {
+            get {
+                return ResourceManager.GetString("Uc_TabSecurity_EndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   전체시간데이터과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string Uc_TabSecurity_Excel_WorkSheet_Total {
+            get {
+                return ResourceManager.GetString("Uc_TabSecurity_Excel_WorkSheet_Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   C:\GreenLock\ExportData과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string Uc_TabSecurity_ExcelFilePath {
+            get {
+                return ResourceManager.GetString("Uc_TabSecurity_ExcelFilePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   그래프로보기과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string Uc_TabSecurity_Graph {
+            get {
+                return ResourceManager.GetString("Uc_TabSecurity_Graph", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   잠김과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string Uc_TabSecurity_Lock {
+            get {
+                return ResourceManager.GetString("Uc_TabSecurity_Lock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   잠금 또는 해제과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string Uc_TabSecurity_LockType {
+            get {
+                return ResourceManager.GetString("Uc_TabSecurity_LockType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   등록시간과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string Uc_TabSecurity_Regdate {
+            get {
+                return ResourceManager.GetString("Uc_TabSecurity_Regdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   도표로보기과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string Uc_TabSecurity_Sheet {
+            get {
+                return ResourceManager.GetString("Uc_TabSecurity_Sheet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   시작시간과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string Uc_TabSecurity_StartDate {
+            get {
+                return ResourceManager.GetString("Uc_TabSecurity_StartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   합과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string Uc_TabSecurity_Sum {
+            get {
+                return ResourceManager.GetString("Uc_TabSecurity_Sum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   잠김해제과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string Uc_TabSecurity_Unlock {
+            get {
+                return ResourceManager.GetString("Uc_TabSecurity_Unlock", resourceCulture);
             }
         }
         
