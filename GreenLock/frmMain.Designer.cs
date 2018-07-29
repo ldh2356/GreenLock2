@@ -125,7 +125,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMain";
             this.Load += new System.EventHandler(this.frmMain_Load);
-         
+     
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
