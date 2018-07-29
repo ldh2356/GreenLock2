@@ -93,6 +93,19 @@ namespace GreenLock
 
 
 
+        private void SetMainDate()
+        {
+            try
+            {
+                lblDate.Text = DateTime.Now.Year + "." + DateTime.Now.Month + "." + DateTime.Now.Day + " (" + DateTime.Now.ToString("ddd", new CultureInfo(Globals._language)) + ")";
+            }
+            catch (Exception ex)
+            {
+                _log.write(ex.StackTrace);
+            }
+        }
+
+
         public frmMain()
         {
             InitializeComponent();
@@ -110,7 +123,8 @@ namespace GreenLock
                 lblKorea.ForeColor = Color.White;
 
                 lblEnglish.Font = regularFont;
-                lblEnglish.ForeColor = ColorTranslator.FromHtml("#bad9ff");          
+                lblEnglish.ForeColor = ColorTranslator.FromHtml("#bad9ff");
+                SetKorean();
             }
             else
             {
@@ -122,11 +136,10 @@ namespace GreenLock
                
                 lblEnglish.Font = underLineFont;
                 lblEnglish.ForeColor = Color.White;
-
+                SetEnglish();
             }
-            lblDate.Text = DateTime.Now.Year +  "."  + DateTime.Now.Month +  "."   + DateTime.Now.Day + " (" + DateTime.Now.ToString("ddd", new CultureInfo(Globals._language)) +  ")";
 
-
+            SetMainDate();
 
 
             // 모니터 정확 해상도를 받기위한 DPI 세터 추가
@@ -317,18 +330,7 @@ namespace GreenLock
         {
             if (Globals._language.CompareTo("ko-KR") != 0)
             {
-                Font underLineFont = new Font(lblEnglish.Font, FontStyle.Underline);
-                Font regularFont = new Font(lblKorea.Font, FontStyle.Regular);
-
-                lblKorea.Font = underLineFont;
-                lblKorea.ForeColor = Color.White;
-
-                lblEnglish.Font = regularFont;
-                lblEnglish.ForeColor = ColorTranslator.FromHtml("#bad9ff");
-
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo("ko-KR");
-                Globals._language = "ko-KR";
-                setLocalization();
+                SetKorean();
             }   
         }
 
@@ -342,21 +344,45 @@ namespace GreenLock
         {
             if (Globals._language.CompareTo("en-US") != 0)
             {
-                Font underLineFont = new Font(lblEnglish.Font, FontStyle.Underline);
-                Font regularFont = new Font(lblKorea.Font, FontStyle.Regular);
-
-                lblKorea.Font = regularFont;
-                lblKorea.ForeColor = ColorTranslator.FromHtml("#bad9ff");
-
-                lblEnglish.Font = underLineFont;
-                lblEnglish.ForeColor = Color.White;
-
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
-                Globals._language = "en-US";
-                setLocalization();
+                SetEnglish();
             }
 
         }
+
+
+        private void SetKorean()
+        {
+            Font underLineFont = new Font(lblEnglish.Font, FontStyle.Underline);
+            Font regularFont = new Font(lblKorea.Font, FontStyle.Regular);
+
+            lblKorea.Font = underLineFont;
+            lblKorea.ForeColor = Color.White;
+
+            lblEnglish.Font = regularFont;
+            lblEnglish.ForeColor = ColorTranslator.FromHtml("#bad9ff");
+
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("ko-KR");
+            Globals._language = "ko-KR";
+            setLocalization();
+        }
+
+
+        private void SetEnglish()
+        {
+            Font underLineFont = new Font(lblEnglish.Font, FontStyle.Underline);
+            Font regularFont = new Font(lblKorea.Font, FontStyle.Regular);
+
+            lblKorea.Font = regularFont;
+            lblKorea.ForeColor = ColorTranslator.FromHtml("#bad9ff");
+
+            lblEnglish.Font = underLineFont;
+            lblEnglish.ForeColor = Color.White;
+
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+            Globals._language = "en-US";
+            setLocalization();
+        }
+
 
 
         /// <summary>
@@ -429,7 +455,8 @@ namespace GreenLock
                 if (language != null)
                     language.localization();
             }
-               
+
+            SetMainDate();
         }
 
         public void screenSaverAllStop()
