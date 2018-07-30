@@ -39,7 +39,7 @@ namespace GreenLock
         public event EventHandler OnNotService;
         public event EventHandler OnErrorService;
 
-        ConnectLog log = new ConnectLog();
+        ConnectLog _log = new ConnectLog();
 
         /// <summary>
         /// 에이전트로부터 받아올 맥 어드레스
@@ -248,8 +248,8 @@ namespace GreenLock
                 if (OnErrorService != null)
                     OnErrorService(this, null);
 
-                log.write("==== 통신 예외 발생 ====");
-                log.write("BeginGetServiceRecords \n" + ex.Message);
+                _log.write("==== 통신 예외 발생 ====");
+                _log.write("BeginGetServiceRecords \n" + ex.Message);
                 Console.WriteLine(ex.Message + " Thread Exception!!! 1");
             }
         }
@@ -301,7 +301,7 @@ namespace GreenLock
 
                 if (LockCount > 1)
                 {
-                    log.write("==== IOS 락 카운트가 3 이상인 경우 서비스 통신 실패로 간주 ====");
+                    _log.write("==== IOS 락 카운트가 3 이상인 경우 서비스 통신 실패로 간주 ====");
                 }
 
                 if (OnNotService != null)

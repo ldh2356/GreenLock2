@@ -19,7 +19,7 @@ namespace GreenLock.languages {
     // 클래스에서 자동으로 생성되었습니다.
     // 멤버를 추가하거나 제거하려면 .ResX 파일을 편집한 다음 /str 옵션을 사용하여 ResGen을
     // 다시 실행하거나 VS 프로젝트를 다시 빌드하십시오.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class GreenLock {
@@ -151,7 +151,7 @@ namespace GreenLock.languages {
         }
         
         /// <summary>
-        ///   Usage setting과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   환경설정과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string main_Config1 {
             get {
@@ -169,7 +169,7 @@ namespace GreenLock.languages {
         }
         
         /// <summary>
-        ///   과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   에너지절감량과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string main_Energy1 {
             get {
@@ -187,7 +187,7 @@ namespace GreenLock.languages {
         }
         
         /// <summary>
-        ///   Security (Flexible Time Working)과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   보안과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string main_Security1 {
             get {

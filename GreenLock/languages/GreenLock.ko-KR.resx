@@ -196,13 +196,13 @@
     <value>전기료절감액(원)</value>
   </data>
   <data name="main_Config1" xml:space="preserve">
-    <value>Usage setting</value>
+    <value>환경설정</value>
   </data>
   <data name="main_Energy1" xml:space="preserve">
-    <value />
+    <value>에너지절감량</value>
   </data>
   <data name="main_Security1" xml:space="preserve">
-    <value>Security (Flexible Time Working)</value>
+    <value>보안</value>
   </data>
   <data name="String" xml:space="preserve">
     <value>Amount of Energy Saving</value>
