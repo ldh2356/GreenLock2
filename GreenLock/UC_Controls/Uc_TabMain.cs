@@ -42,33 +42,7 @@ namespace GreenLock.UC_Controls
         public Uc_TabMain()
         {
             InitializeComponent();
-            localization();
-
-
-            if (Globals._language.CompareTo("ko-KR") == 0)
-            {
-                Font underLineFont = new Font(lblKorea.Font, FontStyle.Underline);
-                Font regularFont = new Font(lblEnglish.Font, FontStyle.Regular);
-
-                lblKorea.Font = underLineFont;
-                lblKorea.ForeColor = Color.White;
-
-                lblEnglish.Font = regularFont;
-                lblEnglish.ForeColor = ColorTranslator.FromHtml("#bad9ff");
-                SetKorean();
-            }
-            else
-            {
-                Font underLineFont = new Font(lblEnglish.Font, FontStyle.Underline);
-                Font regularFont = new Font(lblKorea.Font, FontStyle.Regular);
-
-                lblKorea.Font = regularFont;
-                lblKorea.ForeColor = ColorTranslator.FromHtml("#bad9ff");
-
-                lblEnglish.Font = underLineFont;
-                lblEnglish.ForeColor = Color.White;
-                SetEnglish();
-            }
+       
 
         }
 
@@ -140,7 +114,34 @@ namespace GreenLock.UC_Controls
 
 
         private void Uc_TabMain_Load(object sender, EventArgs e)
-        {     
+        {
+            localization();
+
+
+            if (Globals._language.CompareTo("ko-KR") == 0)
+            {
+                Font underLineFont = new Font(lblKorea.Font, FontStyle.Underline);
+                Font regularFont = new Font(lblEnglish.Font, FontStyle.Regular);
+
+                lblKorea.Font = underLineFont;
+                lblKorea.ForeColor = Color.White;
+
+                lblEnglish.Font = regularFont;
+                lblEnglish.ForeColor = ColorTranslator.FromHtml("#bad9ff");
+                SetKorean();
+            }
+            else
+            {
+                Font underLineFont = new Font(lblEnglish.Font, FontStyle.Underline);
+                Font regularFont = new Font(lblKorea.Font, FontStyle.Regular);
+
+                lblKorea.Font = regularFont;
+                lblKorea.ForeColor = ColorTranslator.FromHtml("#bad9ff");
+
+                lblEnglish.Font = underLineFont;
+                lblEnglish.ForeColor = Color.White;
+                SetEnglish();
+            }
 
             this.pnlMain.Controls.Clear();
             if (_mainTabType == MainType.Energy)

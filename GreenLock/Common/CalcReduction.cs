@@ -56,7 +56,7 @@ namespace GreenLock
                 _operationEndTime = value;
                 TimeSpan t = _operationEndTime - _operationStartTime;
                 _usedOperation += t;
-               
+                SaveEnergy.Instance.UsedOperation = _usedOperation.ToString();
             }
         }
 
@@ -78,7 +78,7 @@ namespace GreenLock
                 _screenEndTime = value;
                 TimeSpan t = _screenEndTime - _screenStartTime;
                 _usedSec += t;
-
+                SaveEnergy.Instance.UsedSec = _usedSec.ToString();
                 Calculate();
                 SaveToFile();
 

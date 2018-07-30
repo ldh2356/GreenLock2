@@ -40,10 +40,12 @@ namespace GreenLock
                         temp = string.Format("[{0}] : {1}", GetDateTime(), str );
                        
                         sw.WriteLine(temp);
+                        sw.Close();
                     }
                 }
                 else
                 {
+
                     using (sw = File.AppendText(FilePath))
                     {
                         temp = string.Format("[{0}] : {1}", GetDateTime(), str);

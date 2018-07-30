@@ -116,6 +116,8 @@ namespace GreenLock
 
             Globals._language = Thread.CurrentThread.CurrentCulture.Name;
 
+            _calcReduction.OperationStartTime = DateTime.Now;
+
             if (Globals._language.CompareTo("ko-KR") == 0)
             {
                 Font underLineFont = new Font(lblKorea.Font,  FontStyle.Underline);
@@ -162,11 +164,10 @@ namespace GreenLock
             AppConfig.Instance.LoadFromFile();
            
             _macAddress = AppConfig.Instance.DeviceAddress;
-            _macAddress = "84:2E:27:6B:70:12";
-           
-
+     
             if (_macAddress != "00:00:00:00:00:00")
             {
+                 AddEvent();
                 _bt32FeetDevice.GetBtAddr(_macAddress);
                 _bt32FeetDevice.Start();
             }
@@ -194,7 +195,7 @@ namespace GreenLock
         private void _calcReduction_OnMainUpdate(object sender, EventArgs e)
         {
 
-            //throw new NotImplementedException();
+           
         }
         #endregion 
 
