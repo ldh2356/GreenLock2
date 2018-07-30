@@ -56,7 +56,6 @@
             // 
             // lblEnglish
             // 
-            this.lblEnglish.AutoSize = true;
             this.lblEnglish.BackColor = System.Drawing.Color.Transparent;
             this.lblEnglish.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.lblEnglish.ForeColor = System.Drawing.Color.White;
@@ -83,12 +82,11 @@
             // 
             // lblKorea
             // 
-            this.lblKorea.AutoSize = true;
             this.lblKorea.BackColor = System.Drawing.Color.Transparent;
             this.lblKorea.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblKorea.ForeColor = System.Drawing.Color.White;
             this.lblKorea.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblKorea.Location = new System.Drawing.Point(860, 16);
+            this.lblKorea.Location = new System.Drawing.Point(856, 16);
             this.lblKorea.Name = "lblKorea";
             this.lblKorea.Size = new System.Drawing.Size(53, 20);
             this.lblKorea.TabIndex = 11;
@@ -160,14 +158,14 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::GreenLock.Properties.Resources.mainTabbg;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblEnglish);
             this.Controls.Add(this.pbClose);
             this.Controls.Add(this.lblKorea);
-            this.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "Uc_TabMain";
             this.Size = new System.Drawing.Size(1024, 768);

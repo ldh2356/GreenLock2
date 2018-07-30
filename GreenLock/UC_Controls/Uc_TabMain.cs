@@ -42,14 +42,11 @@ namespace GreenLock.UC_Controls
         public Uc_TabMain()
         {
             InitializeComponent();
-       
-
         }
-
 
         private void SetKorean()
         {
-            Font underLineFont = new Font(lblEnglish.Font, FontStyle.Underline);
+            Font underLineFont = new Font(lblEnglish.Font, FontStyle.Regular);
             Font regularFont = new Font(lblKorea.Font, FontStyle.Regular);
 
             lblKorea.Font = underLineFont;
@@ -66,7 +63,7 @@ namespace GreenLock.UC_Controls
 
         private void SetEnglish()
         {
-            Font underLineFont = new Font(lblEnglish.Font, FontStyle.Underline);
+            Font underLineFont = new Font(lblEnglish.Font, FontStyle.Regular);
             Font regularFont = new Font(lblKorea.Font, FontStyle.Regular);
 
             lblKorea.Font = regularFont;

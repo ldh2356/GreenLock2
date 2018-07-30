@@ -321,6 +321,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8A5152DAEAE141439C4CB42370C85774"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8AEF817CC1E18E58C65B13B1C948FD06"
         "OwnerKey" = "8:_DA006400AE95482E8258CA9C1BAC699D"
         "MsmSig" = "8:_UNDEFINED"
@@ -579,6 +585,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C6B42F479F5740ABBBD2E3E87CC7A4A0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_DA006400AE95482E8258CA9C1BAC699D"
         "OwnerKey" = "8:_DD94DA9776389D2CD64025030E485C9F"
         "MsmSig" = "8:_UNDEFINED"
@@ -605,6 +617,12 @@
         {
         "MsmKey" = "8:_DA006400AE95482E8258CA9C1BAC699D"
         "OwnerKey" = "8:_5E86C874946D88B060F6F7F1BA4569DA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DA3FBD6388BF4A259C1EA563824B4CF6"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -701,6 +719,18 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_BB2BFA101A0F8DD41309046958E3500A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_DA3FBD6388BF4A259C1EA563824B4CF6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C6B42F479F5740ABBBD2E3E87CC7A4A0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1314,6 +1344,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8A5152DAEAE141439C4CB42370C85774"
+            {
+            "SourcePath" = "8:..\\SharedFile\\icon.ico"
+            "TargetName" = "8:icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_6F48224F69AF4F93A3DD92EA6E45A57E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8AEF817CC1E18E58C65B13B1C948FD06"
             {
             "AssemblyRegister" = "3:1"
@@ -1571,6 +1621,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C6B42F479F5740ABBBD2E3E87CC7A4A0"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:GreenLock.resources, Version=1.0.0.0, Culture=en-US, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_C6B42F479F5740ABBBD2E3E87CC7A4A0"
+                    {
+                    "Name" = "8:GreenLock.resources.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\GreenLock\\bin\\Release\\en-US\\GreenLock.resources.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_29C1DA862A2244B38FD8133F932778EB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DA006400AE95482E8258CA9C1BAC699D"
             {
             "AssemblyRegister" = "3:1"
@@ -1600,6 +1681,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DA3FBD6388BF4A259C1EA563824B4CF6"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:GreenLock.resources, Version=1.0.0.0, Culture=ko-KR, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_DA3FBD6388BF4A259C1EA563824B4CF6"
+                    {
+                    "Name" = "8:GreenLock.resources.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\GreenLock\\bin\\Release\\ko-KR\\GreenLock.resources.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_5125164B37A0439DB1CB5905051B2F08"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DAA5376982193094A12E77F30E3B87BA"
@@ -1858,7 +1970,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_6F48224F69AF4F93A3DD92EA6E45A57E"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:C:\\HansCreative\\nnv\\GreenLock"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -1866,6 +1978,28 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_29C1DA862A2244B38FD8133F932778EB"
+                    {
+                    "Name" = "8:en-US"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_73E09F4BD6494030AF15AD5B967BE679"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_5125164B37A0439DB1CB5905051B2F08"
+                    {
+                    "Name" = "8:ko-KR"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_2141D997990C4A3587987CEB530EF989"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_9756E288C95240E29BD87671196CCAC4"
@@ -1894,22 +2028,22 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:GreenLockSetup"
-        "ProductCode" = "8:{7DF13834-9C6E-490A-A796-033C640073C2}"
-        "PackageCode" = "8:{376489F6-B319-406B-932E-88DE54AFF989}"
+        "ProductName" = "8:GreenLock"
+        "ProductCode" = "8:{169B3227-9062-4C29-8B0D-8526EF67C8E0}"
+        "PackageCode" = "8:{E459EC59-573A-499C-B689-C98EDAEE9E7C}"
         "UpgradeCode" = "8:{03C97F19-CB7D-4B26-9AF5-969CFF4F5F1B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:LG"
+        "ProductVersion" = "8:2.0.0"
+        "Manufacturer" = "8:hanscreative"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:GreenLockSetup"
+        "Title" = "8:GreenLock"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:LG"
+        "ARPCONTACT" = "8:hanscreative"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -1973,13 +2107,63 @@
                         {
                             "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_12516EFC096948FBAFB8DC82E005C653"
                             {
-                            "Name" = "8:[Manufacturer]"
+                            "Name" = "8:Microsoft"
                             "Condition" = "8:"
                             "AlwaysCreate" = "11:FALSE"
                             "DeleteAtUninstall" = "11:FALSE"
                             "Transitive" = "11:FALSE"
                                 "Keys"
                                 {
+                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_4A49BBB598C94DD3A6B7DF6A4E662EB4"
+                                    {
+                                    "Name" = "8:Windows"
+                                    "Condition" = "8:"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "DeleteAtUninstall" = "11:FALSE"
+                                    "Transitive" = "11:FALSE"
+                                        "Keys"
+                                        {
+                                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_1184C13EBF84490BB6CA2CB4D4500F20"
+                                            {
+                                            "Name" = "8:CurrentVersion"
+                                            "Condition" = "8:"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "DeleteAtUninstall" = "11:FALSE"
+                                            "Transitive" = "11:FALSE"
+                                                "Keys"
+                                                {
+                                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_7603FD7059CB4185A040E6321C7F8369"
+                                                    {
+                                                    "Name" = "8:Run"
+                                                    "Condition" = "8:"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "DeleteAtUninstall" = "11:FALSE"
+                                                    "Transitive" = "11:FALSE"
+                                                        "Keys"
+                                                        {
+                                                        }
+                                                        "Values"
+                                                        {
+                                                            "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_0EC79E127AD84C3790DD302197ABD58B"
+                                                            {
+                                                            "Name" = "8:GreeenLock"
+                                                            "Condition" = "8:"
+                                                            "Transitive" = "11:FALSE"
+                                                            "ValueTypes" = "3:1"
+                                                            "Value" = "8:C:\\HansCreative\\nnv\\GreenLock\\GreenLock.exe"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                "Values"
+                                                {
+                                                }
+                                            }
+                                        }
+                                        "Values"
+                                        {
+                                        }
+                                    }
                                 }
                                 "Values"
                                 {
@@ -2027,7 +2211,7 @@
             "Target" = "8:_B50C7280AED045E696B910AC607E5046"
             "Folder" = "8:_9756E288C95240E29BD87671196CCAC4"
             "WorkingFolder" = "8:_6F48224F69AF4F93A3DD92EA6E45A57E"
-            "Icon" = "8:"
+            "Icon" = "8:_8A5152DAEAE141439C4CB42370C85774"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E17E0D7EA68F46D4949338596B5D32AC"
@@ -2041,7 +2225,7 @@
             "Target" = "8:_B50C7280AED045E696B910AC607E5046"
             "Folder" = "8:_37C28591D458480BA400203A36274E7D"
             "WorkingFolder" = "8:_6F48224F69AF4F93A3DD92EA6E45A57E"
-            "Icon" = "8:"
+            "Icon" = "8:_8A5152DAEAE141439C4CB42370C85774"
             "Feature" = "8:"
             }
         }

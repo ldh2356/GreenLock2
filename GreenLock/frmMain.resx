@@ -130,10 +130,10 @@
     <value>NoControl</value>
   </data>
   <data name="lblCoypright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>360, 708</value>
+    <value>361, 709</value>
   </data>
   <data name="lblCoypright.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 13</value>
+    <value>273, 19</value>
   </data>
   <data name="lblCoypright.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -163,10 +163,10 @@
     <value>NoControl</value>
   </data>
   <data name="lblDate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>432, 672</value>
+    <value>433, 673</value>
   </data>
   <data name="lblDate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 19</value>
+    <value>117, 23</value>
   </data>
   <data name="lblDate.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -196,10 +196,10 @@
     <value>NoControl</value>
   </data>
   <data name="lblKorea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>872, 70</value>
+    <value>873, 71</value>
   </data>
   <data name="lblKorea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 15</value>
+    <value>53, 20</value>
   </data>
   <data name="lblKorea.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -253,10 +253,10 @@
     <value>NoControl</value>
   </data>
   <data name="lblEnglish.Location" type="System.Drawing.Point, System.Drawing">
-    <value>925, 70</value>
+    <value>926, 71</value>
   </data>
   <data name="lblEnglish.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 15</value>
+    <value>58, 20</value>
   </data>
   <data name="lblEnglish.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -286,10 +286,10 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>916, 70</value>
+    <value>917, 71</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>10, 15</value>
+    <value>13, 20</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -325,7 +325,7 @@
     <value>uc_MainConfig</value>
   </data>
   <data name="&gt;&gt;uc_MainConfig.Type" xml:space="preserve">
-    <value>GreenLock.UC_Controls.Uc_MainConfig, GreenLock, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>GreenLock.UC_Controls.Uc_MainConfig, GreenLock, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uc_MainConfig.Parent" xml:space="preserve">
     <value>$this</value>
@@ -349,7 +349,7 @@
     <value>uc_MainEnergy</value>
   </data>
   <data name="&gt;&gt;uc_MainEnergy.Type" xml:space="preserve">
-    <value>GreenLock.UC_Controls.Uc_MainEnergy, GreenLock, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>GreenLock.UC_Controls.Uc_MainEnergy, GreenLock, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uc_MainEnergy.Parent" xml:space="preserve">
     <value>$this</value>
@@ -373,7 +373,7 @@
     <value>uc_MainSecurity</value>
   </data>
   <data name="&gt;&gt;uc_MainSecurity.Type" xml:space="preserve">
-    <value>GreenLock.UC_Controls.Uc_MainSecurity, GreenLock, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>GreenLock.UC_Controls.Uc_MainSecurity, GreenLock, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uc_MainSecurity.Parent" xml:space="preserve">
     <value>$this</value>
@@ -392,6 +392,12 @@
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>맑은 고딕, 10.8pt</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

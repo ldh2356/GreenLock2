@@ -28,7 +28,7 @@ namespace GreenLock
 
     public partial class frmMain : Form
     {
-       
+
 
         #region "로컬 변수"
 
@@ -120,7 +120,7 @@ namespace GreenLock
 
             if (Globals._language.CompareTo("ko-KR") == 0)
             {
-                Font underLineFont = new Font(lblKorea.Font,  FontStyle.Underline);
+                Font underLineFont = new Font(lblKorea.Font, FontStyle.Underline);
                 Font regularFont = new Font(lblEnglish.Font, FontStyle.Regular);
 
                 lblKorea.Font = underLineFont;
@@ -136,8 +136,8 @@ namespace GreenLock
                 Font regularFont = new Font(lblKorea.Font, FontStyle.Regular);
 
                 lblKorea.Font = regularFont;
-                lblKorea.ForeColor = ColorTranslator.FromHtml("#bad9ff");  
-               
+                lblKorea.ForeColor = ColorTranslator.FromHtml("#bad9ff");
+
                 lblEnglish.Font = underLineFont;
                 lblEnglish.ForeColor = Color.White;
                 SetEnglish();
@@ -162,12 +162,12 @@ namespace GreenLock
 
             //2. GreenLock 가동   
             AppConfig.Instance.LoadFromFile();
-           
+
             _macAddress = AppConfig.Instance.DeviceAddress;
-     
+
             if (_macAddress != "00:00:00:00:00:00")
             {
-                 AddEvent();
+                AddEvent();
                 _bt32FeetDevice.GetBtAddr(_macAddress);
                 _bt32FeetDevice.Start();
             }
@@ -182,7 +182,12 @@ namespace GreenLock
             //4. DB세팅
             DataBaseHelper helper = new DataBaseHelper();
             helper.EnsureSQLiteFileCreated();
-        
+
+
+            
+            // 키보드 후킹 해제
+            KeyboardHooking.UnBlockCtrlAltDel();
+
 
         }
 
@@ -195,7 +200,7 @@ namespace GreenLock
         private void _calcReduction_OnMainUpdate(object sender, EventArgs e)
         {
 
-           
+
         }
         #endregion 
 
@@ -207,7 +212,7 @@ namespace GreenLock
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Bt32FeetDevice_OnIsSevrice(object sender, EventArgs e)
-        {          
+        {
             // 언락 데이터 타임 기록
             _dispatcher.SetTimeTable(_macAddress, 0);
 
@@ -225,30 +230,48 @@ namespace GreenLock
 
                 // 종료시 end 타임 업데이트 후  새로 row 삽입
                 _dispatcher.SetTimeTable(_macAddress, 0);
-                _dispatcher.SetTimeTable(_macAddress, 1 , true);
+                _dispatcher.SetTimeTable(_macAddress, 1, true);
 
-                this.Invoke(new System.Windows.Forms.MethodInvoker(delegate ()
+                if (this.InvokeRequired)
                 {
-                    //this.sendPCEnergy("3");
-
-                    // 컴퓨터 절전해제
-                    Service.mouse_event(Service.MOUSE_MOVE, 0, 1, 0, UIntPtr.Zero);
-                    Thread.Sleep(40);
-                    Service.mouse_event(Service.MOUSE_MOVE, 0, -1, 0, UIntPtr.Zero);
-
-                    _calcReduction.OperationStartTime = DateTime.Now;
-                    _calcReduction.ScreenEndTime = DateTime.Now;
-
-
-                    //화면보호기 종료
-                    screenSaverAllStop();
-                    Service.AlertSoundStop();
-
-                    _screensaverStatus = false;
-                    Service.SendMessage(this.Handle.ToInt32(), Service.WM_SYSCOMMAND, Service.SC_MONITORPOWER, Service.MONITOR_ON);
-                }));
+                    this.Invoke(new System.Windows.Forms.MethodInvoker(delegate ()
+                    {
+                        StopScreenSaver();
+    
+                    }));
+                }
+                else
+                {
+                    StopScreenSaver();
+                }
             }
         }
+
+
+        /// <summary>
+        /// 스크린 세이버 해재
+        /// </summary>
+        private void StopScreenSaver()
+        {
+            //this.sendPCEnergy("3");
+
+            // 컴퓨터 절전해제
+            Service.mouse_event(Service.MOUSE_MOVE, 0, 1, 0, UIntPtr.Zero);
+            Thread.Sleep(40);
+            Service.mouse_event(Service.MOUSE_MOVE, 0, -1, 0, UIntPtr.Zero);
+
+            _calcReduction.OperationStartTime = DateTime.Now;
+            _calcReduction.ScreenEndTime = DateTime.Now;
+
+
+            //화면보호기 종료
+            screenSaverAllStop();
+            Service.AlertSoundStop();
+
+            _screensaverStatus = false;
+            Service.SendMessage(this.Handle.ToInt32(), Service.WM_SYSCOMMAND, Service.SC_MONITORPOWER, Service.MONITOR_ON);
+        }
+        
 
         /// <summary>
         /// 서비스를 시작하지 못하는 경우 발생 
@@ -268,34 +291,48 @@ namespace GreenLock
                 // 락 새로운 시작 기록
                 _dispatcher.SetTimeTable(_macAddress, 1, true);
 
-                this.Invoke(new System.Windows.Forms.MethodInvoker(delegate ()
+                if (this.InvokeRequired)
                 {
-                    _calcReduction.OperationEndTime = DateTime.Now;
-
-                    //this.sendPCEnergy("2");
-
-                    _screensaverStatus = true;
-                    ScreenSaverSetting();
-                    Thread.Sleep(100);
-               
-
-                    _calcReduction.ScreenStartTime = DateTime.Now;
-
-                    //모니터 + 본체 절전
-                    if (AppConfig.Instance.SleepMode == 1)
+                    this.Invoke(new System.Windows.Forms.MethodInvoker(delegate ()
                     {
-                        System.Windows.Forms.Application.SetSuspendState(System.Windows.Forms.PowerState.Suspend, false, false);
-                    }
-                    // 모니터 절전 진입
-                    else
-                    {
-                        Service.SendMessage(this.Handle.ToInt32(), Service.WM_SYSCOMMAND, Service.SC_MONITORPOWER, Service.MONITOR_OFF);
-                    }
-                }));
+                        StartScreenSaver();
+                    }));
+                }
+                else
+                {
+                    StartScreenSaver();
+                }
             }
         }
 
-       
+        /// <summary>
+        /// 스크린 세이버 시작
+        /// </summary>
+        private void StartScreenSaver()
+        {
+            _calcReduction.OperationEndTime = DateTime.Now;
+
+            //this.sendPCEnergy("2");
+
+            _screensaverStatus = true;
+            ScreenSaverSetting();
+            Thread.Sleep(100);
+
+
+            _calcReduction.ScreenStartTime = DateTime.Now;
+
+            //모니터 + 본체 절전
+            if (AppConfig.Instance.SleepMode == 1)
+            {
+                System.Windows.Forms.Application.SetSuspendState(System.Windows.Forms.PowerState.Suspend, false, false);
+            }
+            // 모니터 절전 진입
+            else
+            {
+                Service.SendMessage(this.Handle.ToInt32(), Service.WM_SYSCOMMAND, Service.SC_MONITORPOWER, Service.MONITOR_OFF);
+            }
+        }
+
         /// <summary>
         /// 블루투스 오류 이벤트 
         /// </summary>
@@ -334,7 +371,7 @@ namespace GreenLock
             if (Globals._language.CompareTo("ko-KR") != 0)
             {
                 SetKorean();
-            }   
+            }
         }
 
 
@@ -395,7 +432,8 @@ namespace GreenLock
         /// <param name="e"></param>
         private void pbClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.WindowState = FormWindowState.Minimized;
+            //this.Close();
         }
 
 
@@ -444,7 +482,7 @@ namespace GreenLock
             GreenLock.UC_Controls.Uc_TabMain uc_TabMain = new UC_Controls.Uc_TabMain();
             uc_TabMain.Main = this;
             uc_TabMain.MainTabType = MainType.Config;
-            
+
             this.Controls.Add((Control)uc_TabMain);
         }
 
@@ -491,16 +529,10 @@ namespace GreenLock
         {
             try
             {
-                if (_screenSaver1 != null)
+                foreach (Form frm in this.OwnedForms)
                 {
-                    _screenSaver1.Close();
-                    _screenSaver1 = null;
-
-                    if (_screenSaver2 != null)
-                    {
-                        _screenSaver2.Close();
-                        _screenSaver2 = null;
-                    }
+                    frm.Close();
+                    frm.Dispose();                  
                 }
 
                 //MainForm.log.write("screenSaver != null" + (screenSaver != null));
@@ -518,7 +550,7 @@ namespace GreenLock
         void ScreenSaverSetting()
         {
             try
-            {             
+            {
                 Screen[] screen = Screen.AllScreens;
 
                 // 듀얼모니터를 사용하지않는 경우
@@ -531,12 +563,12 @@ namespace GreenLock
                     DualMonitor(screen, 0);
                     DualMonitor(screen, 1);
                 }
-              
+
             }
             catch (ObjectDisposedException ex)
             {
                 frmMain._log.write(ex.Message);
-            }    
+            }
         }
 
         public void SetFormScreenSaver(FormScreenSaver screenSaver)
@@ -569,7 +601,7 @@ namespace GreenLock
                     //GIF파일의 크기를 메인모니터 크기로 조정
                     //screenSaver.pb_screenSaver.Size = new Size(screen[screen1].WorkingArea.Width, screen[screen1].WorkingArea.Height);
 
-                    _screenSaver1.Size = new Size(100,100);
+                    _screenSaver1.Size = new Size(100, 100);
                     //screenSaver.Size = new Size(screen[screen1].Bounds.Width, screen[screen1].Bounds.Height);
                     _screenSaver1.Show(this);
                     //KeyboardHooking.TaskBarHide();
@@ -620,7 +652,7 @@ namespace GreenLock
         public void AddEvent()
         {
             _bt32FeetDevice.OnErrorService += Bt32FeetDevice_OnErrorService;
-            _bt32FeetDevice.OnIsSevrice += Bt32FeetDevice_OnIsSevrice;
+            _bt32FeetDevice.OnIsService += Bt32FeetDevice_OnIsSevrice;
             _bt32FeetDevice.OnNotService += Bt32FeetDevice_OnNotService;
         }
 
@@ -630,7 +662,7 @@ namespace GreenLock
         public void RemoveEvent()
         {
             _bt32FeetDevice.OnErrorService -= Bt32FeetDevice_OnErrorService;
-            _bt32FeetDevice.OnIsSevrice -= Bt32FeetDevice_OnIsSevrice;
+            _bt32FeetDevice.OnIsService -= Bt32FeetDevice_OnIsSevrice;
             _bt32FeetDevice.OnNotService -= Bt32FeetDevice_OnNotService;
         }
 
@@ -654,5 +686,6 @@ namespace GreenLock
                 return cp;
             }
         }
+
     }
 }

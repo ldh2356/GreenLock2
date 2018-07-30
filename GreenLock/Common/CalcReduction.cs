@@ -156,8 +156,8 @@ namespace GreenLock
 
             System.Xml.Linq.XElement xe = new XElement("SaveEnergy");
 
-            xe.Add(new XElement("UsedSec", _usedSec));
-            xe.Add(new XElement("UsedOperation", _usedOperation));
+            xe.Add(new XElement("UsedSec", _usedSec.ToString()));
+            xe.Add(new XElement("UsedOperation", _usedOperation.ToString()));
             xe.Add(new XElement("UsedKwh", _usedKwh));
             xe.Add(new XElement("UsedCost", _usedCost));
             xe.Add(new XElement("Co2", _co2));

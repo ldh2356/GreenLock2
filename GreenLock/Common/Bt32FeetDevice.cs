@@ -35,7 +35,7 @@ namespace GreenLock
     public class Bt32FeetDevice : IDisposable
     {
 
-        public event EventHandler OnIsSevrice;
+        public event EventHandler OnIsService;
         public event EventHandler OnNotService;
         public event EventHandler OnErrorService;
 
@@ -89,7 +89,7 @@ namespace GreenLock
         /// <summary>
         /// 모바일 모델
         /// </summary>
-        public EnumMobileModel mobileModel
+        public EnumMobileModel MobileModel
         {
             get
             {
@@ -231,14 +231,12 @@ namespace GreenLock
                 else
                 {
                     // 블루투스 제어장비를 초기화한다
-                    bluetoothDeviceInfo = new BluetoothDeviceInfo(bluetoothAddressString);
-                  
+                    bluetoothDeviceInfo = new BluetoothDeviceInfo(bluetoothAddressString);                  
                 }
 
                 // 모바일 기기와 연결여부를 지속적으로 체크한다
                 while (true)
-                {
-                  
+                {                 
                     IAsyncResult iAsyncResult = bluetoothDeviceInfo.BeginGetServiceRecords(uuid, Service_AsyncCallback, bluetoothDeviceInfo);
                     Thread.Sleep(1000);
                 }
@@ -264,48 +262,55 @@ namespace GreenLock
         {
             try
             {
-
                 bluetoothDeviceInfo = iAsyncResult.AsyncState as BluetoothDeviceInfo;
 
                 ServiceRecord[] services = bluetoothDeviceInfo.EndGetServiceRecords(iAsyncResult);
 
-                if (mobileModel == EnumMobileModel.Android)
+                if (MobileModel == EnumMobileModel.Android)
                 {
+                    bool isService = false;
                     if (services.Count() > 0)
                     {
-                        if (OnIsSevrice != null)
-                            OnIsSevrice(this, null);
+                        foreach (ServiceRecord r in services)
+                        {
+                            int port = ServiceRecordHelper.GetRfcommChannelNumber(r);
+                            string curSvcName = r.GetPrimaryMultiLanguageStringAttributeById(UniversalAttributeId.ServiceName);
+                            if(curSvcName.CompareTo("GreenLock0")==0)
+                            {
+                                isService = true;
+                                break;
+                            }
+                        }
 
-                        LockCount = 0;
+                        if (isService)
+                        {
+                           
+                            if (OnIsService != null)
+                                OnIsService(this, null);
+                        }
+                        else
+                        {
+                            if (OnNotService != null)
+                                OnNotService(this, null);
+                        }
                     }
                     else
                     {
-                        LockCount++;
-
+                        // 서비스가 없는 경우 발생
                         if (OnNotService != null)
                             OnNotService(this, null);
-
                     }
                 }
                 else
                 {
-                    if (OnIsSevrice != null)
-                        OnIsSevrice(this, null);
-
-                    LockCount = 0;
+                    //통신을 못하는 경우 발생 - 모바일을 가지고 이동시 
+                    if (OnNotService != null)
+                        OnNotService(this, null);                   
                 }
             }
             catch (Exception ea)
             {
-                LockCount++;
-
-                if (LockCount > 1)
-                {
-                    _log.write("==== IOS 락 카운트가 3 이상인 경우 서비스 통신 실패로 간주 ====");
-                }
-
-                if (OnNotService != null)
-                    OnNotService(this, null);
+                _log.write("Service_AsyncCallback =>" + ea.Message);
             }
         }
     }
