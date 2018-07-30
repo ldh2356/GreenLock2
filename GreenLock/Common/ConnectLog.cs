@@ -56,7 +56,13 @@ namespace GreenLock
             }
             catch(Exception ea)
             {
-                sw.Close();
+                try
+                {
+                    sw.Close();
+                }
+                catch (Exception )
+                {
+                }
             }
         }
 

@@ -30,6 +30,7 @@ namespace GreenLock.UC_Controls
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_TabSecurity));
             this.Lable_StartDate = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Lable_EndDate = new System.Windows.Forms.Label();
@@ -67,6 +68,8 @@ namespace GreenLock.UC_Controls
             this.Cal_left = new System.Windows.Forms.PictureBox();
             this.rightButton = new System.Windows.Forms.PictureBox();
             this.Sheet = new System.Windows.Forms.PictureBox();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             ((System.ComponentModel.ISupportInitialize)(this.calendarControl1.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonExcelExport)).BeginInit();
@@ -441,6 +444,7 @@ namespace GreenLock.UC_Controls
             // 
             this.pictureBox2.BackgroundImage = global::GreenLock.Properties.Resources.btn_print;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Location = new System.Drawing.Point(914, 26);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(32, 32);
@@ -514,6 +518,21 @@ namespace GreenLock.UC_Controls
             this.Sheet.TabIndex = 14;
             this.Sheet.TabStop = false;
             this.Sheet.Visible = false;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Document = this.printDocument1;
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
             // 
             // Uc_TabSecurity
             // 
@@ -611,5 +630,7 @@ namespace GreenLock.UC_Controls
         private System.Windows.Forms.Label label_Sunday;
         private System.Windows.Forms.PictureBox ButtonExcelExport;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

@@ -294,6 +294,9 @@
     <EmbeddedResource Include="UC_Controls\Uc_TabSecurity.resx">
       <DependentUpon>Uc_TabSecurity.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="greenlock.sqlite">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

@@ -18,11 +18,23 @@ using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using System.Diagnostics;
 using System.Drawing.Imaging;
+using System.Drawing.Drawing2D;
 
 namespace GreenLock.UC_Controls
 {
     public partial class Uc_TabSecurity : UserControl
     {
+        /// <summary>
+        /// 사용자 맥 어드레스
+        /// </summary>
+        private string _macAddress = AppConfig.Instance.DeviceAddress;
+
+        /// <summary>
+        /// 프린트 비트맵
+        /// </summary>
+        private static Bitmap PrintImage { get; set; }
+
+
         /// <summary>
         ///  캘린더 모드인지 도표 모드인지
         /// </summary>
@@ -234,7 +246,8 @@ namespace GreenLock.UC_Controls
             try
             {
                 SetBaseLabel();
-                List<TimeTable> timeSheetOfWeek = _dispatcher.GetTimeTable("84:2E:27:6B:70:12", _startDate, _endDate);
+                
+                List<TimeTable> timeSheetOfWeek = _dispatcher.GetTimeTable(_macAddress, _startDate, _endDate);
 
                 _series_Dummy.Points.Add(new SeriesPoint(_currentCulture.DateTimeFormat.GetShortestDayName(DayOfWeek.Tuesday)));
 
@@ -887,7 +900,7 @@ namespace GreenLock.UC_Controls
         {
             try
             {
-                List<TimeTable> timeTable = _dispatcher.GetTimeTable("84:2E:27:6B:70:12", _startDate, _endDate);
+                List<TimeTable> timeTable = _dispatcher.GetTimeTable(_macAddress, _startDate, _endDate);
 
                 // 디렉토리 체크
                 DirectoryInfo excelDir = new DirectoryInfo(languages.GreenLock.Uc_TabSecurity_ExcelFilePath);
@@ -906,7 +919,7 @@ namespace GreenLock.UC_Controls
 
                         // Export
                         string[] backColors = { "#EFF3FB", "#FFFFFF" };
-                        int columnCount = 13;
+                        int columnCount = 5;
 
                         // 헤더 추가
                         worksheet.Cells[1, 1].Value = languages.GreenLock.Uc_TabSecurity_Regdate;
@@ -975,6 +988,193 @@ namespace GreenLock.UC_Controls
                             worksheet.Column(index + 1).AutoFit();
                         }
 
+
+                        // 워크시트 추가
+                        ExcelWorksheet worksheet_sheet = package.Workbook.Worksheets.Add(languages.GreenLock.Uc_TabSecurity_Sheet);
+                        columnCount = 8;
+
+                        // 헤더 추가
+                        worksheet_sheet.Cells[1, 1].Value = "";
+                        worksheet_sheet.Cells[1, 2].Value = languages.GreenLock.Uc_TabSecurity_Lock;
+                        worksheet_sheet.Cells[1, 3].Value = languages.GreenLock.Uc_TabSecurity_Unlock;
+               
+                        // 헤더 색상 및 테두리 설정
+                        using (var cells = worksheet_sheet.Cells[1, 1, 1, 3])
+                        {
+                            cells.Style.Font.Bold = true;
+                            cells.Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                            cells.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                            cells.Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml("#F3F3F3"));
+                        }
+
+
+                        worksheet_sheet.Cells[2, 1].Value = label_Monday.Text;
+                        worksheet_sheet.Cells[2, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[2, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[2, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[2, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[2, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                        worksheet_sheet.Cells[2, 2].Value = label_Monday_Lock.Text;
+                        worksheet_sheet.Cells[2, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[2, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[2, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[2, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[2, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                        worksheet_sheet.Cells[2, 3].Value = label_Monday_Unlock.Text;
+                        worksheet_sheet.Cells[2, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[2, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[2, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[2, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[2, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+
+                        worksheet_sheet.Cells[3, 1].Value = label_Tuesday.Text;
+                        worksheet_sheet.Cells[3, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[3, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[3, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
+                        worksheet_sheet.Cells[3, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[3, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                        worksheet_sheet.Cells[3, 2].Value = label_Tuesday_Lock.Text;
+                        worksheet_sheet.Cells[3, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[3, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[3, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
+                        worksheet_sheet.Cells[3, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[3, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                        worksheet_sheet.Cells[3, 3].Value = label_Tuesday_Unlock.Text;
+                        worksheet_sheet.Cells[3, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[3, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[3, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
+                        worksheet_sheet.Cells[3, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[3, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+
+
+                        worksheet_sheet.Cells[4, 1].Value = label_Wednesday.Text;
+                        worksheet_sheet.Cells[4, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[4, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[4, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[4, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[4, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                        worksheet_sheet.Cells[4, 2].Value = label_Wednesday_Lock.Text;
+                        worksheet_sheet.Cells[4, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[4, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[4, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[4, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[4, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                        worksheet_sheet.Cells[4, 3].Value = label_Wednesday_Unlock.Text;
+                        worksheet_sheet.Cells[4, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[4, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[4, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[4, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[4, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+
+                        worksheet_sheet.Cells[5, 1].Value = label_Thursday.Text;
+                        worksheet_sheet.Cells[5, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[5, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[5, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
+                        worksheet_sheet.Cells[5, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[5, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                        worksheet_sheet.Cells[5, 2].Value = label_Thursday_Lock.Text;
+                        worksheet_sheet.Cells[5, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[5, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[5, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
+                        worksheet_sheet.Cells[5, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[5, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                        worksheet_sheet.Cells[5, 3].Value = label_Thursday_Unlock.Text;
+                        worksheet_sheet.Cells[5, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[5, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[5, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
+                        worksheet_sheet.Cells[5, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[5, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+
+                        worksheet_sheet.Cells[6, 1].Value = label_Friday.Text;
+                        worksheet_sheet.Cells[6, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[6, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[6, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[6, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[6, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                        worksheet_sheet.Cells[6, 2].Value = label_Friday_Lock.Text;
+                        worksheet_sheet.Cells[6, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[6, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[6, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[6, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[6, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                        worksheet_sheet.Cells[6, 3].Value = label_Friday_Unlock.Text;
+                        worksheet_sheet.Cells[6, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[6, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[6, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[6, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[6, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+
+
+                        worksheet_sheet.Cells[7, 1].Value = label_Saturday.Text;
+                        worksheet_sheet.Cells[7, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[7, 1].Style.Font.Color.SetColor(Color.FromArgb(89, 157, 207));
+                        worksheet_sheet.Cells[7, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[7, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
+                        worksheet_sheet.Cells[7, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[7, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                        worksheet_sheet.Cells[7, 2].Value = label_Saturday_Lock.Text;
+                        worksheet_sheet.Cells[7, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[7, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[7, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
+                        worksheet_sheet.Cells[7, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[7, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                        worksheet_sheet.Cells[7, 3].Value = label_Saturday_Unlock.Text;
+                        worksheet_sheet.Cells[7, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[7, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[7, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
+                        worksheet_sheet.Cells[7, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[7, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+
+
+                        worksheet_sheet.Cells[8, 1].Value = label_Sunday.Text;
+                        worksheet_sheet.Cells[8, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[8, 1].Style.Font.Color.SetColor(Color.FromArgb(189, 89, 100));
+                        worksheet_sheet.Cells[8, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[8, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[8, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[8, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                        worksheet_sheet.Cells[8, 2].Value = label_Sunday_Lock.Text;
+                        worksheet_sheet.Cells[8, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[8, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[8, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[8, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[8, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                        worksheet_sheet.Cells[8, 3].Value = label_Sunday_Unlock.Text;
+                        worksheet_sheet.Cells[8, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[8, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[8, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[8, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[8, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                        // 모든 컬럼에 대해서 처리
+                        for (int index = 0; index < 3; index++)
+                        {
+                            // 폰트 설정 (나눔 고딕)
+                            worksheet_sheet.Cells[1, index + 1, worksheet.Cells.Rows, index + 1].Style.Font.Name = "NanumGothic";
+                            // 컬럼 넓이를 자동 조정
+                            worksheet_sheet.Column(index + 1).AutoFit();
+                        }
+
                         // 내용 저장
                         package.Save();
                     }
@@ -991,7 +1191,7 @@ namespace GreenLock.UC_Controls
 
 
         /// <summary>
-        /// 
+        /// 프린트 버튼 클릭
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -999,18 +1199,64 @@ namespace GreenLock.UC_Controls
         {
             try
             {
-                Bitmap bmpScreenshot = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, PixelFormat.Format32bppArgb);
-                // Create a graphics object from the bitmap
-                Graphics gfxScreenshot = Graphics.FromImage(bmpScreenshot);
-                // Take the screenshot from the upper left corner to the right bottom corner
-                gfxScreenshot.CopyFromScreen(Screen.PrimaryScreen.Bounds.X, Screen.PrimaryScreen.Bounds.Y, 0, 0, Screen.PrimaryScreen.Bounds.Size, CopyPixelOperation.SourceCopy);
-                // Save the screenshot to the specified path that the user has chosen
-                bmpScreenshot.Save(Path.Combine(languages.GreenLock.Uc_TabSecurity_ExcelFilePath,Guid.NewGuid().ToString()) , ImageFormat.Png);
+                Graphics graphics = this.CreateGraphics();
+                PrintImage = new Bitmap(this.ParentForm.Size.Width, this.ParentForm.Size.Height, graphics);
+                Graphics clone = Graphics.FromImage(PrintImage);
+                clone.CopyFromScreen(this.ParentForm.Location.X, this.ParentForm.Location.Y,0,0, this.ParentForm.Size);
+                printPreviewDialog1.ShowDialog();
             }
             catch (Exception ex)
             {
                 frmMain._log.write(ex.StackTrace);
             }
+        }
+
+
+        /// <summary>
+        /// 프린팅
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap resize = (Bitmap)ResizeImage(PrintImage, new Size(800, 550));
+            e.Graphics.DrawImage(resize, 100,150);
+        }
+
+
+        /// <summary>
+        /// 이미지 리사이즈
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="size"></param>
+        /// <param name="preserveAspectRatio"></param>
+        /// <returns></returns>
+        public static Image ResizeImage(Image image, Size size,bool preserveAspectRatio = true)
+        {
+            int newWidth;
+            int newHeight;
+            if (preserveAspectRatio)
+            {
+                int originalWidth = image.Width;
+                int originalHeight = image.Height;
+                float percentWidth = (float)size.Width / (float)originalWidth;
+                float percentHeight = (float)size.Height / (float)originalHeight;
+                float percent = percentHeight < percentWidth ? percentHeight : percentWidth;
+                newWidth = (int)(originalWidth * percent);
+                newHeight = (int)(originalHeight * percent);
+            }
+            else
+            {
+                newWidth = size.Width;
+                newHeight = size.Height;
+            }
+            Image newImage = new Bitmap(newWidth, newHeight);
+            using (Graphics graphicsHandle = Graphics.FromImage(newImage))
+            {
+                graphicsHandle.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphicsHandle.DrawImage(image, 0, 0, newWidth, newHeight);
+            }
+            return newImage;
         }
     }
 }
