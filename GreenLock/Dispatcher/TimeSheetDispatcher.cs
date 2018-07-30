@@ -46,6 +46,47 @@ namespace GreenLock.Dispatcher
                                         // 신규 데이터라면 로우를 추가한다
                                         else if (isNew)
                                         {
+                                            // 업데이트 직전 EndDate 가 Null 이 있는 이전 행이 있는지 체크한다
+                                            List<TimeTable> checkSheet = context.TimeTables.Where(x => x.MacAddress == clientMacAddress &&
+                                                                                                 x.EndDate == DateTime.MinValue)
+                                                                                                 .OrderByDescending(x => x.RegDate).ToList();
+                                            // Null 인 행이 없는 경우
+                                            if(checkSheet.Count() == 0)
+                                            {
+
+                                                TimeTable addTimeSheet = new TimeTable
+                                                {
+                                                    RegDate = DateTime.Now,
+                                                    StartDate = DateTime.Now,
+                                                    Id = Guid.NewGuid().ToString(),
+                                                    MacAddress = clientMacAddress,
+                                                    LockType = lockType,
+                                                };
+
+                                                context.TimeTables.Add(addTimeSheet);
+                                            }
+                                            else
+                                            // Null 인 행이 존재 할경우 전체 End Time 을 업데이트
+                                            {
+                                                // 이 부분은 Start Date 와 같은 시간으로 업데이트한다 ... 데이터가 의미가 없도록 만듬
+                                                foreach (TimeTable item in checkSheet)
+                                                {
+                                                    item.EndDate = Convert.ToDateTime(item.StartDate);
+                                                }
+                                            }
+                                        }
+                                    }
+                                    // 락 데이터가 아닌경우
+                                    else
+                                    {
+                                        // 업데이트 직전 EndDate 가 Null 이 있는 이전 행이 있는지 체크한다
+                                        List<TimeTable> checkSheet = context.TimeTables.Where(x => x.MacAddress == clientMacAddress &&
+                                                                                                         x.EndDate == DateTime.MinValue)
+                                                                                                         .OrderByDescending(x => x.RegDate).ToList();
+                                        // Null 인 행이 없는 경우
+                                        if (checkSheet.Count() == 0)
+                                        {
+
                                             TimeTable addTimeSheet = new TimeTable
                                             {
                                                 RegDate = DateTime.Now,
@@ -57,20 +98,15 @@ namespace GreenLock.Dispatcher
 
                                             context.TimeTables.Add(addTimeSheet);
                                         }
-                                    }
-                                    // 락 데이터가 아닌경우
-                                    else
-                                    {
-                                        TimeTable addTimeSheet = new TimeTable
+                                        else
+                                        // Null 인 행이 존재 할경우 전체 End Time 을 업데이트
                                         {
-                                            RegDate = DateTime.Now,
-                                            StartDate = DateTime.Now,
-                                            Id = Guid.NewGuid().ToString(),
-                                            MacAddress = clientMacAddress,
-                                            LockType = lockType,
-                                        };
-
-                                        context.TimeTables.Add(addTimeSheet);
+                                            // 이 부분은 Start Date 와 같은 시간으로 업데이트한다 ... 데이터가 의미가 없도록 만듬
+                                            foreach (TimeTable item in checkSheet)
+                                            {
+                                                item.EndDate = Convert.ToDateTime(item.StartDate);
+                                            }
+                                        }
                                     }
                                 }
                                 catch (Exception ex)
@@ -86,15 +122,54 @@ namespace GreenLock.Dispatcher
                                     // 해당하는 락 타입 데이터의 마지막 행을 가져온다 
                                     TimeTable targetTable = context.TimeTables.Where(x => x.MacAddress == clientMacAddress && x.LockType == lockType).OrderBy(x => x.RegDate).FirstOrDefault();
 
-                                    // EndTime 을 업데이트한다 
-                                    targetTable.EndDate = DateTime.Now;
+                                    // 업데이트 할려는 시간이 다음날로 넘어 간다면
+                                    DateTime updateEndTime = DateTime.Now;
+                                    if (!targetTable.RegDate.ToString("yyyyMMdd").Equals(updateEndTime.ToString("yyyyMMdd")))
+                                    {
+
+                                        // 업데이트 직전 EndDate 가 Null 이 있는 이전 행이 있는지 체크한다
+                                        List<TimeTable> checkSheet = context.TimeTables.Where(x => x.MacAddress == clientMacAddress &&
+                                                                                             x.EndDate == DateTime.MinValue)
+                                                                                             .OrderByDescending(x => x.RegDate).ToList();
+                                        // Null 인 행이 없는 경우
+                                        if (checkSheet.Count() == 0)
+                                        {
+                                            // 그날의 마지막시간으로 데이터를 업데이트하고 신규로 행을 추가한다
+                                            targetTable.EndDate = Convert.ToDateTime($"{targetTable.EndDate.ToString("yyyy-MM-dd")} 23:59:59");
+                                            TimeTable addTimeSheet = new TimeTable
+                                            {
+                                                RegDate = DateTime.Now,
+                                                StartDate = DateTime.Now,
+                                                Id = Guid.NewGuid().ToString(),
+                                                MacAddress = clientMacAddress,
+                                                LockType = lockType,
+                                            };
+                                            context.TimeTables.Add(addTimeSheet);
+                                        }
+                                        else
+                                        // Null 인 행이 존재 할경우 전체 End Time 을 업데이트
+                                        {
+                                            // 이 부분은 Start Date 와 같은 시간으로 업데이트한다 ... 데이터가 의미가 없도록 만듬
+                                            foreach (TimeTable item in checkSheet)
+                                            {
+                                                item.EndDate = Convert.ToDateTime(item.StartDate);
+                                            }
+                                        }
+
+
+                                    }
+                                    // 업데이트할려는 시작시간과 종료시간이 오늘 이내라면
+                                    else
+                                    {
+                                        // EndTime 을 업데이트한다 
+                                        targetTable.EndDate = updateEndTime;
+                                    }
                                 }
                                 catch (Exception ex)
                                 {
                                     frmMain._log.write(ex.StackTrace);
                                 }
                             }
-
                             context.SaveChanges();
                             transaction.Commit();
                             transaction.Dispose();
