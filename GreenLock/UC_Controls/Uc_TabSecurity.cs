@@ -97,6 +97,11 @@ namespace GreenLock.UC_Controls
         /// </summary>
         private static GanttDiagram _ganttDigram_Custom = new GanttDiagram();
 
+        /// <summary>
+        /// 라벨 리스트
+        /// </summary>
+        private static List<SheetLabel> _sheetLabels = new List<SheetLabel>();
+
 
         /// <summary>
         /// 생성자
@@ -127,11 +132,17 @@ namespace GreenLock.UC_Controls
                 this.Size = new System.Drawing.Size(992, 672);
 
                 SetEndBeginInit();
-                
+
+                _sheetLabels.Add(new SheetLabel() { Date = label_Monday , Lock = label_Monday_Lock,  Unlock = label_Monday_Unlock , WeekType = DayOfWeek.Monday });
+                _sheetLabels.Add(new SheetLabel() { Date = label_Tuesday, Lock = label_Tuesday_Lock, Unlock = label_Tuesday_Unlock, WeekType = DayOfWeek.Tuesday });
+                _sheetLabels.Add(new SheetLabel() { Date = label_Wednesday, Lock = label_Wednesday_Lock, Unlock = label_Wednesday_Unlock, WeekType = DayOfWeek.Wednesday });
+                _sheetLabels.Add(new SheetLabel() { Date = label_Thursday, Lock = label_Thursday_Lock, Unlock = label_Thursday_Unlock, WeekType = DayOfWeek.Thursday });
+                _sheetLabels.Add(new SheetLabel() { Date = label_Friday, Lock = label_Friday_Lock, Unlock = label_Friday_Unlock, WeekType = DayOfWeek.Friday });
+                _sheetLabels.Add(new SheetLabel() { Date = label_Saturday, Lock = label_Saturday_Lock, Unlock = label_Saturday_Unlock, WeekType = DayOfWeek.Saturday });
+                _sheetLabels.Add(new SheetLabel() { Date = label_Sunday, Lock = label_Sunday_Lock, Unlock = label_Sunday_Unlock, WeekType = DayOfWeek.Sunday });
 
                 this.LeftButtonLabel.Click += leftButton_Click;
                 this.RightButtonLabel.Click += rightButton_Click;
-
                 this.ResumeLayout(false);
             }
             catch (Exception ex)
@@ -1259,4 +1270,32 @@ namespace GreenLock.UC_Controls
             return newImage;
         }
     }
+
+
+    /// <summary>
+    /// 도표로 보기 라벨 관리 클래스
+    /// </summary>
+    public class SheetLabel
+    {
+        /// <summary>
+        /// 요일 표시 라벨
+        /// </summary>
+        public Label Date { get; set; }
+
+        /// <summary>
+        /// 언락 라벨
+        /// </summary>
+        public Label Unlock { get; set; }
+
+        /// <summary>
+        /// 락 라벨
+        /// </summary>
+        public Label Lock { get; set; }
+
+        /// <summary>
+        /// 구분 을 위한 타입
+        /// </summary>
+        public DayOfWeek WeekType { get; set; }
+    }
+
 }
