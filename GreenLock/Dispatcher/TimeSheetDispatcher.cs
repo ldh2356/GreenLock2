@@ -12,7 +12,7 @@ namespace GreenLock.Dispatcher
     public class TimeSheetDispatcher
     {
         /// <summary>
-        /// 
+        /// 타임 테이블에 데이터를 추가하거나 업데이트한다
         /// </summary>
         /// <param name="clientMacAddress"></param>
         /// <param name="lockType"></param>
