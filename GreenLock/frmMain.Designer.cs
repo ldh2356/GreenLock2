@@ -110,7 +110,7 @@
             // 
             // frmMain
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::GreenLock.Properties.Resources.KakaoTalk_20180709_130351591;
             resources.ApplyResources(this, "$this");
@@ -148,6 +148,7 @@
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.Label lblEnglish;
         private System.Windows.Forms.Label label2;
+       
     }
 }
 

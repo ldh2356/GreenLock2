@@ -147,7 +147,7 @@ namespace GreenLock
 
 
             // 모니터 정확 해상도를 받기위한 DPI 세터 추가
-            DpiManager.SetDpiAwareness();
+            //DpiManager.SetDpiAwareness();
 
             //1. 자동 업데이트 추가 
             if (UpdateChecker.NeedUpdate(this))

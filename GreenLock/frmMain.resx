@@ -130,7 +130,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblCoypright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>361, 709</value>
+    <value>360, 708</value>
   </data>
   <data name="lblCoypright.Size" type="System.Drawing.Size, System.Drawing">
     <value>273, 19</value>
@@ -163,7 +163,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblDate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>433, 673</value>
+    <value>432, 672</value>
   </data>
   <data name="lblDate.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 23</value>
@@ -196,7 +196,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblKorea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>873, 71</value>
+    <value>872, 70</value>
   </data>
   <data name="lblKorea.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 20</value>
@@ -253,7 +253,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblEnglish.Location" type="System.Drawing.Point, System.Drawing">
-    <value>926, 71</value>
+    <value>925, 70</value>
   </data>
   <data name="lblEnglish.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 20</value>
@@ -286,7 +286,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>917, 71</value>
+    <value>916, 70</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 20</value>
@@ -391,13 +391,7 @@
     <value>1024, 768</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>맑은 고딕, 10.8pt</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
+    <value>맑은 고딕, 9pt</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

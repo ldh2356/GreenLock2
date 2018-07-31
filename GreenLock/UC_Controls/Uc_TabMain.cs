@@ -117,7 +117,7 @@ namespace GreenLock.UC_Controls
 
             if (Globals._language.CompareTo("ko-KR") == 0)
             {
-                Font underLineFont = new Font(lblKorea.Font, FontStyle.Underline);
+                Font underLineFont = new Font(lblKorea.Font, FontStyle.Regular);
                 Font regularFont = new Font(lblEnglish.Font, FontStyle.Regular);
 
                 lblKorea.Font = underLineFont;
@@ -129,7 +129,7 @@ namespace GreenLock.UC_Controls
             }
             else
             {
-                Font underLineFont = new Font(lblEnglish.Font, FontStyle.Underline);
+                Font underLineFont = new Font(lblEnglish.Font, FontStyle.Regular);
                 Font regularFont = new Font(lblKorea.Font, FontStyle.Regular);
 
                 lblKorea.Font = regularFont;
@@ -143,7 +143,7 @@ namespace GreenLock.UC_Controls
             this.pnlMain.Controls.Clear();
             if (_mainTabType == MainType.Energy)
             {
-                this.pnlMain.Controls.Add(_tabEnergy);
+                //this.pnlMain.Controls.Add(_tabEnergy);
             }
             else if (_mainTabType == MainType.Security)
                 this.pnlMain.Controls.Add(_tabSecurity);
@@ -200,7 +200,7 @@ namespace GreenLock.UC_Controls
         private void lblConfig_Click(object sender, EventArgs e)
         {
             this.pnlMain.Controls.Clear();
-           
+            //_tabConfig.Dock = DockStyle.Fill;
             _tabConfig.Main = _main;
             this.pnlMain.Controls.Add(_tabConfig);
             _mainTabType = MainType.Config;

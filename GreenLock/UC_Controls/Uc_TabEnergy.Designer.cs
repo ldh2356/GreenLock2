@@ -55,7 +55,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.BackgroundImage = global::GreenLock.Properties.Resources.btn_print;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(918, 32);
+            this.pictureBox2.Location = new System.Drawing.Point(896, 32);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(32, 32);
@@ -67,7 +67,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = global::GreenLock.Properties.Resources.btn_save;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(884, 32);
+            this.pictureBox1.Location = new System.Drawing.Point(864, 32);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(34, 32);
@@ -90,7 +90,7 @@
             this.lblEnergyAmt.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.lblEnergyAmt.Location = new System.Drawing.Point(64, 112);
             this.lblEnergyAmt.Name = "lblEnergyAmt";
-            this.lblEnergyAmt.Size = new System.Drawing.Size(72, 37);
+            this.lblEnergyAmt.Size = new System.Drawing.Size(86, 45);
             this.lblEnergyAmt.TabIndex = 1;
             this.lblEnergyAmt.Text = "2.90";
             // 
@@ -100,7 +100,7 @@
             this.lblEnergy.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblEnergy.Location = new System.Drawing.Point(64, 24);
             this.lblEnergy.Name = "lblEnergy";
-            this.lblEnergy.Size = new System.Drawing.Size(109, 15);
+            this.lblEnergy.Size = new System.Drawing.Size(137, 20);
             this.lblEnergy.TabIndex = 0;
             this.lblEnergy.Text = "에너지절감량(kwh)";
             // 
@@ -120,7 +120,7 @@
             this.lblCostAmt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.lblCostAmt.Location = new System.Drawing.Point(64, 112);
             this.lblCostAmt.Name = "lblCostAmt";
-            this.lblCostAmt.Size = new System.Drawing.Size(104, 37);
+            this.lblCostAmt.Size = new System.Drawing.Size(124, 45);
             this.lblCostAmt.TabIndex = 2;
             this.lblCostAmt.Text = "530.81";
             // 
@@ -130,7 +130,7 @@
             this.lblCost.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblCost.Location = new System.Drawing.Point(72, 24);
             this.lblCost.Name = "lblCost";
-            this.lblCost.Size = new System.Drawing.Size(99, 15);
+            this.lblCost.Size = new System.Drawing.Size(124, 20);
             this.lblCost.TabIndex = 1;
             this.lblCost.Text = "전기료절감액(원)";
             // 
@@ -150,7 +150,7 @@
             this.lblCo2Amt.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.lblCo2Amt.Location = new System.Drawing.Point(64, 112);
             this.lblCo2Amt.Name = "lblCo2Amt";
-            this.lblCo2Amt.Size = new System.Drawing.Size(72, 37);
+            this.lblCo2Amt.Size = new System.Drawing.Size(86, 45);
             this.lblCo2Amt.TabIndex = 3;
             this.lblCo2Amt.Text = "1.23";
             // 
@@ -160,7 +160,7 @@
             this.lblCo2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblCo2.Location = new System.Drawing.Point(56, 24);
             this.lblCo2.Name = "lblCo2";
-            this.lblCo2.Size = new System.Drawing.Size(73, 15);
+            this.lblCo2.Size = new System.Drawing.Size(90, 20);
             this.lblCo2.TabIndex = 2;
             this.lblCo2.Text = "C02절감(톤)";
             // 
@@ -180,7 +180,7 @@
             this.lblTreeAmt.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.lblTreeAmt.Location = new System.Drawing.Point(72, 112);
             this.lblTreeAmt.Name = "lblTreeAmt";
-            this.lblTreeAmt.Size = new System.Drawing.Size(72, 37);
+            this.lblTreeAmt.Size = new System.Drawing.Size(86, 45);
             this.lblTreeAmt.TabIndex = 4;
             this.lblTreeAmt.Text = "0.43";
             // 
@@ -190,7 +190,7 @@
             this.lblTree.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblTree.Location = new System.Drawing.Point(56, 24);
             this.lblTree.Name = "lblTree";
-            this.lblTree.Size = new System.Drawing.Size(87, 15);
+            this.lblTree.Size = new System.Drawing.Size(109, 20);
             this.lblTree.TabIndex = 3;
             this.lblTree.Text = "환경보호(그루)";
             // 
