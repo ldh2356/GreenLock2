@@ -65,6 +65,7 @@
             this.lblEnglish.Size = new System.Drawing.Size(58, 20);
             this.lblEnglish.TabIndex = 13;
             this.lblEnglish.Text = "English";
+            this.lblEnglish.Visible = false;
             this.lblEnglish.Click += new System.EventHandler(this.lblEnglish_Click);
             // 
             // pbClose
@@ -91,6 +92,7 @@
             this.lblKorea.Size = new System.Drawing.Size(53, 20);
             this.lblKorea.TabIndex = 11;
             this.lblKorea.Text = "Korea ";
+            this.lblKorea.Visible = false;
             this.lblKorea.Click += new System.EventHandler(this.lblKorea_Click);
             // 
             // lblEnegry
@@ -134,7 +136,7 @@
             // 
             // pnlMain
             // 
-            this.pnlMain.BackColor = System.Drawing.Color.Transparent;
+            this.pnlMain.BackColor = System.Drawing.Color.White;
             this.pnlMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pnlMain.Location = new System.Drawing.Point(16, 80);
             this.pnlMain.Margin = new System.Windows.Forms.Padding(0);
@@ -153,12 +155,12 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(680, 24);
             this.flowLayoutPanel1.TabIndex = 25;
+            this.flowLayoutPanel1.Visible = false;
             // 
             // Uc_TabMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::GreenLock.Properties.Resources.mainTabbg;
+            this.BackColor = System.Drawing.Color.Lavender;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.flowLayoutPanel1);

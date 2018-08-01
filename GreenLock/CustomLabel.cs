@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Resources;
 using System.Text;
@@ -27,6 +28,18 @@ namespace GreenLock
         protected override void OnPaint(PaintEventArgs pe)
         {
             base.OnPaint(pe);
+
+
+            pe.Graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+            base.OnPaint(pe);
+            // 부서 | 회사 
+            
+            //StringFormat drawFormat = new StringFormat();
+            //drawFormat.Alignment = StringAlignment.Near;
+            //drawFormat.LineAlignment = StringAlignment.Center;
+            //.Trimming = StringTrimming.EllipsisCharacter;
+            pe.Graphics.DrawString(this.Text, this.Font, new SolidBrush(this.ForeColor), this.ClientRectangle);
+            //pe.Graphics.DrawRectangle(new Pen(Color.FromArgb(0xff, 0xd4, 0xd4, 0xd4), 1), _itemRect);
         }
     }
 }

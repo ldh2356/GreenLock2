@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,19 +10,17 @@ using System.Windows.Forms;
 
 namespace TestForm
 {
-    public partial class Form2 : Form
+    public partial class UserControl1 : UserControl
     {
-        public Form2()
+        public UserControl1()
         {
             InitializeComponent();
-
-            ///this.label2.Text = "aaaabbbbccccddddeee";
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void UserControl1_Load(object sender, EventArgs e)
         {
-            UserControl1 uc = new UserControl1();
-            this.Controls.Add(uc);
+            UserControl2 uc = new UserControl2();
+            this.panel1.Controls.Add(uc);
         }
     }
 }

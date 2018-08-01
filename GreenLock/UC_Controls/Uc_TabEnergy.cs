@@ -35,5 +35,10 @@ namespace GreenLock.UC_Controls
             lblCo2Amt.Text = SaveEnergy.Instance.Co2.ToString();
             lblTree.Text = SaveEnergy.Instance.Tree.ToString();
         }
+
+        private void Uc_TabEnergy_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

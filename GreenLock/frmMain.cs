@@ -687,5 +687,11 @@ namespace GreenLock
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Controls.Clear();
+            GreenLock.UC_Controls.UC_TabMain2 uc = new UC_Controls.UC_TabMain2();
+            this.Controls.Add(uc);
+        }
     }
 }

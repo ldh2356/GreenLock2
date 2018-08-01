@@ -42,6 +42,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblTreeAmt = new System.Windows.Forms.Label();
             this.lblTree = new System.Windows.Forms.Label();
+            this.lblCoypright = new System.Windows.Forms.Label();
+            this.customLabel1 = new GreenLock.CustomLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -98,7 +100,7 @@
             // 
             this.lblEnergy.AutoSize = true;
             this.lblEnergy.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblEnergy.Location = new System.Drawing.Point(64, 24);
+            this.lblEnergy.Location = new System.Drawing.Point(32, 24);
             this.lblEnergy.Name = "lblEnergy";
             this.lblEnergy.Size = new System.Drawing.Size(137, 20);
             this.lblEnergy.TabIndex = 0;
@@ -128,7 +130,7 @@
             // 
             this.lblCost.AutoSize = true;
             this.lblCost.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblCost.Location = new System.Drawing.Point(72, 24);
+            this.lblCost.Location = new System.Drawing.Point(48, 24);
             this.lblCost.Name = "lblCost";
             this.lblCost.Size = new System.Drawing.Size(124, 20);
             this.lblCost.TabIndex = 1;
@@ -158,7 +160,7 @@
             // 
             this.lblCo2.AutoSize = true;
             this.lblCo2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblCo2.Location = new System.Drawing.Point(56, 24);
+            this.lblCo2.Location = new System.Drawing.Point(64, 24);
             this.lblCo2.Name = "lblCo2";
             this.lblCo2.Size = new System.Drawing.Size(90, 20);
             this.lblCo2.TabIndex = 2;
@@ -188,11 +190,35 @@
             // 
             this.lblTree.AutoSize = true;
             this.lblTree.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblTree.Location = new System.Drawing.Point(56, 24);
+            this.lblTree.Location = new System.Drawing.Point(48, 24);
             this.lblTree.Name = "lblTree";
             this.lblTree.Size = new System.Drawing.Size(109, 20);
             this.lblTree.TabIndex = 3;
             this.lblTree.Text = "환경보호(그루)";
+            // 
+            // lblCoypright
+            // 
+            this.lblCoypright.AutoSize = true;
+            this.lblCoypright.BackColor = System.Drawing.Color.Transparent;
+            this.lblCoypright.Font = new System.Drawing.Font("맑은 고딕", 7.8F);
+            this.lblCoypright.ForeColor = System.Drawing.Color.Black;
+            this.lblCoypright.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblCoypright.Location = new System.Drawing.Point(344, 32);
+            this.lblCoypright.Name = "lblCoypright";
+            this.lblCoypright.Size = new System.Drawing.Size(263, 22);
+            this.lblCoypright.TabIndex = 33;
+            this.lblCoypright.Text = "Copyrights hanscreative all rights reserved";
+            this.lblCoypright.UseCompatibleTextRendering = true;
+            // 
+            // customLabel1
+            // 
+            this.customLabel1.AutoSize = true;
+            this.customLabel1.Location = new System.Drawing.Point(152, 72);
+            this.customLabel1.Name = "customLabel1";
+            this.customLabel1.Size = new System.Drawing.Size(52, 15);
+            this.customLabel1.TabIndex = 34;
+            this.customLabel1.Tag = "절감량";
+            this.customLabel1.Text = "에너지";
             // 
             // Uc_TabEnergy
             // 
@@ -200,6 +226,8 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImage = global::GreenLock.Properties.Resources.tabEnergy;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Controls.Add(this.customLabel1);
+            this.Controls.Add(this.lblCoypright);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -209,6 +237,7 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "Uc_TabEnergy";
             this.Size = new System.Drawing.Size(992, 672);
+            this.Load += new System.EventHandler(this.Uc_TabEnergy_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Uc_TabEnergy_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -221,6 +250,7 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -239,5 +269,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblTreeAmt;
         private System.Windows.Forms.Label lblTree;
+        private System.Windows.Forms.Label lblCoypright;
+        private CustomLabel customLabel1;
     }
 }
