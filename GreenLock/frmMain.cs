@@ -216,7 +216,6 @@ namespace GreenLock
             // 언락 데이터 타임 기록
             _dispatcher.SetTimeTable(_macAddress, 0);
 
-
             Debug.WriteLine("Bt32FeetDevice_OnIsSevrice");
             Debug.WriteLine("_screensaverStatus== " + _screensaverStatus + " _screensaverPasswordflag  ==" + _screensaverPasswordflag);
 
@@ -224,14 +223,6 @@ namespace GreenLock
             //스크린 종료
             if (_screensaverStatus == true)
             {
-                // 언락 새로운 시작 기록
-                _dispatcher.SetTimeTable(_macAddress, 0, true);
-
-
-                // 종료시 end 타임 업데이트 후  새로 row 삽입
-                _dispatcher.SetTimeTable(_macAddress, 0);
-                _dispatcher.SetTimeTable(_macAddress, 1, true);
-
                 if (this.InvokeRequired)
                 {
                     this.Invoke(new System.Windows.Forms.MethodInvoker(delegate ()
@@ -288,9 +279,6 @@ namespace GreenLock
             //화면보호기 시작
             if (_screensaverStatus == false && _screensaverPasswordflag == false)
             {
-                // 락 새로운 시작 기록
-                _dispatcher.SetTimeTable(_macAddress, 1, true);
-
                 if (this.InvokeRequired)
                 {
                     this.Invoke(new System.Windows.Forms.MethodInvoker(delegate ()

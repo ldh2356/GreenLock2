@@ -16,8 +16,47 @@ namespace GreenLock.Dispatcher
         /// </summary>
         /// <param name="clientMacAddress"></param>
         /// <param name="lockType"></param>
-        /// <param name="isNew"></param>
-        public void SetTimeTable(string clientMacAddress, short lockType, bool isNew = false)
+        public void SetTimeTable(string clientMacAddress, short lockType)
+        {
+            try
+            {
+                DateTime currentTime = DateTime.Now;
+
+                using (greenlockEntities context = new greenlockEntities())
+                {
+                    // 가장 마지막의 행을 가져온다 
+                    TimeTable currentTimeSheet = context.TimeTables.Where(x => x.MacAddress == clientMacAddress).OrderByDescending(x => x.RegDate).FirstOrDefault();
+
+                    // null 인경우 new row 생성 
+                    if (currentTimeSheet == null)
+                    {
+                        AddNewTimeTable(clientMacAddress, lockType, currentTime);
+                    }
+                    // null 이 아닌 경우 오늘 날짜의 데이터 인지 확인 
+                    else
+                    {
+                        // 오늘 날짜의 데이터가 있다면 현재의 락타입과 일치 하는 경우 ( order by ) end time 업데이트 
+                        if (currentTimeSheet.RegDate.ToString("yyyyMMdd").Equals(currentTime.ToString("yyyyMMdd")) && currentTimeSheet.LockType.Equals(lockType))
+                        {
+                            UpdateNewTimeTable(clientMacAddress, currentTime);
+                        }
+                        // 락타입과 일치하지 않는 경우 새로운 행 추가 
+                        else
+                        {
+                            AddNewTimeTable(clientMacAddress, lockType, currentTime);
+                        }
+                    }
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 행의 종료시간을 업데이트한다
+        /// </summary>
+        /// <param name="clientMacAddress">사용자 맥어드레스</param>
+        /// <param name="currentTime">기록될 시간</param>
+        private void UpdateNewTimeTable(string clientMacAddress, DateTime currentTime)
         {
             try
             {
@@ -25,162 +64,10 @@ namespace GreenLock.Dispatcher
                 {
                     using (DbContextTransaction transaction = context.Database.BeginTransaction())
                     {
-                        try
-                        {
-                            TimeTable currentTimeSheet = context.TimeTables.Where(x => x.MacAddress == clientMacAddress).OrderByDescending(x => x.RegDate).FirstOrDefault();
-
-                            // 오늘날짜로 기록된 데이터가 아예없거나 신규로 행을 추가시 경우
-                            if (currentTimeSheet == null || isNew)
-                            {
-                                try
-                                {
-                                    // 락 데이터가 들어왔을 경우 
-                                    if (lockType == 1)
-                                    {
-                                        //마지막 행이 락이라면 new 로 들어왔다 하더라도 그에 상관없이 종료타임만 업데이트한다                                        
-                                        if (currentTimeSheet.LockType == lockType)
-                                        {
-                                            // EndTime 을 업데이트한다 
-                                            currentTimeSheet.EndDate = DateTime.Now;
-                                        }
-                                        // 신규 데이터라면 로우를 추가한다
-                                        else if (isNew)
-                                        {
-                                            // 업데이트 직전 EndDate 가 Null 이 있는 이전 행이 있는지 체크한다
-                                            List<TimeTable> checkSheet = context.TimeTables.Where(x => x.MacAddress == clientMacAddress &&
-                                                                                                 x.EndDate == DateTime.MinValue)
-                                                                                                 .OrderByDescending(x => x.RegDate).ToList();
-                                            // Null 인 행이 없는 경우
-                                            if(checkSheet.Count() == 0)
-                                            {
-
-                                                TimeTable addTimeSheet = new TimeTable
-                                                {
-                                                    RegDate = DateTime.Now,
-                                                    StartDate = DateTime.Now,
-                                                    Id = Guid.NewGuid().ToString(),
-                                                    MacAddress = clientMacAddress,
-                                                    LockType = lockType,
-                                                };
-
-                                                context.TimeTables.Add(addTimeSheet);
-                                            }
-                                            else
-                                            // Null 인 행이 존재 할경우 전체 End Time 을 업데이트
-                                            {
-                                                // 이 부분은 Start Date 와 같은 시간으로 업데이트한다 ... 데이터가 의미가 없도록 만듬
-                                                foreach (TimeTable item in checkSheet)
-                                                {
-                                                    item.EndDate = Convert.ToDateTime(item.StartDate);
-                                                }
-                                            }
-                                        }
-                                    }
-                                    // 락 데이터가 아닌경우
-                                    else
-                                    {
-                                        // 업데이트 직전 EndDate 가 Null 이 있는 이전 행이 있는지 체크한다
-                                        List<TimeTable> checkSheet = context.TimeTables.Where(x => x.MacAddress == clientMacAddress &&
-                                                                                                         x.EndDate == DateTime.MinValue)
-                                                                                                         .OrderByDescending(x => x.RegDate).ToList();
-                                        // Null 인 행이 없는 경우
-                                        if (checkSheet.Count() == 0)
-                                        {
-
-                                            TimeTable addTimeSheet = new TimeTable
-                                            {
-                                                RegDate = DateTime.Now,
-                                                StartDate = DateTime.Now,
-                                                Id = Guid.NewGuid().ToString(),
-                                                MacAddress = clientMacAddress,
-                                                LockType = lockType,
-                                            };
-
-                                            context.TimeTables.Add(addTimeSheet);
-                                        }
-                                        else
-                                        // Null 인 행이 존재 할경우 전체 End Time 을 업데이트
-                                        {
-                                            // 이 부분은 Start Date 와 같은 시간으로 업데이트한다 ... 데이터가 의미가 없도록 만듬
-                                            foreach (TimeTable item in checkSheet)
-                                            {
-                                                item.EndDate = Convert.ToDateTime(item.StartDate);
-                                            }
-                                        }
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    frmMain._log.write(ex.StackTrace);
-                                }
-                            }
-                            // 기록된 데이터가 있는경우
-                            else
-                            {
-                                try
-                                {
-                                    // 해당하는 락 타입 데이터의 마지막 행을 가져온다 
-                                    TimeTable targetTable = context.TimeTables.Where(x => x.MacAddress == clientMacAddress && x.LockType == lockType).OrderBy(x => x.RegDate).FirstOrDefault();
-
-                                    // 업데이트 할려는 시간이 다음날로 넘어 간다면
-                                    DateTime updateEndTime = DateTime.Now;
-                                    if (!targetTable.RegDate.ToString("yyyyMMdd").Equals(updateEndTime.ToString("yyyyMMdd")))
-                                    {
-
-                                        // 업데이트 직전 EndDate 가 Null 이 있는 이전 행이 있는지 체크한다
-                                        List<TimeTable> checkSheet = context.TimeTables.Where(x => x.MacAddress == clientMacAddress &&
-                                                                                             x.EndDate == DateTime.MinValue)
-                                                                                             .OrderByDescending(x => x.RegDate).ToList();
-                                        // Null 인 행이 없는 경우
-                                        if (checkSheet.Count() == 0)
-                                        {
-                                            // 그날의 마지막시간으로 데이터를 업데이트하고 신규로 행을 추가한다
-                                            targetTable.EndDate = Convert.ToDateTime($"{targetTable.EndDate.ToString("yyyy-MM-dd")} 23:59:59");
-                                            TimeTable addTimeSheet = new TimeTable
-                                            {
-                                                RegDate = DateTime.Now,
-                                                StartDate = DateTime.Now,
-                                                Id = Guid.NewGuid().ToString(),
-                                                MacAddress = clientMacAddress,
-                                                LockType = lockType,
-                                            };
-                                            context.TimeTables.Add(addTimeSheet);
-                                        }
-                                        else
-                                        // Null 인 행이 존재 할경우 전체 End Time 을 업데이트
-                                        {
-                                            // 이 부분은 Start Date 와 같은 시간으로 업데이트한다 ... 데이터가 의미가 없도록 만듬
-                                            foreach (TimeTable item in checkSheet)
-                                            {
-                                                item.EndDate = Convert.ToDateTime(item.StartDate);
-                                            }
-                                        }
-
-
-                                    }
-                                    // 업데이트할려는 시작시간과 종료시간이 오늘 이내라면
-                                    else
-                                    {
-                                        // EndTime 을 업데이트한다 
-                                        targetTable.EndDate = updateEndTime;
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    frmMain._log.write(ex.StackTrace);
-                                }
-                            }
-                            context.SaveChanges();
-                            transaction.Commit();
-                            transaction.Dispose();
-                        }
-                        catch (Exception ex)
-                        {
-                            transaction.Rollback();
-                            transaction.Dispose();
-                            Debug.WriteLine(ex.StackTrace);
-                            frmMain._log.write(ex.StackTrace);
-                        }
+                        TimeTable currentTimeSheet = context.TimeTables.Where(x => x.MacAddress == clientMacAddress).OrderByDescending(x => x.RegDate).FirstOrDefault();
+                        currentTimeSheet.EndDate = currentTime;
+                        context.SaveChanges();
+                        transaction.Commit();
                     }
                 }
             }
@@ -191,13 +78,50 @@ namespace GreenLock.Dispatcher
         }
 
 
+        /// <summary>
+        /// 신규 타임 테이블 행을 추가시킨다
+        /// </summary>
+        /// <param name="clientMacAddress">사용자 맥어드레스</param>
+        /// <param name="lockType">락 타입 0: 언락 1:락</param>
+        /// <param name="currentTime">기록될 시간</param>
+        private void AddNewTimeTable(string clientMacAddress, short lockType, DateTime currentTime)
+        {
+            using (greenlockEntities context = new greenlockEntities())
+            {
+                using (DbContextTransaction transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        TimeTable addTimeSheet = new TimeTable
+                        {
+                            RegDate = currentTime,
+                            StartDate = currentTime,
+                            Id = Guid.NewGuid().ToString(),
+                            MacAddress = clientMacAddress,
+                            LockType = lockType,
+                        };
+
+                        context.TimeTables.Add(addTimeSheet);
+                        context.SaveChanges();
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        frmMain._log.write(ex.StackTrace);                        
+                    }
+                }
+            }
+        }
+
+
 
         /// <summary>
         /// 시간별 데이터를 가져온다
         /// </summary>
-        /// <param name="clientMacAddress"></param>
-        /// <param name="StartDate"></param>
-        /// <param name="EndDate"></param>
+        /// <param name="clientMacAddress">사용자 맥어드레스</param>
+        /// <param name="StartDate">시작 시간</param>
+        /// <param name="EndDate">종료 시간</param>
         /// <returns></returns>
         public List<TimeTable> GetTimeTable(string clientMacAddress, DateTime startDate, DateTime endDate)
         {
