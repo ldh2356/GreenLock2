@@ -107,6 +107,13 @@ namespace GreenLock.UC_Controls
         private void setLocalization()
         {
             localization();
+
+            foreach (Control con in this.Controls)
+            {
+                ILanguage language = con as ILanguage;
+                if (language != null)
+                    language.localization();
+            }
         }
 
 
@@ -180,9 +187,9 @@ namespace GreenLock.UC_Controls
         private void lblEnegry_Click(object sender, EventArgs e)
         {
             this.pnlMain.Controls.Clear();
-            UC_TestControl con = new UC_TestControl();
+            //UC_TestControl con = new UC_TestControl();
             //_tabEnergy.Dock = DockStyle.Fill;
-            this.pnlMain.Controls.Add(con);
+            this.pnlMain.Controls.Add(_tabEnergy);
             _mainTabType = MainType.Energy;
 
             localization();

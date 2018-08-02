@@ -48,6 +48,8 @@ namespace GreenLock.Dispatcher
                     }
                 }
             }
+            catch
+            { }
         }
 
 
