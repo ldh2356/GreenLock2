@@ -108,7 +108,7 @@ namespace GreenLock.UC_Controls
         {
             localization();
 
-            foreach (Control con in this.Controls)
+            foreach (Control con in this.pnlMain.Controls)
             {
                 ILanguage language = con as ILanguage;
                 if (language != null)
@@ -163,7 +163,7 @@ namespace GreenLock.UC_Controls
 
         private void pbClose_Click(object sender, EventArgs e)
         {
-
+            _main.WindowState = FormWindowState.Minimized;
         }
 
         private void lblKorea_Click(object sender, EventArgs e)
@@ -237,6 +237,10 @@ namespace GreenLock.UC_Controls
             }
         }
 
+        public void UpdateUI()
+        {
+            _tabEnergy.UpdateUI();
+        }
 
         protected override CreateParams CreateParams
         {

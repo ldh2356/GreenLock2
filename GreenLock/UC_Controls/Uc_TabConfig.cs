@@ -39,8 +39,14 @@ namespace GreenLock.UC_Controls
             lblAddress.Text = GreenLock.languages.GreenLock.address;
 
             btnOK.Text = GreenLock.languages.GreenLock.StringConfirm;
+            btnCancel.Text = GreenLock.languages.GreenLock.StringCancel;
             rbSleepModeMonitor.Text = GreenLock.languages.GreenLock.monitorMode;
             rbSleepModeAll.Text = GreenLock.languages.GreenLock.pcMode;
+
+            lblNotice.Text = GreenLock.languages.GreenLock.notice;
+            lblNotice1.Text = GreenLock.languages.GreenLock.notice1;
+            lblNotice2.Text = GreenLock.languages.GreenLock.notice2;
+
 
         }
 

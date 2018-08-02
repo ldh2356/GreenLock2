@@ -54,8 +54,9 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblNotice = new System.Windows.Forms.Label();
+            this.lblNotice1 = new System.Windows.Forms.Label();
+            this.lblNotice2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,7 +64,7 @@
             // 
             this.lblConnet.BackColor = System.Drawing.Color.Transparent;
             this.lblConnet.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblConnet.Location = new System.Drawing.Point(56, 112);
+            this.lblConnet.Location = new System.Drawing.Point(56, 120);
             this.lblConnet.Name = "lblConnet";
             this.lblConnet.Size = new System.Drawing.Size(39, 20);
             this.lblConnet.TabIndex = 0;
@@ -74,7 +75,7 @@
             this.lblSleepMode.AutoSize = true;
             this.lblSleepMode.BackColor = System.Drawing.Color.Transparent;
             this.lblSleepMode.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblSleepMode.Location = new System.Drawing.Point(56, 176);
+            this.lblSleepMode.Location = new System.Drawing.Point(56, 184);
             this.lblSleepMode.Name = "lblSleepMode";
             this.lblSleepMode.Size = new System.Drawing.Size(69, 20);
             this.lblSleepMode.TabIndex = 1;
@@ -337,32 +338,45 @@
             this.panel1.Size = new System.Drawing.Size(328, 48);
             this.panel1.TabIndex = 25;
             // 
-            // label4
+            // lblNotice
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(56, 344);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 23);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "절력값(kW)";
+            this.lblNotice.AutoSize = true;
+            this.lblNotice.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblNotice.Location = new System.Drawing.Point(45, 555);
+            this.lblNotice.Name = "lblNotice";
+            this.lblNotice.Size = new System.Drawing.Size(69, 20);
+            this.lblNotice.TabIndex = 26;
+            this.lblNotice.Text = "알림사항";
             // 
-            // label5
+            // lblNotice1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(464, 496);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 20);
-            this.label5.TabIndex = 27;
-            this.label5.Text = "label5";
+            this.lblNotice1.AutoSize = true;
+            this.lblNotice1.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblNotice1.Location = new System.Drawing.Point(64, 585);
+            this.lblNotice1.Name = "lblNotice1";
+            this.lblNotice1.Size = new System.Drawing.Size(45, 19);
+            this.lblNotice1.TabIndex = 27;
+            this.lblNotice1.Text = "label5";
+            // 
+            // lblNotice2
+            // 
+            this.lblNotice2.AutoSize = true;
+            this.lblNotice2.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblNotice2.Location = new System.Drawing.Point(64, 607);
+            this.lblNotice2.Name = "lblNotice2";
+            this.lblNotice2.Size = new System.Drawing.Size(45, 19);
+            this.lblNotice2.TabIndex = 28;
+            this.lblNotice2.Text = "label8";
             // 
             // Uc_TabConfig
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.Transparent;
+            this.BackgroundImage = global::GreenLock.Properties.Resources.tabConfig;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblNotice2);
+            this.Controls.Add(this.lblNotice1);
+            this.Controls.Add(this.lblNotice);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
@@ -426,7 +440,8 @@
         private System.Windows.Forms.Button btnCancel;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblNotice;
+        private System.Windows.Forms.Label lblNotice1;
+        private System.Windows.Forms.Label lblNotice2;
     }
 }

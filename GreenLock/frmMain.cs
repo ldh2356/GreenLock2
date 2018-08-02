@@ -41,6 +41,8 @@ namespace GreenLock
 
         TimeSheetDispatcher _dispatcher = new TimeSheetDispatcher();
 
+        GreenLock.UC_Controls.Uc_TabMain _uc_TabMain;
+
         public static Log _log = new Log();
 
         public bool _screensaverStatus = false;
@@ -110,8 +112,13 @@ namespace GreenLock
 
         public frmMain()
         {
+           
+
             InitializeComponent();
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
+            
+
             //this.uc_MainEnergy1.Parent = this;
 
             Globals._language = Thread.CurrentThread.CurrentCulture.Name;
@@ -162,6 +169,7 @@ namespace GreenLock
 
             //2. GreenLock 가동   
             AppConfig.Instance.LoadFromFile();
+            _calcReduction.LoadFromFile();
 
             _macAddress = AppConfig.Instance.DeviceAddress;
 
@@ -187,6 +195,9 @@ namespace GreenLock
             
             // 키보드 후킹 해제
             KeyboardHooking.UnBlockCtrlAltDel();
+
+            _uc_TabMain = new UC_Controls.Uc_TabMain();
+            _uc_TabMain.Main = this;
 
 
         }
@@ -258,6 +269,8 @@ namespace GreenLock
             //화면보호기 종료
             screenSaverAllStop();
             Service.AlertSoundStop();
+
+            _uc_TabMain.UpdateUI();
 
             _screensaverStatus = false;
             Service.SendMessage(this.Handle.ToInt32(), Service.WM_SYSCOMMAND, Service.SC_MONITORPOWER, Service.MONITOR_ON);
@@ -435,10 +448,11 @@ namespace GreenLock
             this.BackgroundImage = null;
             this.Controls.Clear();
             this.BackgroundImage = null;
-            GreenLock.UC_Controls.Uc_TabMain uc_TabMain = new UC_Controls.Uc_TabMain();
-            uc_TabMain.Main = this;
-            uc_TabMain.MainTabType = MainType.Energy;
-            this.Controls.Add(uc_TabMain);
+            _uc_TabMain.Main = this;
+            _uc_TabMain.MainTabType = MainType.Energy;
+
+            _uc_TabMain.UpdateUI();
+            this.Controls.Add(_uc_TabMain);
         }
 
         /// <summary>
@@ -451,10 +465,10 @@ namespace GreenLock
             this.BackgroundImage = null;
             this.Controls.Clear();
             this.BackgroundImage = null;
-            GreenLock.UC_Controls.Uc_TabMain uc_TabMain = new UC_Controls.Uc_TabMain();
-            uc_TabMain.Main = this;
-            uc_TabMain.MainTabType = MainType.Security;
-            this.Controls.Add(uc_TabMain);
+          
+         
+            _uc_TabMain.MainTabType = MainType.Security;
+            this.Controls.Add(_uc_TabMain);
         }
 
         /// <summary>
@@ -467,11 +481,11 @@ namespace GreenLock
             this.BackgroundImage = null;
             this.Controls.Clear();
             this.BackgroundImage = null;
-            GreenLock.UC_Controls.Uc_TabMain uc_TabMain = new UC_Controls.Uc_TabMain();
-            uc_TabMain.Main = this;
-            uc_TabMain.MainTabType = MainType.Config;
+           
+            _uc_TabMain.Main = this;
+            _uc_TabMain.MainTabType = MainType.Config;
 
-            this.Controls.Add((Control)uc_TabMain);
+            this.Controls.Add((Control)_uc_TabMain);
         }
 
 
