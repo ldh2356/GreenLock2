@@ -445,14 +445,21 @@ namespace GreenLock
         /// <param name="e"></param>
         private void uc_MainEnergy_Click(object sender, EventArgs e)
         {
-            this.BackgroundImage = null;
-            this.Controls.Clear();
-            this.BackgroundImage = null;
-            _uc_TabMain.Main = this;
-            _uc_TabMain.MainTabType = MainType.Energy;
+            try
+            {
+                this.BackgroundImage = null;
+                this.Controls.Clear();
+                this.BackgroundImage = null;
+                _uc_TabMain.Main = this;
+                _uc_TabMain.MainTabType = MainType.Energy;
 
-            _uc_TabMain.UpdateUI();
-            this.Controls.Add(_uc_TabMain);
+                _uc_TabMain.UpdateUI();
+                this.Controls.Add(_uc_TabMain);
+            }
+            catch(Exception ea)
+            {
+                MessageBox.Show(ea.Message + "  " + ea.StackTrace);
+            }
         }
 
         /// <summary>

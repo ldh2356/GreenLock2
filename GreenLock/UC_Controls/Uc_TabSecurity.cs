@@ -124,7 +124,7 @@ namespace GreenLock.UC_Controls
                 SetBaseInit();
 
                 this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
                 this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
                 this.Controls.Add(this.ChartControl);
                 this.Margin = new System.Windows.Forms.Padding(0);

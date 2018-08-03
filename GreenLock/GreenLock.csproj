@@ -159,12 +159,6 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMain2.Designer.cs">
-      <DependentUpon>frmMain2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Globals.cs" />
     <Compile Include="ILanguage.cs" />
     <Compile Include="languages\GreenLock.Designer.cs">
@@ -255,9 +249,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMain2.resx">
-      <DependentUpon>frmMain2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="languages\GreenLock.en-US.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
