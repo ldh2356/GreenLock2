@@ -171,29 +171,35 @@ namespace GreenLock
 
         public void LoadFromFile(string fileName = null)
         {
-            if (fileName == null) fileName = _fileName;
+            try
+            {
+                if (fileName == null) fileName = _fileName;
 
-            if (!File.Exists(fileName)) return;
+                if (!File.Exists(fileName)) return;
 
-            XElement xe = XElement.Load(fileName);
+                XElement xe = XElement.Load(fileName);
 
-            _usedSec = TimeSpan.Parse(xe.Element("UsedSec").Value);
-            _usedOperation = TimeSpan.Parse(xe.Element("UsedOperation").Value);
-            _usedKwh = double.Parse(xe.Element("UsedKwh").Value);
-            _usedCost = double.Parse(xe.Element("UsedCost").Value);
-            _co2 = double.Parse(xe.Element("Co2").Value);
-            _tree = double.Parse(xe.Element("Tree").Value);
-            _isSend = xe.Element("IsSend").Value;
+                _usedSec = TimeSpan.Parse(xe.Element("UsedSec").Value);
+                _usedOperation = TimeSpan.Parse(xe.Element("UsedOperation").Value);
+                _usedKwh = double.Parse(xe.Element("UsedKwh").Value);
+                _usedCost = double.Parse(xe.Element("UsedCost").Value);
+                _co2 = double.Parse(xe.Element("Co2").Value);
+                _tree = double.Parse(xe.Element("Tree").Value);
+                _isSend = xe.Element("IsSend").Value;
 
 
-            SaveEnergy.Instance.UsedSec = _usedSec.ToString();
-            SaveEnergy.Instance.UsedOperation = _usedOperation.ToString();
-            SaveEnergy.Instance.UsedKwh = _usedKwh;
-            SaveEnergy.Instance.UsedCost = _usedCost;
-            SaveEnergy.Instance.Co2 = _co2;
-            SaveEnergy.Instance.Tree = _tree;
-            SaveEnergy.Instance.IsSend = _isSend;
-
+                SaveEnergy.Instance.UsedSec = _usedSec.ToString();
+                SaveEnergy.Instance.UsedOperation = _usedOperation.ToString();
+                SaveEnergy.Instance.UsedKwh = _usedKwh;
+                SaveEnergy.Instance.UsedCost = _usedCost;
+                SaveEnergy.Instance.Co2 = _co2;
+                SaveEnergy.Instance.Tree = _tree;
+                SaveEnergy.Instance.IsSend = _isSend;
+            }
+            catch (Exception ex)
+            {
+                frmMain._log.write(ex.StackTrace);
+            }
         }
     }
 }
