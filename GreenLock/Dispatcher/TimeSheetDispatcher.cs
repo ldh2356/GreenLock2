@@ -48,6 +48,10 @@ namespace GreenLock.Dispatcher
                     }
                 }
             }
+            catch(Exception ex)
+            {
+                frmMain._log.write(ex.StackTrace);
+            }
         }
 
 
