@@ -107,6 +107,13 @@ namespace GreenLock.UC_Controls
         private void setLocalization()
         {
             localization();
+
+            foreach (Control con in this.pnlMain.Controls)
+            {
+                ILanguage language = con as ILanguage;
+                if (language != null)
+                    language.localization();
+            }
         }
 
 
@@ -156,7 +163,7 @@ namespace GreenLock.UC_Controls
 
         private void pbClose_Click(object sender, EventArgs e)
         {
-
+            _main.WindowState = FormWindowState.Minimized;
         }
 
         private void lblKorea_Click(object sender, EventArgs e)
@@ -180,9 +187,9 @@ namespace GreenLock.UC_Controls
         private void lblEnegry_Click(object sender, EventArgs e)
         {
             this.pnlMain.Controls.Clear();
-            UC_TestControl con = new UC_TestControl();
+            //UC_TestControl con = new UC_TestControl();
             //_tabEnergy.Dock = DockStyle.Fill;
-            this.pnlMain.Controls.Add(con);
+            this.pnlMain.Controls.Add(_tabEnergy);
             _mainTabType = MainType.Energy;
 
             localization();
@@ -230,6 +237,10 @@ namespace GreenLock.UC_Controls
             }
         }
 
+        public void UpdateUI()
+        {
+            _tabEnergy.UpdateUI();
+        }
 
         protected override CreateParams CreateParams
         {

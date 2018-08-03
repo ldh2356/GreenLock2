@@ -79,8 +79,9 @@ namespace GreenLock
                 TimeSpan t = _screenEndTime - _screenStartTime;
                 _usedSec += t;
                 SaveEnergy.Instance.UsedSec = _usedSec.ToString();
-                Calculate();
                 SaveToFile();
+                Calculate();
+                
 
                 if (OnMainUpdate != null) OnMainUpdate(this, null);
             } 
@@ -123,6 +124,7 @@ namespace GreenLock
     
         public void Calculate()
         {
+            LoadFromFile();
             CultureInfo culture = CultureInfo.CurrentCulture;
             if (culture.Name.Equals("ko-KR"))
             {

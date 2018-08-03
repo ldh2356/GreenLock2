@@ -159,12 +159,6 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMain2.Designer.cs">
-      <DependentUpon>frmMain2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Globals.cs" />
     <Compile Include="ILanguage.cs" />
     <Compile Include="languages\GreenLock.Designer.cs">
@@ -238,29 +232,11 @@
     <Compile Include="UC_Controls\Uc_TabMain.Designer.cs">
       <DependentUpon>Uc_TabMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_Controls\UC_TabMain2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_Controls\UC_TabMain2.Designer.cs">
-      <DependentUpon>UC_TabMain2.cs</DependentUpon>
-    </Compile>
     <Compile Include="UC_Controls\Uc_TabSecurity.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UC_Controls\Uc_TabSecurity.Designer.cs">
       <DependentUpon>Uc_TabSecurity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_Controls\Uc_Test2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_Controls\Uc_Test2.Designer.cs">
-      <DependentUpon>Uc_Test2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_Controls\UC_TestControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_Controls\UC_TestControl.Designer.cs">
-      <DependentUpon>UC_TestControl.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="CustomLabel.resx">
       <DependentUpon>CustomLabel.cs</DependentUpon>
@@ -273,9 +249,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMain2.resx">
-      <DependentUpon>frmMain2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="languages\GreenLock.en-US.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -317,14 +290,8 @@
     <EmbeddedResource Include="UC_Controls\Uc_TabMain.resx">
       <DependentUpon>Uc_TabMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_Controls\UC_TabMain2.resx">
-      <DependentUpon>UC_TabMain2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UC_Controls\Uc_TabSecurity.resx">
       <DependentUpon>Uc_TabSecurity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC_Controls\UC_TestControl.resx">
-      <DependentUpon>UC_TestControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="greenlock.sqlite">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

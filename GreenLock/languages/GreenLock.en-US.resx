@@ -141,7 +141,7 @@ Energy Saving</value>
 (Flexible Time Working)</value>
   </data>
   <data name="StringConfirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>OK</value>
   </data>
   <data name="bluetooth_setting_msg" xml:space="preserve">
     <value>Please enter it correctly.</value>
@@ -243,8 +243,8 @@ energy saving
 Installing tiny mobile app and small PC agent SW gets you very easy and friendly to use this novelty. Protect your PC from abuse and contribute to conservation of earth's enviroment from global climate change. 
 Simply go ahead with the typing 6-byte device address shown on mobile app in the configuration tab of PC agent SW.</value>
   </data>
-  <data name="StringConfirm1" xml:space="preserve">
-    <value>Confirm</value>
+  <data name="StringCancel" xml:space="preserve">
+    <value>Cancel</value>
   </data>
   <data name="tree" xml:space="preserve">
     <value>Number of trees
@@ -300,5 +300,14 @@ from savings</value>
   </data>
   <data name="Uc_TabSecurity_Unlock" xml:space="preserve">
     <value>Unlock</value>
+  </data>
+  <data name="notice" xml:space="preserve">
+    <value>Notice</value>
+  </data>
+  <data name="notice1" xml:space="preserve">
+    <value>In case you forget the password please unlock with your mobile and set up new password.</value>
+  </data>
+  <data name="notice2" xml:space="preserve">
+    <value>In case you have trouble setting up usage please feel free to send a message to us, contact@hanscreative.com.</value>
   </data>
 </root>

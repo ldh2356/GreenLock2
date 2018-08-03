@@ -214,6 +214,33 @@ namespace GreenLock.languages {
         }
         
         /// <summary>
+        ///   알림사항과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string notice {
+            get {
+                return ResourceManager.GetString("notice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   비밀번호 분실시 모바일에서 다시 설정하세요.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string notice1 {
+            get {
+                return ResourceManager.GetString("notice1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   설정이 안될경우 contact@hanscreative.com로 연락주세요.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string notice2 {
+            get {
+                return ResourceManager.GetString("notice2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   연결과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string pairing {
@@ -306,18 +333,18 @@ namespace GreenLock.languages {
         /// <summary>
         ///   확인과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        public static string StringConfirm {
+        public static string StringCancel {
             get {
-                return ResourceManager.GetString("StringConfirm", resourceCulture);
+                return ResourceManager.GetString("StringCancel", resourceCulture);
             }
         }
         
         /// <summary>
         ///   확인과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
-        public static string StringConfirm1 {
+        public static string StringConfirm {
             get {
-                return ResourceManager.GetString("StringConfirm1", resourceCulture);
+                return ResourceManager.GetString("StringConfirm", resourceCulture);
             }
         }
         

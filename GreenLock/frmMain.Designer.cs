@@ -112,6 +112,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BackgroundImage = global::GreenLock.Properties.Resources.KakaoTalk_20180709_130351591;
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblEnglish);
@@ -124,7 +125,7 @@
             this.Controls.Add(this.uc_MainSecurity);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMain";
-            this.TransparencyKey = System.Drawing.Color.White;
+            this.TransparencyKey = System.Drawing.Color.DimGray;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseMove);

@@ -28,69 +28,72 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_TabEnergy));
+            this.pbPrint = new System.Windows.Forms.PictureBox();
+            this.pbDown = new System.Windows.Forms.PictureBox();
+            this.pnlEnergy = new System.Windows.Forms.Panel();
             this.lblEnergyAmt = new System.Windows.Forms.Label();
             this.lblEnergy = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlCost = new System.Windows.Forms.Panel();
             this.lblCostAmt = new System.Windows.Forms.Label();
             this.lblCost = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnlCo2 = new System.Windows.Forms.Panel();
             this.lblCo2Amt = new System.Windows.Forms.Label();
             this.lblCo2 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.pnlTree = new System.Windows.Forms.Panel();
             this.lblTreeAmt = new System.Windows.Forms.Label();
             this.lblTree = new System.Windows.Forms.Label();
-            this.lblCoypright = new System.Windows.Forms.Label();
-            this.customLabel1 = new GreenLock.CustomLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPrint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDown)).BeginInit();
+            this.pnlEnergy.SuspendLayout();
+            this.pnlCost.SuspendLayout();
+            this.pnlCo2.SuspendLayout();
+            this.pnlTree.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pictureBox2
+            // pbPrint
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.BackgroundImage = global::GreenLock.Properties.Resources.btn_print;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(896, 32);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox2.TabIndex = 25;
-            this.pictureBox2.TabStop = false;
+            this.pbPrint.BackColor = System.Drawing.Color.Transparent;
+            this.pbPrint.BackgroundImage = global::GreenLock.Properties.Resources.btn_print;
+            this.pbPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pbPrint.Location = new System.Drawing.Point(897, 32);
+            this.pbPrint.Margin = new System.Windows.Forms.Padding(0);
+            this.pbPrint.Name = "pbPrint";
+            this.pbPrint.Size = new System.Drawing.Size(32, 32);
+            this.pbPrint.TabIndex = 25;
+            this.pbPrint.TabStop = false;
+            this.pbPrint.Click += new System.EventHandler(this.pbPrint_Click);
             // 
-            // pictureBox1
+            // pbDown
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::GreenLock.Properties.Resources.btn_save;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(864, 32);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(34, 32);
-            this.pictureBox1.TabIndex = 24;
-            this.pictureBox1.TabStop = false;
+            this.pbDown.BackColor = System.Drawing.Color.Transparent;
+            this.pbDown.BackgroundImage = global::GreenLock.Properties.Resources.btn_save;
+            this.pbDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pbDown.Location = new System.Drawing.Point(864, 32);
+            this.pbDown.Margin = new System.Windows.Forms.Padding(0);
+            this.pbDown.Name = "pbDown";
+            this.pbDown.Size = new System.Drawing.Size(34, 32);
+            this.pbDown.TabIndex = 24;
+            this.pbDown.TabStop = false;
+            this.pbDown.Click += new System.EventHandler(this.pbDown_Click);
             // 
-            // panel1
+            // pnlEnergy
             // 
-            this.panel1.Controls.Add(this.lblEnergyAmt);
-            this.panel1.Controls.Add(this.lblEnergy);
-            this.panel1.Location = new System.Drawing.Point(40, 400);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 192);
-            this.panel1.TabIndex = 30;
+            this.pnlEnergy.Controls.Add(this.lblEnergyAmt);
+            this.pnlEnergy.Controls.Add(this.lblEnergy);
+            this.pnlEnergy.Location = new System.Drawing.Point(42, 400);
+            this.pnlEnergy.Name = "pnlEnergy";
+            this.pnlEnergy.Size = new System.Drawing.Size(200, 192);
+            this.pnlEnergy.TabIndex = 30;
             // 
             // lblEnergyAmt
             // 
             this.lblEnergyAmt.AutoSize = true;
             this.lblEnergyAmt.Font = new System.Drawing.Font("맑은 고딕", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblEnergyAmt.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblEnergyAmt.Location = new System.Drawing.Point(64, 112);
+            this.lblEnergyAmt.Location = new System.Drawing.Point(56, 112);
             this.lblEnergyAmt.Name = "lblEnergyAmt";
             this.lblEnergyAmt.Size = new System.Drawing.Size(86, 45);
             this.lblEnergyAmt.TabIndex = 1;
@@ -106,14 +109,14 @@
             this.lblEnergy.TabIndex = 0;
             this.lblEnergy.Text = "에너지절감량(kwh)";
             // 
-            // panel2
+            // pnlCost
             // 
-            this.panel2.Controls.Add(this.lblCostAmt);
-            this.panel2.Controls.Add(this.lblCost);
-            this.panel2.Location = new System.Drawing.Point(256, 400);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(208, 192);
-            this.panel2.TabIndex = 31;
+            this.pnlCost.Controls.Add(this.lblCostAmt);
+            this.pnlCost.Controls.Add(this.lblCost);
+            this.pnlCost.Location = new System.Drawing.Point(264, 400);
+            this.pnlCost.Name = "pnlCost";
+            this.pnlCost.Size = new System.Drawing.Size(208, 192);
+            this.pnlCost.TabIndex = 31;
             // 
             // lblCostAmt
             // 
@@ -136,14 +139,14 @@
             this.lblCost.TabIndex = 1;
             this.lblCost.Text = "전기료절감액(원)";
             // 
-            // panel3
+            // pnlCo2
             // 
-            this.panel3.Controls.Add(this.lblCo2Amt);
-            this.panel3.Controls.Add(this.lblCo2);
-            this.panel3.Location = new System.Drawing.Point(496, 400);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(208, 192);
-            this.panel3.TabIndex = 31;
+            this.pnlCo2.Controls.Add(this.lblCo2Amt);
+            this.pnlCo2.Controls.Add(this.lblCo2);
+            this.pnlCo2.Location = new System.Drawing.Point(496, 400);
+            this.pnlCo2.Name = "pnlCo2";
+            this.pnlCo2.Size = new System.Drawing.Size(208, 192);
+            this.pnlCo2.TabIndex = 31;
             // 
             // lblCo2Amt
             // 
@@ -166,14 +169,14 @@
             this.lblCo2.TabIndex = 2;
             this.lblCo2.Text = "C02절감(톤)";
             // 
-            // panel4
+            // pnlTree
             // 
-            this.panel4.Controls.Add(this.lblTreeAmt);
-            this.panel4.Controls.Add(this.lblTree);
-            this.panel4.Location = new System.Drawing.Point(730, 400);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(208, 192);
-            this.panel4.TabIndex = 32;
+            this.pnlTree.Controls.Add(this.lblTreeAmt);
+            this.pnlTree.Controls.Add(this.lblTree);
+            this.pnlTree.Location = new System.Drawing.Point(736, 400);
+            this.pnlTree.Name = "pnlTree";
+            this.pnlTree.Size = new System.Drawing.Size(208, 192);
+            this.pnlTree.TabIndex = 32;
             // 
             // lblTreeAmt
             // 
@@ -196,29 +199,20 @@
             this.lblTree.TabIndex = 3;
             this.lblTree.Text = "환경보호(그루)";
             // 
-            // lblCoypright
+            // printDocument1
             // 
-            this.lblCoypright.AutoSize = true;
-            this.lblCoypright.BackColor = System.Drawing.Color.Transparent;
-            this.lblCoypright.Font = new System.Drawing.Font("맑은 고딕", 7.8F);
-            this.lblCoypright.ForeColor = System.Drawing.Color.Black;
-            this.lblCoypright.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblCoypright.Location = new System.Drawing.Point(344, 32);
-            this.lblCoypright.Name = "lblCoypright";
-            this.lblCoypright.Size = new System.Drawing.Size(263, 22);
-            this.lblCoypright.TabIndex = 33;
-            this.lblCoypright.Text = "Copyrights hanscreative all rights reserved";
-            this.lblCoypright.UseCompatibleTextRendering = true;
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
-            // customLabel1
+            // printPreviewDialog1
             // 
-            this.customLabel1.AutoSize = true;
-            this.customLabel1.Location = new System.Drawing.Point(152, 72);
-            this.customLabel1.Name = "customLabel1";
-            this.customLabel1.Size = new System.Drawing.Size(52, 15);
-            this.customLabel1.TabIndex = 34;
-            this.customLabel1.Tag = "절감량";
-            this.customLabel1.Text = "에너지";
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Document = this.printDocument1;
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
             // 
             // Uc_TabEnergy
             // 
@@ -226,50 +220,47 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImage = global::GreenLock.Properties.Resources.tabEnergy;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Controls.Add(this.customLabel1);
-            this.Controls.Add(this.lblCoypright);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pnlTree);
+            this.Controls.Add(this.pnlCo2);
+            this.Controls.Add(this.pnlCost);
+            this.Controls.Add(this.pnlEnergy);
+            this.Controls.Add(this.pbPrint);
+            this.Controls.Add(this.pbDown);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "Uc_TabEnergy";
             this.Size = new System.Drawing.Size(992, 672);
             this.Load += new System.EventHandler(this.Uc_TabEnergy_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Uc_TabEnergy_Paint);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPrint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDown)).EndInit();
+            this.pnlEnergy.ResumeLayout(false);
+            this.pnlEnergy.PerformLayout();
+            this.pnlCost.ResumeLayout(false);
+            this.pnlCost.PerformLayout();
+            this.pnlCo2.ResumeLayout(false);
+            this.pnlCo2.PerformLayout();
+            this.pnlTree.ResumeLayout(false);
+            this.pnlTree.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pbPrint;
+        private System.Windows.Forms.PictureBox pbDown;
+        private System.Windows.Forms.Panel pnlEnergy;
         private System.Windows.Forms.Label lblEnergyAmt;
-        private System.Windows.Forms.Label lblEnergy;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlCost;
         private System.Windows.Forms.Label lblCostAmt;
         private System.Windows.Forms.Label lblCost;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlCo2;
         private System.Windows.Forms.Label lblCo2Amt;
         private System.Windows.Forms.Label lblCo2;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel pnlTree;
         private System.Windows.Forms.Label lblTreeAmt;
         private System.Windows.Forms.Label lblTree;
-        private System.Windows.Forms.Label lblCoypright;
-        private CustomLabel customLabel1;
+        private System.Windows.Forms.Label lblEnergy;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }
