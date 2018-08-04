@@ -277,6 +277,10 @@ namespace GreenLock.UC_Controls
 
                 foreach (TimeTable day in timeSheetOfWeek)
                 {
+                    // 제대로 들어가지 않은 데이터에 대해선 무시
+                    if (day.EndDate == DateTime.MinValue)
+                        continue;
+
                     // 언락인경우
                     if (day.LockType == 0)
                     {
@@ -954,6 +958,9 @@ namespace GreenLock.UC_Controls
                         // 리스트 처리
                         foreach (TimeTable table in timeTable)
                         {
+                            if (table.EndDate == DateTime.MinValue)
+                                continue;
+
                             no = no + 1;
                             rowIndex = rowIndex + 1;
                          
