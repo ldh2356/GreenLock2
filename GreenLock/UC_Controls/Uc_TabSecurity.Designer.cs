@@ -32,7 +32,6 @@ namespace GreenLock.UC_Controls
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc_TabSecurity));
             this.Lable_StartDate = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.Lable_EndDate = new System.Windows.Forms.Label();
             this.calendarControl1 = new DevExpress.XtraEditors.Controls.CalendarControl();
             this.labelUnlockAvg = new System.Windows.Forms.Label();
@@ -70,6 +69,7 @@ namespace GreenLock.UC_Controls
             this.Sheet = new System.Windows.Forms.PictureBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.calendarControl1.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonExcelExport)).BeginInit();
@@ -83,34 +83,23 @@ namespace GreenLock.UC_Controls
             // Lable_StartDate
             // 
             this.Lable_StartDate.AccessibleName = "LabelStartDate";
-            this.Lable_StartDate.AutoSize = true;
-            this.Lable_StartDate.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Lable_StartDate.Location = new System.Drawing.Point(28, 26);
+            this.Lable_StartDate.Font = new System.Drawing.Font("맑은 고딕", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Lable_StartDate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Lable_StartDate.Location = new System.Drawing.Point(21, 29);
             this.Lable_StartDate.Name = "Lable_StartDate";
-            this.Lable_StartDate.Size = new System.Drawing.Size(141, 35);
-            this.Lable_StartDate.TabIndex = 0;
+            this.Lable_StartDate.Size = new System.Drawing.Size(136, 34);
+            this.Lable_StartDate.TabIndex = 95;
             this.Lable_StartDate.Text = "2018.07.23";
             this.Lable_StartDate.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(162, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 41);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "~";
             // 
             // Lable_EndDate
             // 
             this.Lable_EndDate.AccessibleName = "LabelEndDate";
-            this.Lable_EndDate.AutoSize = true;
-            this.Lable_EndDate.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Lable_EndDate.Location = new System.Drawing.Point(195, 26);
+            this.Lable_EndDate.Font = new System.Drawing.Font("맑은 고딕", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Lable_EndDate.Location = new System.Drawing.Point(173, 29);
             this.Lable_EndDate.Name = "Lable_EndDate";
-            this.Lable_EndDate.Size = new System.Drawing.Size(141, 35);
-            this.Lable_EndDate.TabIndex = 3;
+            this.Lable_EndDate.Size = new System.Drawing.Size(129, 30);
+            this.Lable_EndDate.TabIndex = 14;
             this.Lable_EndDate.Text = "2018.07.27";
             // 
             // calendarControl1
@@ -123,7 +112,7 @@ namespace GreenLock.UC_Controls
             this.calendarControl1.DateTime = new System.DateTime(((long)(0)));
             this.calendarControl1.EditValue = new System.DateTime(((long)(0)));
             this.calendarControl1.FirstDayOfWeek = System.DayOfWeek.Monday;
-            this.calendarControl1.Location = new System.Drawing.Point(328, 56);
+            this.calendarControl1.Location = new System.Drawing.Point(303, 66);
             this.calendarControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.calendarControl1.MaxValue = new System.DateTime(9999, 12, 31, 0, 0, 0, 0);
             this.calendarControl1.Name = "calendarControl1";
@@ -134,29 +123,26 @@ namespace GreenLock.UC_Controls
             // 
             // labelUnlockAvg
             // 
-            this.labelUnlockAvg.AutoSize = true;
             this.labelUnlockAvg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.labelUnlockAvg.Font = new System.Drawing.Font("맑은 고딕", 10F, System.Drawing.FontStyle.Bold);
-            this.labelUnlockAvg.Location = new System.Drawing.Point(720, 570);
+            this.labelUnlockAvg.Location = new System.Drawing.Point(717, 567);
             this.labelUnlockAvg.Name = "labelUnlockAvg";
-            this.labelUnlockAvg.Size = new System.Drawing.Size(37, 23);
+            this.labelUnlockAvg.Size = new System.Drawing.Size(80, 23);
             this.labelUnlockAvg.TabIndex = 7;
             this.labelUnlockAvg.Text = "0hr";
             // 
             // labelockAvg
             // 
-            this.labelockAvg.AutoSize = true;
             this.labelockAvg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.labelockAvg.Font = new System.Drawing.Font("맑은 고딕", 10F, System.Drawing.FontStyle.Bold);
-            this.labelockAvg.Location = new System.Drawing.Point(878, 570);
+            this.labelockAvg.Location = new System.Drawing.Point(875, 567);
             this.labelockAvg.Name = "labelockAvg";
-            this.labelockAvg.Size = new System.Drawing.Size(37, 23);
+            this.labelockAvg.Size = new System.Drawing.Size(80, 23);
             this.labelockAvg.TabIndex = 8;
             this.labelockAvg.Text = "0hr";
             // 
             // LabelAvgStartEnd
             // 
-            this.LabelAvgStartEnd.AutoSize = true;
             this.LabelAvgStartEnd.BackColor = System.Drawing.Color.Transparent;
             this.LabelAvgStartEnd.Font = new System.Drawing.Font("맑은 고딕", 6.5F, System.Drawing.FontStyle.Bold);
             this.LabelAvgStartEnd.ForeColor = System.Drawing.SystemColors.AppWorkspace;
@@ -190,19 +176,17 @@ namespace GreenLock.UC_Controls
             // 
             // label_Monday
             // 
-            this.label_Monday.AutoSize = true;
             this.label_Monday.BackColor = System.Drawing.Color.Transparent;
             this.label_Monday.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Monday.ForeColor = System.Drawing.Color.Gray;
             this.label_Monday.Location = new System.Drawing.Point(73, 146);
             this.label_Monday.Name = "label_Monday";
-            this.label_Monday.Size = new System.Drawing.Size(110, 19);
+            this.label_Monday.Size = new System.Drawing.Size(150, 19);
             this.label_Monday.TabIndex = 15;
             this.label_Monday.Text = "2018.07.01 (월)";
             // 
             // label_Monday_Unlock
             // 
-            this.label_Monday_Unlock.AutoSize = true;
             this.label_Monday_Unlock.BackColor = System.Drawing.Color.Transparent;
             this.label_Monday_Unlock.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Monday_Unlock.ForeColor = System.Drawing.Color.Gray;
@@ -214,7 +198,6 @@ namespace GreenLock.UC_Controls
             // 
             // label_Monday_Lock
             // 
-            this.label_Monday_Lock.AutoSize = true;
             this.label_Monday_Lock.BackColor = System.Drawing.Color.Transparent;
             this.label_Monday_Lock.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Monday_Lock.ForeColor = System.Drawing.Color.Gray;
@@ -226,7 +209,6 @@ namespace GreenLock.UC_Controls
             // 
             // label_Tuesday_Lock
             // 
-            this.label_Tuesday_Lock.AutoSize = true;
             this.label_Tuesday_Lock.BackColor = System.Drawing.Color.Transparent;
             this.label_Tuesday_Lock.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Tuesday_Lock.ForeColor = System.Drawing.Color.Gray;
@@ -238,7 +220,6 @@ namespace GreenLock.UC_Controls
             // 
             // label_Tuesday_Unlock
             // 
-            this.label_Tuesday_Unlock.AutoSize = true;
             this.label_Tuesday_Unlock.BackColor = System.Drawing.Color.Transparent;
             this.label_Tuesday_Unlock.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Tuesday_Unlock.ForeColor = System.Drawing.Color.Gray;
@@ -250,19 +231,17 @@ namespace GreenLock.UC_Controls
             // 
             // label_Tuesday
             // 
-            this.label_Tuesday.AutoSize = true;
             this.label_Tuesday.BackColor = System.Drawing.Color.Transparent;
             this.label_Tuesday.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Tuesday.ForeColor = System.Drawing.Color.Gray;
             this.label_Tuesday.Location = new System.Drawing.Point(73, 190);
             this.label_Tuesday.Name = "label_Tuesday";
-            this.label_Tuesday.Size = new System.Drawing.Size(110, 19);
+            this.label_Tuesday.Size = new System.Drawing.Size(150, 19);
             this.label_Tuesday.TabIndex = 18;
             this.label_Tuesday.Text = "2018.07.01 (월)";
             // 
             // label_Wednesday_Lock
             // 
-            this.label_Wednesday_Lock.AutoSize = true;
             this.label_Wednesday_Lock.BackColor = System.Drawing.Color.Transparent;
             this.label_Wednesday_Lock.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Wednesday_Lock.ForeColor = System.Drawing.Color.Gray;
@@ -274,7 +253,6 @@ namespace GreenLock.UC_Controls
             // 
             // label_Wednesday_Unlock
             // 
-            this.label_Wednesday_Unlock.AutoSize = true;
             this.label_Wednesday_Unlock.BackColor = System.Drawing.Color.Transparent;
             this.label_Wednesday_Unlock.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Wednesday_Unlock.ForeColor = System.Drawing.Color.Gray;
@@ -286,19 +264,17 @@ namespace GreenLock.UC_Controls
             // 
             // label_Wednesday
             // 
-            this.label_Wednesday.AutoSize = true;
             this.label_Wednesday.BackColor = System.Drawing.Color.Transparent;
             this.label_Wednesday.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Wednesday.ForeColor = System.Drawing.Color.Gray;
             this.label_Wednesday.Location = new System.Drawing.Point(73, 235);
             this.label_Wednesday.Name = "label_Wednesday";
-            this.label_Wednesday.Size = new System.Drawing.Size(110, 19);
+            this.label_Wednesday.Size = new System.Drawing.Size(150, 19);
             this.label_Wednesday.TabIndex = 21;
             this.label_Wednesday.Text = "2018.07.01 (월)";
             // 
             // label_Thursday_Lock
             // 
-            this.label_Thursday_Lock.AutoSize = true;
             this.label_Thursday_Lock.BackColor = System.Drawing.Color.Transparent;
             this.label_Thursday_Lock.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Thursday_Lock.ForeColor = System.Drawing.Color.Gray;
@@ -310,7 +286,6 @@ namespace GreenLock.UC_Controls
             // 
             // label_Thursday_Unlock
             // 
-            this.label_Thursday_Unlock.AutoSize = true;
             this.label_Thursday_Unlock.BackColor = System.Drawing.Color.Transparent;
             this.label_Thursday_Unlock.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Thursday_Unlock.ForeColor = System.Drawing.Color.Gray;
@@ -322,19 +297,17 @@ namespace GreenLock.UC_Controls
             // 
             // label_Thursday
             // 
-            this.label_Thursday.AutoSize = true;
             this.label_Thursday.BackColor = System.Drawing.Color.Transparent;
             this.label_Thursday.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Thursday.ForeColor = System.Drawing.Color.Gray;
             this.label_Thursday.Location = new System.Drawing.Point(73, 280);
             this.label_Thursday.Name = "label_Thursday";
-            this.label_Thursday.Size = new System.Drawing.Size(110, 19);
+            this.label_Thursday.Size = new System.Drawing.Size(150, 19);
             this.label_Thursday.TabIndex = 24;
             this.label_Thursday.Text = "2018.07.01 (월)";
             // 
             // label_Friday_Lock
             // 
-            this.label_Friday_Lock.AutoSize = true;
             this.label_Friday_Lock.BackColor = System.Drawing.Color.Transparent;
             this.label_Friday_Lock.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Friday_Lock.ForeColor = System.Drawing.Color.Gray;
@@ -346,7 +319,6 @@ namespace GreenLock.UC_Controls
             // 
             // label_Friday_Unlock
             // 
-            this.label_Friday_Unlock.AutoSize = true;
             this.label_Friday_Unlock.BackColor = System.Drawing.Color.Transparent;
             this.label_Friday_Unlock.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Friday_Unlock.ForeColor = System.Drawing.Color.Gray;
@@ -358,19 +330,17 @@ namespace GreenLock.UC_Controls
             // 
             // label_Friday
             // 
-            this.label_Friday.AutoSize = true;
             this.label_Friday.BackColor = System.Drawing.Color.Transparent;
             this.label_Friday.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Friday.ForeColor = System.Drawing.Color.Gray;
             this.label_Friday.Location = new System.Drawing.Point(73, 325);
             this.label_Friday.Name = "label_Friday";
-            this.label_Friday.Size = new System.Drawing.Size(110, 19);
+            this.label_Friday.Size = new System.Drawing.Size(150, 19);
             this.label_Friday.TabIndex = 27;
             this.label_Friday.Text = "2018.07.01 (월)";
             // 
             // label_Saturday_Lock
             // 
-            this.label_Saturday_Lock.AutoSize = true;
             this.label_Saturday_Lock.BackColor = System.Drawing.Color.Transparent;
             this.label_Saturday_Lock.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Saturday_Lock.ForeColor = System.Drawing.Color.Gray;
@@ -382,7 +352,6 @@ namespace GreenLock.UC_Controls
             // 
             // label_Saturday_Unlock
             // 
-            this.label_Saturday_Unlock.AutoSize = true;
             this.label_Saturday_Unlock.BackColor = System.Drawing.Color.Transparent;
             this.label_Saturday_Unlock.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Saturday_Unlock.ForeColor = System.Drawing.Color.Gray;
@@ -394,19 +363,17 @@ namespace GreenLock.UC_Controls
             // 
             // label_Saturday
             // 
-            this.label_Saturday.AutoSize = true;
             this.label_Saturday.BackColor = System.Drawing.Color.Transparent;
             this.label_Saturday.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Saturday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(154)))), ((int)(((byte)(213)))));
             this.label_Saturday.Location = new System.Drawing.Point(73, 370);
             this.label_Saturday.Name = "label_Saturday";
-            this.label_Saturday.Size = new System.Drawing.Size(110, 19);
+            this.label_Saturday.Size = new System.Drawing.Size(150, 19);
             this.label_Saturday.TabIndex = 30;
             this.label_Saturday.Text = "2018.07.01 (월)";
             // 
             // label_Sunday_Lock
             // 
-            this.label_Sunday_Lock.AutoSize = true;
             this.label_Sunday_Lock.BackColor = System.Drawing.Color.Transparent;
             this.label_Sunday_Lock.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Sunday_Lock.ForeColor = System.Drawing.Color.Gray;
@@ -418,7 +385,6 @@ namespace GreenLock.UC_Controls
             // 
             // label_Sunday_Unlock
             // 
-            this.label_Sunday_Unlock.AutoSize = true;
             this.label_Sunday_Unlock.BackColor = System.Drawing.Color.Transparent;
             this.label_Sunday_Unlock.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Sunday_Unlock.ForeColor = System.Drawing.Color.Gray;
@@ -430,13 +396,12 @@ namespace GreenLock.UC_Controls
             // 
             // label_Sunday
             // 
-            this.label_Sunday.AutoSize = true;
             this.label_Sunday.BackColor = System.Drawing.Color.Transparent;
             this.label_Sunday.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label_Sunday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(77)))), ((int)(((byte)(81)))));
             this.label_Sunday.Location = new System.Drawing.Point(73, 415);
             this.label_Sunday.Name = "label_Sunday";
-            this.label_Sunday.Size = new System.Drawing.Size(110, 19);
+            this.label_Sunday.Size = new System.Drawing.Size(150, 19);
             this.label_Sunday.TabIndex = 33;
             this.label_Sunday.Text = "2018.07.01 (월)";
             // 
@@ -490,7 +455,7 @@ namespace GreenLock.UC_Controls
             this.Cal_left.BackgroundImage = global::GreenLock.Properties.Resources.btn_calander;
             this.Cal_left.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.Cal_left.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Cal_left.Location = new System.Drawing.Point(330, 28);
+            this.Cal_left.Location = new System.Drawing.Point(303, 31);
             this.Cal_left.Name = "Cal_left";
             this.Cal_left.Size = new System.Drawing.Size(33, 32);
             this.Cal_left.TabIndex = 1;
@@ -534,14 +499,26 @@ namespace GreenLock.UC_Controls
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // label1
+            // 
+            this.label1.AccessibleName = "LabelStartDate";
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Location = new System.Drawing.Point(147, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 39);
+            this.label1.TabIndex = 1002;
+            this.label1.Text = "~";
+            // 
             // Uc_TabSecurity
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Lable_EndDate);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.ButtonExcelExport);
             this.Controls.Add(this.label_Monday);
             this.Controls.Add(this.label_Tuesday);
-            this.Controls.Add(this.calendarControl1);
             this.Controls.Add(this.label_Sunday_Lock);
             this.Controls.Add(this.label_Sunday_Unlock);
             this.Controls.Add(this.label_Sunday);
@@ -568,12 +545,11 @@ namespace GreenLock.UC_Controls
             this.Controls.Add(this.labelockAvg);
             this.Controls.Add(this.labelUnlockAvg);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.Lable_EndDate);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.Cal_left);
             this.Controls.Add(this.Lable_StartDate);
             this.Controls.Add(this.rightButton);
             this.Controls.Add(this.Sheet);
+            this.Controls.Add(this.calendarControl1);
             this.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "Uc_TabSecurity";
@@ -598,7 +574,6 @@ namespace GreenLock.UC_Controls
         private DevExpress.XtraCharts.ChartControl ChartControl;
         private System.Windows.Forms.Label Lable_StartDate;
         private System.Windows.Forms.PictureBox Cal_left;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label Lable_EndDate;
         private DevExpress.XtraEditors.Controls.CalendarControl calendarControl1;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -635,5 +610,6 @@ namespace GreenLock.UC_Controls
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.Label label1;
     }
 }
