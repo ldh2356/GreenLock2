@@ -310,6 +310,10 @@ namespace GreenLock
             }
             catch (Exception ea)
             {
+                //통신을 못하는 경우 발생 - 모바일을 가지고 이동시 
+                if (OnNotService != null)
+                    OnNotService(this, null);
+
                 _log.write("Service_AsyncCallback =>" + ea.Message);
             }
         }
