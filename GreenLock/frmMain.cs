@@ -232,11 +232,6 @@ namespace GreenLock
 
                 }));
             }
-            else
-            {
-                StopScreenSaver();
-            }
-
 
 
             Debug.WriteLine("Bt32FeetDevice_OnIsSevrice");
@@ -307,10 +302,7 @@ namespace GreenLock
 
                 }));
             }
-            else
-            {
-                StopScreenSaver();
-            }
+
 
             Debug.WriteLine("Bt32FeetDevice_OnNotService");
             Debug.WriteLine("_screensaverStatus== " + _screensaverStatus + " _screensaverPasswordflag  ==" + _screensaverPasswordflag);
