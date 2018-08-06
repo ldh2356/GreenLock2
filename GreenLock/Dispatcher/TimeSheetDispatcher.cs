@@ -94,25 +94,31 @@ namespace GreenLock.Dispatcher
             {
                 using (DbContextTransaction transaction = context.Database.BeginTransaction())
                 {
-                    try
-                    {
-                        TimeTable addTimeSheet = new TimeTable
-                        {
-                            RegDate = currentTime,
-                            StartDate = currentTime,
-                            Id = Guid.NewGuid().ToString(),
-                            MacAddress = clientMacAddress,
-                            LockType = lockType,
-                        };
+                    TimeTable currentTimeSheet = context.TimeTables.Where(x => x.MacAddress == clientMacAddress).OrderByDescending(x => x.RegDate).FirstOrDefault();
 
-                        context.TimeTables.Add(addTimeSheet);
-                        context.SaveChanges();
-                        transaction.Commit();
-                    }
-                    catch (Exception ex)
+                    // null 인경우 new row 생성 
+                    if (currentTimeSheet == null)
                     {
-                        transaction.Rollback();
-                        frmMain._log.write(ex.StackTrace);                        
+                        try
+                        {
+                            TimeTable addTimeSheet = new TimeTable
+                            {
+                                RegDate = currentTime,
+                                StartDate = currentTime,
+                                Id = Guid.NewGuid().ToString(),
+                                MacAddress = clientMacAddress,
+                                LockType = lockType,
+                            };
+
+                            context.TimeTables.Add(addTimeSheet);
+                            context.SaveChanges();
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            frmMain._log.write(ex.StackTrace);
+                        }
                     }
                 }
             }

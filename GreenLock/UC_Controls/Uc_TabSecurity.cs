@@ -152,9 +152,6 @@ namespace GreenLock.UC_Controls
                 this.LeftButtonLabel.Click += leftButton_Click;
                 this.RightButtonLabel.Click += rightButton_Click;
                 this.ResumeLayout(false);
-
-                _calendarRenewWorker.DoWork += SetBackGroundRenew;
-                _calendarRenewWorker.RunWorkerAsync();
             }
             catch (Exception ex)
             {
@@ -263,7 +260,7 @@ namespace GreenLock.UC_Controls
         /// <summary>
         /// 데이터를 셋팅한다
         /// </summary>
-        private void SetDateTimeData()
+        public void SetDateTimeData()
         {
             try
             {

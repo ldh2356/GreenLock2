@@ -240,7 +240,9 @@ namespace GreenLock.UC_Controls
         public void UpdateUI()
         {
             _tabEnergy.UpdateUI();
+            _tabSecurity.SetDateTimeData();
         }
+
 
         protected override CreateParams CreateParams
         {
