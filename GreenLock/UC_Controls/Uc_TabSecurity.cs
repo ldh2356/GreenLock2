@@ -19,11 +19,17 @@ using OfficeOpenXml.Style;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
+using System.Threading;
 
 namespace GreenLock.UC_Controls
 {
     public partial class Uc_TabSecurity : UserControl, ILanguage
     {
+        /// <summary>
+        /// 캘린더 갱신 워커
+        /// </summary>
+        private static BackgroundWorker _calendarRenewWorker = new BackgroundWorker();
+
         /// <summary>
         /// 사용자 맥 어드레스
         /// </summary>
@@ -146,6 +152,9 @@ namespace GreenLock.UC_Controls
                 this.LeftButtonLabel.Click += leftButton_Click;
                 this.RightButtonLabel.Click += rightButton_Click;
                 this.ResumeLayout(false);
+
+                _calendarRenewWorker.DoWork += SetBackGroundRenew;
+                _calendarRenewWorker.RunWorkerAsync();
             }
             catch (Exception ex)
             {
@@ -746,6 +755,15 @@ namespace GreenLock.UC_Controls
         /// <param name="e"></param>
         private void calendarControl1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            SetChoiceCalendar();
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void SetChoiceCalendar()
+        {
             // 월요일이 아닌경우
             DateTime currStartDate;
             if (DateTime.Now.DayOfWeek != DayOfWeek.Monday)
@@ -765,6 +783,14 @@ namespace GreenLock.UC_Controls
                 SetCalendarInit(calendarControl1.DateTime);
                 this.calendarControl1.Visible = false;
             }
+        }
+
+
+        void SetBackGroundRenew(object sender, DoWorkEventArgs e)
+        {
+            SetChoiceCalendar();
+            Thread.Sleep(2 * 1000);
+            SetBackGroundRenew(sender, e);
         }
 
 
