@@ -24,5 +24,15 @@ namespace TestForm
             UserControl1 uc = new UserControl1();
             this.Controls.Add(uc);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

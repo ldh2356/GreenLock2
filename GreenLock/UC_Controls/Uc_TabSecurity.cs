@@ -22,7 +22,7 @@ using System.Drawing.Drawing2D;
 
 namespace GreenLock.UC_Controls
 {
-    public partial class Uc_TabSecurity : UserControl
+    public partial class Uc_TabSecurity : UserControl, ILanguage
     {
         /// <summary>
         /// 사용자 맥 어드레스
@@ -102,6 +102,8 @@ namespace GreenLock.UC_Controls
         /// </summary>
         private static List<SheetLabel> _sheetLabels = new List<SheetLabel>();
 
+        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
+        public static extern long BitBlt(IntPtr hdcDest, int nXDest, int nYDest, int nWidth, int nHeight, IntPtr hdcSrc, int nXSrc, int nYSrc, int dwRop);
 
         /// <summary>
         /// 생성자
@@ -1217,10 +1219,22 @@ namespace GreenLock.UC_Controls
         {
             try
             {
-                Graphics graphics = this.CreateGraphics();
-                PrintImage = new Bitmap(this.ParentForm.Size.Width, this.ParentForm.Size.Height, graphics);
-                Graphics clone = Graphics.FromImage(PrintImage);
-                clone.CopyFromScreen(this.ParentForm.Location.X, this.ParentForm.Location.Y,0,0, this.ParentForm.Size);
+                Graphics mygraphics = this.CreateGraphics();
+                Size s = this.Size;
+                PrintImage = new Bitmap(s.Width, s.Height, mygraphics);
+                Graphics memoryGraphics = Graphics.FromImage(PrintImage);
+                IntPtr dc1 = mygraphics.GetHdc();
+                IntPtr dc2 = memoryGraphics.GetHdc();
+                BitBlt(dc2, 0, 0, this.ClientRectangle.Width, this.ClientRectangle.Height, dc1, 0, 0, 13369376);
+               
+                mygraphics.ReleaseHdc(dc1);
+                memoryGraphics.ReleaseHdc(dc2);
+
+
+                //Graphics graphics = this.CreateGraphics();
+                //PrintImage = new Bitmap(this.ParentForm.Size.Width, this.ParentForm.Size.Height, graphics);
+                //Graphics clone = Graphics.FromImage(PrintImage);
+                //clone.CopyFromScreen(this.ParentForm.Location.X, this.ParentForm.Location.Y,0,0, this.ParentForm.Size);
                 printPreviewDialog1.ShowDialog();
             }
             catch (Exception ex)
@@ -1237,8 +1251,8 @@ namespace GreenLock.UC_Controls
         /// <param name="e"></param>
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            Bitmap resize = (Bitmap)ResizeImage(PrintImage, new Size(800, 550));
-            e.Graphics.DrawImage(resize, 100,150);
+            Bitmap resize = (Bitmap)ResizeImage(PrintImage, new Size(700, 500));
+            e.Graphics.DrawImage(resize, 50,150);
         }
 
 
@@ -1277,7 +1291,15 @@ namespace GreenLock.UC_Controls
             return newImage;
         }
 
+        void ILanguage.localization()
+        {
 
+            LeftButtonLabel.Text = languages.GreenLock.Uc_TabSecurity_Graph;
+
+            // 우측 버튼 라벨
+            RightButtonLabel.Text = languages.GreenLock.Uc_TabSecurity_Sheet;
+            //throw new NotImplementedException();
+        }
     }
 
 

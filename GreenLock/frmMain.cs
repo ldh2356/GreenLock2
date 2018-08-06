@@ -198,8 +198,6 @@ namespace GreenLock
 
             _uc_TabMain = new UC_Controls.Uc_TabMain();
             _uc_TabMain.Main = this;
-
-
         }
 
         private IDisposable greenlockEntities()
@@ -301,7 +299,7 @@ namespace GreenLock
                 }
                 else
                 {
-                    StartScreenSaver();
+                    //StartScreenSaver();
                 }
             }
         }
@@ -610,8 +608,8 @@ namespace GreenLock
                     //GIF파일의 크기를 메인모니터 크기로 조정
                     //screenSaver.pb_screenSaver.Size = new Size(screen[screen1].WorkingArea.Width, screen[screen1].WorkingArea.Height);
 
-                    _screenSaver1.Size = new Size(100, 100);
-                    //screenSaver.Size = new Size(screen[screen1].Bounds.Width, screen[screen1].Bounds.Height);
+                    //_screenSaver1.Size = new Size(100, 100);
+                    _screenSaver1.Size = new Size(screen[screen1].Bounds.Width, screen[screen1].Bounds.Height);
                     _screenSaver1.Show(this);
                     //KeyboardHooking.TaskBarHide();
                 }
@@ -696,6 +694,14 @@ namespace GreenLock
             }
         }
 
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
         
+        }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

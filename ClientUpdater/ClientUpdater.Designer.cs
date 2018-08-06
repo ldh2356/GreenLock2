@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.clientUpdateWizardControl = new DevExpress.XtraWizard.WizardControl();
             this.welcomeWizardPage = new DevExpress.XtraWizard.WelcomeWizardPage();
             this.updateDescrptionWizardPage = new DevExpress.XtraWizard.WizardPage();
@@ -36,7 +37,7 @@
             this.downLoadUnpackingWizardPage = new DevExpress.XtraWizard.WizardPage();
             this.updateStatusRichTextBox = new System.Windows.Forms.RichTextBox();
             this.progressBarControl = new DevExpress.XtraEditors.ProgressBarControl();
-            this.timer1 = new System.Windows.Forms.Timer();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.clientUpdateWizardControl)).BeginInit();
             this.clientUpdateWizardControl.SuspendLayout();
             this.updateDescrptionWizardPage.SuspendLayout();
@@ -52,6 +53,8 @@
             this.clientUpdateWizardControl.Controls.Add(this.downLoadUnpackingWizardPage);
             this.clientUpdateWizardControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clientUpdateWizardControl.Location = new System.Drawing.Point(0, 0);
+            this.clientUpdateWizardControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.clientUpdateWizardControl.MinimumSize = new System.Drawing.Size(114, 125);
             this.clientUpdateWizardControl.Name = "clientUpdateWizardControl";
             this.clientUpdateWizardControl.Pages.AddRange(new DevExpress.XtraWizard.BaseWizardPage[] {
             this.welcomeWizardPage,
@@ -59,7 +62,7 @@
             this.downLoadUnpackingWizardPage,
             this.completionWizardPage1});
             this.clientUpdateWizardControl.ShowHeaderImage = true;
-            this.clientUpdateWizardControl.Size = new System.Drawing.Size(598, 323);
+            this.clientUpdateWizardControl.Size = new System.Drawing.Size(683, 404);
             this.clientUpdateWizardControl.Text = "Client Updater";
             this.clientUpdateWizardControl.CancelClick += new System.ComponentModel.CancelEventHandler(this.wizardControl1_CancelClick);
             this.clientUpdateWizardControl.FinishClick += new System.ComponentModel.CancelEventHandler(this.wizardControl1_FinishClick);
@@ -68,16 +71,18 @@
             // welcomeWizardPage
             // 
             this.welcomeWizardPage.IntroductionText = "";
+            this.welcomeWizardPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.welcomeWizardPage.Name = "welcomeWizardPage";
-            this.welcomeWizardPage.Size = new System.Drawing.Size(381, 190);
-            this.welcomeWizardPage.Text = "SSES Client Auto Updater";
+            this.welcomeWizardPage.Size = new System.Drawing.Size(466, 254);
+            this.welcomeWizardPage.Text = "Green Client Auto Updater";
             // 
             // updateDescrptionWizardPage
             // 
             this.updateDescrptionWizardPage.Controls.Add(this.updateInformationRichTextBox);
             this.updateDescrptionWizardPage.DescriptionText = "Show Client Update History";
+            this.updateDescrptionWizardPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.updateDescrptionWizardPage.Name = "updateDescrptionWizardPage";
-            this.updateDescrptionWizardPage.Size = new System.Drawing.Size(566, 178);
+            this.updateDescrptionWizardPage.Size = new System.Drawing.Size(651, 230);
             this.updateDescrptionWizardPage.Text = "Update Description";
             // 
             // updateInformationRichTextBox
@@ -86,9 +91,10 @@
             this.updateInformationRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.updateInformationRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.updateInformationRichTextBox.Location = new System.Drawing.Point(0, 0);
+            this.updateInformationRichTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.updateInformationRichTextBox.Name = "updateInformationRichTextBox";
             this.updateInformationRichTextBox.ReadOnly = true;
-            this.updateInformationRichTextBox.Size = new System.Drawing.Size(566, 178);
+            this.updateInformationRichTextBox.Size = new System.Drawing.Size(651, 230);
             this.updateInformationRichTextBox.TabIndex = 2;
             this.updateInformationRichTextBox.Text = "";
             // 
@@ -96,8 +102,9 @@
             // 
             this.completionWizardPage1.AllowBack = false;
             this.completionWizardPage1.AllowCancel = false;
+            this.completionWizardPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.completionWizardPage1.Name = "completionWizardPage1";
-            this.completionWizardPage1.Size = new System.Drawing.Size(381, 190);
+            this.completionWizardPage1.Size = new System.Drawing.Size(466, 254);
             this.completionWizardPage1.Text = "Client Update Finished";
             // 
             // downLoadUnpackingWizardPage
@@ -105,8 +112,9 @@
             this.downLoadUnpackingWizardPage.Controls.Add(this.updateStatusRichTextBox);
             this.downLoadUnpackingWizardPage.Controls.Add(this.progressBarControl);
             this.downLoadUnpackingWizardPage.DescriptionText = "";
+            this.downLoadUnpackingWizardPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.downLoadUnpackingWizardPage.Name = "downLoadUnpackingWizardPage";
-            this.downLoadUnpackingWizardPage.Size = new System.Drawing.Size(566, 178);
+            this.downLoadUnpackingWizardPage.Size = new System.Drawing.Size(651, 230);
             this.downLoadUnpackingWizardPage.Text = "Client Download And Unpacking";
             // 
             // updateStatusRichTextBox
@@ -115,9 +123,10 @@
             this.updateStatusRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.updateStatusRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.updateStatusRichTextBox.Location = new System.Drawing.Point(0, 0);
+            this.updateStatusRichTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.updateStatusRichTextBox.Name = "updateStatusRichTextBox";
             this.updateStatusRichTextBox.ReadOnly = true;
-            this.updateStatusRichTextBox.Size = new System.Drawing.Size(566, 160);
+            this.updateStatusRichTextBox.Size = new System.Drawing.Size(651, 208);
             this.updateStatusRichTextBox.TabIndex = 5;
             this.updateStatusRichTextBox.Text = "";
             // 
@@ -125,10 +134,11 @@
             // 
             this.progressBarControl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.progressBarControl.EditValue = "20";
-            this.progressBarControl.Location = new System.Drawing.Point(0, 160);
+            this.progressBarControl.Location = new System.Drawing.Point(0, 208);
+            this.progressBarControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.progressBarControl.Name = "progressBarControl";
             this.progressBarControl.Properties.ShowTitle = true;
-            this.progressBarControl.Size = new System.Drawing.Size(566, 18);
+            this.progressBarControl.Size = new System.Drawing.Size(651, 22);
             this.progressBarControl.TabIndex = 4;
             // 
             // timer1
@@ -137,12 +147,13 @@
             // 
             // ClientUpdater
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 323);
+            this.ClientSize = new System.Drawing.Size(683, 404);
             this.ControlBox = false;
             this.Controls.Add(this.clientUpdateWizardControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ClientUpdater";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Client Updater";

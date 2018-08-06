@@ -50,7 +50,7 @@ namespace ClientUpdater
         {
             buffer = new byte[bufferSize];
 
-            string startPath = @"C:\HansCreative\nnv\GreenLock";
+            string startPath = Application.StartupPath;
 
             updateInfoPath = Path.Combine(startPath, "UpdateInfo.xml");
 
@@ -350,7 +350,8 @@ namespace ClientUpdater
             Directory.SetCurrentDirectory(downloadPath);
 
             //string path = string.Format("{0}\\{1}", downloadPath, clientFileName);
-            string path = string.Format("{0}\\{1}", @"C:\HansCreative\nnv\GreenLock", "GreenLock.exe");
+
+            string path = string.Format("{0}\\{1}", Application.StartupPath, "GreenLock.exe");
 
             if (File.Exists(path) == true)
             {

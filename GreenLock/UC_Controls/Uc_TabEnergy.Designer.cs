@@ -95,9 +95,9 @@
             this.lblEnergyAmt.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.lblEnergyAmt.Location = new System.Drawing.Point(56, 112);
             this.lblEnergyAmt.Name = "lblEnergyAmt";
-            this.lblEnergyAmt.Size = new System.Drawing.Size(86, 45);
+            this.lblEnergyAmt.Size = new System.Drawing.Size(39, 45);
             this.lblEnergyAmt.TabIndex = 1;
-            this.lblEnergyAmt.Text = "2.90";
+            this.lblEnergyAmt.Text = "0";
             // 
             // lblEnergy
             // 
@@ -125,9 +125,9 @@
             this.lblCostAmt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.lblCostAmt.Location = new System.Drawing.Point(64, 112);
             this.lblCostAmt.Name = "lblCostAmt";
-            this.lblCostAmt.Size = new System.Drawing.Size(124, 45);
+            this.lblCostAmt.Size = new System.Drawing.Size(39, 45);
             this.lblCostAmt.TabIndex = 2;
-            this.lblCostAmt.Text = "530.81";
+            this.lblCostAmt.Text = "0";
             // 
             // lblCost
             // 
@@ -155,9 +155,9 @@
             this.lblCo2Amt.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.lblCo2Amt.Location = new System.Drawing.Point(64, 112);
             this.lblCo2Amt.Name = "lblCo2Amt";
-            this.lblCo2Amt.Size = new System.Drawing.Size(86, 45);
+            this.lblCo2Amt.Size = new System.Drawing.Size(39, 45);
             this.lblCo2Amt.TabIndex = 3;
-            this.lblCo2Amt.Text = "1.23";
+            this.lblCo2Amt.Text = "0";
             // 
             // lblCo2
             // 
@@ -185,9 +185,9 @@
             this.lblTreeAmt.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.lblTreeAmt.Location = new System.Drawing.Point(72, 112);
             this.lblTreeAmt.Name = "lblTreeAmt";
-            this.lblTreeAmt.Size = new System.Drawing.Size(86, 45);
+            this.lblTreeAmt.Size = new System.Drawing.Size(39, 45);
             this.lblTreeAmt.TabIndex = 4;
-            this.lblTreeAmt.Text = "0.43";
+            this.lblTreeAmt.Text = "0";
             // 
             // lblTree
             // 

@@ -7,18 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GreenLock.Repository
+namespace GreenLockProvider.Repository
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class greenlockEntities : DbContext
+    public partial class GreenLockEntites : DbContext
     {
-        public greenlockEntities()
-            : base("name=greenlockEntities")
+        public GreenLockEntites()
+            : base("name=GreenLockEntites")
         {
-
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -26,6 +25,6 @@ namespace GreenLock.Repository
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<TimeTable> TimeTables { get; set; }
+        public virtual DbSet<TimeSheet> TimeSheets { get; set; }
     }
 }

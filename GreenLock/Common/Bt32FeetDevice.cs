@@ -275,11 +275,11 @@ namespace GreenLock
                         {
                             int port = ServiceRecordHelper.GetRfcommChannelNumber(r);
                             string curSvcName = r.GetPrimaryMultiLanguageStringAttributeById(UniversalAttributeId.ServiceName);
-                            if(curSvcName.CompareTo("GreenLock0")==0)
-                            {
+                            //if(curSvcName.CompareTo("GreenLock0")==0)
+                            //{
                                 isService = true;
                                 break;
-                            }
+                            //}
                         }
 
                         if (isService)

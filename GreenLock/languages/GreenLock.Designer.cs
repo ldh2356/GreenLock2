@@ -61,6 +61,15 @@ namespace GreenLock.languages {
         }
         
         /// <summary>
+        ///   과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string a {
+            get {
+                return ResourceManager.GetString("a", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   장치주소과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string address {
@@ -331,7 +340,7 @@ namespace GreenLock.languages {
         }
         
         /// <summary>
-        ///   확인과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   취소과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string StringCancel {
             get {

@@ -50,7 +50,7 @@ namespace GreenLock.Dispatcher
             }
             catch(Exception ex)
             {
-                frmMain._log.write(ex.StackTrace);
+                frmMain._log.write(ex.Message + " - " + ex.StackTrace);
             }
         }
 

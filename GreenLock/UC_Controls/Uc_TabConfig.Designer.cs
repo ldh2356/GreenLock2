@@ -236,7 +236,7 @@
             this.txtAddress3.Location = new System.Drawing.Point(472, 136);
             this.txtAddress3.Name = "txtAddress3";
             this.txtAddress3.Size = new System.Drawing.Size(32, 27);
-            this.txtAddress3.TabIndex = 14;
+            this.txtAddress3.TabIndex = 13;
             this.txtAddress3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAddress3.TextChanged += new System.EventHandler(this.txtAddress1_TextChanged);
             // 
@@ -257,8 +257,9 @@
             this.txtAddress4.Location = new System.Drawing.Point(520, 136);
             this.txtAddress4.Name = "txtAddress4";
             this.txtAddress4.Size = new System.Drawing.Size(32, 27);
-            this.txtAddress4.TabIndex = 16;
+            this.txtAddress4.TabIndex = 14;
             this.txtAddress4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtAddress4.TextChanged += new System.EventHandler(this.txtAddress1_TextChanged);
             // 
             // label6
             // 
@@ -277,7 +278,7 @@
             this.txtAddress5.Location = new System.Drawing.Point(568, 136);
             this.txtAddress5.Name = "txtAddress5";
             this.txtAddress5.Size = new System.Drawing.Size(32, 27);
-            this.txtAddress5.TabIndex = 18;
+            this.txtAddress5.TabIndex = 15;
             this.txtAddress5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAddress5.TextChanged += new System.EventHandler(this.txtAddress1_TextChanged);
             // 
@@ -298,7 +299,7 @@
             this.txtAddress6.Location = new System.Drawing.Point(616, 136);
             this.txtAddress6.Name = "txtAddress6";
             this.txtAddress6.Size = new System.Drawing.Size(32, 27);
-            this.txtAddress6.TabIndex = 20;
+            this.txtAddress6.TabIndex = 16;
             this.txtAddress6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAddress6.TextAlignChanged += new System.EventHandler(this.txtAddress1_TextChanged);
             // 

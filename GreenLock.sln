@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientUpdater", "ClientUpda
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateCreater", "UpdateCreater\UpdateCreater.csproj", "{0B38AED7-F99E-492A-BBD5-EBA98C194E16}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenLockProvider", "GreenLockProvider\GreenLockProvider.csproj", "{65D0135D-BD8A-442F-B38A-35FA79F85AFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,14 @@ Global
 		{0B38AED7-F99E-492A-BBD5-EBA98C194E16}.NV|Any CPU.Build.0 = NV|Any CPU
 		{0B38AED7-F99E-492A-BBD5-EBA98C194E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B38AED7-F99E-492A-BBD5-EBA98C194E16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65D0135D-BD8A-442F-B38A-35FA79F85AFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65D0135D-BD8A-442F-B38A-35FA79F85AFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65D0135D-BD8A-442F-B38A-35FA79F85AFD}.NNV|Any CPU.ActiveCfg = Release|Any CPU
+		{65D0135D-BD8A-442F-B38A-35FA79F85AFD}.NNV|Any CPU.Build.0 = Release|Any CPU
+		{65D0135D-BD8A-442F-B38A-35FA79F85AFD}.NV|Any CPU.ActiveCfg = Release|Any CPU
+		{65D0135D-BD8A-442F-B38A-35FA79F85AFD}.NV|Any CPU.Build.0 = Release|Any CPU
+		{65D0135D-BD8A-442F-B38A-35FA79F85AFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65D0135D-BD8A-442F-B38A-35FA79F85AFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

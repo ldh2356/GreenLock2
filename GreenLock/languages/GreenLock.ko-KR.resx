@@ -178,7 +178,7 @@
     <value>SSES 는 Smart Security and Energy Saving 의 약자로써, PC와 mobile 간의 블루투스 통신을 이용하여 PC 보안 및 에너지를 절약하는 솔루션입니다. \\r\\nPC와 mobile에 맞는 프로그램을 설치하면 SSES 솔루션을 이용하실 수 있습니다. 환경설정에서 mobile 프로그램에 있는 장치주소를 입력한 후, 사용하시기 바랍니다.</value>
   </data>
   <data name="StringCancel" xml:space="preserve">
-    <value>확인</value>
+    <value>취소</value>
   </data>
   <data name="tree" xml:space="preserve">
     <value>환경보호(그루)</value>

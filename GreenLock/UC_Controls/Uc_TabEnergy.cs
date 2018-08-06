@@ -16,10 +16,14 @@ using System.Diagnostics;
 namespace GreenLock.UC_Controls
 {
     public partial class Uc_TabEnergy : UserControl, ILanguage
-    {    
+    {
         /// <summary>
         /// 프린트 비트맵
         /// </summary>
+        /// 
+        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
+        public static extern long BitBlt(IntPtr hdcDest, int nXDest, int nYDest, int nWidth, int nHeight, IntPtr hdcSrc, int nXSrc, int nYSrc, int dwRop);
+
         private static Bitmap PrintImage { get; set; }
 
         public Uc_TabEnergy()
@@ -209,15 +213,19 @@ namespace GreenLock.UC_Controls
 
             try
             {
-                Graphics graphics = this.ParentForm.CreateGraphics();
-                PrintImage = new Bitmap(this.ParentForm.Width, this.ParentForm.Height, graphics);
-                //PrintImage.Save("aaa.jpg");
-                Graphics clone = Graphics.FromImage(PrintImage);
-                //Point p = PointToClient(this.ParentForm.Location);
-
-                Point p = this.PointToScreen(this.ParentForm.Location);
-                clone.CopyFromScreen(p.X, p.Y, 0, 0, this.ParentForm.Size);
+                Graphics mygraphics = this.CreateGraphics();
+                Size s = this.Size;
+                PrintImage = new Bitmap(s.Width, s.Height, mygraphics);
+                Graphics memoryGraphics = Graphics.FromImage(PrintImage);
+                IntPtr dc1 = mygraphics.GetHdc();
+                IntPtr dc2 = memoryGraphics.GetHdc();
+                BitBlt(dc2, 0, 0, this.ClientRectangle.Width, this.ClientRectangle.Height, dc1, 0, 0, 13369376);
                 PrintImage.Save("aaa.jpg");
+                mygraphics.ReleaseHdc(dc1);
+                memoryGraphics.ReleaseHdc(dc2);
+
+
+                
                 printPreviewDialog1.ShowDialog();
             }
             catch (Exception ex)
@@ -264,8 +272,9 @@ namespace GreenLock.UC_Controls
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            //Bitmap resize = (Bitmap)ResizeImage(PrintImage, new Size(300, 200));
-            e.Graphics.DrawImage(PrintImage, 100, 150);
+            Bitmap resize = (Bitmap)ResizeImage(PrintImage, new Size(800, 600));
+            //PrintImage.Save("a.jpg");
+            e.Graphics.DrawImage(resize, 0, 0);
         }
     }
 }
