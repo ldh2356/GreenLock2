@@ -240,6 +240,11 @@ namespace GreenLock.UC_Controls
         public void UpdateUI()
         {
             _tabEnergy.UpdateUI();
+            
+        }
+
+        public void UpdateSecurity()
+        {
             _tabSecurity.SetDateTimeData();
         }
 

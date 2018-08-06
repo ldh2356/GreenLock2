@@ -224,6 +224,20 @@ namespace GreenLock
         {
             // 언락 데이터 타임 기록
             _dispatcher.SetTimeTable(_macAddress, 0);
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new System.Windows.Forms.MethodInvoker(delegate ()
+                {
+                    _uc_TabMain.UpdateSecurity();
+
+                }));
+            }
+            else
+            {
+                StopScreenSaver();
+            }
+
+
 
             Debug.WriteLine("Bt32FeetDevice_OnIsSevrice");
             Debug.WriteLine("_screensaverStatus== " + _screensaverStatus + " _screensaverPasswordflag  ==" + _screensaverPasswordflag);
@@ -269,6 +283,7 @@ namespace GreenLock
             Service.AlertSoundStop();
 
             _uc_TabMain.UpdateUI();
+           
 
             _screensaverStatus = false;
             Service.SendMessage(this.Handle.ToInt32(), Service.WM_SYSCOMMAND, Service.SC_MONITORPOWER, Service.MONITOR_ON);
@@ -284,6 +299,18 @@ namespace GreenLock
         {
             // 락 데이터 타임 기록
             _dispatcher.SetTimeTable(_macAddress, 1);
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new System.Windows.Forms.MethodInvoker(delegate ()
+                {
+                    _uc_TabMain.UpdateSecurity();
+
+                }));
+            }
+            else
+            {
+                StopScreenSaver();
+            }
 
             Debug.WriteLine("Bt32FeetDevice_OnNotService");
             Debug.WriteLine("_screensaverStatus== " + _screensaverStatus + " _screensaverPasswordflag  ==" + _screensaverPasswordflag);
