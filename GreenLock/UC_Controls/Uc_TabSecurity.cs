@@ -299,7 +299,7 @@ namespace GreenLock.UC_Controls
                         }
                         else if (day.RegDate.DayOfWeek == (DayOfWeek)this.label_Tuesday_Unlock.Tag)
                         {
-                            this.label_Tuesday_Unlock.Text = GetSheetElementData(this.label_Tuesday.Text, day.StartDate, day.EndDate);
+                            this.label_Tuesday_Unlock.Text = GetSheetElementData(this.label_Tuesday_Unlock.Text, day.StartDate, day.EndDate);
                         }
                         else if (day.RegDate.DayOfWeek == (DayOfWeek)this.label_Wednesday_Unlock.Tag)
                         {
