@@ -88,7 +88,8 @@ namespace GreenLock.Dispatcher
         /// <param name="clientMacAddress">사용자 맥어드레스</param>
         /// <param name="lockType">락 타입 0: 언락 1:락</param>
         /// <param name="currentTime">기록될 시간</param>
-        private void AddNewTimeTable(string clientMacAddress, short lockType, DateTime currentTime)
+        /// <param name="isForce">강제 행추가 옵션</param>
+        public void AddNewTimeTable(string clientMacAddress, short lockType, DateTime currentTime, bool isForce = false)
         {
             using (greenlockEntities context = new greenlockEntities())
             {
@@ -96,8 +97,8 @@ namespace GreenLock.Dispatcher
                 {
                     TimeTable currentTimeSheet = context.TimeTables.Where(x => x.MacAddress == clientMacAddress).OrderByDescending(x => x.RegDate).FirstOrDefault();
 
-                    // null 인경우 new row 생성 
-                    if (currentTimeSheet == null)
+                    // 현재 행이 없거나 강제 생성인경우 로우생성
+                    if (currentTimeSheet == null || isForce)
                     {
                         try
                         {

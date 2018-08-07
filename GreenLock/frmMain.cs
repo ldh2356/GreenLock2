@@ -41,6 +41,11 @@ namespace GreenLock
 
         TimeSheetDispatcher _dispatcher = new TimeSheetDispatcher();
 
+        /// <summary>
+        /// 신규 로우 생성을 위한..
+        /// </summary>
+        private static bool _isFirstOn = true;
+
         GreenLock.UC_Controls.Uc_TabMain _uc_TabMain;
 
         public static Log _log = new Log();
@@ -223,7 +228,18 @@ namespace GreenLock
         private void Bt32FeetDevice_OnIsSevrice(object sender, EventArgs e)
         {
             // 언락 데이터 타임 기록
-            _dispatcher.SetTimeTable(_macAddress, 0);
+            // 최초 구동시..
+            if (_isFirstOn)
+            {
+                _isFirstOn = false;
+                _dispatcher.AddNewTimeTable(_macAddress, 0, DateTime.Now, true);
+            }
+            // 최초 구동이 아닌경우
+            else
+            {
+                _dispatcher.SetTimeTable(_macAddress, 0);
+            }
+            
             if (this.InvokeRequired)
             {
                 this.Invoke(new System.Windows.Forms.MethodInvoker(delegate ()
@@ -232,7 +248,6 @@ namespace GreenLock
 
                 }));
             }
-
 
             Debug.WriteLine("Bt32FeetDevice_OnIsSevrice");
             Debug.WriteLine("_screensaverStatus== " + _screensaverStatus + " _screensaverPasswordflag  ==" + _screensaverPasswordflag);
@@ -292,8 +307,18 @@ namespace GreenLock
         /// <param name="e"></param>
         private void Bt32FeetDevice_OnNotService(object sender, EventArgs e)
         {
-            // 락 데이터 타임 기록
-            _dispatcher.SetTimeTable(_macAddress, 1);
+            // 최초 구동시..
+            if (_isFirstOn)
+            {
+                _isFirstOn = false;
+                _dispatcher.AddNewTimeTable(_macAddress, 1, DateTime.Now, true);
+            }
+            // 최초 구동이 아닌경우
+            else
+            {
+                _dispatcher.SetTimeTable(_macAddress, 1);
+            }
+
             if (this.InvokeRequired)
             {
                 this.Invoke(new System.Windows.Forms.MethodInvoker(delegate ()
@@ -659,10 +684,12 @@ namespace GreenLock
                     _screenSaver2 = new FormScreenSaver(this);
 
                     point = new Point(screen[screen2].Bounds.Location.X, screen[screen2].Bounds.Location.Y);
+                 
                     _screenSaver2.Location = point;
 
                     //GIF파일의 크기를 서브모니터 크기로 조정
                     _screenSaver2.Size = new Size(screen[screen2].Bounds.Width, screen[screen2].Bounds.Height);
+                    //_screenSaver1.Size = new Size(100, 100);
                     _screenSaver2.Show(this);
                 }
             }

@@ -128,6 +128,7 @@ namespace GreenLock.UC_Controls
 
                 SetChartInit();
                 calendarControl1.DateTime = DateTime.Now;
+                calendarControl1.BringToFront();
                 SetCalendarInit(DateTime.Now);
                 SetBaseInit();
 
@@ -294,33 +295,32 @@ namespace GreenLock.UC_Controls
                     {
                         if(day.RegDate.DayOfWeek == (DayOfWeek)this.label_Monday_Unlock.Tag)
                         {
-                            this.label_Monday_Unlock.Text = ((double.Parse(this.label_Monday_Unlock.Text) + (GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate)) / 60)).ToString();
+                            this.label_Monday_Unlock.Text = GetSheetElementData(this.label_Monday_Unlock.Text, day.StartDate, day.EndDate);
                         }
                         else if (day.RegDate.DayOfWeek == (DayOfWeek)this.label_Tuesday_Unlock.Tag)
                         {
-                            this.label_Tuesday_Unlock.Text = ((double.Parse(this.label_Tuesday_Unlock.Text) + (GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate)) / 60)).ToString();
+                            this.label_Tuesday_Unlock.Text = GetSheetElementData(this.label_Tuesday.Text, day.StartDate, day.EndDate);
                         }
                         else if (day.RegDate.DayOfWeek == (DayOfWeek)this.label_Wednesday_Unlock.Tag)
                         {
-                            this.label_Wednesday_Unlock.Text = ((double.Parse(this.label_Wednesday_Unlock.Text) + (GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate)) / 60)).ToString();
+                            this.label_Wednesday_Unlock.Text = GetSheetElementData(this.label_Wednesday_Unlock.Text, day.StartDate, day.EndDate);
                         }
                         else if (day.RegDate.DayOfWeek == (DayOfWeek)this.label_Thursday_Unlock.Tag)
-                        {
-                            this.label_Thursday_Unlock.Text = ((double.Parse(this.label_Thursday_Unlock.Text) + (GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate)) / 60)).ToString();
+                        {                            
+                            this.label_Thursday_Unlock.Text = GetSheetElementData(this.label_Thursday_Unlock.Text, day.StartDate, day.EndDate);
                         }
                         else if (day.RegDate.DayOfWeek == (DayOfWeek)this.label_Friday_Unlock.Tag)
                         {
-                            this.label_Friday_Unlock.Text = ((double.Parse(this.label_Friday_Unlock.Text) + (GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate)) / 60)).ToString();
+                            this.label_Friday_Unlock.Text = GetSheetElementData(this.label_Friday_Unlock.Text, day.StartDate, day.EndDate);
                         }
                         else if (day.RegDate.DayOfWeek == (DayOfWeek)this.label_Saturday_Unlock.Tag)
                         {
-                            this.label_Saturday_Unlock.Text = ((double.Parse(this.label_Saturday_Unlock.Text) + (GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate)) / 60)).ToString();
+                            this.label_Saturday_Unlock.Text = GetSheetElementData(this.label_Saturday_Unlock.Text, day.StartDate, day.EndDate);
                         }
                         else if (day.RegDate.DayOfWeek == (DayOfWeek)this.label_Sunday_Unlock.Tag)
                         {
-                            this.label_Sunday_Unlock.Text = ((double.Parse(this.label_Sunday_Unlock.Text) + (GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate)) / 60)).ToString();
+                            this.label_Sunday_Unlock.Text = GetSheetElementData(this.label_Sunday_Unlock.Text, day.StartDate, day.EndDate);
                         }
-
 
                         // 평균값 계산을 위한 분할
                         if (!unLockDayOfWeeks.Contains(day.RegDate.DayOfWeek))
@@ -338,33 +338,32 @@ namespace GreenLock.UC_Controls
                     {
                         if (day.RegDate.DayOfWeek == (DayOfWeek)this.label_Monday_Lock.Tag)
                         {
-                            this.label_Monday_Lock.Text = ((double.Parse(this.label_Monday_Lock.Text) + (GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate)) / 60)).ToString();
+                            this.label_Monday_Lock.Text = GetSheetElementData(this.label_Monday_Lock.Text, day.StartDate, day.EndDate);
                         }
                         else if (day.RegDate.DayOfWeek == (DayOfWeek)this.label_Tuesday_Lock.Tag)
                         {
-                            this.label_Tuesday_Lock.Text = ((double.Parse(this.label_Tuesday_Lock.Text) + (GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate)) / 60)).ToString();
+                            this.label_Tuesday_Lock.Text = GetSheetElementData(this.label_Tuesday_Lock.Text, day.StartDate, day.EndDate);
                         }
                         else if (day.RegDate.DayOfWeek == (DayOfWeek)this.label_Wednesday_Lock.Tag)
                         {
-                            this.label_Wednesday_Lock.Text = ((double.Parse(this.label_Wednesday_Lock.Text) + (GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate)) / 60)).ToString();
+                            this.label_Wednesday_Lock.Text = GetSheetElementData(this.label_Wednesday_Lock.Text, day.StartDate, day.EndDate);
                         }
                         else if (day.RegDate.DayOfWeek == (DayOfWeek)this.label_Thursday_Lock.Tag)
-                        {
-                            this.label_Thursday_Lock.Text = ((double.Parse(this.label_Thursday_Lock.Text) + (GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate)) / 60)).ToString();
+                        {                            
+                            this.label_Thursday_Lock.Text = GetSheetElementData(this.label_Thursday_Lock.Text, day.StartDate, day.EndDate);
                         }
                         else if (day.RegDate.DayOfWeek == (DayOfWeek)this.label_Friday_Lock.Tag)
-                        {
-                            this.label_Friday_Lock.Text = ((double.Parse(this.label_Friday_Lock.Text) + (GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate)) / 60)).ToString();
+                        {                            
+                            this.label_Friday_Lock.Text = GetSheetElementData(this.label_Friday_Lock.Text, day.StartDate, day.EndDate);
                         }
                         else if (day.RegDate.DayOfWeek == (DayOfWeek)this.label_Saturday_Lock.Tag)
                         {
-                            this.label_Saturday_Lock.Text = ((double.Parse(this.label_Saturday_Lock.Text) + (GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate)) / 60)).ToString();
+                            this.label_Saturday_Lock.Text = GetSheetElementData(this.label_Saturday_Lock.Text, day.StartDate, day.EndDate);
                         }
                         else if (day.RegDate.DayOfWeek == (DayOfWeek)this.label_Sunday_Lock.Tag)
                         {
-                            this.label_Sunday_Lock.Text = ((double.Parse(this.label_Sunday_Lock.Text) + (GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate)) / 60)).ToString();
+                            this.label_Sunday_Lock.Text = GetSheetElementData(this.label_Sunday_Lock.Text, day.StartDate, day.EndDate);
                         }
-
 
                         // 평균값 계산을 위한 분할
                         if (!lockDayOfWeeks.Contains(day.RegDate.DayOfWeek))
@@ -379,28 +378,6 @@ namespace GreenLock.UC_Controls
                     }
                 }
 
-
-
-                this.label_Monday_Lock.Text = Math.Round(Convert.ToDouble(this.label_Monday_Lock.Text),1).ToString();
-                this.label_Monday_Unlock.Text = Math.Round(Convert.ToDouble(this.label_Monday_Unlock.Text), 1).ToString();
-
-                this.label_Tuesday_Lock.Text = Math.Round(Convert.ToDouble(this.label_Tuesday_Lock.Text), 1).ToString();
-                this.label_Tuesday_Unlock.Text = Math.Round(Convert.ToDouble(this.label_Tuesday_Unlock.Text), 1).ToString();
-
-                this.label_Wednesday_Lock.Text = Math.Round(Convert.ToDouble(this.label_Wednesday_Lock.Text), 1).ToString();
-                this.label_Wednesday_Unlock.Text = Math.Round(Convert.ToDouble(this.label_Wednesday_Unlock.Text), 1).ToString();
-
-                this.label_Thursday_Lock.Text = Math.Round(Convert.ToDouble(this.label_Thursday_Lock.Text), 1).ToString();
-                this.label_Thursday_Unlock.Text = Math.Round(Convert.ToDouble(this.label_Thursday_Unlock.Text), 1).ToString();
-
-                this.label_Friday_Lock.Text = Math.Round(Convert.ToDouble(this.label_Friday_Lock.Text), 1).ToString();
-                this.label_Friday_Unlock.Text = Math.Round(Convert.ToDouble(this.label_Friday_Unlock.Text), 1).ToString();
-
-                this.label_Saturday_Lock.Text = Math.Round(Convert.ToDouble(this.label_Saturday_Lock.Text), 1).ToString();
-                this.label_Saturday_Unlock.Text = Math.Round(Convert.ToDouble(this.label_Saturday_Unlock.Text), 1).ToString();
-
-                this.label_Sunday_Lock.Text = Math.Round(Convert.ToDouble(this.label_Sunday_Lock.Text), 1).ToString();
-                this.label_Sunday_Unlock.Text = Math.Round(Convert.ToDouble(this.label_Sunday_Unlock.Text), 1).ToString();
 
                 this.label_Monday.Text = $"{_startDate.ToString("yyyy.MM.dd ")} ({_currentCulture.DateTimeFormat.GetShortestDayName(_startDate.DayOfWeek)})";
                 this.label_Tuesday.Text = $"{_startDate.AddDays(1).ToString("yyyy.MM.dd ")} ({_currentCulture.DateTimeFormat.GetShortestDayName(_startDate.AddDays(1).DayOfWeek)})";
@@ -487,6 +464,29 @@ namespace GreenLock.UC_Controls
             {
                 frmMain._log.write(ex.StackTrace);
             }
+        }
+
+
+        /// <summary>
+        /// 시트 데이터 값을 계산한다 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns></returns>
+        private string GetSheetElementData(string text, DateTime? startDate, DateTime endDate)
+        {
+            string result = "";
+            try
+            {
+                result = (Math.Round((double.Parse(text) + (GetDayOfMinute(endDate) - GetDayOfMinute(startDate)) / 60) , 1)).ToString();
+            }
+            catch (Exception ex)
+            {
+                result = "0";
+                frmMain._log.write(ex.StackTrace);
+            }
+            return result;
         }
 
         /// <summary>
@@ -1252,12 +1252,7 @@ namespace GreenLock.UC_Controls
                
                 mygraphics.ReleaseHdc(dc1);
                 memoryGraphics.ReleaseHdc(dc2);
-
-
-                //Graphics graphics = this.CreateGraphics();
-                //PrintImage = new Bitmap(this.ParentForm.Size.Width, this.ParentForm.Size.Height, graphics);
-                //Graphics clone = Graphics.FromImage(PrintImage);
-                //clone.CopyFromScreen(this.ParentForm.Location.X, this.ParentForm.Location.Y,0,0, this.ParentForm.Size);
+                
                 printPreviewDialog1.ShowDialog();
             }
             catch (Exception ex)
@@ -1322,6 +1317,11 @@ namespace GreenLock.UC_Controls
             // 우측 버튼 라벨
             RightButtonLabel.Text = languages.GreenLock.Uc_TabSecurity_Sheet;
             //throw new NotImplementedException();
+        }
+
+        private void label_Monday_Unlock_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
