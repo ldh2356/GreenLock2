@@ -171,6 +171,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GreenLock.en-US.resx</DependentUpon>
     </Compile>
+    <Compile Include="languages\GreenLock.en-US1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GreenLock.en-US.resx</DependentUpon>
+    </Compile>
     <Compile Include="languages\GreenLock.ko-KR.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -252,7 +257,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="languages\GreenLock.en-US.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>GreenLock.en-US.Designer.cs</LastGenOutput>
+      <LastGenOutput>GreenLock.en-US1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="languages\GreenLock.ko-KR.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

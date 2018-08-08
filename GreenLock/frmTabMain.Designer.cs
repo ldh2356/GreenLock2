@@ -93,11 +93,11 @@
             this.lblKorea.BackColor = System.Drawing.Color.Transparent;
             this.lblKorea.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblKorea.ForeColor = System.Drawing.Color.White;
-            this.lblKorea.Location = new System.Drawing.Point(860, 12);
+            this.lblKorea.Location = new System.Drawing.Point(874, 12);
             this.lblKorea.Name = "lblKorea";
             this.lblKorea.Size = new System.Drawing.Size(48, 20);
             this.lblKorea.TabIndex = 4;
-            this.lblKorea.Text = "Korea";
+            this.lblKorea.Text = "Korean";
             this.lblKorea.Click += new System.EventHandler(this.lblKorea_Click);
             // 
             // lblEnglish

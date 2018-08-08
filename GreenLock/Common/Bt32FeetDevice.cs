@@ -238,7 +238,7 @@ namespace GreenLock
                 while (true)
                 {                 
                     IAsyncResult iAsyncResult = bluetoothDeviceInfo.BeginGetServiceRecords(uuid, Service_AsyncCallback, bluetoothDeviceInfo);
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2000);
                 }
             }
             catch (Exception ex)
@@ -271,41 +271,45 @@ namespace GreenLock
                     bool isService = false;
                     if (services.Count() > 0)
                     {
-                        foreach (ServiceRecord r in services)
-                        {
-                            int port = ServiceRecordHelper.GetRfcommChannelNumber(r);
-                            string curSvcName = r.GetPrimaryMultiLanguageStringAttributeById(UniversalAttributeId.ServiceName);
-                            //if(curSvcName.CompareTo("GreenLock0")==0)
-                            //{
-                                isService = true;
-                                break;
-                            //}
-                        }
+                        if (OnIsService != null)
+                               OnIsService(this, null);
 
-                        if (isService)
-                        {
-                           
-                            if (OnIsService != null)
-                                OnIsService(this, null);
-                        }
-                        else
-                        {
-                            if (OnNotService != null)
-                                OnNotService(this, null);
-                        }
+                        //foreach (ServiceRecord r in services)
+                        //{
+                        //    int port = ServiceRecordHelper.GetRfcommChannelNumber(r);
+                        //    string curSvcName = r.GetPrimaryMultiLanguageStringAttributeById(UniversalAttributeId.ServiceName);
+                        //    //if(curSvcName.CompareTo("GreenLock0")==0)
+                        //    //{
+                        //        isService = true;
+                        //        break;
+                        //    //}
+                        //}
+
+                        //if (isService)
+                        //{
+
+                        //    if (OnIsService != null)
+                        //        OnIsService(this, null);
+                        //}
+                        //else
+                        //{
+                        //    if (OnNotService != null)
+                        //        OnNotService(this, null);
+                        //}
                     }
                     else
                     {
-                        // 서비스가 없는 경우 발생
+                        //서비스가 없는 경우 
                         if (OnNotService != null)
                             OnNotService(this, null);
+                        _log.write("알림 off시 발생");
                     }
                 }
                 else
                 {
-                    //통신을 못하는 경우 발생 - 모바일을 가지고 이동시 
-                    if (OnNotService != null)
-                        OnNotService(this, null);                   
+                   
+                    //if (OnNotService != null)
+                    //    OnNotService(this, null);                   
                 }
             }
             catch (Exception ea)

@@ -166,7 +166,7 @@ Energy Saving</value>
   <data name="cost" xml:space="preserve">
     <value> Money from
 energy saving
-    (USD)</value>
+    (KRW)</value>
   </data>
   <data name="day" xml:space="preserve">
     <value>day</value>
@@ -248,7 +248,7 @@ Simply go ahead with the typing 6-byte device address shown on mobile app in the
   </data>
   <data name="tree" xml:space="preserve">
     <value>Number of trees
-from savings</value>
+   from savings</value>
   </data>
   <data name="userPw" xml:space="preserve">
     <value>Password</value>
@@ -305,7 +305,7 @@ from savings</value>
     <value>Notice</value>
   </data>
   <data name="notice1" xml:space="preserve">
-    <value>In case you forget the password please unlock with your mobile and set up new password.</value>
+    <value>Unlock with your password when you don’t bring your mobile phone.</value>
   </data>
   <data name="notice2" xml:space="preserve">
     <value>In case you have trouble setting up usage please feel free to send a message to us, contact@hanscreative.com.</value>

@@ -266,7 +266,7 @@ namespace GreenLock
                 }
                 else
                 {
-                    StopScreenSaver();
+                    //StopScreenSaver();
                 }
             }
         }
@@ -290,6 +290,7 @@ namespace GreenLock
 
             //화면보호기 종료
             screenSaverAllStop();
+            //KeyboardHooking.TaskBarShow();
             Service.AlertSoundStop();
 
             _uc_TabMain.UpdateUI();
@@ -583,7 +584,7 @@ namespace GreenLock
                 foreach (Form frm in this.OwnedForms)
                 {
                     frm.Close();
-                    frm.Dispose();                  
+                    frm.Dispose();       
                 }
 
                 //MainForm.log.write("screenSaver != null" + (screenSaver != null));

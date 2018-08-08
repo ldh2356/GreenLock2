@@ -130,16 +130,16 @@
     <value>NoControl</value>
   </data>
   <data name="lblCoypright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>360, 708</value>
+    <value>296, 708</value>
   </data>
   <data name="lblCoypright.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 20</value>
+    <value>397, 20</value>
   </data>
   <data name="lblCoypright.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
   <data name="lblCoypright.Text" xml:space="preserve">
-    <value>Copyrights hanscreative all rights reserved</value>
+    <value>Copyright 2018. HansCreative Co., Ltd. all rights reserved.</value>
   </data>
   <data name="&gt;&gt;lblCoypright.Name" xml:space="preserve">
     <value>lblCoypright</value>
@@ -196,16 +196,16 @@
     <value>NoControl</value>
   </data>
   <data name="lblKorea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>864, 70</value>
+    <value>861, 70</value>
   </data>
   <data name="lblKorea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 23</value>
+    <value>70, 23</value>
   </data>
   <data name="lblKorea.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
   <data name="lblKorea.Text" xml:space="preserve">
-    <value>Korea </value>
+    <value>Korean </value>
   </data>
   <data name="&gt;&gt;lblKorea.Name" xml:space="preserve">
     <value>lblKorea</value>

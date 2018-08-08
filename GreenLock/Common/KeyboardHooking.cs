@@ -63,7 +63,7 @@ namespace GreenLock
         {
             try
             {
-                //ToggleTaskManagerBlock(false);
+                ToggleTaskManagerBlock(false);
             }
             catch (Exception ex)
             {
