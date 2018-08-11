@@ -28,8 +28,10 @@ namespace GreenLock.UC_Controls
 
         public Uc_TabEnergy()
         {
+
             InitializeComponent();
             localization();
+            UpdateUI();
         }
 
 
