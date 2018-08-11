@@ -313,4 +313,10 @@ Simply go ahead with the typing 6-byte device address shown on mobile app in the
   <data name="electric_Charge" xml:space="preserve">
     <value>Electric charges</value>
   </data>
+  <data name="Uc_TabSecurity_Excel_Sheet_Title_1" xml:space="preserve">
+    <value>GreenLock Lock/UnLock Time Sheet Data</value>
+  </data>
+  <data name="Uc_TabSecurity_Excel_Sheet_Title_2" xml:space="preserve">
+    <value>Daily Lock Unlock Data</value>
+  </data>
 </root>
