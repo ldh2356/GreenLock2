@@ -638,15 +638,15 @@ namespace GreenLock.UC_Controls
                 _ganttDigram_Custom.AxisY.CustomLabels.Add(new CustomAxisLabel(String.Format("{0:00}", i).ToString(), min_hour));
             }
 
-            _ganttView_Unlock.BarWidth = 0.4D;
-            _ganttView_Unlock.Color = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(161)))), ((int)(((byte)(170)))));
+            _ganttView_Unlock.BarWidth = 0.4D; 
+            _ganttView_Unlock.Color = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(77)))), ((int)(((byte)(82)))));
             _ganttView_Unlock.LinkOptions.Color = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(141)))), ((int)(((byte)(212)))));
             _ganttView_Unlock.LinkOptions.ColorSource = TaskLinkColorSource.OwnColor;
             _ganttView_Unlock.LinkOptions.Visible = false;
             _series_Unlock.View = _ganttView_Unlock;
 
             _ganttView_Lock.BarWidth = 0.4D;
-            _ganttView_Lock.Color = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(77)))), ((int)(((byte)(82)))));
+            _ganttView_Lock.Color = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(161)))), ((int)(((byte)(170)))));
             _ganttView_Lock.LinkOptions.ColorSource = TaskLinkColorSource.OwnColor;
             _ganttView_Lock.LinkOptions.Visible = false;
             _series_Lock.View = _ganttView_Lock;
@@ -961,12 +961,12 @@ namespace GreenLock.UC_Controls
                         string[] backColors = { "#EFF3FB", "#FFFFFF" };
                         int columnCount = 5;
 
-                        // 헤더 추가
-                        worksheet.Cells[1, 1].Value = languages.GreenLock.Uc_TabSecurity_Regdate;
-                        worksheet.Cells[1, 2].Value = languages.GreenLock.Uc_TabSecurity_LockType;
-                        worksheet.Cells[1, 3].Value = languages.GreenLock.Uc_TabSecurity_StartDate;
-                        worksheet.Cells[1, 4].Value = languages.GreenLock.Uc_TabSecurity_EndDate;
-                        worksheet.Cells[1, 5].Value = languages.GreenLock.Uc_TabSecurity_Sum;
+                        // 최상단 헤더 추가
+                        worksheet.Cells["A1:E1"].Merge = true;
+                        worksheet.Cells[1, 1].Value = languages.GreenLock.Uc_TabSecurity_Excel_Sheet_Title_1;
+                        worksheet.Cells[1, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        worksheet.Cells[1, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                        worksheet.Row(1).Height = 40;
 
                         // 헤더 색상 및 테두리 설정
                         using (var cells = worksheet.Cells[1, 1, 1, columnCount])
@@ -974,11 +974,30 @@ namespace GreenLock.UC_Controls
                             cells.Style.Font.Bold = true;
                             cells.Style.Border.BorderAround(ExcelBorderStyle.Thin);
                             cells.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                            cells.Style.Fill.BackgroundColor.SetColor(Color.White);
+                        }
+
+                        // 헤더 컬럼 추가
+                        worksheet.Cells[2, 1].Value = languages.GreenLock.Uc_TabSecurity_Regdate;
+                        worksheet.Cells[2, 2].Value = languages.GreenLock.Uc_TabSecurity_LockType;
+                        worksheet.Cells[2, 3].Value = languages.GreenLock.Uc_TabSecurity_StartDate;
+                        worksheet.Cells[2, 4].Value = languages.GreenLock.Uc_TabSecurity_EndDate;
+                        worksheet.Cells[2, 5].Value = languages.GreenLock.Uc_TabSecurity_Sum;
+
+
+                        // 헤더 색상 및 테두리 설정
+                        using (var cells = worksheet.Cells["A2:E2"])
+                        {
+                            cells.Style.Font.Bold = true;
+                            cells.Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                            cells.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                            cells.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                            cells.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
                             cells.Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml("#F3F3F3"));
                         }
 
-                        int no = 0;
-                        int rowIndex = 0;
+                        int no = 1;
+                        int rowIndex = 1;
 
                         // 리스트 처리
                         foreach (TimeTable table in timeTable)
@@ -1036,178 +1055,198 @@ namespace GreenLock.UC_Controls
                         ExcelWorksheet worksheet_sheet = package.Workbook.Worksheets.Add(languages.GreenLock.Uc_TabSecurity_Sheet);
                         columnCount = 8;
 
-                        // 헤더 추가
-                        worksheet_sheet.Cells[1, 1].Value = "";
-                        worksheet_sheet.Cells[1, 2].Value = languages.GreenLock.Uc_TabSecurity_Lock;
-                        worksheet_sheet.Cells[1, 3].Value = languages.GreenLock.Uc_TabSecurity_Unlock;
-               
-                        // 헤더 색상 및 테두리 설정
+                        // 최상단 헤더 추가
+                        worksheet_sheet.Cells["A1:C1"].Merge = true;
+                        worksheet_sheet.Cells[1, 1].Value = languages.GreenLock.Uc_TabSecurity_Excel_Sheet_Title_2;
+                        worksheet_sheet.Cells[1, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        worksheet_sheet.Cells[1, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                        worksheet_sheet.Row(1).Height = 40;
+
+                        // 최상단 헤더 색상 및 테두리 설정
                         using (var cells = worksheet_sheet.Cells[1, 1, 1, 3])
                         {
                             cells.Style.Font.Bold = true;
                             cells.Style.Border.BorderAround(ExcelBorderStyle.Thin);
                             cells.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                            cells.Style.Fill.BackgroundColor.SetColor(Color.White);
+                        }
+
+
+                        // 헤더 추가
+                        worksheet_sheet.Cells[2, 1].Value = "";
+                        worksheet_sheet.Cells[2, 2].Value = languages.GreenLock.Uc_TabSecurity_Lock;
+                        worksheet_sheet.Cells[2, 3].Value = languages.GreenLock.Uc_TabSecurity_Unlock;
+
+
+                        // 헤더 색상 및 테두리 설정
+                        using (var cells = worksheet_sheet.Cells["A2:C2"])
+                        {
+                            cells.Style.Font.Bold = true;
+                            cells.Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                            cells.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                            cells.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                            cells.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
                             cells.Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml("#F3F3F3"));
                         }
 
 
-                        worksheet_sheet.Cells[2, 1].Value = label_Monday.Text;
-                        worksheet_sheet.Cells[2, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-                        worksheet_sheet.Cells[2, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[2, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
-                        worksheet_sheet.Cells[2, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
-                        worksheet_sheet.Cells[2, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
-
-                        worksheet_sheet.Cells[2, 2].Value = label_Monday_Lock.Text;
-                        worksheet_sheet.Cells[2, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-                        worksheet_sheet.Cells[2, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[2, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
-                        worksheet_sheet.Cells[2, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
-                        worksheet_sheet.Cells[2, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
-
-                        worksheet_sheet.Cells[2, 3].Value = label_Monday_Unlock.Text;
-                        worksheet_sheet.Cells[2, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-                        worksheet_sheet.Cells[2, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[2, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
-                        worksheet_sheet.Cells[2, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
-                        worksheet_sheet.Cells[2, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
-
-
-                        worksheet_sheet.Cells[3, 1].Value = label_Tuesday.Text;
+                        worksheet_sheet.Cells[3, 1].Value = label_Monday.Text;
                         worksheet_sheet.Cells[3, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                         worksheet_sheet.Cells[3, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[3, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
+                        worksheet_sheet.Cells[3, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
                         worksheet_sheet.Cells[3, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet_sheet.Cells[3, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                        worksheet_sheet.Cells[3, 2].Value = label_Tuesday_Lock.Text;
+                        worksheet_sheet.Cells[3, 2].Value = label_Monday_Lock.Text;
                         worksheet_sheet.Cells[3, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                         worksheet_sheet.Cells[3, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[3, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
+                        worksheet_sheet.Cells[3, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
                         worksheet_sheet.Cells[3, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet_sheet.Cells[3, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                        worksheet_sheet.Cells[3, 3].Value = label_Tuesday_Unlock.Text;
+                        worksheet_sheet.Cells[3, 3].Value = label_Monday_Unlock.Text;
                         worksheet_sheet.Cells[3, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                         worksheet_sheet.Cells[3, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[3, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
+                        worksheet_sheet.Cells[3, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
                         worksheet_sheet.Cells[3, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet_sheet.Cells[3, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
 
-
-                        worksheet_sheet.Cells[4, 1].Value = label_Wednesday.Text;
+                        worksheet_sheet.Cells[4, 1].Value = label_Tuesday.Text;
                         worksheet_sheet.Cells[4, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                         worksheet_sheet.Cells[4, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[4, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[4, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
                         worksheet_sheet.Cells[4, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet_sheet.Cells[4, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                        worksheet_sheet.Cells[4, 2].Value = label_Wednesday_Lock.Text;
+                        worksheet_sheet.Cells[4, 2].Value = label_Tuesday_Lock.Text;
                         worksheet_sheet.Cells[4, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                         worksheet_sheet.Cells[4, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[4, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[4, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
                         worksheet_sheet.Cells[4, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet_sheet.Cells[4, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                        worksheet_sheet.Cells[4, 3].Value = label_Wednesday_Unlock.Text;
+                        worksheet_sheet.Cells[4, 3].Value = label_Tuesday_Unlock.Text;
                         worksheet_sheet.Cells[4, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                         worksheet_sheet.Cells[4, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[4, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[4, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
                         worksheet_sheet.Cells[4, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet_sheet.Cells[4, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
 
-                        worksheet_sheet.Cells[5, 1].Value = label_Thursday.Text;
+
+                        worksheet_sheet.Cells[5, 1].Value = label_Wednesday.Text;
                         worksheet_sheet.Cells[5, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                         worksheet_sheet.Cells[5, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[5, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
+                        worksheet_sheet.Cells[5, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
                         worksheet_sheet.Cells[5, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet_sheet.Cells[5, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                        worksheet_sheet.Cells[5, 2].Value = label_Thursday_Lock.Text;
+                        worksheet_sheet.Cells[5, 2].Value = label_Wednesday_Lock.Text;
                         worksheet_sheet.Cells[5, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                         worksheet_sheet.Cells[5, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[5, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
+                        worksheet_sheet.Cells[5, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
                         worksheet_sheet.Cells[5, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet_sheet.Cells[5, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                        worksheet_sheet.Cells[5, 3].Value = label_Thursday_Unlock.Text;
+                        worksheet_sheet.Cells[5, 3].Value = label_Wednesday_Unlock.Text;
                         worksheet_sheet.Cells[5, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                         worksheet_sheet.Cells[5, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[5, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
+                        worksheet_sheet.Cells[5, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
                         worksheet_sheet.Cells[5, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet_sheet.Cells[5, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
 
-                        worksheet_sheet.Cells[6, 1].Value = label_Friday.Text;
+                        worksheet_sheet.Cells[6, 1].Value = label_Thursday.Text;
                         worksheet_sheet.Cells[6, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                         worksheet_sheet.Cells[6, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[6, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[6, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
                         worksheet_sheet.Cells[6, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet_sheet.Cells[6, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                        worksheet_sheet.Cells[6, 2].Value = label_Friday_Lock.Text;
+                        worksheet_sheet.Cells[6, 2].Value = label_Thursday_Lock.Text;
                         worksheet_sheet.Cells[6, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                         worksheet_sheet.Cells[6, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[6, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[6, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
                         worksheet_sheet.Cells[6, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet_sheet.Cells[6, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                        worksheet_sheet.Cells[6, 3].Value = label_Friday_Unlock.Text;
+                        worksheet_sheet.Cells[6, 3].Value = label_Thursday_Unlock.Text;
                         worksheet_sheet.Cells[6, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                         worksheet_sheet.Cells[6, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[6, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[6, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
                         worksheet_sheet.Cells[6, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet_sheet.Cells[6, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
 
-
-                        worksheet_sheet.Cells[7, 1].Value = label_Saturday.Text;
+                        worksheet_sheet.Cells[7, 1].Value = label_Friday.Text;
                         worksheet_sheet.Cells[7, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-                        worksheet_sheet.Cells[7, 1].Style.Font.Color.SetColor(Color.FromArgb(89, 157, 207));
                         worksheet_sheet.Cells[7, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[7, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
+                        worksheet_sheet.Cells[7, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
                         worksheet_sheet.Cells[7, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet_sheet.Cells[7, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                        worksheet_sheet.Cells[7, 2].Value = label_Saturday_Lock.Text;
+                        worksheet_sheet.Cells[7, 2].Value = label_Friday_Lock.Text;
                         worksheet_sheet.Cells[7, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                         worksheet_sheet.Cells[7, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[7, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
+                        worksheet_sheet.Cells[7, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
                         worksheet_sheet.Cells[7, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet_sheet.Cells[7, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                        worksheet_sheet.Cells[7, 3].Value = label_Saturday_Unlock.Text;
+                        worksheet_sheet.Cells[7, 3].Value = label_Friday_Unlock.Text;
                         worksheet_sheet.Cells[7, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                         worksheet_sheet.Cells[7, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[7, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
+                        worksheet_sheet.Cells[7, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
                         worksheet_sheet.Cells[7, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet_sheet.Cells[7, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
 
 
-                        worksheet_sheet.Cells[8, 1].Value = label_Sunday.Text;
+                        worksheet_sheet.Cells[8, 1].Value = label_Saturday.Text;
                         worksheet_sheet.Cells[8, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-                        worksheet_sheet.Cells[8, 1].Style.Font.Color.SetColor(Color.FromArgb(189, 89, 100));
+                        worksheet_sheet.Cells[8, 1].Style.Font.Color.SetColor(Color.FromArgb(89, 157, 207));
                         worksheet_sheet.Cells[8, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[8, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[8, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
                         worksheet_sheet.Cells[8, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet_sheet.Cells[8, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                        worksheet_sheet.Cells[8, 2].Value = label_Sunday_Lock.Text;
+                        worksheet_sheet.Cells[8, 2].Value = label_Saturday_Lock.Text;
                         worksheet_sheet.Cells[8, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                         worksheet_sheet.Cells[8, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[8, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[8, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
                         worksheet_sheet.Cells[8, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet_sheet.Cells[8, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                        worksheet_sheet.Cells[8, 3].Value = label_Sunday_Unlock.Text;
+                        worksheet_sheet.Cells[8, 3].Value = label_Saturday_Unlock.Text;
                         worksheet_sheet.Cells[8, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                         worksheet_sheet.Cells[8, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        worksheet_sheet.Cells[8, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[8, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[1]));
                         worksheet_sheet.Cells[8, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet_sheet.Cells[8, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+
+
+                        worksheet_sheet.Cells[9, 1].Value = label_Sunday.Text;
+                        worksheet_sheet.Cells[9, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[9, 1].Style.Font.Color.SetColor(Color.FromArgb(189, 89, 100));
+                        worksheet_sheet.Cells[9, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[9, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[9, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[9, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                        worksheet_sheet.Cells[9, 2].Value = label_Sunday_Lock.Text;
+                        worksheet_sheet.Cells[9, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[9, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[9, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[9, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[9, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                        worksheet_sheet.Cells[9, 3].Value = label_Sunday_Unlock.Text;
+                        worksheet_sheet.Cells[9, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet_sheet.Cells[9, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet_sheet.Cells[9, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[0]));
+                        worksheet_sheet.Cells[9, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet_sheet.Cells[9, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
                         // 모든 컬럼에 대해서 처리
                         for (int index = 0; index < 3; index++)
