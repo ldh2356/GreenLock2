@@ -47,13 +47,16 @@ namespace GreenLock.UC_Controls
             lblNotice1.Text = GreenLock.languages.GreenLock.notice1;
             lblNotice2.Text = GreenLock.languages.GreenLock.notice2;
 
-
+            lblCharge.Text = GreenLock.languages.GreenLock.electric_Charge;
+            
         }
 
         private void Uc_TabConfig_Load(object sender, EventArgs e)
         {
             btnOK.BackColor = ColorTranslator.FromHtml("#2C53CC");
             btnCancel.BackColor = ColorTranslator.FromHtml("#A6A6A6");
+
+           
 
             initSetting();
         }
@@ -97,7 +100,12 @@ namespace GreenLock.UC_Controls
 
             this.txtPassword.Text = AppConfig.Instance.UserPassword;
 
-            this.txtPower.Text = AppConfig.Instance.PcPower.ToString();
+            this.txtPower.Text = AppConfig.Instance.PcPower.ToString(); 
+            this.txtCost.Text = AppConfig.Instance.ElecRate.ToString();
+            this.cbUnit.SelectedText = "";
+            this.cbUnit.SelectedText = AppConfig.Instance.ElecUnit.ToString();
+
+            btnOK.Focus();
         }
 
         private void rbAdroid_Click(object sender, EventArgs e)

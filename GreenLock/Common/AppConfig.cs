@@ -26,6 +26,7 @@ namespace GreenLock
         private string _userPassword;
         private string _deviceAddress;
         private int _sleepMode;
+        private string _elecUnit;
       
         private int _model;
 
@@ -50,6 +51,12 @@ namespace GreenLock
         {
             get { return _elecRate; }
             set { _elecRate = value;  }
+        }
+
+        public string ElecUnit
+        {
+            get { return _elecUnit; }
+            set { _elecUnit = value; }
         }
 
         public int TotalTime
@@ -113,6 +120,8 @@ namespace GreenLock
             xe.Add(new XElement("SleepMode", SleepMode));     
             xe.Add(new XElement("Model", Model));
             xe.Add(new XElement("ElecRate", ElecRate)); // 추가함
+            xe.Add(new XElement("EleUnit", ElecUnit)); // 추가함
+            
             xe.Add(new XElement("PcPower", PcPower));
 
             xe.Save(fileName);
@@ -185,6 +194,7 @@ namespace GreenLock
             try
             {
                 _elecRate = double.Parse(xe.Element("ElecRate").Value);
+                _elecUnit = xe.Element("EleUnit").Value;
             }
             catch (Exception ex)
             {

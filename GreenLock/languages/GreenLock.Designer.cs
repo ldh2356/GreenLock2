@@ -124,6 +124,15 @@ namespace GreenLock.languages {
         }
         
         /// <summary>
+        ///   전기요금과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string electric_Charge {
+            get {
+                return ResourceManager.GetString("electric_Charge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   절력값(kW)과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string energy {
