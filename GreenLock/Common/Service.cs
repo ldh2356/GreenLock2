@@ -76,10 +76,13 @@ namespace GreenLock
         {
             try
             {
-                // 볼륨을 이전에 저장했던 볼륨으로 복원한다
-                AudioManager.SetMasterVolume(lastVolumePercentage);
-                isSoundPlaying = false;
-                Player.Stop();
+                if (isSoundPlaying)
+                {
+                    // 볼륨을 이전에 저장했던 볼륨으로 복원한다
+                    AudioManager.SetMasterVolume(lastVolumePercentage);
+                    isSoundPlaying = false;
+                    Player.Stop();
+                }
             }
             catch (Exception ex)
             {
