@@ -274,9 +274,9 @@ namespace GreenLock
             //this.sendPCEnergy("3");
 
             // 컴퓨터 절전해제
-            Service.mouse_event(Service.MOUSE_MOVE, 0, 1, 0, UIntPtr.Zero);
+            SoundService.mouse_event(SoundService.MOUSE_MOVE, 0, 1, 0, UIntPtr.Zero);
             Thread.Sleep(40);
-            Service.mouse_event(Service.MOUSE_MOVE, 0, -1, 0, UIntPtr.Zero);
+            SoundService.mouse_event(SoundService.MOUSE_MOVE, 0, -1, 0, UIntPtr.Zero);
 
             _calcReduction.OperationStartTime = DateTime.Now;
             _calcReduction.ScreenEndTime = DateTime.Now;
@@ -285,13 +285,13 @@ namespace GreenLock
             //화면보호기 종료
             screenSaverAllStop();
             //KeyboardHooking.TaskBarShow();
-            Service.AlertSoundStop();
+            SoundService.AlertSoundStop();
 
             _uc_TabMain.UpdateUI();
            
 
             _screensaverStatus = false;
-            Service.SendMessage(this.Handle.ToInt32(), Service.WM_SYSCOMMAND, Service.SC_MONITORPOWER, Service.MONITOR_ON);
+            SoundService.SendMessage(this.Handle.ToInt32(), SoundService.WM_SYSCOMMAND, SoundService.SC_MONITORPOWER, SoundService.MONITOR_ON);
         }
         
 
@@ -367,7 +367,7 @@ namespace GreenLock
             // 모니터 절전 진입
             else
             {
-                Service.SendMessage(this.Handle.ToInt32(), Service.WM_SYSCOMMAND, Service.SC_MONITORPOWER, Service.MONITOR_OFF);
+                SoundService.SendMessage(this.Handle.ToInt32(), SoundService.WM_SYSCOMMAND, SoundService.SC_MONITORPOWER, SoundService.MONITOR_OFF);
             }
         }
 
@@ -585,7 +585,7 @@ namespace GreenLock
                 //MainForm.log.write("screenSaver2 != null" + (screenSaver2 != null));
 
                 _screensaverStatus = false;
-                Service.AlertSoundStop();
+                SoundService.AlertSoundStop();
             }
             catch (Exception ex)
             {
@@ -646,9 +646,11 @@ namespace GreenLock
 
                     //GIF파일의 크기를 메인모니터 크기로 조정
                     //screenSaver.pb_screenSaver.Size = new Size(screen[screen1].WorkingArea.Width, screen[screen1].WorkingArea.Height);
-
-                    //_screenSaver1.Size = new Size(100, 100);
                     _screenSaver1.Size = new Size(screen[screen1].Bounds.Width, screen[screen1].Bounds.Height);
+#if debug
+                    _screenSaver1.Size = new Size(100,100);
+#endif
+
                     _screenSaver1.Show(this);
                     //KeyboardHooking.TaskBarHide();
                 }
@@ -684,7 +686,9 @@ namespace GreenLock
 
                     //GIF파일의 크기를 서브모니터 크기로 조정
                     _screenSaver2.Size = new Size(screen[screen2].Bounds.Width, screen[screen2].Bounds.Height);
-                    //_screenSaver1.Size = new Size(100, 100);
+#if debug
+                    _screenSaver1.Size = new Size(100, 100);
+#endif
                     _screenSaver2.Show(this);
                 }
             }
@@ -714,7 +718,7 @@ namespace GreenLock
             _bt32FeetDevice.OnNotService -= Bt32FeetDevice_OnNotService;
         }
 
-        #endregion
+#endregion
 
 
         protected override CreateParams CreateParams

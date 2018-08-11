@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace GreenLock
 {
-    class Service
+    class SoundService
     {
         /// <summary>
         /// 사운드 비프음 재생전 볼륨 퍼센트
@@ -65,7 +65,7 @@ namespace GreenLock
             }
             catch (Exception ex)
             {
-                //MainForm.log.write(ex.Message);
+                frmMain._log.write(ex.Message);
             }
         }
 
