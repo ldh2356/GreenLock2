@@ -638,15 +638,15 @@ namespace GreenLock.UC_Controls
                 _ganttDigram_Custom.AxisY.CustomLabels.Add(new CustomAxisLabel(String.Format("{0:00}", i).ToString(), min_hour));
             }
 
-            _ganttView_Unlock.BarWidth = 0.4D;
-            _ganttView_Unlock.Color = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(161)))), ((int)(((byte)(170)))));
+            _ganttView_Unlock.BarWidth = 0.4D; 
+            _ganttView_Unlock.Color = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(77)))), ((int)(((byte)(82)))));
             _ganttView_Unlock.LinkOptions.Color = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(141)))), ((int)(((byte)(212)))));
             _ganttView_Unlock.LinkOptions.ColorSource = TaskLinkColorSource.OwnColor;
             _ganttView_Unlock.LinkOptions.Visible = false;
             _series_Unlock.View = _ganttView_Unlock;
 
             _ganttView_Lock.BarWidth = 0.4D;
-            _ganttView_Lock.Color = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(77)))), ((int)(((byte)(82)))));
+            _ganttView_Lock.Color = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(161)))), ((int)(((byte)(170)))));
             _ganttView_Lock.LinkOptions.ColorSource = TaskLinkColorSource.OwnColor;
             _ganttView_Lock.LinkOptions.Visible = false;
             _series_Lock.View = _ganttView_Lock;
