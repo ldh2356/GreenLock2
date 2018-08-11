@@ -39,7 +39,7 @@ namespace ClientUpdater
 
         public ClientUpdater(string clientUpdateName, string mainPath)
         {
-            this.extractPath = mainPath;
+            this.extractPath = Application.StartupPath;
             this.configName = clientUpdateName;
             this.downloadPath = Path.Combine(Application.StartupPath, "Update");            
 
@@ -220,8 +220,8 @@ namespace ClientUpdater
                         if (entry.IsFile)
                         {
                             bgWorker.ReportProgress(percent, entry.Name);
-                            ExtractFile(zipFile.GetInputStream(entry), entry, downloadPath);
-                            //ExtractFile(zipFile.GetInputStream(entry), entry, extractPath);
+                            //ExtractFile(zipFile.GetInputStream(entry), entry, downloadPath);
+                            ExtractFile(zipFile.GetInputStream(entry), entry, extractPath);
                             itemCount++;
                             percent = (int)(itemCount * 60 / totalCount + 40);
                         }

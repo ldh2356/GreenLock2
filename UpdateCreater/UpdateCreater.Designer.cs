@@ -42,68 +42,76 @@
             // 
             // textEdit1
             // 
-            this.textEdit1.Location = new System.Drawing.Point(153, 13);
+            this.textEdit1.Location = new System.Drawing.Point(175, 16);
+            this.textEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.ReadOnly = true;
-            this.textEdit1.Size = new System.Drawing.Size(99, 20);
+            this.textEdit1.Size = new System.Drawing.Size(113, 24);
             this.textEdit1.TabIndex = 0;
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(262, 11);
+            this.simpleButton1.Location = new System.Drawing.Point(299, 14);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton1.Size = new System.Drawing.Size(86, 29);
             this.simpleButton1.TabIndex = 1;
             this.simpleButton1.Text = "파일 찾기";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(125, 15);
+            this.labelControl1.Location = new System.Drawing.Point(143, 19);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(20, 14);
+            this.labelControl1.Size = new System.Drawing.Size(26, 18);
             this.labelControl1.TabIndex = 2;
             this.labelControl1.Text = "경로";
             // 
             // btnUpload
             // 
-            this.btnUpload.Location = new System.Drawing.Point(12, 295);
+            this.btnUpload.Location = new System.Drawing.Point(14, 369);
+            this.btnUpload.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(325, 37);
+            this.btnUpload.Size = new System.Drawing.Size(371, 46);
             this.btnUpload.TabIndex = 3;
             this.btnUpload.Text = "파일 업로드";
             this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(12, 47);
+            this.labelControl2.Location = new System.Drawing.Point(14, 59);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(54, 14);
+            this.labelControl2.Size = new System.Drawing.Size(70, 18);
             this.labelControl2.TabIndex = 4;
             this.labelControl2.Text = "번경된 사항";
             // 
             // newVersionRichTextBox
             // 
-            this.newVersionRichTextBox.Location = new System.Drawing.Point(12, 67);
+            this.newVersionRichTextBox.Location = new System.Drawing.Point(14, 84);
+            this.newVersionRichTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.newVersionRichTextBox.Name = "newVersionRichTextBox";
-            this.newVersionRichTextBox.Size = new System.Drawing.Size(325, 98);
+            this.newVersionRichTextBox.Size = new System.Drawing.Size(371, 122);
             this.newVersionRichTextBox.TabIndex = 5;
             this.newVersionRichTextBox.Text = "";
             // 
             // historyRichTextBox
             // 
-            this.historyRichTextBox.Location = new System.Drawing.Point(12, 191);
+            this.historyRichTextBox.Location = new System.Drawing.Point(14, 239);
+            this.historyRichTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.historyRichTextBox.Name = "historyRichTextBox";
             this.historyRichTextBox.ReadOnly = true;
-            this.historyRichTextBox.Size = new System.Drawing.Size(325, 98);
+            this.historyRichTextBox.Size = new System.Drawing.Size(371, 122);
             this.historyRichTextBox.TabIndex = 6;
             this.historyRichTextBox.Text = "";
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(12, 171);
+            this.labelControl3.Location = new System.Drawing.Point(14, 214);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(40, 14);
+            this.labelControl3.Size = new System.Drawing.Size(52, 18);
             this.labelControl3.TabIndex = 7;
             this.labelControl3.Text = "히스토리";
             // 
@@ -113,17 +121,18 @@
             this.comboBox1.Items.AddRange(new object[] {
             "nvv 버전",
             "nv 버전"});
-            this.comboBox1.Location = new System.Drawing.Point(12, 12);
+            this.comboBox1.Location = new System.Drawing.Point(14, 15);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(101, 20);
+            this.comboBox1.Size = new System.Drawing.Size(115, 23);
             this.comboBox1.TabIndex = 8;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // UpdateCreater
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 347);
+            this.ClientSize = new System.Drawing.Size(400, 434);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.historyRichTextBox);
@@ -133,6 +142,7 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.textEdit1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UpdateCreater";
             this.Text = "UpdateCreater";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UpdateCreater_FormClosing);

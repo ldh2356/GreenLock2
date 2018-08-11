@@ -258,4 +258,7 @@
   <data name="a" xml:space="preserve">
     <value />
   </data>
+  <data name="electric_Charge" xml:space="preserve">
+    <value>전기요금</value>
+  </data>
 </root>

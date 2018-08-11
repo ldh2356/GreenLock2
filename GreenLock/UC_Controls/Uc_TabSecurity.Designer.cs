@@ -116,7 +116,7 @@ namespace GreenLock.UC_Controls
             this.calendarControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.calendarControl1.MaxValue = new System.DateTime(9999, 12, 31, 0, 0, 0, 0);
             this.calendarControl1.Name = "calendarControl1";
-            this.calendarControl1.Size = new System.Drawing.Size(333, 360);
+            this.calendarControl1.Size = new System.Drawing.Size(299, 290);
             this.calendarControl1.TabIndex = 999;
             this.calendarControl1.Visible = false;
             this.calendarControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.calendarControl1_MouseDoubleClick);

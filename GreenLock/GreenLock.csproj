@@ -437,6 +437,7 @@
     <None Include="Resources\table_button_right.png" />
     <None Include="Resources\blueButton.png" />
     <None Include="Resources\sheet.png" />
+    <None Include="Resources\tabConfig1.png" />
     <Content Include="Resources\WeeklyBar.png" />
   </ItemGroup>
   <ItemGroup>

@@ -117,8 +117,6 @@ namespace GreenLock
 
         public frmMain()
         {
-           
-
             InitializeComponent();
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
@@ -721,8 +719,6 @@ namespace GreenLock
         }
 
         #endregion
-
-
 
 
         protected override CreateParams CreateParams

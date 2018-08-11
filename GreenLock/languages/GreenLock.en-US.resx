@@ -310,4 +310,7 @@ Simply go ahead with the typing 6-byte device address shown on mobile app in the
   <data name="notice2" xml:space="preserve">
     <value>In case you have trouble setting up usage please feel free to send a message to us, contact@hanscreative.com.</value>
   </data>
+  <data name="electric_Charge" xml:space="preserve">
+    <value>Electric charges</value>
+  </data>
 </root>

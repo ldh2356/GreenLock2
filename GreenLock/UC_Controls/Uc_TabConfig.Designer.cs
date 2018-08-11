@@ -50,13 +50,16 @@
             this.txtAddress5 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtAddress6 = new System.Windows.Forms.TextBox();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblNotice = new System.Windows.Forms.Label();
             this.lblNotice1 = new System.Windows.Forms.Label();
             this.lblNotice2 = new System.Windows.Forms.Label();
+            this.lblCharge = new System.Windows.Forms.Label();
+            this.txtCost = new System.Windows.Forms.TextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.cbUnit = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -303,32 +306,6 @@
             this.txtAddress6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAddress6.TextAlignChanged += new System.EventHandler(this.txtAddress1_TextChanged);
             // 
-            // btnOK
-            // 
-            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOK.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnOK.ForeColor = System.Drawing.Color.White;
-            this.btnOK.Location = new System.Drawing.Point(672, 336);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(130, 40);
-            this.btnOK.TabIndex = 22;
-            this.btnOK.Text = "확인";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(824, 336);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(130, 40);
-            this.btnCancel.TabIndex = 23;
-            this.btnCancel.Text = "취소";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
@@ -369,12 +346,69 @@
             this.lblNotice2.TabIndex = 28;
             this.lblNotice2.Text = "label8";
             // 
+            // lblCharge
+            // 
+            this.lblCharge.AutoSize = true;
+            this.lblCharge.Location = new System.Drawing.Point(56, 328);
+            this.lblCharge.Name = "lblCharge";
+            this.lblCharge.Size = new System.Drawing.Size(69, 20);
+            this.lblCharge.TabIndex = 29;
+            this.lblCharge.Text = "전기요금";
+            // 
+            // txtCost
+            // 
+            this.txtCost.Font = new System.Drawing.Font("맑은 고딕", 9F);
+            this.txtCost.Location = new System.Drawing.Point(280, 320);
+            this.txtCost.Name = "txtCost";
+            this.txtCost.Size = new System.Drawing.Size(136, 27);
+            this.txtCost.TabIndex = 30;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(824, 384);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(130, 40);
+            this.btnCancel.TabIndex = 23;
+            this.btnCancel.Text = "취소";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnOK
+            // 
+            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOK.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnOK.ForeColor = System.Drawing.Color.White;
+            this.btnOK.Location = new System.Drawing.Point(672, 384);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(130, 40);
+            this.btnOK.TabIndex = 33;
+            this.btnOK.Text = "확인";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // cbUnit
+            // 
+            this.cbUnit.FormattingEnabled = true;
+            this.cbUnit.Items.AddRange(new object[] {
+            "KRW",
+            "USD"});
+            this.cbUnit.Location = new System.Drawing.Point(440, 320);
+            this.cbUnit.Name = "cbUnit";
+            this.cbUnit.Size = new System.Drawing.Size(80, 28);
+            this.cbUnit.TabIndex = 31;
+            // 
             // Uc_TabConfig
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.BackgroundImage = global::GreenLock.Properties.Resources.tabConfig;
+            this.BackgroundImage = global::GreenLock.Properties.Resources.tabConfig1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Controls.Add(this.cbUnit);
+            this.Controls.Add(this.txtCost);
+            this.Controls.Add(this.lblCharge);
             this.Controls.Add(this.lblNotice2);
             this.Controls.Add(this.lblNotice1);
             this.Controls.Add(this.lblNotice);
@@ -401,6 +435,7 @@
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblSleepMode);
             this.Controls.Add(this.lblConnet);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "Uc_TabConfig";
@@ -437,12 +472,15 @@
         private System.Windows.Forms.TextBox txtAddress5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtAddress6;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Button btnCancel;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblNotice;
         private System.Windows.Forms.Label lblNotice1;
         private System.Windows.Forms.Label lblNotice2;
+        private System.Windows.Forms.Label lblCharge;
+        private System.Windows.Forms.TextBox txtCost;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.ComboBox cbUnit;
     }
 }
