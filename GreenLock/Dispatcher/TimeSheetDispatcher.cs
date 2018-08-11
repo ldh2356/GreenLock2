@@ -62,22 +62,35 @@ namespace GreenLock.Dispatcher
         /// <param name="currentTime">기록될 시간</param>
         private void UpdateNewTimeTable(string clientMacAddress, DateTime currentTime)
         {
-            try
+            using (greenlockEntities context = new greenlockEntities())
             {
-                using (greenlockEntities context = new greenlockEntities())
+                using (DbContextTransaction transaction = context.Database.BeginTransaction())
                 {
-                    using (DbContextTransaction transaction = context.Database.BeginTransaction())
+                    try
                     {
                         TimeTable currentTimeSheet = context.TimeTables.Where(x => x.MacAddress == clientMacAddress).OrderByDescending(x => x.RegDate).FirstOrDefault();
-                        currentTimeSheet.EndDate = currentTime;
-                        context.SaveChanges();
-                        transaction.Commit();
+                        
+                        if (currentTimeSheet != null)
+                        {
+                            // 현재 타임시트와 업데이트하고자하는 타임시트의 날짜가 서로 다른경우
+                            if (!Convert.ToDateTime(currentTimeSheet.StartDate).ToString("yyyyMMdd").Equals(currentTime.ToString("yyyyMMdd")))
+                            {
+                                AddNewTimeTable(clientMacAddress, currentTimeSheet.LockType, currentTime, true);
+                            }
+                            // 다르지 않은경우 EndTime 업데이트
+                            else
+                            {
+                                currentTimeSheet.EndDate = currentTime;
+                                context.SaveChanges();
+                                transaction.Commit();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        frmMain._log.write(ex.StackTrace);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                frmMain._log.write(ex.StackTrace);
             }
         }
 
