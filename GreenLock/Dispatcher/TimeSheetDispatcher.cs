@@ -43,7 +43,7 @@ namespace GreenLock.Dispatcher
                         // 락타입과 일치하지 않는 경우 새로운 행 추가 
                         else
                         {
-                            AddNewTimeTable(clientMacAddress, lockType, currentTime);
+                            AddNewTimeTable(clientMacAddress, lockType, currentTime, true);
                         }
                     }
                 }
