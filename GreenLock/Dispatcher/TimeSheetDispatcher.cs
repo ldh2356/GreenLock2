@@ -119,6 +119,7 @@ namespace GreenLock.Dispatcher
                             {
                                 RegDate = currentTime,
                                 StartDate = currentTime,
+                                EndDate = currentTime,
                                 Id = Guid.NewGuid().ToString(),
                                 MacAddress = clientMacAddress,
                                 LockType = lockType,
