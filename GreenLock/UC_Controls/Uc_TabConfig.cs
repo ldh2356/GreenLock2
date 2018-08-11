@@ -63,6 +63,7 @@ namespace GreenLock.UC_Controls
 
         private void initSetting()
         {
+            AppConfig.Instance.LoadFromFile();
             if (AppConfig.Instance.Model == 0)
             {
                 this.rbAdroid.Checked = true;
@@ -102,8 +103,8 @@ namespace GreenLock.UC_Controls
 
             this.txtPower.Text = AppConfig.Instance.PcPower.ToString(); 
             this.txtCost.Text = AppConfig.Instance.ElecRate.ToString();
-            this.cbUnit.SelectedText = "";
-            this.cbUnit.SelectedText = AppConfig.Instance.ElecUnit.ToString();
+         
+            this.cbUnit.Text = AppConfig.Instance.ElecUnit.ToString();
 
             btnOK.Focus();
         }
@@ -183,6 +184,8 @@ namespace GreenLock.UC_Controls
 
             AppConfig.Instance.SaveToFile();
 
+            MessageBox.Show(GreenLock.languages.GreenLock.ConfigChanged);
+
         }
 
         /// <summary>
@@ -193,6 +196,11 @@ namespace GreenLock.UC_Controls
         private void btnCancel_Click(object sender, EventArgs e)
         {
             initSetting();
+        }
+
+        private void cbUnit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AppConfig.Instance.ElecUnit = this.cbUnit.Text;
         }
     };
 }

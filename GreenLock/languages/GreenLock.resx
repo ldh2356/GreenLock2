@@ -261,4 +261,7 @@
   <data name="electric_Charge" xml:space="preserve">
     <value>전기요금</value>
   </data>
+  <data name="ConfigChanged" xml:space="preserve">
+    <value>설정이 변경되었습니다.</value>
+  </data>
 </root>

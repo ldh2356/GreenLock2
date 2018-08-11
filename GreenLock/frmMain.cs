@@ -28,8 +28,6 @@ namespace GreenLock
 
     public partial class frmMain : Form
     {
-
-
         #region "로컬 변수"
 
         /// <summary>
@@ -99,8 +97,6 @@ namespace GreenLock
         }
 
         #endregion
-
-
 
         private void SetMainDate()
         {
@@ -744,7 +740,15 @@ namespace GreenLock
 
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            try
+            {
+                System.Diagnostics.Process.GetCurrentProcess().Kill();
+            }
+            catch(Exception ea)
+            {
+                _log.write(ea.Message);
+            }
+
         }
     }
 }

@@ -205,8 +205,7 @@ energy saving
     <value>Address</value>
   </data>
   <data name="mode" xml:space="preserve">
-    <value>   Mode of 
-energy saving</value>
+    <value>Mode of energy saving</value>
   </data>
   <data name="monitorMode" xml:space="preserve">
     <value>Monitor only</value>
@@ -266,7 +265,7 @@ Simply go ahead with the typing 6-byte device address shown on mobile app in the
     <value>Security (Flexible Time Working)</value>
   </data>
   <data name="energy" xml:space="preserve">
-    <value>Energy(kW)</value>
+    <value>Electricity consumption(W)</value>
   </data>
   <data name="Uc_TabSecurity_Graph" xml:space="preserve">
     <value>Graph</value>
@@ -305,12 +304,15 @@ Simply go ahead with the typing 6-byte device address shown on mobile app in the
     <value>Notice</value>
   </data>
   <data name="notice1" xml:space="preserve">
-    <value>Unlock with your password when you don’t bring your mobile phone.</value>
+    <value>Unlock with your Green Lock password when you don’t bring your mobile phone.</value>
   </data>
   <data name="notice2" xml:space="preserve">
     <value>In case you have trouble setting up usage please feel free to send a message to us, contact@hanscreative.com.</value>
   </data>
   <data name="electric_Charge" xml:space="preserve">
-    <value>Electric charges</value>
+    <value>Electricity rate per kWh</value>
+  </data>
+  <data name="ConfigChanged" xml:space="preserve">
+    <value>Your configuration has been changed.</value>
   </data>
 </root>

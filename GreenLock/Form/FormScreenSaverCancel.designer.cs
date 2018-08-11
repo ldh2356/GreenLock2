@@ -38,7 +38,7 @@
             // 
             this.label1.Location = new System.Drawing.Point(20, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(243, 12);
+            this.label1.Size = new System.Drawing.Size(300, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "비밀번호를 입력하세요.(초기비밀번호:0000)";
             // 
@@ -48,7 +48,7 @@
             this.textBox1.Location = new System.Drawing.Point(22, 58);
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(311, 25);
+            this.textBox1.Size = new System.Drawing.Size(311, 23);
             this.textBox1.TabIndex = 3;
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
@@ -66,7 +66,7 @@
             // 
             this.label2.Location = new System.Drawing.Point(20, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(273, 12);
+            this.label2.Size = new System.Drawing.Size(300, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "환경설정 > 화면잠금해제 비밀번호를 변경하세요.";
             // 
@@ -80,6 +80,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

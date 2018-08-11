@@ -115,6 +115,15 @@ namespace GreenLock.languages {
         }
         
         /// <summary>
+        ///   설정이 변경되었습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string ConfigChanged {
+            get {
+                return ResourceManager.GetString("ConfigChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   전기료절감액(원)과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string cost {
