@@ -70,6 +70,7 @@ namespace GreenLock.UC_Controls
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.label1 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.calendarControl1.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonExcelExport)).BeginInit();
@@ -78,6 +79,7 @@ namespace GreenLock.UC_Controls
             ((System.ComponentModel.ISupportInitialize)(this.Cal_left)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Sheet)).BeginInit();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // Lable_StartDate
@@ -85,9 +87,9 @@ namespace GreenLock.UC_Controls
             this.Lable_StartDate.AccessibleName = "LabelStartDate";
             this.Lable_StartDate.Font = new System.Drawing.Font("맑은 고딕", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Lable_StartDate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Lable_StartDate.Location = new System.Drawing.Point(21, 29);
+            this.Lable_StartDate.Location = new System.Drawing.Point(3, 0);
             this.Lable_StartDate.Name = "Lable_StartDate";
-            this.Lable_StartDate.Size = new System.Drawing.Size(173, 34);
+            this.Lable_StartDate.Size = new System.Drawing.Size(136, 34);
             this.Lable_StartDate.TabIndex = 95;
             this.Lable_StartDate.Text = "2018.07.23";
             this.Lable_StartDate.Click += new System.EventHandler(this.label1_Click);
@@ -96,9 +98,9 @@ namespace GreenLock.UC_Controls
             // 
             this.Lable_EndDate.AccessibleName = "LabelEndDate";
             this.Lable_EndDate.Font = new System.Drawing.Font("맑은 고딕", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Lable_EndDate.Location = new System.Drawing.Point(207, 29);
+            this.Lable_EndDate.Location = new System.Drawing.Point(181, 0);
             this.Lable_EndDate.Name = "Lable_EndDate";
-            this.Lable_EndDate.Size = new System.Drawing.Size(159, 36);
+            this.Lable_EndDate.Size = new System.Drawing.Size(134, 36);
             this.Lable_EndDate.TabIndex = 14;
             this.Lable_EndDate.Text = "2018.07.27";
             // 
@@ -478,7 +480,7 @@ namespace GreenLock.UC_Controls
             this.Cal_left.BackgroundImage = global::GreenLock.Properties.Resources.btn_calander;
             this.Cal_left.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.Cal_left.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Cal_left.Location = new System.Drawing.Point(372, 33);
+            this.Cal_left.Location = new System.Drawing.Point(321, 3);
             this.Cal_left.Name = "Cal_left";
             this.Cal_left.Size = new System.Drawing.Size(33, 32);
             this.Cal_left.TabIndex = 1;
@@ -527,17 +529,27 @@ namespace GreenLock.UC_Controls
             this.label1.AccessibleName = "LabelStartDate";
             this.label1.Font = new System.Drawing.Font("맑은 고딕", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(175, 27);
+            this.label1.Location = new System.Drawing.Point(145, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 39);
             this.label1.TabIndex = 1002;
             this.label1.Text = "~";
             // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.Lable_StartDate);
+            this.flowLayoutPanel2.Controls.Add(this.label1);
+            this.flowLayoutPanel2.Controls.Add(this.Lable_EndDate);
+            this.flowLayoutPanel2.Controls.Add(this.Cal_left);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(31, 26);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(571, 42);
+            this.flowLayoutPanel2.TabIndex = 1004;
+            // 
             // Uc_TabSecurity
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.Lable_EndDate);
+            this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.ButtonExcelExport);
             this.Controls.Add(this.label_Monday);
@@ -568,8 +580,6 @@ namespace GreenLock.UC_Controls
             this.Controls.Add(this.labelockAvg);
             this.Controls.Add(this.labelUnlockAvg);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.Cal_left);
-            this.Controls.Add(this.Lable_StartDate);
             this.Controls.Add(this.rightButton);
             this.Controls.Add(this.Sheet);
             this.Controls.Add(this.calendarControl1);
@@ -587,6 +597,7 @@ namespace GreenLock.UC_Controls
             ((System.ComponentModel.ISupportInitialize)(this.Cal_left)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Sheet)).EndInit();
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -634,5 +645,6 @@ namespace GreenLock.UC_Controls
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
     }
 }

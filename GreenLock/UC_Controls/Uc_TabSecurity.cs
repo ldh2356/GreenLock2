@@ -222,28 +222,8 @@ namespace GreenLock.UC_Controls
             try
             {
                 // 월요일이 아닌경우
-                if (DateTime.Now.DayOfWeek != DayOfWeek.Monday)
-                {
-                    int gap = (targetTime.DayOfWeek - DayOfWeek.Monday);
-                    _startDate = targetTime.AddDays((-1 * gap));
-                }
-                // 월요일 인 경우
-                else
-                {
-                    _startDate = targetTime;
-                }
-
-                // 일요일이 아닌경우 
-                if (DateTime.Now.DayOfWeek != DayOfWeek.Sunday)
-                {
-                    int gap = (((int)targetTime.DayOfWeek - 7) * -1);
-                    _endDate = targetTime.AddDays(gap);
-                }
-                // 일요일 인 경우
-                else
-                {
-                    _endDate = targetTime;
-                }
+                _startDate = Convert.ToDateTime(StartOfWeek(DateTime.Now, DayOfWeek.Monday).ToString("yyyy-MM-dd 00:00:00"));
+                _endDate = Convert.ToDateTime(StartOfWeek(DateTime.Now, DayOfWeek.Monday).AddDays(6).ToString("yyyy-MM-dd 23:59:59"));
 
                 // 라벨을 세팅한다
                 Lable_StartDate.Text = _startDate.ToString("yyyy.MM.dd");
@@ -479,7 +459,7 @@ namespace GreenLock.UC_Controls
             string result = "";
             try
             {
-                result = (Math.Round((double.Parse(text) + (GetDayOfMinute(endDate) - GetDayOfMinute(startDate)) / 60) , 1)).ToString();
+                result = (Math.Round((double.Parse(text) + (GetDayOfMinute(endDate) - GetDayOfMinute(startDate)) / 60) , 2)).ToString();
             }
             catch (Exception ex)
             {
@@ -756,30 +736,28 @@ namespace GreenLock.UC_Controls
         }
 
 
+        public static DateTime StartOfWeek(DateTime dt, DayOfWeek startOfWeek)
+        {
+            int diff = (7 + (dt.DayOfWeek - startOfWeek)) % 7;
+            return dt.AddDays(-1 * diff).Date;
+        }
+
         /// <summary>
         /// 
         /// </summary>
         private void SetChoiceCalendar()
         {
-            // 월요일이 아닌경우
-            DateTime currStartDate;
-            if (DateTime.Now.DayOfWeek != DayOfWeek.Monday)
-            {
-                int gap = (calendarControl1.DateTime.DayOfWeek - DayOfWeek.Monday);
-                currStartDate = calendarControl1.DateTime.AddDays((-1 * gap));
-            }
-            // 월요일 인 경우
-            else
-            {
-                currStartDate = calendarControl1.DateTime;
-            }
+            _startDate = Convert.ToDateTime(StartOfWeek(calendarControl1.DateTime, DayOfWeek.Monday).ToString("yyyy-MM-dd 00:00:00"));
+            _endDate = Convert.ToDateTime(StartOfWeek(calendarControl1.DateTime, DayOfWeek.Monday).AddDays(6).ToString("yyyy-MM-dd 23:59:59"));
 
-            // 시간 바운더리가 겹치지 않는다면 날짜를 새로 세팅한다
-            if (currStartDate.ToString("yyyyMMdd") != _startDate.ToString("yyyyMMdd"))
-            {
-                SetCalendarInit(calendarControl1.DateTime);
-                this.calendarControl1.Visible = false;
-            }
+            this.calendarControl1.Visible = false;
+
+            // 라벨을 세팅한다
+            Lable_StartDate.Text = _startDate.ToString("yyyy.MM.dd");
+            Lable_EndDate.Text = _endDate.ToString("yyyy.MM.dd");
+            this.calendarControl1.Visible = false;
+
+            SetDateTimeData();
         }
 
 
