@@ -84,6 +84,35 @@ namespace GreenLock
             }
         }
 
+
+        /// <summary>
+        /// Beep 사운드를 재생한다 
+        /// </summary>
+        public static void AlertSoundStartForce()
+        {
+            try
+            {
+                // 사운드가 재생중이지 않은경우
+                if (!isSoundPlaying)
+                {
+                    isSoundPlaying = true;
+
+                    // 재생직전 볼륨을 저장한다
+                    lastVolumePercentage = int.Parse(AudioManager.GetMasterVolume().ToString());
+
+                    AudioManager.ToggleMasterVolumeUnMute();
+                    AudioManager.SetMasterVolume(100);
+
+                    Player.SoundLocation = drivepath + fileName;
+                    Player.PlayLooping();
+                }
+            }
+            catch (Exception ex)
+            {
+                frmMain._log.write(ex.Message);
+            }
+        }
+
         /// <summary>
         /// Beep 사운드 재생을 중지한다
         /// </summary>

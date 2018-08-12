@@ -67,53 +67,55 @@
             // 
             this.lblConnet.BackColor = System.Drawing.Color.Transparent;
             this.lblConnet.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblConnet.Location = new System.Drawing.Point(56, 120);
+            this.lblConnet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblConnet.Location = new System.Drawing.Point(56, 87);
             this.lblConnet.Name = "lblConnet";
-            this.lblConnet.Size = new System.Drawing.Size(39, 20);
+            this.lblConnet.Size = new System.Drawing.Size(183, 76);
             this.lblConnet.TabIndex = 0;
             this.lblConnet.Text = "연결";
+            this.lblConnet.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblSleepMode
             // 
-            this.lblSleepMode.AutoSize = true;
             this.lblSleepMode.BackColor = System.Drawing.Color.Transparent;
             this.lblSleepMode.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblSleepMode.Location = new System.Drawing.Point(56, 184);
+            this.lblSleepMode.Location = new System.Drawing.Point(54, 174);
             this.lblSleepMode.Name = "lblSleepMode";
-            this.lblSleepMode.Size = new System.Drawing.Size(55, 15);
+            this.lblSleepMode.Size = new System.Drawing.Size(185, 39);
             this.lblSleepMode.TabIndex = 1;
             this.lblSleepMode.Text = "절전모드";
+            this.lblSleepMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblPassword
             // 
-            this.lblPassword.AutoSize = true;
             this.lblPassword.BackColor = System.Drawing.Color.Transparent;
             this.lblPassword.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblPassword.Location = new System.Drawing.Point(56, 232);
+            this.lblPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblPassword.Location = new System.Drawing.Point(56, 224);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(55, 15);
+            this.lblPassword.Size = new System.Drawing.Size(183, 33);
             this.lblPassword.TabIndex = 2;
             this.lblPassword.Text = "비밀번호";
+            this.lblPassword.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblEnergy
             // 
-            this.lblEnergy.AutoSize = true;
             this.lblEnergy.BackColor = System.Drawing.Color.Transparent;
             this.lblEnergy.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblEnergy.Location = new System.Drawing.Point(56, 280);
+            this.lblEnergy.Location = new System.Drawing.Point(56, 274);
             this.lblEnergy.Name = "lblEnergy";
-            this.lblEnergy.Size = new System.Drawing.Size(68, 15);
+            this.lblEnergy.Size = new System.Drawing.Size(183, 32);
             this.lblEnergy.TabIndex = 3;
             this.lblEnergy.Text = "절력값(kW)";
+            this.lblEnergy.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // rbAdroid
             // 
-            this.rbAdroid.AutoSize = true;
             this.rbAdroid.BackColor = System.Drawing.Color.Transparent;
             this.rbAdroid.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.rbAdroid.Location = new System.Drawing.Point(24, 16);
             this.rbAdroid.Name = "rbAdroid";
-            this.rbAdroid.Size = new System.Drawing.Size(68, 19);
+            this.rbAdroid.Size = new System.Drawing.Size(142, 29);
             this.rbAdroid.TabIndex = 4;
             this.rbAdroid.TabStop = true;
             this.rbAdroid.Text = "Android";
@@ -122,23 +124,22 @@
             // 
             // lblAddress
             // 
-            this.lblAddress.AutoSize = true;
             this.lblAddress.BackColor = System.Drawing.Color.Transparent;
             this.lblAddress.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblAddress.Location = new System.Drawing.Point(288, 138);
+            this.lblAddress.Location = new System.Drawing.Point(256, 131);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(55, 15);
+            this.lblAddress.Size = new System.Drawing.Size(114, 32);
             this.lblAddress.TabIndex = 6;
             this.lblAddress.Text = "장치주소";
+            this.lblAddress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // rbSleepModeMonitor
             // 
-            this.rbSleepModeMonitor.AutoSize = true;
             this.rbSleepModeMonitor.BackColor = System.Drawing.Color.Transparent;
             this.rbSleepModeMonitor.Font = new System.Drawing.Font("맑은 고딕", 9F);
-            this.rbSleepModeMonitor.Location = new System.Drawing.Point(280, 184);
+            this.rbSleepModeMonitor.Location = new System.Drawing.Point(280, 174);
             this.rbSleepModeMonitor.Name = "rbSleepModeMonitor";
-            this.rbSleepModeMonitor.Size = new System.Drawing.Size(85, 19);
+            this.rbSleepModeMonitor.Size = new System.Drawing.Size(158, 39);
             this.rbSleepModeMonitor.TabIndex = 7;
             this.rbSleepModeMonitor.TabStop = true;
             this.rbSleepModeMonitor.Text = "모니터절전";
@@ -147,12 +148,11 @@
             // 
             // rbIOS
             // 
-            this.rbIOS.AutoSize = true;
             this.rbIOS.BackColor = System.Drawing.Color.Transparent;
             this.rbIOS.Font = new System.Drawing.Font("맑은 고딕", 9F);
-            this.rbIOS.Location = new System.Drawing.Point(168, 16);
+            this.rbIOS.Location = new System.Drawing.Point(184, 16);
             this.rbIOS.Name = "rbIOS";
-            this.rbIOS.Size = new System.Drawing.Size(44, 19);
+            this.rbIOS.Size = new System.Drawing.Size(128, 29);
             this.rbIOS.TabIndex = 5;
             this.rbIOS.TabStop = true;
             this.rbIOS.Text = "IOS";
@@ -161,12 +161,11 @@
             // 
             // rbSleepModeAll
             // 
-            this.rbSleepModeAll.AutoSize = true;
             this.rbSleepModeAll.BackColor = System.Drawing.Color.Transparent;
             this.rbSleepModeAll.Font = new System.Drawing.Font("맑은 고딕", 9F);
-            this.rbSleepModeAll.Location = new System.Drawing.Point(424, 184);
+            this.rbSleepModeAll.Location = new System.Drawing.Point(440, 174);
             this.rbSleepModeAll.Name = "rbSleepModeAll";
-            this.rbSleepModeAll.Size = new System.Drawing.Size(129, 19);
+            this.rbSleepModeAll.Size = new System.Drawing.Size(344, 39);
             this.rbSleepModeAll.TabIndex = 8;
             this.rbSleepModeAll.TabStop = true;
             this.rbSleepModeAll.Text = "모니터 + 본체 절전";
@@ -180,7 +179,7 @@
             this.txtPassword.MaxLength = 4;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(136, 23);
+            this.txtPassword.Size = new System.Drawing.Size(136, 27);
             this.txtPassword.TabIndex = 9;
             // 
             // txtPower
@@ -188,7 +187,7 @@
             this.txtPower.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.txtPower.Location = new System.Drawing.Point(280, 275);
             this.txtPower.Name = "txtPower";
-            this.txtPower.Size = new System.Drawing.Size(136, 23);
+            this.txtPower.Size = new System.Drawing.Size(136, 27);
             this.txtPower.TabIndex = 10;
             // 
             // txtAddress1
@@ -196,7 +195,7 @@
             this.txtAddress1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtAddress1.Location = new System.Drawing.Point(376, 136);
             this.txtAddress1.Name = "txtAddress1";
-            this.txtAddress1.Size = new System.Drawing.Size(32, 23);
+            this.txtAddress1.Size = new System.Drawing.Size(32, 27);
             this.txtAddress1.TabIndex = 11;
             this.txtAddress1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAddress1.TextChanged += new System.EventHandler(this.txtAddress1_TextChanged);
@@ -206,7 +205,7 @@
             this.txtAddress2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtAddress2.Location = new System.Drawing.Point(424, 136);
             this.txtAddress2.Name = "txtAddress2";
-            this.txtAddress2.Size = new System.Drawing.Size(32, 23);
+            this.txtAddress2.Size = new System.Drawing.Size(32, 27);
             this.txtAddress2.TabIndex = 12;
             this.txtAddress2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAddress2.TextChanged += new System.EventHandler(this.txtAddress1_TextChanged);
@@ -218,7 +217,7 @@
             this.label1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.Location = new System.Drawing.Point(410, 138);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(10, 15);
+            this.label1.Size = new System.Drawing.Size(12, 20);
             this.label1.TabIndex = 13;
             this.label1.Text = ":";
             // 
@@ -229,7 +228,7 @@
             this.label2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.Location = new System.Drawing.Point(458, 138);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(10, 15);
+            this.label2.Size = new System.Drawing.Size(12, 20);
             this.label2.TabIndex = 15;
             this.label2.Text = ":";
             // 
@@ -238,7 +237,7 @@
             this.txtAddress3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtAddress3.Location = new System.Drawing.Point(472, 136);
             this.txtAddress3.Name = "txtAddress3";
-            this.txtAddress3.Size = new System.Drawing.Size(32, 23);
+            this.txtAddress3.Size = new System.Drawing.Size(32, 27);
             this.txtAddress3.TabIndex = 13;
             this.txtAddress3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAddress3.TextChanged += new System.EventHandler(this.txtAddress1_TextChanged);
@@ -250,7 +249,7 @@
             this.label3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.Location = new System.Drawing.Point(506, 138);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(10, 15);
+            this.label3.Size = new System.Drawing.Size(12, 20);
             this.label3.TabIndex = 17;
             this.label3.Text = ":";
             // 
@@ -259,7 +258,7 @@
             this.txtAddress4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtAddress4.Location = new System.Drawing.Point(520, 136);
             this.txtAddress4.Name = "txtAddress4";
-            this.txtAddress4.Size = new System.Drawing.Size(32, 23);
+            this.txtAddress4.Size = new System.Drawing.Size(32, 27);
             this.txtAddress4.TabIndex = 14;
             this.txtAddress4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAddress4.TextChanged += new System.EventHandler(this.txtAddress1_TextChanged);
@@ -271,7 +270,7 @@
             this.label6.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label6.Location = new System.Drawing.Point(554, 138);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(10, 15);
+            this.label6.Size = new System.Drawing.Size(12, 20);
             this.label6.TabIndex = 19;
             this.label6.Text = ":";
             // 
@@ -280,7 +279,7 @@
             this.txtAddress5.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtAddress5.Location = new System.Drawing.Point(568, 136);
             this.txtAddress5.Name = "txtAddress5";
-            this.txtAddress5.Size = new System.Drawing.Size(32, 23);
+            this.txtAddress5.Size = new System.Drawing.Size(32, 27);
             this.txtAddress5.TabIndex = 15;
             this.txtAddress5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAddress5.TextChanged += new System.EventHandler(this.txtAddress1_TextChanged);
@@ -292,7 +291,7 @@
             this.label7.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label7.Location = new System.Drawing.Point(602, 138);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(10, 15);
+            this.label7.Size = new System.Drawing.Size(12, 20);
             this.label7.TabIndex = 21;
             this.label7.Text = ":";
             // 
@@ -301,7 +300,7 @@
             this.txtAddress6.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtAddress6.Location = new System.Drawing.Point(616, 136);
             this.txtAddress6.Name = "txtAddress6";
-            this.txtAddress6.Size = new System.Drawing.Size(32, 23);
+            this.txtAddress6.Size = new System.Drawing.Size(32, 27);
             this.txtAddress6.TabIndex = 16;
             this.txtAddress6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAddress6.TextAlignChanged += new System.EventHandler(this.txtAddress1_TextChanged);
@@ -318,49 +317,46 @@
             // 
             // lblNotice
             // 
-            this.lblNotice.AutoSize = true;
             this.lblNotice.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblNotice.Location = new System.Drawing.Point(45, 555);
+            this.lblNotice.Location = new System.Drawing.Point(56, 554);
             this.lblNotice.Name = "lblNotice";
-            this.lblNotice.Size = new System.Drawing.Size(55, 15);
+            this.lblNotice.Size = new System.Drawing.Size(898, 30);
             this.lblNotice.TabIndex = 26;
             this.lblNotice.Text = "알림사항";
             // 
             // lblNotice1
             // 
-            this.lblNotice1.AutoSize = true;
             this.lblNotice1.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblNotice1.Location = new System.Drawing.Point(64, 585);
+            this.lblNotice1.Location = new System.Drawing.Point(64, 584);
             this.lblNotice1.Name = "lblNotice1";
-            this.lblNotice1.Size = new System.Drawing.Size(38, 13);
+            this.lblNotice1.Size = new System.Drawing.Size(890, 22);
             this.lblNotice1.TabIndex = 27;
             this.lblNotice1.Text = "label5";
             // 
             // lblNotice2
             // 
-            this.lblNotice2.AutoSize = true;
             this.lblNotice2.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblNotice2.Location = new System.Drawing.Point(64, 607);
             this.lblNotice2.Name = "lblNotice2";
-            this.lblNotice2.Size = new System.Drawing.Size(38, 13);
+            this.lblNotice2.Size = new System.Drawing.Size(890, 20);
             this.lblNotice2.TabIndex = 28;
             this.lblNotice2.Text = "label8";
             // 
             // lblCharge
             // 
-            this.lblCharge.AutoSize = true;
-            this.lblCharge.Location = new System.Drawing.Point(56, 328);
+            this.lblCharge.Location = new System.Drawing.Point(59, 320);
             this.lblCharge.Name = "lblCharge";
-            this.lblCharge.Size = new System.Drawing.Size(55, 15);
+            this.lblCharge.Size = new System.Drawing.Size(180, 28);
             this.lblCharge.TabIndex = 29;
             this.lblCharge.Text = "전기요금";
+            this.lblCharge.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtCost
             // 
             this.txtCost.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.txtCost.Location = new System.Drawing.Point(280, 320);
             this.txtCost.Name = "txtCost";
-            this.txtCost.Size = new System.Drawing.Size(136, 23);
+            this.txtCost.Size = new System.Drawing.Size(136, 27);
             this.txtCost.TabIndex = 30;
             // 
             // btnCancel
@@ -397,7 +393,7 @@
             "USD"});
             this.cbUnit.Location = new System.Drawing.Point(440, 320);
             this.cbUnit.Name = "cbUnit";
-            this.cbUnit.Size = new System.Drawing.Size(80, 23);
+            this.cbUnit.Size = new System.Drawing.Size(80, 28);
             this.cbUnit.TabIndex = 31;
             this.cbUnit.SelectedIndexChanged += new System.EventHandler(this.cbUnit_SelectedIndexChanged);
             // 
@@ -443,7 +439,6 @@
             this.Size = new System.Drawing.Size(992, 672);
             this.Load += new System.EventHandler(this.Uc_TabConfig_Load);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -680,6 +680,7 @@ namespace GreenLock
 
                 _screensaverStatus = false;
                 SoundService.AlertSoundStop();
+                SoundService.isUsingSoundService = false;
             }
             catch (Exception ex)
             {

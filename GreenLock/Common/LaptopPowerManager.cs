@@ -29,7 +29,14 @@ namespace GreenLock.Common
 
                         SoundService.AlertSoundStop();
                     }
+
+
+                    if (!SoundService.isAlramUseOn)
+                    {
+                        SoundService.AlertSoundStop();
+                    }
                 }
+
             }
             catch (Exception ex)
             {
