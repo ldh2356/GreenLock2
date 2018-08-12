@@ -89,7 +89,7 @@ namespace GreenLock.UC_Controls
             this.Lable_StartDate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Lable_StartDate.Location = new System.Drawing.Point(3, 0);
             this.Lable_StartDate.Name = "Lable_StartDate";
-            this.Lable_StartDate.Size = new System.Drawing.Size(136, 34);
+            this.Lable_StartDate.Size = new System.Drawing.Size(106, 34);
             this.Lable_StartDate.TabIndex = 95;
             this.Lable_StartDate.Text = "2018.07.23";
             this.Lable_StartDate.Click += new System.EventHandler(this.label1_Click);
@@ -98,9 +98,9 @@ namespace GreenLock.UC_Controls
             // 
             this.Lable_EndDate.AccessibleName = "LabelEndDate";
             this.Lable_EndDate.Font = new System.Drawing.Font("맑은 고딕", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Lable_EndDate.Location = new System.Drawing.Point(181, 0);
+            this.Lable_EndDate.Location = new System.Drawing.Point(151, 0);
             this.Lable_EndDate.Name = "Lable_EndDate";
-            this.Lable_EndDate.Size = new System.Drawing.Size(134, 36);
+            this.Lable_EndDate.Size = new System.Drawing.Size(104, 36);
             this.Lable_EndDate.TabIndex = 14;
             this.Lable_EndDate.Text = "2018.07.27";
             // 
@@ -118,7 +118,7 @@ namespace GreenLock.UC_Controls
             this.calendarControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.calendarControl1.MaxValue = new System.DateTime(9999, 12, 31, 0, 0, 0, 0);
             this.calendarControl1.Name = "calendarControl1";
-            this.calendarControl1.Size = new System.Drawing.Size(299, 290);
+            this.calendarControl1.Size = new System.Drawing.Size(239, 237);
             this.calendarControl1.TabIndex = 999;
             this.calendarControl1.Visible = false;
             this.calendarControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.calendarControl1_MouseDoubleClick);
@@ -127,21 +127,24 @@ namespace GreenLock.UC_Controls
             // 
             this.labelUnlockAvg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.labelUnlockAvg.Font = new System.Drawing.Font("맑은 고딕", 10F, System.Drawing.FontStyle.Bold);
-            this.labelUnlockAvg.Location = new System.Drawing.Point(717, 567);
+            this.labelUnlockAvg.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelUnlockAvg.Location = new System.Drawing.Point(715, 554);
             this.labelUnlockAvg.Name = "labelUnlockAvg";
-            this.labelUnlockAvg.Size = new System.Drawing.Size(80, 23);
+            this.labelUnlockAvg.Size = new System.Drawing.Size(80, 53);
             this.labelUnlockAvg.TabIndex = 7;
             this.labelUnlockAvg.Text = "0hr";
+            this.labelUnlockAvg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelockAvg
             // 
             this.labelockAvg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.labelockAvg.Font = new System.Drawing.Font("맑은 고딕", 10F, System.Drawing.FontStyle.Bold);
-            this.labelockAvg.Location = new System.Drawing.Point(875, 567);
+            this.labelockAvg.Location = new System.Drawing.Point(875, 554);
             this.labelockAvg.Name = "labelockAvg";
-            this.labelockAvg.Size = new System.Drawing.Size(80, 23);
+            this.labelockAvg.Size = new System.Drawing.Size(80, 53);
             this.labelockAvg.TabIndex = 8;
             this.labelockAvg.Text = "0hr";
+            this.labelockAvg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // LabelAvgStartEnd
             // 
@@ -480,7 +483,7 @@ namespace GreenLock.UC_Controls
             this.Cal_left.BackgroundImage = global::GreenLock.Properties.Resources.btn_calander;
             this.Cal_left.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.Cal_left.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Cal_left.Location = new System.Drawing.Point(321, 3);
+            this.Cal_left.Location = new System.Drawing.Point(261, 3);
             this.Cal_left.Name = "Cal_left";
             this.Cal_left.Size = new System.Drawing.Size(33, 32);
             this.Cal_left.TabIndex = 1;
@@ -529,7 +532,7 @@ namespace GreenLock.UC_Controls
             this.label1.AccessibleName = "LabelStartDate";
             this.label1.Font = new System.Drawing.Font("맑은 고딕", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(145, 0);
+            this.label1.Location = new System.Drawing.Point(115, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 39);
             this.label1.TabIndex = 1002;
