@@ -9,8 +9,19 @@ using System.Windows.Forms;
 
 namespace GreenLock
 {
-    class SoundService
+    public class SoundService
     {
+        /// <summary>
+        /// 사운드 사용여부 
+        /// </summary>
+        public static bool isUsingSoundService { get; set; } = false;
+
+
+        /// <summary>
+        /// 알람 사용 여부
+        /// </summary>
+        public static bool isAlramUseOn { get; set; } = true;
+
         /// <summary>
         /// 사운드 비프음 재생전 볼륨 퍼센트
         /// </summary>
@@ -48,19 +59,23 @@ namespace GreenLock
         {
             try
             {
-                // 사운드가 재생중이지 않은경우
-                if (!isSoundPlaying)
+                // 알람 사용을 할때만 알람 사용
+                if (isAlramUseOn)
                 {
-                    isSoundPlaying = true;
+                    // 사운드가 재생중이지 않은경우
+                    if (!isSoundPlaying)
+                    {
+                        isSoundPlaying = true;
 
-                    // 재생직전 볼륨을 저장한다
-                    lastVolumePercentage = int.Parse(AudioManager.GetMasterVolume().ToString());
+                        // 재생직전 볼륨을 저장한다
+                        lastVolumePercentage = int.Parse(AudioManager.GetMasterVolume().ToString());
 
-                    AudioManager.ToggleMasterVolumeUnMute();
-                    AudioManager.SetMasterVolume(100);
+                        AudioManager.ToggleMasterVolumeUnMute();
+                        AudioManager.SetMasterVolume(100);
 
-                    Player.SoundLocation = drivepath + fileName;
-                    Player.PlayLooping();
+                        Player.SoundLocation = drivepath + fileName;
+                        Player.PlayLooping();
+                    }
                 }
             }
             catch (Exception ex)

@@ -131,9 +131,10 @@
     <Compile Include="Common\DataBaseHelper.cs" />
     <Compile Include="Common\DpiManager.cs" />
     <Compile Include="Common\KeyboardHooking.cs" />
+    <Compile Include="Common\LaptopPowerManager.cs" />
     <Compile Include="Common\Log.cs" />
     <Compile Include="Common\SaveEnergy.cs" />
-    <Compile Include="Common\Service.cs" />
+    <Compile Include="Common\SoundService.cs" />
     <Compile Include="Common\TimeConverter.cs" />
     <Compile Include="Common\UpdateChecker.cs" />
     <Compile Include="CustomLabel.cs">
