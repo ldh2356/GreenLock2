@@ -9,8 +9,19 @@ using System.Windows.Forms;
 
 namespace GreenLock
 {
-    class Service
+    public class SoundService
     {
+        /// <summary>
+        /// 사운드 사용여부 
+        /// </summary>
+        public static bool isUsingSoundService { get; set; } = false;
+
+
+        /// <summary>
+        /// 알람 사용 여부
+        /// </summary>
+        public static bool isAlramUseOn { get; set; } = true;
+
         /// <summary>
         /// 사운드 비프음 재생전 볼륨 퍼센트
         /// </summary>
@@ -48,6 +59,39 @@ namespace GreenLock
         {
             try
             {
+                // 알람 사용을 할때만 알람 사용
+                if (isAlramUseOn)
+                {
+                    // 사운드가 재생중이지 않은경우
+                    if (!isSoundPlaying)
+                    {
+                        isSoundPlaying = true;
+
+                        // 재생직전 볼륨을 저장한다
+                        lastVolumePercentage = int.Parse(AudioManager.GetMasterVolume().ToString());
+
+                        AudioManager.ToggleMasterVolumeUnMute();
+                        AudioManager.SetMasterVolume(100);
+
+                        Player.SoundLocation = drivepath + fileName;
+                        Player.PlayLooping();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                frmMain._log.write(ex.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Beep 사운드를 재생한다 
+        /// </summary>
+        public static void AlertSoundStartForce()
+        {
+            try
+            {
                 // 사운드가 재생중이지 않은경우
                 if (!isSoundPlaying)
                 {
@@ -65,7 +109,7 @@ namespace GreenLock
             }
             catch (Exception ex)
             {
-                //MainForm.log.write(ex.Message);
+                frmMain._log.write(ex.Message);
             }
         }
 
@@ -76,10 +120,13 @@ namespace GreenLock
         {
             try
             {
-                // 볼륨을 이전에 저장했던 볼륨으로 복원한다
-                AudioManager.SetMasterVolume(lastVolumePercentage);
-                isSoundPlaying = false;
-                Player.Stop();
+                if (isSoundPlaying)
+                {
+                    // 볼륨을 이전에 저장했던 볼륨으로 복원한다
+                    AudioManager.SetMasterVolume(lastVolumePercentage);
+                    isSoundPlaying = false;
+                    Player.Stop();
+                }
             }
             catch (Exception ex)
             {

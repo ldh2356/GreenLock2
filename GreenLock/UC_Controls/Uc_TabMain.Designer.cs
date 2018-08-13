@@ -86,50 +86,54 @@
             this.lblKorea.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblKorea.ForeColor = System.Drawing.Color.White;
             this.lblKorea.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblKorea.Location = new System.Drawing.Point(856, 16);
+            this.lblKorea.Location = new System.Drawing.Point(845, 16);
             this.lblKorea.Name = "lblKorea";
-            this.lblKorea.Size = new System.Drawing.Size(53, 20);
+            this.lblKorea.Size = new System.Drawing.Size(62, 24);
             this.lblKorea.TabIndex = 11;
-            this.lblKorea.Text = "Korea ";
+            this.lblKorea.Text = "Korean ";
+            this.lblKorea.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.lblKorea.Click += new System.EventHandler(this.lblKorea_Click);
             // 
             // lblEnegry
             // 
-            this.lblEnegry.AutoSize = true;
             this.lblEnegry.BackColor = System.Drawing.Color.Transparent;
-            this.lblEnegry.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold);
+            this.lblEnegry.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblEnegry.ForeColor = System.Drawing.Color.White;
-            this.lblEnegry.Location = new System.Drawing.Point(425, 0);
+            this.lblEnegry.Location = new System.Drawing.Point(443, 0);
+            this.lblEnegry.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.lblEnegry.Name = "lblEnegry";
-            this.lblEnegry.Size = new System.Drawing.Size(118, 23);
+            this.lblEnegry.Size = new System.Drawing.Size(118, 37);
             this.lblEnegry.TabIndex = 15;
             this.lblEnegry.Text = "에너지 절감량";
+            this.lblEnegry.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblEnegry.Click += new System.EventHandler(this.lblEnegry_Click);
             // 
             // lblSecurity
             // 
-            this.lblSecurity.AutoSize = true;
             this.lblSecurity.BackColor = System.Drawing.Color.Transparent;
-            this.lblSecurity.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold);
+            this.lblSecurity.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblSecurity.ForeColor = System.Drawing.Color.White;
-            this.lblSecurity.Location = new System.Drawing.Point(549, 0);
+            this.lblSecurity.Location = new System.Drawing.Point(574, 0);
+            this.lblSecurity.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.lblSecurity.Name = "lblSecurity";
-            this.lblSecurity.Size = new System.Drawing.Size(44, 23);
+            this.lblSecurity.Size = new System.Drawing.Size(44, 37);
             this.lblSecurity.TabIndex = 16;
             this.lblSecurity.Text = "보안";
+            this.lblSecurity.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblSecurity.Click += new System.EventHandler(this.lblSecurity_Click);
             // 
             // lblConfig
             // 
-            this.lblConfig.AutoSize = true;
             this.lblConfig.BackColor = System.Drawing.Color.Transparent;
-            this.lblConfig.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold);
+            this.lblConfig.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblConfig.ForeColor = System.Drawing.Color.White;
-            this.lblConfig.Location = new System.Drawing.Point(599, 0);
+            this.lblConfig.Location = new System.Drawing.Point(631, 0);
+            this.lblConfig.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.lblConfig.Name = "lblConfig";
-            this.lblConfig.Size = new System.Drawing.Size(78, 23);
+            this.lblConfig.Size = new System.Drawing.Size(78, 37);
             this.lblConfig.TabIndex = 17;
             this.lblConfig.Text = "환경설정";
+            this.lblConfig.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblConfig.Click += new System.EventHandler(this.lblConfig_Click);
             // 
             // pnlMain
@@ -149,9 +153,9 @@
             this.flowLayoutPanel1.Controls.Add(this.lblSecurity);
             this.flowLayoutPanel1.Controls.Add(this.lblEnegry);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(296, 48);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(296, 40);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(680, 24);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(712, 37);
             this.flowLayoutPanel1.TabIndex = 25;
             // 
             // Uc_TabMain
@@ -175,7 +179,6 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Uc_TabMain_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

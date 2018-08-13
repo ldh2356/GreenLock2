@@ -98,6 +98,93 @@ namespace GreenLock
 
         #endregion
 
+
+        #region 랩탑 열림/닫힘
+        IntPtr hMonitorOn;
+        internal void RegisterForPowerNotifications(IntPtr hwnd)
+        {
+            hMonitorOn = RegisterPowerSettingNotification(hwnd, ref GUID_MONITOR_POWER_ON, DEVICE_NOTIFY_WINDOW_HANDLE);
+        }
+
+        [DllImport(@"User32", SetLastError = true, EntryPoint = "RegisterPowerSettingNotification",
+        CallingConvention = CallingConvention.StdCall)]
+        private static extern IntPtr RegisterPowerSettingNotification(IntPtr hRecipient,ref Guid PowerSettingGuid,Int32 Flags);
+
+        static Guid GUID_MONITOR_POWER_ON = new Guid(0x02731015, 0x4510, 0x4526, 0x99, 0xE6, 0xE5, 0xA1, 0x7E, 0xBD, 0x1A, 0xEA);
+
+        // Win32 decls and defs
+        //
+        const int PBT_APMQUERYSUSPEND = 0x0000;
+        const int PBT_APMQUERYSTANDBY = 0x0001;
+        const int PBT_APMQUERYSUSPENDFAILED = 0x0002;
+        const int PBT_APMQUERYSTANDBYFAILED = 0x0003;
+        const int PBT_APMSUSPEND = 0x0004;
+        const int PBT_APMSTANDBY = 0x0005;
+        const int PBT_APMRESUMECRITICAL = 0x0006;
+        const int PBT_APMRESUMESUSPEND = 0x0007;
+        const int PBT_APMRESUMESTANDBY = 0x0008;
+        const int PBT_APMBATTERYLOW = 0x0009;
+        const int PBT_APMPOWERSTATUSCHANGE = 0x000A; // power status
+        const int PBT_APMOEMEVENT = 0x000B;
+        const int PBT_APMRESUMEAUTOMATIC = 0x0012;
+        const int PBT_POWERSETTINGCHANGE = 0x8013; // DPPE
+
+        const int DEVICE_NOTIFY_WINDOW_HANDLE = 0x00000000;
+        const int DEVICE_NOTIFY_SERVICE_HANDLE = 0x00000001;
+
+
+        private const int WM_POWERBROADCAST = 0x0218;
+        private const int WM_SYSCOMMAND = 0x0112;
+        private const int SC_SCREENSAVE = 0xF140;
+        private const int SC_CLOSE = 0xF060; // dont know
+        private const int SC_MONITORPOWER = 0xF170;
+        private const int SC_MAXIMIZE = 0xF030; // dont know
+        private const int MONITORON = -1;
+        private const int MONITOROFF = 2;
+        private const int MONITORSTANBY = 1;
+
+        // This structure is sent when the PBT_POWERSETTINGSCHANGE message is sent.
+        // It describes the power setting that has changed and contains data about the change
+        [StructLayout(LayoutKind.Sequential, Pack = 4)]
+        internal struct POWERBROADCAST_SETTING
+        {
+            public Guid PowerSetting;
+            public uint DataLength;
+            public byte Data;
+        }
+
+        Guid GUID_LIDSWITCH_STATE_CHANGE = new Guid(0xBA3E0F4D, 0xB817, 0x4094, 0xA2, 0xD1, 0xD5, 0x63, 0x79, 0xE6, 0xA0, 0xF3);
+        private bool? _previousLidState = null;
+
+        /// <summary>
+        /// Overloaded System Windows Handler.
+        /// </summary>
+        /// <param name="m">Message <see cref="Message"/> structure</param>
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_POWERBROADCAST)
+            {
+                Debug.WriteLine("lid close");
+            }
+
+            switch (m.Msg)
+            {
+                case SC_MONITORPOWER:
+                case MONITORON:
+                case MONITOROFF:
+                case MONITORSTANBY:
+                    Debug.WriteLine(m.Msg);
+                    Debug.WriteLine("lid on");
+                    break;
+
+            }
+
+            base.WndProc(ref m);
+        }
+
+        #endregion
+
+
         private void SetMainDate()
         {
             try
@@ -109,6 +196,9 @@ namespace GreenLock
                 _log.write(ex.StackTrace);
             }
         }
+
+
+
 
 
         public frmMain()
@@ -221,6 +311,8 @@ namespace GreenLock
         /// <param name="e"></param>
         private void Bt32FeetDevice_OnIsSevrice(object sender, EventArgs e)
         {
+            LaptopPowerManager.DoCheckPowerCableCheckAndAlarm();
+
             // 언락 데이터 타임 기록
             // 최초 구동시..
             if (_isFirstOn)
@@ -274,9 +366,9 @@ namespace GreenLock
             //this.sendPCEnergy("3");
 
             // 컴퓨터 절전해제
-            Service.mouse_event(Service.MOUSE_MOVE, 0, 1, 0, UIntPtr.Zero);
+            SoundService.mouse_event(SoundService.MOUSE_MOVE, 0, 1, 0, UIntPtr.Zero);
             Thread.Sleep(40);
-            Service.mouse_event(Service.MOUSE_MOVE, 0, -1, 0, UIntPtr.Zero);
+            SoundService.mouse_event(SoundService.MOUSE_MOVE, 0, -1, 0, UIntPtr.Zero);
 
             _calcReduction.OperationStartTime = DateTime.Now;
             _calcReduction.ScreenEndTime = DateTime.Now;
@@ -285,7 +377,7 @@ namespace GreenLock
             //화면보호기 종료
             screenSaverAllStop();
             //KeyboardHooking.TaskBarShow();
-            Service.AlertSoundStop();
+            SoundService.AlertSoundStop();
 
             try
             {
@@ -297,7 +389,7 @@ namespace GreenLock
             }
 
             _screensaverStatus = false;
-            Service.SendMessage(this.Handle.ToInt32(), Service.WM_SYSCOMMAND, Service.SC_MONITORPOWER, Service.MONITOR_ON);
+            SoundService.SendMessage(this.Handle.ToInt32(), SoundService.WM_SYSCOMMAND, SoundService.SC_MONITORPOWER, SoundService.MONITOR_ON);
         }
         
 
@@ -308,6 +400,8 @@ namespace GreenLock
         /// <param name="e"></param>
         private void Bt32FeetDevice_OnNotService(object sender, EventArgs e)
         {
+            LaptopPowerManager.DoCheckPowerCableCheckAndAlarm();
+
             // 최초 구동시..
             if (_isFirstOn)
             {
@@ -373,7 +467,7 @@ namespace GreenLock
             // 모니터 절전 진입
             else
             {
-                Service.SendMessage(this.Handle.ToInt32(), Service.WM_SYSCOMMAND, Service.SC_MONITORPOWER, Service.MONITOR_OFF);
+                SoundService.SendMessage(this.Handle.ToInt32(), SoundService.WM_SYSCOMMAND, SoundService.SC_MONITORPOWER, SoundService.MONITOR_OFF);
             }
         }
 
@@ -591,7 +685,8 @@ namespace GreenLock
                 //MainForm.log.write("screenSaver2 != null" + (screenSaver2 != null));
 
                 _screensaverStatus = false;
-                Service.AlertSoundStop();
+                SoundService.AlertSoundStop();
+                SoundService.isUsingSoundService = false;
             }
             catch (Exception ex)
             {
@@ -652,9 +747,11 @@ namespace GreenLock
 
                     //GIF파일의 크기를 메인모니터 크기로 조정
                     //screenSaver.pb_screenSaver.Size = new Size(screen[screen1].WorkingArea.Width, screen[screen1].WorkingArea.Height);
-
-                    //_screenSaver1.Size = new Size(100, 100);
                     _screenSaver1.Size = new Size(screen[screen1].Bounds.Width, screen[screen1].Bounds.Height);
+#if debug
+                    _screenSaver1.Size = new Size(100,100);
+#endif
+
                     _screenSaver1.Show(this);
                     //KeyboardHooking.TaskBarHide();
                 }
@@ -690,7 +787,9 @@ namespace GreenLock
 
                     //GIF파일의 크기를 서브모니터 크기로 조정
                     _screenSaver2.Size = new Size(screen[screen2].Bounds.Width, screen[screen2].Bounds.Height);
-                    //_screenSaver1.Size = new Size(100, 100);
+#if debug
+                    _screenSaver1.Size = new Size(100, 100);
+#endif
                     _screenSaver2.Show(this);
                 }
             }
@@ -720,7 +819,7 @@ namespace GreenLock
             _bt32FeetDevice.OnNotService -= Bt32FeetDevice_OnNotService;
         }
 
-        #endregion
+#endregion
 
 
         protected override CreateParams CreateParams
