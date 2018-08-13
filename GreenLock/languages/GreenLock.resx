@@ -270,4 +270,7 @@
   <data name="ConfigChanged" xml:space="preserve">
     <value>설정이 변경되었습니다.</value>
   </data>
+  <data name="passwordError" xml:space="preserve">
+    <value>비밀번호가 틀렸습니다. \n다시 입력해 주세요</value>
+  </data>
 </root>

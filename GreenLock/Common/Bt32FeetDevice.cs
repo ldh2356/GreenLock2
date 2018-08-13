@@ -274,16 +274,16 @@ namespace GreenLock
                         if (OnIsService != null)
                                OnIsService(this, null);
 
-                        //foreach (ServiceRecord r in services)
-                        //{
-                        //    int port = ServiceRecordHelper.GetRfcommChannelNumber(r);
-                        //    string curSvcName = r.GetPrimaryMultiLanguageStringAttributeById(UniversalAttributeId.ServiceName);
-                        //    //if(curSvcName.CompareTo("GreenLock0")==0)
-                        //    //{
+                        foreach (ServiceRecord r in services)
+                        {
+                            int port = ServiceRecordHelper.GetRfcommChannelNumber(r);
+                            string curSvcName = r.GetPrimaryMultiLanguageStringAttributeById(UniversalAttributeId.ServiceName);
+                            if(curSvcName.CompareTo("GreenLock0")==0)
+                            {
                         //        isService = true;
                         //        break;
-                        //    //}
-                        //}
+                            }
+                        }
 
                         //if (isService)
                         //{

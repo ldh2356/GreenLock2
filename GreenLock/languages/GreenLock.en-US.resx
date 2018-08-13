@@ -321,4 +321,7 @@ Simply go ahead with the typing 6-byte device address shown on mobile app in the
   <data name="Uc_TabSecurity_Excel_Sheet_Title_2" xml:space="preserve">
     <value>Daily Lock Unlock Data</value>
   </data>
+  <data name="passwordError" xml:space="preserve">
+    <value>The password is incorrect. \n Please enter again. </value>
+  </data>
 </root>
