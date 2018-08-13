@@ -399,7 +399,8 @@
             // 
             // Uc_TabConfig
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImage = global::GreenLock.Properties.Resources.tabConfig1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -438,6 +439,8 @@
             this.Name = "Uc_TabConfig";
             this.Size = new System.Drawing.Size(992, 672);
             this.Load += new System.EventHandler(this.Uc_TabConfig_Load);
+            this.PaddingChanged += new System.EventHandler(this.Uc_TabConfig_PaddingChanged);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Uc_TabConfig_Paint);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

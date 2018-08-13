@@ -119,6 +119,8 @@ namespace GreenLock.UC_Controls
             try
             {
                 InitializeComponent();
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(Globals._language);
+
                 this.ChartControl = new DevExpress.XtraCharts.ChartControl();
 
                 SetBaseSeries();
@@ -1339,6 +1341,11 @@ namespace GreenLock.UC_Controls
         private void label_Monday_Unlock_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Uc_TabSecurity_Paint(object sender, PaintEventArgs e)
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Globals._language);
         }
     }
 

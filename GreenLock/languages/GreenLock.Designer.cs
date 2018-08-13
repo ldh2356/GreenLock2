@@ -133,7 +133,7 @@ namespace GreenLock.languages {
         }
         
         /// <summary>
-        ///   전기요금과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   전기요금(kWh 당)과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string electric_Charge {
             get {

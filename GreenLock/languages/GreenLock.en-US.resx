@@ -160,13 +160,13 @@ Energy Saving</value>
   </data>
   <data name="co2" xml:space="preserve">
     <value>Amount of CO2
-    reduction
-      (Ton)</value>
+reduction
+(Ton)</value>
   </data>
   <data name="cost" xml:space="preserve">
-    <value> Money from
+    <value>Money from
 energy saving
-    (KRW)</value>
+(KRW)</value>
   </data>
   <data name="day" xml:space="preserve">
     <value>day</value>

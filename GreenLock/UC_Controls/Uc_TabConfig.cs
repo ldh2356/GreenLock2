@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+using System.Globalization;
 
 namespace GreenLock.UC_Controls
 {
@@ -25,6 +27,7 @@ namespace GreenLock.UC_Controls
         public Uc_TabConfig()
         {
             InitializeComponent();
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Globals._language);
 
             localization();
         }
@@ -201,6 +204,17 @@ namespace GreenLock.UC_Controls
         private void cbUnit_SelectedIndexChanged(object sender, EventArgs e)
         {
             AppConfig.Instance.ElecUnit = this.cbUnit.Text;
+        }
+
+        private void Uc_TabConfig_PaddingChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Uc_TabConfig_Paint(object sender, PaintEventArgs e)
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Globals._language);
+            localization();
         }
     };
 }
