@@ -56,6 +56,8 @@ namespace GreenLock.UC_Controls
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Globals._language);
             localization();
+            UpdateUI();
+
             //String.Format("{0,10:N3}", calcReduction.UsedKwh)
 
 
@@ -87,7 +89,11 @@ namespace GreenLock.UC_Controls
             lblTree.Left = pnlTree.Width / 2 - lblTree.Width / 2;
             //lblTreeAmt.Left = pnlTree.Width / 2 - lblTreeAmt.Width / 2 - 20;
 
-           
+
+            pictureBox1.Left = pnlEnergy.Width / 2 - pictureBox1.Width / 2;
+            pictureBox2.Left = pnlCost.Width / 2 - pictureBox2.Width / 2;
+            pictureBox3.Left = pnlCo2.Width / 2 - pictureBox3.Width / 2;
+            pictureBox4.Left = pnlTree.Width / 2 - pictureBox4.Width / 2;
         }
 
         private void pbDown_Click(object sender, EventArgs e)

@@ -218,9 +218,9 @@ connection</value>
     <value>Monitor together with CPU </value>
   </data>
   <data name="power" xml:space="preserve">
-    <value>  Amount of
+    <value>Amount of
 energy saving
-     (kWh)</value>
+(kWh)</value>
   </data>
   <data name="security_worked" xml:space="preserve">
     <value>How long security worked?</value>
@@ -247,7 +247,7 @@ Simply go ahead with the typing 6-byte device address shown on mobile app in the
   </data>
   <data name="tree" xml:space="preserve">
     <value>Number of trees
-   from savings</value>
+from savings</value>
   </data>
   <data name="userPw" xml:space="preserve">
     <value>Password</value>
