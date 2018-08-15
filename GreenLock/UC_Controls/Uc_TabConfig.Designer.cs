@@ -60,6 +60,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.cbUnit = new System.Windows.Forms.ComboBox();
+            this.lblVesion = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,7 +81,7 @@
             // 
             this.lblSleepMode.BackColor = System.Drawing.Color.Transparent;
             this.lblSleepMode.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblSleepMode.Location = new System.Drawing.Point(54, 174);
+            this.lblSleepMode.Location = new System.Drawing.Point(56, 174);
             this.lblSleepMode.Name = "lblSleepMode";
             this.lblSleepMode.Size = new System.Drawing.Size(185, 39);
             this.lblSleepMode.TabIndex = 1;
@@ -344,7 +346,7 @@
             // 
             // lblCharge
             // 
-            this.lblCharge.Location = new System.Drawing.Point(59, 320);
+            this.lblCharge.Location = new System.Drawing.Point(56, 320);
             this.lblCharge.Name = "lblCharge";
             this.lblCharge.Size = new System.Drawing.Size(180, 28);
             this.lblCharge.TabIndex = 29;
@@ -397,6 +399,23 @@
             this.cbUnit.TabIndex = 31;
             this.cbUnit.SelectedIndexChanged += new System.EventHandler(this.cbUnit_SelectedIndexChanged);
             // 
+            // lblVesion
+            // 
+            this.lblVesion.AutoSize = true;
+            this.lblVesion.Location = new System.Drawing.Point(864, 40);
+            this.lblVesion.Name = "lblVesion";
+            this.lblVesion.Size = new System.Drawing.Size(0, 20);
+            this.lblVesion.TabIndex = 34;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(712, 40);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(155, 20);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "Green Lock Version : ";
+            // 
             // Uc_TabConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -404,6 +423,8 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImage = global::GreenLock.Properties.Resources.tabConfig1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblVesion);
             this.Controls.Add(this.cbUnit);
             this.Controls.Add(this.txtCost);
             this.Controls.Add(this.lblCharge);
@@ -481,5 +502,7 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.ComboBox cbUnit;
+        private System.Windows.Forms.Label lblVesion;
+        private System.Windows.Forms.Label label4;
     }
 }

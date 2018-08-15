@@ -30,6 +30,8 @@ namespace GreenLock.UC_Controls
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Globals._language);
 
             localization();
+
+            lblVesion.Text = Application.ProductVersion.ToString();
         }
 
         public void localization()
@@ -51,7 +53,7 @@ namespace GreenLock.UC_Controls
             lblNotice2.Text = GreenLock.languages.GreenLock.notice2;
 
             lblCharge.Text = GreenLock.languages.GreenLock.electric_Charge;
-            
+  
         }
 
         private void Uc_TabConfig_Load(object sender, EventArgs e)

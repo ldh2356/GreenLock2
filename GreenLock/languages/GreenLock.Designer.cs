@@ -79,6 +79,24 @@ namespace GreenLock.languages {
         }
         
         /// <summary>
+        ///   도난방지알람이 해제되었습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string antiTheftoff {
+            get {
+                return ResourceManager.GetString("antiTheftoff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   도난방지알람이 설정되었습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string antiThefton {
+            get {
+                return ResourceManager.GetString("antiThefton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   제대로 입력하시오.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string bluetooth_setting_msg {

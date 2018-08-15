@@ -41,6 +41,8 @@ namespace GreenLock
 
         ConnectLog _log = new ConnectLog();
 
+        private string oldServiceName = "";
+
         /// <summary>
         /// 에이전트로부터 받아올 맥 어드레스
         /// </summary>
@@ -269,26 +271,75 @@ namespace GreenLock
                 if (MobileModel == EnumMobileModel.Android)
                 {
                     bool isService = false;
+                  
+                   
                     if (services.Count() > 0)
                     {
-                        if (OnIsService != null)
-                               OnIsService(this, null);
+                        
 
                         foreach (ServiceRecord r in services)
                         {
                             int port = ServiceRecordHelper.GetRfcommChannelNumber(r);
                             string curSvcName = r.GetPrimaryMultiLanguageStringAttributeById(UniversalAttributeId.ServiceName);
 
+                            Debug.WriteLine("oldServiceName ====> " + oldServiceName, " curSvcName  =>>> " + curSvcName);
                             // 알람끄기
-                            if (curSvcName.CompareTo("GreenLock0") == 0)
+                            if (curSvcName.CompareTo("GreenLock1") == 0)
                             {
+
+                                if (OnIsService != null)
+                                    OnIsService(this, null);
+
                                 SoundService.isAlramUseOn = false;
+                                if (oldServiceName.CompareTo(curSvcName) != 0)
+                                {
+                                    //oldServiceName = curSvcName;
+                                    //MessageBox.Show(GreenLock.languages.GreenLock.antiTheftoff);
+                                }
                                 break;
                             }
                             // 알람키기
-                            else if (curSvcName.CompareTo("GreenLock1") == 0)
+
+                            else if (curSvcName.CompareTo("GreenLock2") == 0)
                             {
+                                if (OnNotService != null)
+                                    OnNotService(this, null);
+
+                                SoundService.isAlramUseOn = false;
+                                if (oldServiceName.CompareTo(curSvcName) != 0)
+                                {
+                                    //oldServiceName = curSvcName;
+                                    //MessageBox.Show(GreenLock.languages.GreenLock.antiTheftoff);
+                                }
+
+                             
+                                break;
+                            }
+                            else if(curSvcName.CompareTo("GreenLock3") == 0)
+                            {
+                                if (OnIsService != null)
+                                    OnIsService(this, null);
+
                                 SoundService.isAlramUseOn = true;
+                                if (oldServiceName.CompareTo(curSvcName) != 0)
+                                {
+                                    //oldServiceName = curSvcName;
+                                    //MessageBox.Show(GreenLock.languages.GreenLock.antiThefton); 
+                                }
+                                break;
+                            }
+                            else if(curSvcName.CompareTo("GreenLock4") == 0)
+                            {
+                                if (OnNotService != null)
+                                    OnNotService(this, null);
+
+
+                                SoundService.isAlramUseOn = true;
+                                if (oldServiceName.CompareTo(curSvcName) != 0)
+                                {
+                                    //oldServiceName = curSvcName;
+                                    //MessageBox.Show(GreenLock.languages.GreenLock.antiThefton); 
+                                }
                                 break;
                             }
                         }

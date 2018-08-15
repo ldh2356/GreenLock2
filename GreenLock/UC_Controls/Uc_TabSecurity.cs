@@ -1328,7 +1328,7 @@ namespace GreenLock.UC_Controls
             return newImage;
         }
 
-        void ILanguage.localization()
+        public void localization()
         {
 
             LeftButtonLabel.Text = languages.GreenLock.Uc_TabSecurity_Graph;
@@ -1346,6 +1346,7 @@ namespace GreenLock.UC_Controls
         private void Uc_TabSecurity_Paint(object sender, PaintEventArgs e)
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Globals._language);
+            localization();
         }
     }
 
