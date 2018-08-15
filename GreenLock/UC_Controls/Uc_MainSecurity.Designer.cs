@@ -44,7 +44,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::GreenLock.Properties.Resources.icon_main02;
+            this.pictureBox1.BackgroundImage = global::GreenLock.Properties.Resources.icon_main02;
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
@@ -52,11 +52,11 @@
             // 
             // Uc_MainSecurity
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.lblTilte);
             this.Controls.Add(this.pictureBox1);
-            resources.ApplyResources(this, "$this");
             this.Name = "Uc_MainSecurity";
             this.Load += new System.EventHandler(this.Uc_MainSecurity_Load);
             this.MouseLeave += new System.EventHandler(this.Uc_MainSecurity_MouseLeave);

@@ -71,7 +71,7 @@
             // 
             this.pbClose.BackColor = System.Drawing.Color.Transparent;
             this.pbClose.BackgroundImage = global::GreenLock.Properties.Resources.close;
-            this.pbClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pbClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbClose.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pbClose.Location = new System.Drawing.Point(990, 0);
             this.pbClose.Name = "pbClose";
@@ -96,13 +96,14 @@
             // 
             // lblEnegry
             // 
+            this.lblEnegry.AutoSize = true;
             this.lblEnegry.BackColor = System.Drawing.Color.Transparent;
             this.lblEnegry.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblEnegry.ForeColor = System.Drawing.Color.White;
-            this.lblEnegry.Location = new System.Drawing.Point(443, 0);
+            this.lblEnegry.Location = new System.Drawing.Point(483, 0);
             this.lblEnegry.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.lblEnegry.Name = "lblEnegry";
-            this.lblEnegry.Size = new System.Drawing.Size(118, 37);
+            this.lblEnegry.Size = new System.Drawing.Size(118, 23);
             this.lblEnegry.TabIndex = 15;
             this.lblEnegry.Text = "에너지 절감량";
             this.lblEnegry.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -110,13 +111,14 @@
             // 
             // lblSecurity
             // 
+            this.lblSecurity.AutoSize = true;
             this.lblSecurity.BackColor = System.Drawing.Color.Transparent;
             this.lblSecurity.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblSecurity.ForeColor = System.Drawing.Color.White;
-            this.lblSecurity.Location = new System.Drawing.Point(574, 0);
+            this.lblSecurity.Location = new System.Drawing.Point(614, 0);
             this.lblSecurity.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.lblSecurity.Name = "lblSecurity";
-            this.lblSecurity.Size = new System.Drawing.Size(44, 37);
+            this.lblSecurity.Size = new System.Drawing.Size(44, 23);
             this.lblSecurity.TabIndex = 16;
             this.lblSecurity.Text = "보안";
             this.lblSecurity.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -124,13 +126,14 @@
             // 
             // lblConfig
             // 
+            this.lblConfig.AutoSize = true;
             this.lblConfig.BackColor = System.Drawing.Color.Transparent;
             this.lblConfig.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblConfig.ForeColor = System.Drawing.Color.White;
-            this.lblConfig.Location = new System.Drawing.Point(631, 0);
+            this.lblConfig.Location = new System.Drawing.Point(671, 0);
             this.lblConfig.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
             this.lblConfig.Name = "lblConfig";
-            this.lblConfig.Size = new System.Drawing.Size(78, 37);
+            this.lblConfig.Size = new System.Drawing.Size(78, 23);
             this.lblConfig.TabIndex = 17;
             this.lblConfig.Text = "환경설정";
             this.lblConfig.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -153,17 +156,18 @@
             this.flowLayoutPanel1.Controls.Add(this.lblSecurity);
             this.flowLayoutPanel1.Controls.Add(this.lblEnegry);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(296, 40);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(224, 40);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(712, 37);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(752, 37);
             this.flowLayoutPanel1.TabIndex = 25;
             // 
             // Uc_TabMain
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Lavender;
             this.BackgroundImage = global::GreenLock.Properties.Resources.mainTabbg;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label2);
@@ -179,6 +183,7 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Uc_TabMain_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

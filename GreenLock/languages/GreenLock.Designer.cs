@@ -19,7 +19,7 @@ namespace GreenLock.languages {
     // 클래스에서 자동으로 생성되었습니다.
     // 멤버를 추가하거나 제거하려면 .ResX 파일을 편집한 다음 /str 옵션을 사용하여 ResGen을
     // 다시 실행하거나 VS 프로젝트를 다시 빌드하십시오.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class GreenLock {
@@ -133,7 +133,7 @@ namespace GreenLock.languages {
         }
         
         /// <summary>
-        ///   전기요금과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   전기요금(kWh 당)과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string electric_Charge {
             get {
@@ -273,6 +273,15 @@ namespace GreenLock.languages {
         public static string pairing {
             get {
                 return ResourceManager.GetString("pairing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   비밀번호가 틀렸습니다. \n다시 입력해 주세요과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string passwordError {
+            get {
+                return ResourceManager.GetString("passwordError", resourceCulture);
             }
         }
         

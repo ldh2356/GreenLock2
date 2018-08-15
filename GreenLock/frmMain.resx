@@ -130,7 +130,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblCoypright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>296, 708</value>
+    <value>299, 711</value>
   </data>
   <data name="lblCoypright.Size" type="System.Drawing.Size, System.Drawing">
     <value>397, 20</value>
@@ -163,7 +163,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblDate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>432, 672</value>
+    <value>435, 675</value>
   </data>
   <data name="lblDate.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 23</value>
@@ -196,7 +196,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblKorea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>861, 70</value>
+    <value>856, 73</value>
   </data>
   <data name="lblKorea.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 23</value>
@@ -218,6 +218,9 @@
   </data>
   <data name="&gt;&gt;lblKorea.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="pbClose.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
   </data>
   <data name="pbClose.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -253,7 +256,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblEnglish.Location" type="System.Drawing.Point, System.Drawing">
-    <value>925, 70</value>
+    <value>928, 73</value>
   </data>
   <data name="lblEnglish.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 23</value>
@@ -286,7 +289,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>916, 72</value>
+    <value>919, 75</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 20</value>
@@ -325,7 +328,7 @@
     <value>uc_MainConfig</value>
   </data>
   <data name="&gt;&gt;uc_MainConfig.Type" xml:space="preserve">
-    <value>GreenLock.UC_Controls.Uc_MainConfig, GreenLock, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>GreenLock.UC_Controls.Uc_MainConfig, GreenLock, Version=2.0.0.2, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uc_MainConfig.Parent" xml:space="preserve">
     <value>$this</value>
@@ -349,7 +352,7 @@
     <value>uc_MainEnergy</value>
   </data>
   <data name="&gt;&gt;uc_MainEnergy.Type" xml:space="preserve">
-    <value>GreenLock.UC_Controls.Uc_MainEnergy, GreenLock, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>GreenLock.UC_Controls.Uc_MainEnergy, GreenLock, Version=2.0.0.2, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uc_MainEnergy.Parent" xml:space="preserve">
     <value>$this</value>
@@ -373,7 +376,7 @@
     <value>uc_MainSecurity</value>
   </data>
   <data name="&gt;&gt;uc_MainSecurity.Type" xml:space="preserve">
-    <value>GreenLock.UC_Controls.Uc_MainSecurity, GreenLock, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>GreenLock.UC_Controls.Uc_MainSecurity, GreenLock, Version=2.0.0.2, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uc_MainSecurity.Parent" xml:space="preserve">
     <value>$this</value>
@@ -384,6 +387,9 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>120, 120</value>
+  </data>
   <data name="$this.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -392,6 +398,9 @@
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>맑은 고딕, 9pt</value>
+  </data>
+  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

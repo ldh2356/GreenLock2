@@ -436,7 +436,7 @@ namespace GreenLock.UC_Controls
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = global::GreenLock.Properties.Resources.btn_print;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Location = new System.Drawing.Point(914, 26);
             this.pictureBox2.Name = "pictureBox2";
@@ -448,7 +448,7 @@ namespace GreenLock.UC_Controls
             // ButtonExcelExport
             // 
             this.ButtonExcelExport.BackgroundImage = global::GreenLock.Properties.Resources.btn_save;
-            this.ButtonExcelExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ButtonExcelExport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ButtonExcelExport.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonExcelExport.Location = new System.Drawing.Point(881, 26);
             this.ButtonExcelExport.Name = "ButtonExcelExport";
@@ -460,7 +460,7 @@ namespace GreenLock.UC_Controls
             // leftButton
             // 
             this.leftButton.BackgroundImage = global::GreenLock.Properties.Resources.blueButton;
-            this.leftButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.leftButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.leftButton.Location = new System.Drawing.Point(625, 26);
             this.leftButton.Name = "leftButton";
             this.leftButton.Size = new System.Drawing.Size(115, 33);
@@ -470,7 +470,8 @@ namespace GreenLock.UC_Controls
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::GreenLock.Properties.Resources.WeeklyBar;
+            this.pictureBox1.BackgroundImage = global::GreenLock.Properties.Resources.WeeklyBar;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(24, 552);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(936, 64);
@@ -481,7 +482,7 @@ namespace GreenLock.UC_Controls
             // 
             this.Cal_left.AccessibleName = "CalStartDate";
             this.Cal_left.BackgroundImage = global::GreenLock.Properties.Resources.btn_calander;
-            this.Cal_left.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Cal_left.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Cal_left.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Cal_left.Location = new System.Drawing.Point(324, 3);
             this.Cal_left.Name = "Cal_left";
@@ -493,7 +494,7 @@ namespace GreenLock.UC_Controls
             // rightButton
             // 
             this.rightButton.BackgroundImage = global::GreenLock.Properties.Resources.whiteButton;
-            this.rightButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.rightButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.rightButton.Location = new System.Drawing.Point(739, 26);
             this.rightButton.Name = "rightButton";
             this.rightButton.Size = new System.Drawing.Size(119, 34);
@@ -504,7 +505,7 @@ namespace GreenLock.UC_Controls
             // Sheet
             // 
             this.Sheet.BackgroundImage = global::GreenLock.Properties.Resources.sheet;
-            this.Sheet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Sheet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Sheet.Location = new System.Drawing.Point(28, 85);
             this.Sheet.Name = "Sheet";
             this.Sheet.Size = new System.Drawing.Size(911, 371);
@@ -551,7 +552,8 @@ namespace GreenLock.UC_Controls
             // 
             // Uc_TabSecurity
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.ButtonExcelExport);
@@ -592,6 +594,7 @@ namespace GreenLock.UC_Controls
             this.Size = new System.Drawing.Size(992, 672);
             this.Load += new System.EventHandler(this.Uc_TabSecurity_Load);
             this.Click += new System.EventHandler(this.Uc_TabSecurity_Click);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Uc_TabSecurity_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.calendarControl1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonExcelExport)).EndInit();

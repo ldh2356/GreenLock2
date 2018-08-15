@@ -12,6 +12,8 @@ using System.IO;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using System.Diagnostics;
+using System.Threading;
+using System.Globalization;
 
 namespace GreenLock.UC_Controls
 {
@@ -30,6 +32,10 @@ namespace GreenLock.UC_Controls
         {
 
             InitializeComponent();
+
+
+           
+            //Globals._language = "ko-KR";
             localization();
             UpdateUI();
         }
@@ -48,9 +54,13 @@ namespace GreenLock.UC_Controls
 
         private void Uc_TabEnergy_Paint(object sender, PaintEventArgs e)
         {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Globals._language);
+            localization();
+            UpdateUI();
+
             //String.Format("{0,10:N3}", calcReduction.UsedKwh)
 
-        
+
         }
 
         private void Uc_TabEnergy_Load(object sender, EventArgs e)
@@ -61,25 +71,29 @@ namespace GreenLock.UC_Controls
         }
         public void UpdateUI()
         {
-            lblEnergyAmt.Text = String.Format("{0,10:N3}", SaveEnergy.Instance.UsedKwh);
-            lblCostAmt.Text = String.Format("{0,10:N3}", SaveEnergy.Instance.UsedCost);
-            lblCo2Amt.Text = String.Format("{0,10:N3}", SaveEnergy.Instance.Co2);
-            lblTreeAmt.Text = String.Format("{0,10:N3}", SaveEnergy.Instance.Tree);
+            lblEnergyAmt.Text = String.Format("{0,10:N3}", SaveEnergy.Instance.UsedKwh).Trim();
+            lblCostAmt.Text = String.Format("{0,10:N3}", SaveEnergy.Instance.UsedCost).Trim();
+            lblCo2Amt.Text = String.Format("{0,10:N3}", SaveEnergy.Instance.Co2).Trim();
+            lblTreeAmt.Text = String.Format("{0,10:N3}", SaveEnergy.Instance.Tree).Trim();
 
             //lblDate.Left = this.Width / 2 - lblDate.Width / 2;
             lblEnergy.Left = pnlEnergy.Width / 2 - lblEnergy.Width / 2;
-            lblEnergyAmt.Left = pnlEnergy.Width / 2 - lblEnergyAmt.Width / 2 - 20;
+            //lblEnergyAmt.Left = pnlEnergy.Width / 2 - lblEnergyAmt.Width / 2 - 20;
 
             lblCost.Left = pnlCost.Width / 2 - lblCost.Width / 2;
-            lblCostAmt.Left = pnlCost.Width / 2 - lblCostAmt.Width / 2 - 20;
+            //lblCostAmt.Left = pnlCost.Width / 2 - lblCostAmt.Width / 2 - 20;
 
             lblCo2.Left = pnlCo2.Width / 2 - lblCo2.Width / 2;
-            lblCo2Amt.Left = pnlCo2.Width / 2 - lblCo2Amt.Width / 2 - 20;
+            //lblCo2Amt.Left = pnlCo2.Width / 2 - lblCo2Amt.Width / 2 - 20;
 
             lblTree.Left = pnlTree.Width / 2 - lblTree.Width / 2;
-            lblTreeAmt.Left = pnlTree.Width / 2 - lblTreeAmt.Width / 2 - 20;
+            //lblTreeAmt.Left = pnlTree.Width / 2 - lblTreeAmt.Width / 2 - 20;
 
-           
+
+            pictureBox1.Left = pnlEnergy.Width / 2 - pictureBox1.Width / 2;
+            pictureBox2.Left = pnlCost.Width / 2 - pictureBox2.Width / 2;
+            pictureBox3.Left = pnlCo2.Width / 2 - pictureBox3.Width / 2;
+            pictureBox4.Left = pnlTree.Width / 2 - pictureBox4.Width / 2;
         }
 
         private void pbDown_Click(object sender, EventArgs e)

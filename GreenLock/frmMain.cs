@@ -379,8 +379,14 @@ namespace GreenLock
             //KeyboardHooking.TaskBarShow();
             SoundService.AlertSoundStop();
 
-            _uc_TabMain.UpdateUI();
-           
+            try
+            {
+                _uc_TabMain.UpdateUI();
+            }
+            catch(Exception ea)
+            {
+                _log.write(ea.Message);
+            }
 
             _screensaverStatus = false;
             SoundService.SendMessage(this.Handle.ToInt32(), SoundService.WM_SYSCOMMAND, SoundService.SC_MONITORPOWER, SoundService.MONITOR_ON);

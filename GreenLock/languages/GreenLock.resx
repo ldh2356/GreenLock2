@@ -259,7 +259,7 @@
     <value />
   </data>
   <data name="electric_Charge" xml:space="preserve">
-    <value>전기요금</value>
+    <value>전기요금(kWh 당)</value>
   </data>
   <data name="Uc_TabSecurity_Excel_Sheet_Title_1" xml:space="preserve">
     <value>GreenLock Lock/Unlock Time Data</value>
@@ -269,5 +269,8 @@
   </data>
   <data name="ConfigChanged" xml:space="preserve">
     <value>설정이 변경되었습니다.</value>
+  </data>
+  <data name="passwordError" xml:space="preserve">
+    <value>비밀번호가 틀렸습니다. \n다시 입력해 주세요</value>
   </data>
 </root>
