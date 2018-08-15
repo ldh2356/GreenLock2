@@ -289,7 +289,7 @@ Simply go ahead with the typing 6-byte device address shown on mobile app in the
     <value>Lock / Unlock</value>
   </data>
   <data name="Uc_TabSecurity_Regdate" xml:space="preserve">
-    <value>Regist Time</value>
+    <value>Registered time</value>
   </data>
   <data name="Uc_TabSecurity_StartDate" xml:space="preserve">
     <value>Start Record Time</value>
@@ -316,7 +316,7 @@ Simply go ahead with the typing 6-byte device address shown on mobile app in the
     <value>Your configuration has been changed.</value>
   </data>
   <data name="Uc_TabSecurity_Excel_Sheet_Title_1" xml:space="preserve">
-    <value>GreenLock Lock/UnLock Time Sheet Data</value>
+    <value>GreenLock Lock/Unlock Time Data</value>
   </data>
   <data name="Uc_TabSecurity_Excel_Sheet_Title_2" xml:space="preserve">
     <value>Daily Lock Unlock Data</value>
