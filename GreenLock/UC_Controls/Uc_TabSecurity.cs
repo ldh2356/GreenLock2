@@ -644,7 +644,7 @@ namespace GreenLock.UC_Controls
 
             this.ChartControl.Diagram = _ganttDigram_Custom;
             this.ChartControl.SeriesSerializable = new DevExpress.XtraCharts.Series[] { _series_Dummy, _series_Unlock, _series_Lock };
-            this.ChartControl.Size = new System.Drawing.Size(930, 370);
+            this.ChartControl.Size = new System.Drawing.Size(750, 270);
             this.ChartControl.TabIndex = 0;
             this.ChartControl.Legend.Font = new System.Drawing.Font("Gulim", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChartControl.Legend.Name = "Default Legend";
@@ -655,6 +655,8 @@ namespace GreenLock.UC_Controls
             this.ChartControl.CrosshairOptions.ShowCrosshairLabels = false;
             this.ChartControl.ToolTipEnabled = DevExpress.Utils.DefaultBoolean.False;
             this.ChartControl.Click += Uc_TabSecurity_Click;
+            this.ChartControl.CrosshairOptions.ShowArgumentLine = true;
+            this.ChartControl.CrosshairOptions.ShowValueLine = true;
         }
 
 
