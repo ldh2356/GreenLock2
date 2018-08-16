@@ -360,8 +360,7 @@ namespace GreenLock
                     {
                         //서비스가 없는 경우 
                         if (OnNotService != null)
-                            OnNotService(this, null);
-                        _log.write("알림 off시 발생");
+                            OnNotService(this, null);                       
                     }
                 }
                 else
