@@ -644,7 +644,7 @@ namespace GreenLock.UC_Controls
 
             this.ChartControl.Diagram = _ganttDigram_Custom;
             this.ChartControl.SeriesSerializable = new DevExpress.XtraCharts.Series[] { _series_Dummy, _series_Unlock, _series_Lock };
-            this.ChartControl.Size = new System.Drawing.Size(930, 370);
+            this.ChartControl.Size = new System.Drawing.Size(750, 270);
             this.ChartControl.TabIndex = 0;
             this.ChartControl.Legend.Font = new System.Drawing.Font("Gulim", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChartControl.Legend.Name = "Default Legend";
@@ -655,6 +655,8 @@ namespace GreenLock.UC_Controls
             this.ChartControl.CrosshairOptions.ShowCrosshairLabels = false;
             this.ChartControl.ToolTipEnabled = DevExpress.Utils.DefaultBoolean.False;
             this.ChartControl.Click += Uc_TabSecurity_Click;
+            this.ChartControl.CrosshairOptions.ShowArgumentLine = true;
+            this.ChartControl.CrosshairOptions.ShowValueLine = true;
         }
 
 
@@ -979,16 +981,32 @@ namespace GreenLock.UC_Controls
                         int no = 1;
                         int rowIndex = 1;
 
+                        var timeTableDictinct = timeTable.GroupBy(x => x.StartDate).Select(y => y.FirstOrDefault());
+
+                        DateTime lastStartDate = DateTime.Now;
+
                         // 리스트 처리
-                        foreach (TimeTable table in timeTable)
+                        foreach (TimeTable table in timeTableDictinct)
                         {
+                            // 이전 데이터의 시작일과 기록된 시작일이 같을수가 없음으로 제외한다
+                            if(lastStartDate.ToString("yyyy-MM-dd HH:mm:ss") == Convert.ToDateTime(table.StartDate).ToString("yyyy-MM-dd HH:mm:ss"))
+                            {
+                                continue;
+                            }
+                            // 아닌 경우 데이터를 보관한다
+                            else
+                            {
+                                lastStartDate = Convert.ToDateTime(table.StartDate);
+                            }
+                                
+
                             if (table.EndDate == DateTime.MinValue)
                                 continue;
 
                             no = no + 1;
                             rowIndex = rowIndex + 1;
                          
-                            worksheet.Cells[rowIndex + 1, 1].Value = table.RegDate.ToString("yyyy-MM-dd hh:mm:ss");
+                            worksheet.Cells[rowIndex + 1, 1].Value = table.RegDate.ToString("yyyy-MM-dd HH:mm:ss");
                             worksheet.Cells[rowIndex + 1, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                             worksheet.Cells[rowIndex + 1, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
                             worksheet.Cells[rowIndex + 1, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[no % 2]));
@@ -1002,19 +1020,19 @@ namespace GreenLock.UC_Controls
                             worksheet.Cells[rowIndex + 1, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
                       
-                            worksheet.Cells[rowIndex + 1, 3].Value = (table.StartDate != null ) ? Convert.ToDateTime(table.StartDate).ToString("yyyy-MM-dd hh:mm:ss") : "-";
+                            worksheet.Cells[rowIndex + 1, 3].Value = (table.StartDate != null ) ? Convert.ToDateTime(table.StartDate).ToString("yyyy-MM-dd HH:mm:ss") : "-";
                             worksheet.Cells[rowIndex + 1, 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
                             worksheet.Cells[rowIndex + 1, 3].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[no % 2]));
                             worksheet.Cells[rowIndex + 1, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                             worksheet.Cells[rowIndex + 1, 3].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                            worksheet.Cells[rowIndex + 1, 4].Value = (table.EndDate != null) ? Convert.ToDateTime(table.EndDate).ToString("yyyy-MM-dd hh:mm:ss") : "-";
+                            worksheet.Cells[rowIndex + 1, 4].Value = (table.EndDate != null) ? Convert.ToDateTime(table.EndDate).ToString("yyyy-MM-dd HH:mm:ss") : "-";
                             worksheet.Cells[rowIndex + 1, 4].Style.Fill.PatternType = ExcelFillStyle.Solid;
                             worksheet.Cells[rowIndex + 1, 4].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[no % 2]));
                             worksheet.Cells[rowIndex + 1, 4].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                             worksheet.Cells[rowIndex + 1, 4].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                            worksheet.Cells[rowIndex + 1, 5].Value = Math.Round( ((GetDayOfMinute(table.EndDate) - GetDayOfMinute(table.StartDate)) / 60) ,1);
+                            worksheet.Cells[rowIndex + 1, 5].Value = Math.Round( ((GetDayOfMinute(table.EndDate) - GetDayOfMinute(table.StartDate)) / 60) ,2);
                             worksheet.Cells[rowIndex + 1, 5].Style.Fill.PatternType = ExcelFillStyle.Solid;
                             worksheet.Cells[rowIndex + 1, 5].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[no % 2]));
                             worksheet.Cells[rowIndex + 1, 5].Style.VerticalAlignment = ExcelVerticalAlignment.Top;

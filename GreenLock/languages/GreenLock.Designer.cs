@@ -421,7 +421,7 @@ namespace GreenLock.languages {
         }
         
         /// <summary>
-        ///   GreenLock Lock/UnLock Time Sheet Data과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   GreenLock Lock/Unlock Time Data과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string Uc_TabSecurity_Excel_Sheet_Title_1 {
             get {
