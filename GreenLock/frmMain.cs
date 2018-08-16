@@ -35,7 +35,7 @@ namespace GreenLock
         /// </summary>
         Bt32FeetDevice _bt32FeetDevice = new Bt32FeetDevice();
 
-        CalcReduction _calcReduction = new CalcReduction();
+        public CalcReduction _calcReduction = new CalcReduction();
 
         TimeSheetDispatcher _dispatcher = new TimeSheetDispatcher();
 
@@ -460,7 +460,7 @@ namespace GreenLock
             _calcReduction.ScreenStartTime = DateTime.Now;
 
             //모니터 + 본체 절전
-            if (AppConfig.Instance.SleepMode == 1)
+            if (AppConfig.Instance.SleepMode == 1 && SoundService.isAlramUseOn == false)
             {
                 System.Windows.Forms.Application.SetSuspendState(System.Windows.Forms.PowerState.Suspend, false, false);
             }
@@ -634,18 +634,20 @@ namespace GreenLock
 
 
 
+
+
         private void frmMain_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                //현재 마우스 좌표와 저장된 마우스 좌표의 차이만큼 이동 시킨다.
-                this.Location = new Point(this.Location.X + (e.X - _myPoint.X)
-
-                , this.Location.Y + (e.Y - _myPoint.Y));
-            }
+ 
         }
 
         private void frmMain_MouseDown(object sender, MouseEventArgs e)
+        {
+        
+        }
+
+
+        private void pnlMain_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -656,12 +658,22 @@ namespace GreenLock
         }
 
 
+        private void pnlMain_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                //현재 마우스 좌표와 저장된 마우스 좌표의 차이만큼 이동 시킨다.
+                this.Location = new Point(this.Location.X + (e.X - _myPoint.X)
+
+                , this.Location.Y + (e.Y - _myPoint.Y));
+            }
+        }
         #endregion
 
         #region "로컬 함수"
         private void setLocalization()
         {
-            foreach (Control con in this.Controls)
+            foreach (Control con in this.pnlMain.Controls)
             {
                 ILanguage language = con as ILanguage;
                 if (language != null)
@@ -855,5 +867,19 @@ namespace GreenLock
             }
 
         }
+
+        public void goHome()
+        {
+            this.Controls.Add(pnlMain);
+
+            foreach(Control con in this.pnlMain.Controls)
+            {
+                IControlInit controlInit = con as IControlInit;
+                if (controlInit != null)
+                    controlInit.InitControl();
+            }
+        }
+
+      
     }
 }

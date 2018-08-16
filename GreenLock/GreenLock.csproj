@@ -163,6 +163,7 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Globals.cs" />
+    <Compile Include="IControlInit.cs" />
     <Compile Include="ILanguage.cs" />
     <Compile Include="languages\GreenLock.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -34,11 +34,13 @@
             this.lblKorea = new System.Windows.Forms.Label();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.lblEnglish = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblSeperator = new System.Windows.Forms.Label();
+            this.pnlMain = new System.Windows.Forms.Panel();
             this.uc_MainConfig = new GreenLock.UC_Controls.Uc_MainConfig();
             this.uc_MainEnergy = new GreenLock.UC_Controls.Uc_MainEnergy();
             this.uc_MainSecurity = new GreenLock.UC_Controls.Uc_MainSecurity();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
+            this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblCoypright
@@ -80,12 +82,30 @@
             this.lblEnglish.Name = "lblEnglish";
             this.lblEnglish.Click += new System.EventHandler(this.lblEnglish_Click);
             // 
-            // label2
+            // lblSeperator
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Name = "label2";
+            resources.ApplyResources(this.lblSeperator, "lblSeperator");
+            this.lblSeperator.BackColor = System.Drawing.Color.Transparent;
+            this.lblSeperator.ForeColor = System.Drawing.Color.White;
+            this.lblSeperator.Name = "lblSeperator";
+            // 
+            // pnlMain
+            // 
+            this.pnlMain.BackColor = System.Drawing.Color.Transparent;
+            this.pnlMain.BackgroundImage = global::GreenLock.Properties.Resources.KakaoTalk_20180709_130351591;
+            this.pnlMain.Controls.Add(this.lblSeperator);
+            this.pnlMain.Controls.Add(this.lblEnglish);
+            this.pnlMain.Controls.Add(this.pbClose);
+            this.pnlMain.Controls.Add(this.lblKorea);
+            this.pnlMain.Controls.Add(this.lblDate);
+            this.pnlMain.Controls.Add(this.lblCoypright);
+            this.pnlMain.Controls.Add(this.uc_MainConfig);
+            this.pnlMain.Controls.Add(this.uc_MainEnergy);
+            this.pnlMain.Controls.Add(this.uc_MainSecurity);
+            resources.ApplyResources(this.pnlMain, "pnlMain");
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMain_MouseDown);
+            this.pnlMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlMain_MouseMove);
             // 
             // uc_MainConfig
             // 
@@ -114,15 +134,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.BackgroundImage = global::GreenLock.Properties.Resources.KakaoTalk_20180709_130351591;
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.lblEnglish);
-            this.Controls.Add(this.pbClose);
-            this.Controls.Add(this.lblKorea);
-            this.Controls.Add(this.lblDate);
-            this.Controls.Add(this.lblCoypright);
-            this.Controls.Add(this.uc_MainConfig);
-            this.Controls.Add(this.uc_MainEnergy);
-            this.Controls.Add(this.uc_MainSecurity);
+            this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMain";
             this.TransparencyKey = System.Drawing.Color.DimGray;
@@ -132,8 +144,9 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
+            this.pnlMain.ResumeLayout(false);
+            this.pnlMain.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -149,7 +162,8 @@
         private System.Windows.Forms.Label lblKorea;
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.Label lblEnglish;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblSeperator;
+        private System.Windows.Forms.Panel pnlMain;
     }
 }
 

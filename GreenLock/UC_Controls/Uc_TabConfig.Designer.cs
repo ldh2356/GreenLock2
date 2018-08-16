@@ -67,46 +67,50 @@
             // 
             // lblConnet
             // 
+            this.lblConnet.AutoSize = true;
             this.lblConnet.BackColor = System.Drawing.Color.Transparent;
             this.lblConnet.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblConnet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblConnet.Location = new System.Drawing.Point(56, 87);
+            this.lblConnet.Location = new System.Drawing.Point(48, 120);
             this.lblConnet.Name = "lblConnet";
-            this.lblConnet.Size = new System.Drawing.Size(183, 76);
+            this.lblConnet.Size = new System.Drawing.Size(39, 20);
             this.lblConnet.TabIndex = 0;
             this.lblConnet.Text = "연결";
             this.lblConnet.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblSleepMode
             // 
+            this.lblSleepMode.AutoSize = true;
             this.lblSleepMode.BackColor = System.Drawing.Color.Transparent;
             this.lblSleepMode.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblSleepMode.Location = new System.Drawing.Point(56, 174);
+            this.lblSleepMode.Location = new System.Drawing.Point(48, 184);
             this.lblSleepMode.Name = "lblSleepMode";
-            this.lblSleepMode.Size = new System.Drawing.Size(185, 39);
+            this.lblSleepMode.Size = new System.Drawing.Size(69, 20);
             this.lblSleepMode.TabIndex = 1;
             this.lblSleepMode.Text = "절전모드";
             this.lblSleepMode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblPassword
             // 
+            this.lblPassword.AutoSize = true;
             this.lblPassword.BackColor = System.Drawing.Color.Transparent;
             this.lblPassword.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblPassword.Location = new System.Drawing.Point(56, 224);
+            this.lblPassword.Location = new System.Drawing.Point(48, 232);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(183, 33);
+            this.lblPassword.Size = new System.Drawing.Size(69, 20);
             this.lblPassword.TabIndex = 2;
             this.lblPassword.Text = "비밀번호";
             this.lblPassword.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblEnergy
             // 
+            this.lblEnergy.AutoSize = true;
             this.lblEnergy.BackColor = System.Drawing.Color.Transparent;
             this.lblEnergy.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblEnergy.Location = new System.Drawing.Point(56, 274);
+            this.lblEnergy.Location = new System.Drawing.Point(48, 280);
             this.lblEnergy.Name = "lblEnergy";
-            this.lblEnergy.Size = new System.Drawing.Size(183, 32);
+            this.lblEnergy.Size = new System.Drawing.Size(86, 20);
             this.lblEnergy.TabIndex = 3;
             this.lblEnergy.Text = "절력값(kW)";
             this.lblEnergy.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -346,9 +350,10 @@
             // 
             // lblCharge
             // 
-            this.lblCharge.Location = new System.Drawing.Point(56, 320);
+            this.lblCharge.AutoSize = true;
+            this.lblCharge.Location = new System.Drawing.Point(48, 328);
             this.lblCharge.Name = "lblCharge";
-            this.lblCharge.Size = new System.Drawing.Size(180, 28);
+            this.lblCharge.Size = new System.Drawing.Size(69, 20);
             this.lblCharge.TabIndex = 29;
             this.lblCharge.Text = "전기요금";
             this.lblCharge.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

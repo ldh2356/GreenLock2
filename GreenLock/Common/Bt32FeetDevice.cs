@@ -225,7 +225,6 @@ namespace GreenLock
                // 블루투스 장치가 켜져있지 않다면 블루투스 설정 화면을 사용자에게 안내한다
                 if (!BluetoothRadio.IsSupported)
                 {
-                   
                     MessageBox.Show(GreenLock.languages.GreenLock.bluetoothOffMsg, "GreenLock", MessageBoxButtons.OK);
                     Process.Start("bthprops.cpl");
                 }
@@ -240,7 +239,7 @@ namespace GreenLock
                 while (true)
                 {                 
                     IAsyncResult iAsyncResult = bluetoothDeviceInfo.BeginGetServiceRecords(uuid, Service_AsyncCallback, bluetoothDeviceInfo);
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
                 }
             }
             catch (Exception ex)
@@ -287,8 +286,7 @@ namespace GreenLock
                             if (curSvcName.CompareTo("GreenLock1") == 0)
                             {
 
-                                if (OnIsService != null)
-                                    OnIsService(this, null);
+                                
 
                                 SoundService.isAlramUseOn = false;
                                 if (oldServiceName.CompareTo(curSvcName) != 0)
@@ -296,14 +294,16 @@ namespace GreenLock
                                     //oldServiceName = curSvcName;
                                     //MessageBox.Show(GreenLock.languages.GreenLock.antiTheftoff);
                                 }
+
+                                if (OnIsService != null)
+                                    OnIsService(this, null);
                                 break;
                             }
                             // 알람키기
 
                             else if (curSvcName.CompareTo("GreenLock2") == 0)
                             {
-                                if (OnNotService != null)
-                                    OnNotService(this, null);
+                                
 
                                 SoundService.isAlramUseOn = false;
                                 if (oldServiceName.CompareTo(curSvcName) != 0)
@@ -312,13 +312,13 @@ namespace GreenLock
                                     //MessageBox.Show(GreenLock.languages.GreenLock.antiTheftoff);
                                 }
 
-                             
+                                if (OnNotService != null)
+                                    OnNotService(this, null);
                                 break;
                             }
                             else if(curSvcName.CompareTo("GreenLock3") == 0)
                             {
-                                if (OnIsService != null)
-                                    OnIsService(this, null);
+                               
 
                                 SoundService.isAlramUseOn = true;
                                 if (oldServiceName.CompareTo(curSvcName) != 0)
@@ -326,12 +326,14 @@ namespace GreenLock
                                     //oldServiceName = curSvcName;
                                     //MessageBox.Show(GreenLock.languages.GreenLock.antiThefton); 
                                 }
+
+                                if (OnIsService != null)
+                                    OnIsService(this, null);
                                 break;
                             }
                             else if(curSvcName.CompareTo("GreenLock4") == 0)
                             {
-                                if (OnNotService != null)
-                                    OnNotService(this, null);
+                               
 
 
                                 SoundService.isAlramUseOn = true;
@@ -340,6 +342,9 @@ namespace GreenLock
                                     //oldServiceName = curSvcName;
                                     //MessageBox.Show(GreenLock.languages.GreenLock.antiThefton); 
                                 }
+
+                                if (OnNotService != null)
+                                    OnNotService(this, null);
                                 break;
                             }
                         }
@@ -359,8 +364,8 @@ namespace GreenLock
                     else
                     {
                         //서비스가 없는 경우 
-                        if (OnNotService != null)
-                            OnNotService(this, null);                       
+                        //if (OnNotService != null)
+                        //    OnNotService(this, null);                       
                     }
                 }
                 else

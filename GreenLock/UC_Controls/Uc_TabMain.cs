@@ -36,6 +36,19 @@ namespace GreenLock.UC_Controls
             set
             {
                 _mainTabType = value;
+
+                this.pnlMain.Controls.Clear();
+                if (_mainTabType == MainType.Energy)
+                {
+                    this.pnlMain.Controls.Add(_tabEnergy);
+                }
+                else if (_mainTabType == MainType.Security)
+                    this.pnlMain.Controls.Add(_tabSecurity);
+                else if (_mainTabType == MainType.Config)
+                {
+                    _tabConfig.Main = _main;
+                    this.pnlMain.Controls.Add(_tabConfig);
+                }
             }
         }
 
@@ -147,18 +160,7 @@ namespace GreenLock.UC_Controls
                 SetEnglish();
             }
 
-            this.pnlMain.Controls.Clear();
-            if (_mainTabType == MainType.Energy)
-            {
-                this.pnlMain.Controls.Add(_tabEnergy);
-            }
-            else if (_mainTabType == MainType.Security)
-                this.pnlMain.Controls.Add(_tabSecurity);
-            else if (_mainTabType == MainType.Config)
-            {
-                _tabConfig.Main = _main;
-                this.pnlMain.Controls.Add(_tabConfig);
-            }
+           
         }
 
         private void pbClose_Click(object sender, EventArgs e)
@@ -265,5 +267,10 @@ namespace GreenLock.UC_Controls
             }
         }
 
+        private void pnlHome_Click(object sender, EventArgs e)
+        {
+            this._main.Controls.Clear();
+            this._main.goHome();
+        }
     }
 }

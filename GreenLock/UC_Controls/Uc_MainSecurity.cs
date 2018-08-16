@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace GreenLock.UC_Controls
 {
-    public partial class Uc_MainSecurity : UserControl, ILanguage
+    public partial class Uc_MainSecurity : UserControl, ILanguage, IControlInit
     {
         public Uc_MainSecurity()
         {
@@ -39,6 +39,13 @@ namespace GreenLock.UC_Controls
                 this.BackColor = Color.Transparent;
                 lblTilte.ForeColor = Color.White;
             }
+        }
+
+
+        public void InitControl()
+        {
+            this.BackColor = Color.Transparent;
+            lblTilte.ForeColor = Color.White;
         }
 
         private void Uc_MainSecurity_MouseMove(object sender, MouseEventArgs e)

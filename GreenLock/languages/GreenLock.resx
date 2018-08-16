@@ -184,7 +184,7 @@
     <value>환경보호(그루)</value>
   </data>
   <data name="userPw" xml:space="preserve">
-    <value>비밀번호</value>
+    <value>그린락 비밀번호</value>
   </data>
   <data name="what_Sses" xml:space="preserve">
     <value>솔루션소개</value>
@@ -193,7 +193,7 @@
     <value>CO2절감(톤)</value>
   </data>
   <data name="cost" xml:space="preserve">
-    <value>전기료절감액(원)</value>
+    <value>전기료절감액({0})</value>
   </data>
   <data name="main_Config1" xml:space="preserve">
     <value>환경설정</value>
@@ -278,5 +278,8 @@
   </data>
   <data name="antiThefton" xml:space="preserve">
     <value>도난방지알람이 설정되었습니다.</value>
+  </data>
+  <data name="currency" xml:space="preserve">
+    <value>{0,10:N1}</value>
   </data>
 </root>

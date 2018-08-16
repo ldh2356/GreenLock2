@@ -166,7 +166,7 @@ reduction
   <data name="cost" xml:space="preserve">
     <value>Money from
 energy saving
-(KRW)</value>
+({0})</value>
   </data>
   <data name="day" xml:space="preserve">
     <value>day</value>
@@ -250,7 +250,7 @@ Simply go ahead with the typing 6-byte device address shown on mobile app in the
 from savings</value>
   </data>
   <data name="userPw" xml:space="preserve">
-    <value>Password</value>
+    <value>Green Lock Password</value>
   </data>
   <data name="what_Sses" xml:space="preserve">
     <value>What is SSES?</value>
@@ -329,5 +329,8 @@ from savings</value>
   </data>
   <data name="antiThefton" xml:space="preserve">
     <value>Anti-theft alarm is on.</value>
+  </data>
+  <data name="currency" xml:space="preserve">
+    <value>{0,10:N2}</value>
   </data>
 </root>

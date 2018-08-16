@@ -24,6 +24,9 @@ namespace GreenLock.UC_Controls
                 _main = value;
             }
         }
+
+
+       
         public Uc_TabConfig()
         {
             InitializeComponent();
@@ -32,6 +35,20 @@ namespace GreenLock.UC_Controls
             localization();
 
             lblVesion.Text = Application.ProductVersion.ToString();
+            SoundService.OnAlarmUseChange += SoundService_OnAlarmUseChange;
+        }
+
+        private void SoundService_OnAlarmUseChange(object sender, EventArgs e)
+        {
+            if (IsHandleCreated)
+            {
+                    this.Invoke(new System.Windows.Forms.MethodInvoker(delegate ()
+                {
+                    SleepModeMove(SoundService.isAlramUseOn);
+
+                }));
+            }
+            //throw new NotImplementedException();
         }
 
         public void localization()
@@ -114,6 +131,21 @@ namespace GreenLock.UC_Controls
             btnOK.Focus();
         }
 
+        public void SleepModeMove(Boolean flag)
+        {
+
+            if (AppConfig.Instance.SleepMode == 0 || flag == true)
+            {
+                this.rbSleepModeMonitor.Checked = true;
+                this.rbSleepModeAll.Checked = false;
+            }
+            else 
+            {
+                this.rbSleepModeMonitor.Checked = false;
+                this.rbSleepModeAll.Checked = true;
+            }      
+        }
+
         private void rbAdroid_Click(object sender, EventArgs e)
         {
             AppConfig.Instance.Model = 0;
@@ -186,8 +218,19 @@ namespace GreenLock.UC_Controls
             else
                 AppConfig.Instance.SleepMode = 1;
 
+            try
+            {
+                AppConfig.Instance.PcPower = double.Parse(txtPower.Text);
+                AppConfig.Instance.ElecRate = double.Parse(txtCost.Text);
+            }
+            catch(Exception ea)
+            {
+                Console.WriteLine(ea.Message);
+            }
 
             AppConfig.Instance.SaveToFile();
+
+            _main._calcReduction.Calculate();
 
             MessageBox.Show(GreenLock.languages.GreenLock.ConfigChanged);
 
@@ -217,6 +260,9 @@ namespace GreenLock.UC_Controls
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Globals._language);
             localization();
+
+
+            //SleepModeMove(SoundService.isAlramUseOn); 
         }
     };
 }
