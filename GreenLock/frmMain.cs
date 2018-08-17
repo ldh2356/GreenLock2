@@ -199,21 +199,8 @@ namespace GreenLock
 
 
 
-
-
-        public frmMain()
+        public void initLanguage()
         {
-            InitializeComponent();
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-
-            
-
-            //this.uc_MainEnergy1.Parent = this;
-
-            Globals._language = Thread.CurrentThread.CurrentCulture.Name;
-
-            _calcReduction.OperationStartTime = DateTime.Now;
-
             if (Globals._language.CompareTo("ko-KR") == 0)
             {
                 Font underLineFont = new Font(lblKorea.Font, FontStyle.Underline);
@@ -238,6 +225,23 @@ namespace GreenLock
                 lblEnglish.ForeColor = Color.White;
                 SetEnglish();
             }
+        }
+
+        public frmMain()
+        {
+            InitializeComponent();
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
+
+            //this.uc_MainEnergy1.Parent = this;
+
+            Globals._language = Thread.CurrentThread.CurrentCulture.Name;
+
+            initLanguage();
+
+            _calcReduction.OperationStartTime = DateTime.Now;
+
+
 
             SetMainDate();
 
@@ -460,7 +464,7 @@ namespace GreenLock
             _calcReduction.ScreenStartTime = DateTime.Now;
 
             //모니터 + 본체 절전
-            if (AppConfig.Instance.SleepMode == 1 && SoundService.isAlramUseOn == false)
+            if (AppConfig.Instance.SleepMode == 1)
             {
                 System.Windows.Forms.Application.SetSuspendState(System.Windows.Forms.PowerState.Suspend, false, false);
             }
@@ -541,6 +545,9 @@ namespace GreenLock
 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("ko-KR");
             Globals._language = "ko-KR";
+
+            CultureInfo ciLang = new CultureInfo("ko-KR");
+            GreenLock.languages.GreenLock.Culture = ciLang;
             setLocalization();
         }
 
@@ -557,7 +564,13 @@ namespace GreenLock
             lblEnglish.ForeColor = Color.White;
 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+
+            CultureInfo ciLang = new CultureInfo("en-US");
+            GreenLock.languages.GreenLock.Culture = ciLang;
+
             Globals._language = "en-US";
+
+
             setLocalization();
         }
 
@@ -870,16 +883,18 @@ namespace GreenLock
 
         public void goHome()
         {
+            initLanguage();
             this.Controls.Add(pnlMain);
 
-            foreach(Control con in this.pnlMain.Controls)
+            foreach (Control con in this.pnlMain.Controls)
             {
                 IControlInit controlInit = con as IControlInit;
                 if (controlInit != null)
                     controlInit.InitControl();
             }
+
         }
 
-      
+
     }
 }

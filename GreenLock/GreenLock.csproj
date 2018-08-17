@@ -133,6 +133,7 @@
     <Compile Include="Common\KeyboardHooking.cs" />
     <Compile Include="Common\LaptopPowerManager.cs" />
     <Compile Include="Common\Log.cs" />
+    <Compile Include="Common\ProcessChecker.cs" />
     <Compile Include="Common\SaveEnergy.cs" />
     <Compile Include="Common\SoundService.cs" />
     <Compile Include="Common\TimeConverter.cs" />
@@ -144,17 +145,29 @@
       <DependentUpon>CustomLabel.cs</DependentUpon>
     </Compile>
     <Compile Include="Dispatcher\TimeSheetDispatcher.cs" />
-    <Compile Include="Form\FormScreenSaver.cs">
+    <Compile Include="Forms\FormScreenSaver.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\FormScreenSaver.designer.cs">
+    <Compile Include="Forms\FormScreenSaver.designer.cs">
       <DependentUpon>FormScreenSaver.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\FormScreenSaverCancel.cs">
+    <Compile Include="Forms\FormScreenSaverCancel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\FormScreenSaverCancel.designer.cs">
+    <Compile Include="Forms\FormScreenSaverCancel.designer.cs">
       <DependentUpon>FormScreenSaverCancel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GreenLockMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GreenLockMessage.Designer.cs">
+      <DependentUpon>GreenLockMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GreenLockMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GreenLockMessageBox.Designer.cs">
+      <DependentUpon>GreenLockMessageBox.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -250,11 +263,14 @@
     <EmbeddedResource Include="CustomLabel.resx">
       <DependentUpon>CustomLabel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\FormScreenSaver.resx">
+    <EmbeddedResource Include="Forms\FormScreenSaver.resx">
       <DependentUpon>FormScreenSaver.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\FormScreenSaverCancel.resx">
+    <EmbeddedResource Include="Forms\FormScreenSaverCancel.resx">
       <DependentUpon>FormScreenSaverCancel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GreenLockMessage.resx">
+      <DependentUpon>GreenLockMessage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

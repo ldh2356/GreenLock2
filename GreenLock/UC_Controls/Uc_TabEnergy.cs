@@ -36,8 +36,8 @@ namespace GreenLock.UC_Controls
 
            
             //Globals._language = "ko-KR";
-            localization();
-            UpdateUI();
+            //localization();
+            //UpdateUI();
         }
 
 
@@ -81,8 +81,10 @@ namespace GreenLock.UC_Controls
          
 
             lblEnergyAmt.Text = String.Format("{0,10:N3}", SaveEnergy.Instance.UsedKwh).Trim();
-           
-            lblCostAmt.Text = String.Format(GreenLock.languages.GreenLock.currency, SaveEnergy.Instance.UsedCost).Trim();
+            if(AppConfig.Instance.ElecUnit.CompareTo("USD") == 0)
+                lblCostAmt.Text = String.Format("{0,10:N2}", SaveEnergy.Instance.UsedCost).Trim();
+            else
+                lblCostAmt.Text = String.Format("{0,10:N1}", SaveEnergy.Instance.UsedCost).Trim();
             lblCo2Amt.Text = String.Format("{0,10:N3}", SaveEnergy.Instance.Co2).Trim();
             lblTreeAmt.Text = String.Format("{0,10:N3}", SaveEnergy.Instance.Tree).Trim();
 

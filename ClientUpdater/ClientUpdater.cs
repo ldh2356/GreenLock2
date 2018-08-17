@@ -128,11 +128,11 @@ namespace ClientUpdater
 
         void bgWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            //MessageBox.Show("bgWorker_DoWork");
+            //MessageBox.Show("bgWorker_DoWork1");
 
             try
             {
-                //MessageBox.Show("bgWorker_DoWork");
+                //MessageBox.Show("bgWorker_DoWork2");
                 long readSize = 0;
                 long offset = 0;
 
@@ -140,7 +140,7 @@ namespace ClientUpdater
 
                 bgWorker.ReportProgress(progressPercent, "File Download Begin...");
 
-
+                //MessageBox.Show("bgWorker_DoWork3");
                 string updateFileName = string.Empty;
                 updateFileName = "update_tempfile.zip";
 
@@ -386,6 +386,11 @@ namespace ClientUpdater
             startInfo.Arguments = this.arguments;
             startInfo.WorkingDirectory = extractPath;
             Process.Start(startInfo);*/
+        }
+
+        private void clientUpdateWizardControl_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
