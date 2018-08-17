@@ -76,12 +76,15 @@ namespace GreenLock
         {
             try
             {
+               
                 // 알람 사용을 할때만 알람 사용
                 if (isAlramUseOn)
                 {
+               
                     // 사운드가 재생중이지 않은경우
                     if (!isSoundPlaying)
                     {
+                     
                         isSoundPlaying = true;
 
                         // 재생직전 볼륨을 저장한다
@@ -91,6 +94,8 @@ namespace GreenLock
                         AudioManager.SetMasterVolume(100);
 
                         Player.SoundLocation = drivepath + fileName;
+                        //MessageBox.Show("Lid is now closed3");
+
                         Player.PlayLooping();
                     }
                 }
