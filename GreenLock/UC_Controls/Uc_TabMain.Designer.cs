@@ -37,6 +37,7 @@
             this.lblConfig = new System.Windows.Forms.Label();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlHome = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -161,6 +162,15 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(752, 37);
             this.flowLayoutPanel1.TabIndex = 25;
             // 
+            // pnlHome
+            // 
+            this.pnlHome.BackColor = System.Drawing.Color.Transparent;
+            this.pnlHome.Location = new System.Drawing.Point(16, 24);
+            this.pnlHome.Name = "pnlHome";
+            this.pnlHome.Size = new System.Drawing.Size(200, 40);
+            this.pnlHome.TabIndex = 26;
+            this.pnlHome.Click += new System.EventHandler(this.pnlHome_Click);
+            // 
             // Uc_TabMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -168,6 +178,7 @@
             this.BackColor = System.Drawing.Color.Lavender;
             this.BackgroundImage = global::GreenLock.Properties.Resources.mainTabbg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.pnlHome);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label2);
@@ -200,5 +211,6 @@
         private System.Windows.Forms.Label lblConfig;
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Panel pnlHome;
     }
 }

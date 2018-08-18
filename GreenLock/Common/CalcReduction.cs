@@ -105,6 +105,8 @@ namespace GreenLock
 
         public CalcReduction()
         {
+
+    
             _usedSec = TimeSpan.FromSeconds(0); // 시간(second)
             _usedOperation = TimeSpan.FromSeconds(0); // 시간(second)
 
@@ -124,26 +126,31 @@ namespace GreenLock
     
         public void Calculate()
         {
+
+            AppConfig.Instance.LoadFromFile();
+            _devicePerKwh = AppConfig.Instance.PcPower;
+            _wonPerKwh = AppConfig.Instance.ElecRate;
+
             LoadFromFile();
             CultureInfo culture = CultureInfo.CurrentCulture;
-            if (culture.Name.Equals("ko-KR"))
-            {
+            //if (culture.Name.Equals("ko-KR"))
+            //{
                 double deviceWatt = _devicePerKwh / 1000; //(kW)
                 _usedKwh = deviceWatt * _usedSec.TotalHours;
                 _usedCost = _usedKwh * _wonPerKwh;
                 _co2 = _usedKwh * _co2Unit;
                 _tree = _co2 / _treeUnit;
   
-            }
-            else
-            {
-                double deviceWatt = _devicePerKwh / 1000; //(kW)
-                _usedKwh = deviceWatt * _usedSec.TotalHours;
-                _usedCost = (_usedKwh * _wonPerKwh)/1200;
-                _co2 = _usedKwh * _co2Unit;
-                _tree = _co2 / _treeUnit;
+            //}
+            //else
+            //{
+            //    double deviceWatt = _devicePerKwh / 1000; //(kW)
+            //    _usedKwh = deviceWatt * _usedSec.TotalHours;
+            //    _usedCost = (_usedKwh * _wonPerKwh)/1200;
+            //    _co2 = _usedKwh * _co2Unit;
+            //    _tree = _co2 / _treeUnit;
         
-            }
+            //}
 
 
             SaveEnergy.Instance.UsedKwh = _usedKwh;

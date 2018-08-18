@@ -36,15 +36,18 @@ namespace GreenLock.UC_Controls
 
            
             //Globals._language = "ko-KR";
-            localization();
-            UpdateUI();
+            //localization();
+            //UpdateUI();
         }
 
 
         public void localization()
         {
             lblEnergy.Text = GreenLock.languages.GreenLock.power;
-            lblCost.Text = GreenLock.languages.GreenLock.cost;
+            string str = string.Format(GreenLock.languages.GreenLock.cost, AppConfig.Instance.ElecUnit);
+            lblCost.Text = str;
+
+            //lblCost.Text = GreenLock.languages.GreenLock.cost;
             lblCo2.Text = GreenLock.languages.GreenLock.co2;
             lblTree.Text = GreenLock.languages.GreenLock.tree;
             //throw new NotImplementedException();
@@ -55,6 +58,8 @@ namespace GreenLock.UC_Controls
         private void Uc_TabEnergy_Paint(object sender, PaintEventArgs e)
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Globals._language);
+          
+
             localization();
             UpdateUI();
 
@@ -71,8 +76,15 @@ namespace GreenLock.UC_Controls
         }
         public void UpdateUI()
         {
+            //lblCost.Text = GreenLock.languages.GreenLock.cost;
+
+         
+
             lblEnergyAmt.Text = String.Format("{0,10:N3}", SaveEnergy.Instance.UsedKwh).Trim();
-            lblCostAmt.Text = String.Format("{0,10:N3}", SaveEnergy.Instance.UsedCost).Trim();
+            if(AppConfig.Instance.ElecUnit.CompareTo("USD") == 0)
+                lblCostAmt.Text = String.Format("{0,10:N2}", SaveEnergy.Instance.UsedCost).Trim();
+            else
+                lblCostAmt.Text = String.Format("{0,10:N1}", SaveEnergy.Instance.UsedCost).Trim();
             lblCo2Amt.Text = String.Format("{0,10:N3}", SaveEnergy.Instance.Co2).Trim();
             lblTreeAmt.Text = String.Format("{0,10:N3}", SaveEnergy.Instance.Tree).Trim();
 
@@ -93,7 +105,8 @@ namespace GreenLock.UC_Controls
             pictureBox1.Left = pnlEnergy.Width / 2 - pictureBox1.Width / 2;
             pictureBox2.Left = pnlCost.Width / 2 - pictureBox2.Width / 2;
             pictureBox3.Left = pnlCo2.Width / 2 - pictureBox3.Width / 2;
-            pictureBox4.Left = pnlTree.Width / 2 - pictureBox4.Width / 2;
+            pictureBox4.Left = pnlTree.Width / 2 - pictureBox4.Width / 2;          
+
         }
 
         private void pbDown_Click(object sender, EventArgs e)

@@ -11,6 +11,8 @@ namespace GreenLock
 {
     public class SoundService
     {
+      
+        public static event EventHandler OnAlarmUseChange;
         /// <summary>
         /// 사운드 사용여부 
         /// </summary>
@@ -20,7 +22,22 @@ namespace GreenLock
         /// <summary>
         /// 알람 사용 여부
         /// </summary>
-        public static bool isAlramUseOn { get; set; } = true;
+        /// 
+
+        public static bool _isAlarmUseOn = true;
+        public static bool isAlramUseOn
+        {
+            get
+            {
+                return _isAlarmUseOn;
+            }
+            set
+            {
+                _isAlarmUseOn = value;
+                if (OnAlarmUseChange != null)
+                    OnAlarmUseChange(null, null);
+            }
+        }
 
         /// <summary>
         /// 사운드 비프음 재생전 볼륨 퍼센트

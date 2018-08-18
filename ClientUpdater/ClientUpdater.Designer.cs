@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientUpdater));
             this.clientUpdateWizardControl = new DevExpress.XtraWizard.WizardControl();
             this.welcomeWizardPage = new DevExpress.XtraWizard.WelcomeWizardPage();
             this.updateDescrptionWizardPage = new DevExpress.XtraWizard.WizardPage();
@@ -52,6 +53,7 @@
             this.clientUpdateWizardControl.Controls.Add(this.completionWizardPage1);
             this.clientUpdateWizardControl.Controls.Add(this.downLoadUnpackingWizardPage);
             this.clientUpdateWizardControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clientUpdateWizardControl.Image = ((System.Drawing.Image)(resources.GetObject("clientUpdateWizardControl.Image")));
             this.clientUpdateWizardControl.Location = new System.Drawing.Point(0, 0);
             this.clientUpdateWizardControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.clientUpdateWizardControl.MinimumSize = new System.Drawing.Size(114, 125);
@@ -67,6 +69,7 @@
             this.clientUpdateWizardControl.CancelClick += new System.ComponentModel.CancelEventHandler(this.wizardControl1_CancelClick);
             this.clientUpdateWizardControl.FinishClick += new System.ComponentModel.CancelEventHandler(this.wizardControl1_FinishClick);
             this.clientUpdateWizardControl.NextClick += new DevExpress.XtraWizard.WizardCommandButtonClickEventHandler(this.wizardControl1_NextClick);
+            this.clientUpdateWizardControl.Click += new System.EventHandler(this.clientUpdateWizardControl_Click);
             // 
             // welcomeWizardPage
             // 
@@ -156,7 +159,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ClientUpdater";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Client Updater";
+            this.Text = "Green Lock Updater";
             this.Load += new System.EventHandler(this.ClientUpdater_Load);
             ((System.ComponentModel.ISupportInitialize)(this.clientUpdateWizardControl)).EndInit();
             this.clientUpdateWizardControl.ResumeLayout(false);

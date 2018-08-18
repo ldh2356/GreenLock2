@@ -35,7 +35,7 @@ namespace GreenLock
         /// </summary>
         Bt32FeetDevice _bt32FeetDevice = new Bt32FeetDevice();
 
-        CalcReduction _calcReduction = new CalcReduction();
+        public CalcReduction _calcReduction = new CalcReduction();
 
         TimeSheetDispatcher _dispatcher = new TimeSheetDispatcher();
 
@@ -199,21 +199,8 @@ namespace GreenLock
 
 
 
-
-
-        public frmMain()
+        public void initLanguage()
         {
-            InitializeComponent();
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-
-            
-
-            //this.uc_MainEnergy1.Parent = this;
-
-            Globals._language = Thread.CurrentThread.CurrentCulture.Name;
-
-            _calcReduction.OperationStartTime = DateTime.Now;
-
             if (Globals._language.CompareTo("ko-KR") == 0)
             {
                 Font underLineFont = new Font(lblKorea.Font, FontStyle.Underline);
@@ -238,6 +225,23 @@ namespace GreenLock
                 lblEnglish.ForeColor = Color.White;
                 SetEnglish();
             }
+        }
+
+        public frmMain()
+        {
+            InitializeComponent();
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
+
+            //this.uc_MainEnergy1.Parent = this;
+
+            Globals._language = Thread.CurrentThread.CurrentCulture.Name;
+
+            initLanguage();
+
+            _calcReduction.OperationStartTime = DateTime.Now;
+
+
 
             SetMainDate();
 
@@ -541,6 +545,9 @@ namespace GreenLock
 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("ko-KR");
             Globals._language = "ko-KR";
+
+            CultureInfo ciLang = new CultureInfo("ko-KR");
+            GreenLock.languages.GreenLock.Culture = ciLang;
             setLocalization();
         }
 
@@ -557,7 +564,13 @@ namespace GreenLock
             lblEnglish.ForeColor = Color.White;
 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+
+            CultureInfo ciLang = new CultureInfo("en-US");
+            GreenLock.languages.GreenLock.Culture = ciLang;
+
             Globals._language = "en-US";
+
+
             setLocalization();
         }
 
@@ -634,18 +647,20 @@ namespace GreenLock
 
 
 
+
+
         private void frmMain_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                //현재 마우스 좌표와 저장된 마우스 좌표의 차이만큼 이동 시킨다.
-                this.Location = new Point(this.Location.X + (e.X - _myPoint.X)
-
-                , this.Location.Y + (e.Y - _myPoint.Y));
-            }
+ 
         }
 
         private void frmMain_MouseDown(object sender, MouseEventArgs e)
+        {
+        
+        }
+
+
+        private void pnlMain_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -656,12 +671,22 @@ namespace GreenLock
         }
 
 
+        private void pnlMain_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                //현재 마우스 좌표와 저장된 마우스 좌표의 차이만큼 이동 시킨다.
+                this.Location = new Point(this.Location.X + (e.X - _myPoint.X)
+
+                , this.Location.Y + (e.Y - _myPoint.Y));
+            }
+        }
         #endregion
 
         #region "로컬 함수"
         private void setLocalization()
         {
-            foreach (Control con in this.Controls)
+            foreach (Control con in this.pnlMain.Controls)
             {
                 ILanguage language = con as ILanguage;
                 if (language != null)
@@ -855,5 +880,21 @@ namespace GreenLock
             }
 
         }
+
+        public void goHome()
+        {
+            initLanguage();
+            this.Controls.Add(pnlMain);
+
+            foreach (Control con in this.pnlMain.Controls)
+            {
+                IControlInit controlInit = con as IControlInit;
+                if (controlInit != null)
+                    controlInit.InitControl();
+            }
+
+        }
+
+
     }
 }

@@ -36,6 +36,22 @@ namespace GreenLock.UC_Controls
             set
             {
                 _mainTabType = value;
+
+                this.pnlMain.Controls.Clear();
+
+                this.initLanguage();
+
+                if (_mainTabType == MainType.Energy)
+                {
+                    this.pnlMain.Controls.Add(_tabEnergy);
+                }
+                else if (_mainTabType == MainType.Security)
+                    this.pnlMain.Controls.Add(_tabSecurity);
+                else if (_mainTabType == MainType.Config)
+                {
+                    _tabConfig.Main = _main;
+                    this.pnlMain.Controls.Add(_tabConfig);
+                }
             }
         }
 
@@ -56,6 +72,10 @@ namespace GreenLock.UC_Controls
             lblEnglish.ForeColor = ColorTranslator.FromHtml("#bad9ff");
 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("ko-KR");
+         
+            CultureInfo ciLang = new CultureInfo("ko-KR");
+            GreenLock.languages.GreenLock.Culture = ciLang;
+
             Globals._language = "ko-KR";
             setLocalization();
         }
@@ -74,6 +94,9 @@ namespace GreenLock.UC_Controls
 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             Globals._language = "en-US";
+
+            CultureInfo ciLang = new CultureInfo("en-US");
+            GreenLock.languages.GreenLock.Culture = ciLang;
             setLocalization();
         }
 
@@ -116,11 +139,9 @@ namespace GreenLock.UC_Controls
             }
         }
 
-
-        private void Uc_TabMain_Load(object sender, EventArgs e)
+        public void initLanguage()
         {
             localization();
-
 
             if (Globals._language.CompareTo("ko-KR") == 0)
             {
@@ -146,19 +167,11 @@ namespace GreenLock.UC_Controls
                 lblEnglish.ForeColor = Color.White;
                 SetEnglish();
             }
+        }
 
-            this.pnlMain.Controls.Clear();
-            if (_mainTabType == MainType.Energy)
-            {
-                this.pnlMain.Controls.Add(_tabEnergy);
-            }
-            else if (_mainTabType == MainType.Security)
-                this.pnlMain.Controls.Add(_tabSecurity);
-            else if (_mainTabType == MainType.Config)
-            {
-                _tabConfig.Main = _main;
-                this.pnlMain.Controls.Add(_tabConfig);
-            }
+        private void Uc_TabMain_Load(object sender, EventArgs e)
+        {
+            initLanguage();
         }
 
         private void pbClose_Click(object sender, EventArgs e)
@@ -171,6 +184,8 @@ namespace GreenLock.UC_Controls
             if (Globals._language.CompareTo("ko-KR") != 0)
             {
                 SetKorean();
+             
+
             }
         }
 
@@ -179,6 +194,7 @@ namespace GreenLock.UC_Controls
             if (Globals._language.CompareTo("en-US") != 0)
             {
                 SetEnglish();
+               
             }
         }
 
@@ -265,5 +281,10 @@ namespace GreenLock.UC_Controls
             }
         }
 
+        private void pnlHome_Click(object sender, EventArgs e)
+        {
+            this._main.Controls.Clear();
+            this._main.goHome();
+        }
     }
 }

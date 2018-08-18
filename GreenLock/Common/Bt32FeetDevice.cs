@@ -41,6 +41,8 @@ namespace GreenLock
 
         ConnectLog _log = new ConnectLog();
 
+        private string oldServiceName = "";
+
         /// <summary>
         /// 에이전트로부터 받아올 맥 어드레스
         /// </summary>
@@ -223,7 +225,6 @@ namespace GreenLock
                // 블루투스 장치가 켜져있지 않다면 블루투스 설정 화면을 사용자에게 안내한다
                 if (!BluetoothRadio.IsSupported)
                 {
-                   
                     MessageBox.Show(GreenLock.languages.GreenLock.bluetoothOffMsg, "GreenLock", MessageBoxButtons.OK);
                     Process.Start("bthprops.cpl");
                 }
@@ -238,7 +239,7 @@ namespace GreenLock
                 while (true)
                 {                 
                     IAsyncResult iAsyncResult = bluetoothDeviceInfo.BeginGetServiceRecords(uuid, Service_AsyncCallback, bluetoothDeviceInfo);
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
                 }
             }
             catch (Exception ex)
@@ -269,26 +270,99 @@ namespace GreenLock
                 if (MobileModel == EnumMobileModel.Android)
                 {
                     bool isService = false;
+                  
+                   
                     if (services.Count() > 0)
                     {
-                        if (OnIsService != null)
-                               OnIsService(this, null);
+                        
 
                         foreach (ServiceRecord r in services)
                         {
                             int port = ServiceRecordHelper.GetRfcommChannelNumber(r);
                             string curSvcName = r.GetPrimaryMultiLanguageStringAttributeById(UniversalAttributeId.ServiceName);
 
+                            Debug.WriteLine("oldServiceName ====> " + oldServiceName, " curSvcName  =>>> " + curSvcName);
                             // 알람끄기
-                            if (curSvcName.CompareTo("GreenLock0") == 0)
+                            if (curSvcName.CompareTo("GreenLock1") == 0)
                             {
                                 SoundService.isAlramUseOn = false;
+                               
+                                if (oldServiceName != "" && oldServiceName.CompareTo(curSvcName) != 0)
+                                {
+
+                                    oldServiceName = curSvcName;
+                                    MessageBox.Show(GreenLock.languages.GreenLock.antiTheftoff);
+                                       
+                                    //GreenLock.Forms.GreenLockMessage dlg = new Forms.GreenLockMessage();
+                                    //dlg.SetMessage(GreenLock.languages.GreenLock.antiTheftoff);
+                                    //dlg.Show();
+                                }
+
+                                oldServiceName = curSvcName;
+
+                                if (OnIsService != null)
+                                    OnIsService(this, null);
                                 break;
                             }
                             // 알람키기
-                            else if (curSvcName.CompareTo("GreenLock1") == 0)
+
+                            else if ( curSvcName.CompareTo("GreenLock2") == 0)
+                            {
+                                SoundService.isAlramUseOn = false;
+                               
+                                if (oldServiceName != "" && oldServiceName.CompareTo(curSvcName) != 0)
+                                {
+                                    oldServiceName = curSvcName;
+                                    MessageBox.Show(GreenLock.languages.GreenLock.antiTheftoff);
+                                    //GreenLock.Forms.GreenLockMessage dlg = new Forms.GreenLockMessage();
+                                    //dlg.SetMessage(GreenLock.languages.GreenLock.antiTheftoff);
+                                    //dlg.Show();
+                                }
+
+                                oldServiceName = curSvcName;
+
+                                if (OnNotService != null)
+                                    OnNotService(this, null);
+                                break;
+                            }
+                            else if( curSvcName.CompareTo("GreenLock3") == 0)
                             {
                                 SoundService.isAlramUseOn = true;
+                                if (oldServiceName != "" && oldServiceName.CompareTo(curSvcName) != 0)
+                                {
+                                    oldServiceName = curSvcName;
+                                    //GreenLock.Forms.GreenLockMessage dlg = new Forms.GreenLockMessage();
+                                    //dlg.SetMessage(GreenLock.languages.GreenLock.antiThefton);
+                                    //dlg.Show();
+                                    MessageBox.Show(GreenLock.languages.GreenLock.antiThefton); 
+                                }
+
+                                oldServiceName = curSvcName;
+
+                                if (OnIsService != null)
+                                    OnIsService(this, null);
+                                break;
+                            }
+                            else if( curSvcName.CompareTo("GreenLock4") == 0)
+                            {
+                               
+
+
+                                SoundService.isAlramUseOn = true;
+                                if (oldServiceName != "" && oldServiceName.CompareTo(curSvcName) != 0)
+                                {
+                                    oldServiceName = curSvcName;
+                                    //GreenLock.Forms.GreenLockMessage dlg = new Forms.GreenLockMessage();
+                                    //dlg.SetMessage(GreenLock.languages.GreenLock.antiThefton);
+                                    //dlg.Show();
+
+                                    MessageBox.Show(GreenLock.languages.GreenLock.antiThefton);
+                                }
+
+                                oldServiceName = curSvcName;
+
+                                if (OnNotService != null)
+                                    OnNotService(this, null);
                                 break;
                             }
                         }
@@ -308,9 +382,8 @@ namespace GreenLock
                     else
                     {
                         //서비스가 없는 경우 
-                        if (OnNotService != null)
-                            OnNotService(this, null);
-                        _log.write("알림 off시 발생");
+                        //if (OnNotService != null)
+                        //    OnNotService(this, null);                       
                     }
                 }
                 else
