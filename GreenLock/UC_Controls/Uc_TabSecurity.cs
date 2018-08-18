@@ -379,7 +379,7 @@ namespace GreenLock.UC_Controls
                 else
                 {
                     resultUnlok = ((avgUnlockStart / unLockDayOfWeeks.Count) / 60);
-                    labelUnlockAvg.Text = $"{ Math.Round((unlockTotalMinute/unLockDayOfWeeks.Count) / 60,1) }hr";
+                    labelUnlockAvg.Text = $"{ Math.Round(unlockTotalMinute / 60,1) }hr";
                 }
 
                 // 락 평균값 계산
@@ -389,7 +389,7 @@ namespace GreenLock.UC_Controls
                 }
                 else
                 {
-                    labelockAvg.Text = $"{ Math.Round((lockTotalMinute / lockDayOfWeeks.Count) / 60, 1) }hr";
+                    labelockAvg.Text = $"{ Math.Round((lockTotalMinute) / 60, 1) }hr";
                 }
 
                 string resultUnlockString = "";
@@ -644,7 +644,7 @@ namespace GreenLock.UC_Controls
 
             this.ChartControl.Diagram = _ganttDigram_Custom;
             this.ChartControl.SeriesSerializable = new DevExpress.XtraCharts.Series[] { _series_Dummy, _series_Unlock, _series_Lock };
-            this.ChartControl.Size = new System.Drawing.Size(750, 270);
+            this.ChartControl.Size = new System.Drawing.Size((this.Size.Width - 40), Convert.ToInt32((this.Size.Height / 1.7)));
             this.ChartControl.TabIndex = 0;
             this.ChartControl.Legend.Font = new System.Drawing.Font("Gulim", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChartControl.Legend.Name = "Default Legend";

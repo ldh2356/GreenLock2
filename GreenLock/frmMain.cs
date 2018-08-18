@@ -788,7 +788,7 @@ namespace GreenLock
                     //GIF파일의 크기를 서브모니터 크기로 조정
                     _screenSaver2.Size = new Size(screen[screen2].Bounds.Width, screen[screen2].Bounds.Height);
 #if debug
-                    _screenSaver1.Size = new Size(100, 100);
+                    _screenSaver2.Size = new Size(100, 100);
 #endif
                     _screenSaver2.Show(this);
                 }
