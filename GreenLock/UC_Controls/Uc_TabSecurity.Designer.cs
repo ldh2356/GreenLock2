@@ -85,7 +85,7 @@ namespace GreenLock.UC_Controls
             // Lable_StartDate
             // 
             this.Lable_StartDate.AccessibleName = "LabelStartDate";
-            this.Lable_StartDate.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Lable_StartDate.Font = new System.Drawing.Font("맑은 고딕", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Lable_StartDate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Lable_StartDate.Location = new System.Drawing.Point(3, 0);
             this.Lable_StartDate.Name = "Lable_StartDate";
@@ -97,7 +97,7 @@ namespace GreenLock.UC_Controls
             // Lable_EndDate
             // 
             this.Lable_EndDate.AccessibleName = "LabelEndDate";
-            this.Lable_EndDate.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Lable_EndDate.Font = new System.Drawing.Font("맑은 고딕", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Lable_EndDate.Location = new System.Drawing.Point(189, 0);
             this.Lable_EndDate.Name = "Lable_EndDate";
             this.Lable_EndDate.Size = new System.Drawing.Size(157, 36);
