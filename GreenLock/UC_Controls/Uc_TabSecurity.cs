@@ -462,6 +462,8 @@ namespace GreenLock.UC_Controls
             try
             {
                 result = (Math.Round((double.Parse(text) + (GetDayOfMinute(endDate) - GetDayOfMinute(startDate)) / 60) , 2)).ToString();
+                if (result.Count() == 3)
+                    result = result + "0";
             }
             catch (Exception ex)
             {
@@ -859,6 +861,7 @@ namespace GreenLock.UC_Controls
 
                     // 시트 감춤
                     Sheet.Visible = false;
+                    this.ChartControl.Visible = true;
                 }
                 // 도표 모드일때
                 else
@@ -883,6 +886,7 @@ namespace GreenLock.UC_Controls
 
                     // 시트 보임
                     Sheet.Visible = true;
+                    this.ChartControl.Visible = false;
                 }
 
             }
