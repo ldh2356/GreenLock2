@@ -58,6 +58,7 @@
             // lblEnglish
             // 
             this.lblEnglish.BackColor = System.Drawing.Color.Transparent;
+            this.lblEnglish.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblEnglish.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.lblEnglish.ForeColor = System.Drawing.Color.White;
             this.lblEnglish.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -84,6 +85,7 @@
             // lblKorea
             // 
             this.lblKorea.BackColor = System.Drawing.Color.Transparent;
+            this.lblKorea.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblKorea.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblKorea.ForeColor = System.Drawing.Color.White;
             this.lblKorea.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -99,6 +101,7 @@
             // 
             this.lblEnegry.AutoSize = true;
             this.lblEnegry.BackColor = System.Drawing.Color.Transparent;
+            this.lblEnegry.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblEnegry.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblEnegry.ForeColor = System.Drawing.Color.White;
             this.lblEnegry.Location = new System.Drawing.Point(483, 0);
@@ -114,6 +117,7 @@
             // 
             this.lblSecurity.AutoSize = true;
             this.lblSecurity.BackColor = System.Drawing.Color.Transparent;
+            this.lblSecurity.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblSecurity.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblSecurity.ForeColor = System.Drawing.Color.White;
             this.lblSecurity.Location = new System.Drawing.Point(614, 0);
@@ -129,6 +133,7 @@
             // 
             this.lblConfig.AutoSize = true;
             this.lblConfig.BackColor = System.Drawing.Color.Transparent;
+            this.lblConfig.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblConfig.Font = new System.Drawing.Font("맑은 고딕", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblConfig.ForeColor = System.Drawing.Color.White;
             this.lblConfig.Location = new System.Drawing.Point(671, 0);
@@ -165,6 +170,7 @@
             // pnlHome
             // 
             this.pnlHome.BackColor = System.Drawing.Color.Transparent;
+            this.pnlHome.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlHome.Location = new System.Drawing.Point(16, 24);
             this.pnlHome.Name = "pnlHome";
             this.pnlHome.Size = new System.Drawing.Size(200, 40);

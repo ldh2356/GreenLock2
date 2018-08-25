@@ -61,6 +61,7 @@
             // 
             resources.ApplyResources(this.lblKorea, "lblKorea");
             this.lblKorea.BackColor = System.Drawing.Color.Transparent;
+            this.lblKorea.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblKorea.ForeColor = System.Drawing.Color.White;
             this.lblKorea.Name = "lblKorea";
             this.lblKorea.Click += new System.EventHandler(this.lblKorea_Click);
@@ -78,6 +79,7 @@
             // 
             resources.ApplyResources(this.lblEnglish, "lblEnglish");
             this.lblEnglish.BackColor = System.Drawing.Color.Transparent;
+            this.lblEnglish.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblEnglish.ForeColor = System.Drawing.Color.White;
             this.lblEnglish.Name = "lblEnglish";
             this.lblEnglish.Click += new System.EventHandler(this.lblEnglish_Click);
@@ -110,6 +112,7 @@
             // uc_MainConfig
             // 
             this.uc_MainConfig.BackColor = System.Drawing.Color.Transparent;
+            this.uc_MainConfig.Cursor = System.Windows.Forms.Cursors.Hand;
             resources.ApplyResources(this.uc_MainConfig, "uc_MainConfig");
             this.uc_MainConfig.Name = "uc_MainConfig";
             this.uc_MainConfig.Click += new System.EventHandler(this.uc_MainConfig_Click);
@@ -118,12 +121,14 @@
             // 
             this.uc_MainEnergy.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.uc_MainEnergy, "uc_MainEnergy");
+            this.uc_MainEnergy.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uc_MainEnergy.Name = "uc_MainEnergy";
             this.uc_MainEnergy.Click += new System.EventHandler(this.uc_MainEnergy_Click);
             // 
             // uc_MainSecurity
             // 
             this.uc_MainSecurity.BackColor = System.Drawing.Color.Transparent;
+            this.uc_MainSecurity.Cursor = System.Windows.Forms.Cursors.Hand;
             resources.ApplyResources(this.uc_MainSecurity, "uc_MainSecurity");
             this.uc_MainSecurity.Name = "uc_MainSecurity";
             this.uc_MainSecurity.Click += new System.EventHandler(this.uc_MainSecurity_Click);

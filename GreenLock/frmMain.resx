@@ -328,7 +328,7 @@
     <value>uc_MainConfig</value>
   </data>
   <data name="&gt;&gt;uc_MainConfig.Type" xml:space="preserve">
-    <value>GreenLock.UC_Controls.Uc_MainConfig, GreenLock, Version=2.0.4.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>GreenLock.UC_Controls.Uc_MainConfig, GreenLock, Version=2.0.9.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uc_MainConfig.Parent" xml:space="preserve">
     <value>pnlMain</value>
@@ -355,7 +355,7 @@
     <value>uc_MainEnergy</value>
   </data>
   <data name="&gt;&gt;uc_MainEnergy.Type" xml:space="preserve">
-    <value>GreenLock.UC_Controls.Uc_MainEnergy, GreenLock, Version=2.0.4.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>GreenLock.UC_Controls.Uc_MainEnergy, GreenLock, Version=2.0.9.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uc_MainEnergy.Parent" xml:space="preserve">
     <value>pnlMain</value>
@@ -379,7 +379,7 @@
     <value>uc_MainSecurity</value>
   </data>
   <data name="&gt;&gt;uc_MainSecurity.Type" xml:space="preserve">
-    <value>GreenLock.UC_Controls.Uc_MainSecurity, GreenLock, Version=2.0.4.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>GreenLock.UC_Controls.Uc_MainSecurity, GreenLock, Version=2.0.9.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uc_MainSecurity.Parent" xml:space="preserve">
     <value>pnlMain</value>

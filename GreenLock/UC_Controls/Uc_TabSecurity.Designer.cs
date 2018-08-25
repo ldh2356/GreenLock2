@@ -160,6 +160,7 @@ namespace GreenLock.UC_Controls
             // 
             // LeftButtonLabel
             // 
+            this.LeftButtonLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LeftButtonLabel.Font = new System.Drawing.Font("맑은 고딕", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.LeftButtonLabel.Location = new System.Drawing.Point(627, 28);
             this.LeftButtonLabel.Name = "LeftButtonLabel";
@@ -171,6 +172,7 @@ namespace GreenLock.UC_Controls
             // 
             // RightButtonLabel
             // 
+            this.RightButtonLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RightButtonLabel.Font = new System.Drawing.Font("맑은 고딕", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.RightButtonLabel.Location = new System.Drawing.Point(744, 28);
             this.RightButtonLabel.Name = "RightButtonLabel";
