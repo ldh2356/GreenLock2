@@ -266,8 +266,13 @@ namespace GreenLock.UC_Controls
                 int avgUnlockStart = 0;
                 int avgLockStart = 0;
 
+                TimeTable lastUnlock = null;
+                TimeTable lastLock = null;
+                bool isAllNight = false;
+
                 foreach (TimeTable day in timeSheetOfWeek)
                 {
+                    isAllNight = false;
                     // 제대로 들어가지 않은 데이터에 대해선 무시
                     if (day.EndDate == DateTime.MinValue)
                         continue;
@@ -275,7 +280,8 @@ namespace GreenLock.UC_Controls
                     // 언락인경우
                     if (day.LockType == 0)
                     {
-                        if(day.RegDate.DayOfWeek == (DayOfWeek)this.label_Monday_Unlock.Tag)
+
+                        if (day.RegDate.DayOfWeek == (DayOfWeek)this.label_Monday_Unlock.Tag)
                         {
                             this.label_Monday_Unlock.Text = GetSheetElementData(this.label_Monday_Unlock.Text, day.StartDate, day.EndDate);
                         }
@@ -304,9 +310,35 @@ namespace GreenLock.UC_Controls
                             this.label_Sunday_Unlock.Text = GetSheetElementData(this.label_Sunday_Unlock.Text, day.StartDate, day.EndDate);
                         }
 
-                        // 평균값 계산을 위한 분할
-                        if (!unLockDayOfWeeks.Contains(day.RegDate.DayOfWeek))
+                        // 이전 락데이터가 새벽시간근교 즉 야근을 해서 밤을 샌경우 라면 그 경우는 평균에 포함시키지 않는다 
+                        if(lastUnlock != null)
                         {
+                            if (Convert.ToInt32(lastUnlock.EndDate.ToString("HH")) >= 23 && Convert.ToInt32(lastUnlock.EndDate.ToString("HH")) <= 24)
+                            { 
+                                // 동시에 현재데이터 00:00 시 이내로 시작한다면
+                                if (Convert.ToInt32(Convert.ToDateTime(day.StartDate).ToString("HH")) == 00)
+                                {
+                                    isAllNight = true;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (Convert.ToInt32(Convert.ToDateTime(day.StartDate).ToString("HH")) == 00)
+                            {
+                                isAllNight = true;
+                            }
+                        }
+
+
+                        // 평균값 계산을 위한 분할
+                        if (!unLockDayOfWeeks.Contains(day.RegDate.DayOfWeek) && !isAllNight)
+                        {
+                            //시작시간과 종료시간이 10분 미만인경우 무시
+                            if(Convert.ToInt32(GetDayOfMinute(day.EndDate)) - Convert.ToInt32(GetDayOfMinute(day.StartDate)) <= 10){
+                                continue;
+                            }
+
                             // 평균 시작시간계산을 위한..
                             avgUnlockStart = avgUnlockStart + Convert.ToInt32(GetDayOfMinute(day.StartDate));
                             unLockDayOfWeeks.Add(day.RegDate.DayOfWeek);
@@ -314,10 +346,13 @@ namespace GreenLock.UC_Controls
 
                         unlockTotalMinute = unlockTotalMinute + GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate);
                         _series_Unlock.Points.Add(new SeriesPoint(_currentCulture.DateTimeFormat.GetShortestDayName(day.RegDate.DayOfWeek), new double[] { GetDayOfMinute(day.StartDate), GetDayOfMinute(day.EndDate) }));
+                        lastUnlock = day;
                     }
                     // 락인경우 
                     else
                     {
+                        
+
                         if (day.RegDate.DayOfWeek == (DayOfWeek)this.label_Monday_Lock.Tag)
                         {
                             this.label_Monday_Lock.Text = GetSheetElementData(this.label_Monday_Lock.Text, day.StartDate, day.EndDate);
@@ -347,9 +382,34 @@ namespace GreenLock.UC_Controls
                             this.label_Sunday_Lock.Text = GetSheetElementData(this.label_Sunday_Lock.Text, day.StartDate, day.EndDate);
                         }
 
-                        // 평균값 계산을 위한 분할
-                        if (!lockDayOfWeeks.Contains(day.RegDate.DayOfWeek))
+                        if (lastLock != null)
                         {
+                            //이전 락데이터가 새벽시간근교 즉 야근을 해서 밤을 샌경우 라면 그 경우는 평균에 포함시키지 않는다
+                            if (Convert.ToInt32(lastLock.EndDate.ToString("HH")) > 23 && Convert.ToInt32(lastLock.EndDate.ToString("HH")) <= 24)
+                            {
+                                // 동시에 현재데이터 00:00 시 이내로 시작한다면
+                                if (Convert.ToInt32(Convert.ToDateTime(day.StartDate).ToString("HH")) == 00)
+                                {
+                                    isAllNight = true;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (Convert.ToInt32(Convert.ToDateTime(day.StartDate).ToString("HH")) == 00)
+                            {
+                                isAllNight = true;
+                            }
+                        }
+
+                        // 평균값 계산을 위한 분할
+                        if (!lockDayOfWeeks.Contains(day.RegDate.DayOfWeek) && !isAllNight)
+                        {
+                            //시작시간과 종료시간이 10분 미만인경우 무시
+                            if (Convert.ToInt32(GetDayOfMinute(day.EndDate)) - Convert.ToInt32(GetDayOfMinute(day.StartDate)) <= 10)
+                            {
+                                continue;
+                            }
                             // 평균 시작시간계산을 위한..
                             avgLockStart = avgLockStart + Convert.ToInt32(GetDayOfMinute(day.StartDate));
                             lockDayOfWeeks.Add(day.RegDate.DayOfWeek);
@@ -357,6 +417,7 @@ namespace GreenLock.UC_Controls
 
                         lockTotalMinute = lockTotalMinute + GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate);
                         _series_Lock.Points.Add(new SeriesPoint(_currentCulture.DateTimeFormat.GetShortestDayName(day.RegDate.DayOfWeek), new double[] { GetDayOfMinute(day.StartDate), GetDayOfMinute(day.EndDate) }));
+                        lastLock = day;
                     }
                 }
 
@@ -393,6 +454,8 @@ namespace GreenLock.UC_Controls
                 }
 
                 string resultUnlockString = "";
+
+
                 // 언락 시작 시간 평균 계산
                 if (unLockDayOfWeeks.Count == 0)
                 {
