@@ -37,6 +37,10 @@
             this.historyRichTextBox = new System.Windows.Forms.RichTextBox();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,6 +49,9 @@
             this.textEdit1.Location = new System.Drawing.Point(175, 16);
             this.textEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textEdit1.Name = "textEdit1";
+            // 
+            // 
+            // 
             this.textEdit1.Properties.ReadOnly = true;
             this.textEdit1.Size = new System.Drawing.Size(113, 24);
             this.textEdit1.TabIndex = 0;
@@ -92,7 +99,7 @@
             this.newVersionRichTextBox.Location = new System.Drawing.Point(14, 84);
             this.newVersionRichTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.newVersionRichTextBox.Name = "newVersionRichTextBox";
-            this.newVersionRichTextBox.Size = new System.Drawing.Size(371, 122);
+            this.newVersionRichTextBox.Size = new System.Drawing.Size(712, 122);
             this.newVersionRichTextBox.TabIndex = 5;
             this.newVersionRichTextBox.Text = "";
             // 
@@ -102,7 +109,7 @@
             this.historyRichTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.historyRichTextBox.Name = "historyRichTextBox";
             this.historyRichTextBox.ReadOnly = true;
-            this.historyRichTextBox.Size = new System.Drawing.Size(371, 122);
+            this.historyRichTextBox.Size = new System.Drawing.Size(712, 122);
             this.historyRichTextBox.TabIndex = 6;
             this.historyRichTextBox.Text = "";
             // 
@@ -128,11 +135,50 @@
             this.comboBox1.TabIndex = 8;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(474, 15);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(111, 25);
+            this.textBox1.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Location = new System.Drawing.Point(403, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 19);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "버젼정보";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("맑은 고딕", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Location = new System.Drawing.Point(591, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(135, 19);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "마지막업데이트버전";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(732, 19);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(111, 25);
+            this.textBox2.TabIndex = 12;
+            // 
             // UpdateCreater
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 434);
+            this.ClientSize = new System.Drawing.Size(855, 579);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.historyRichTextBox);
@@ -164,6 +210,10 @@
         private System.Windows.Forms.RichTextBox historyRichTextBox;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 

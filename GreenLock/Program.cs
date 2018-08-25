@@ -5,6 +5,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
+using System.IO;
+using System.Xml.Linq;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace GreenLock
 {
@@ -34,6 +38,9 @@ namespace GreenLock
             {
                 frmMain._log.write(e.Message + e.StackTrace);
             }
+
+
         }
+
     }
 }

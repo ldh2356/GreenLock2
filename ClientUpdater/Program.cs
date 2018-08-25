@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using System.IO;
+using System.Xml.Linq;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace ClientUpdater
 {
@@ -24,6 +28,10 @@ namespace ClientUpdater
             mainPath = Application.StartupPath;
             mainPath = mainPath.Replace('+', ' ');
             Application.Run(new ClientUpdater(clientUpdateName, mainPath));
+
+
         }
+
+       
     }
 }

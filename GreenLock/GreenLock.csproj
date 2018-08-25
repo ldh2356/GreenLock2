@@ -455,6 +455,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="UpdateInfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\whiteButton.png" />
     <None Include="Resources\table_button_left.png" />
     <None Include="Resources\table_button_right.png" />
