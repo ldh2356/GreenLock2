@@ -185,6 +185,14 @@ namespace UpdateCreater
 
             this.textBox2.Text = dataset.Tables[0].Rows[0].Field<string>("Version");
 
+            double nextVersion;
+            if (double.TryParse(this.textBox2.Text , out nextVersion))
+            {
+                nextVersion = nextVersion + 0.01;
+                textBox1.Text = nextVersion.ToString();
+            }
+
+
             StringBuilder history = new StringBuilder();
             // 히스토리를 조합한다
             foreach (DataRow row in dataset.Tables[0].Rows)
