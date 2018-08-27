@@ -291,7 +291,7 @@ namespace GreenLock
                                 {
 
                                     oldServiceName = curSvcName;
-                                    MessageBox.Show(GreenLock.languages.GreenLock.antiTheftoff);
+                                    //MessageBox.Show(GreenLock.languages.GreenLock.antiTheftoff);
                                        
                                     //GreenLock.Forms.GreenLockMessage dlg = new Forms.GreenLockMessage();
                                     //dlg.SetMessage(GreenLock.languages.GreenLock.antiTheftoff);
@@ -305,7 +305,6 @@ namespace GreenLock
                                 break;
                             }
                             // 알람키기
-
                             else if ( curSvcName.CompareTo("GreenLock2") == 0)
                             {
                                 SoundService.isAlramUseOn = false;
@@ -313,7 +312,7 @@ namespace GreenLock
                                 if (oldServiceName != "" && oldServiceName.CompareTo(curSvcName) != 0)
                                 {
                                     oldServiceName = curSvcName;
-                                    MessageBox.Show(GreenLock.languages.GreenLock.antiTheftoff);
+                                    //MessageBox.Show(GreenLock.languages.GreenLock.antiTheftoff);
                                     //GreenLock.Forms.GreenLockMessage dlg = new Forms.GreenLockMessage();
                                     //dlg.SetMessage(GreenLock.languages.GreenLock.antiTheftoff);
                                     //dlg.Show();
@@ -334,7 +333,7 @@ namespace GreenLock
                                     //GreenLock.Forms.GreenLockMessage dlg = new Forms.GreenLockMessage();
                                     //dlg.SetMessage(GreenLock.languages.GreenLock.antiThefton);
                                     //dlg.Show();
-                                    MessageBox.Show(GreenLock.languages.GreenLock.antiThefton); 
+                                    //MessageBox.Show(GreenLock.languages.GreenLock.antiThefton); 
                                 }
 
                                 oldServiceName = curSvcName;
@@ -345,9 +344,6 @@ namespace GreenLock
                             }
                             else if( curSvcName.CompareTo("GreenLock4") == 0)
                             {
-                               
-
-
                                 SoundService.isAlramUseOn = true;
                                 if (oldServiceName != "" && oldServiceName.CompareTo(curSvcName) != 0)
                                 {
@@ -356,7 +352,7 @@ namespace GreenLock
                                     //dlg.SetMessage(GreenLock.languages.GreenLock.antiThefton);
                                     //dlg.Show();
 
-                                    MessageBox.Show(GreenLock.languages.GreenLock.antiThefton);
+                                    //MessageBox.Show(GreenLock.languages.GreenLock.antiThefton);
                                 }
 
                                 oldServiceName = curSvcName;

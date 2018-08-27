@@ -159,6 +159,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_0FCF76E672CA40AA972436082BB4ED15"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1324A81865234395AF8ED97A37CF709B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1497,12 +1503,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D3BBBC1C22AA44FA8A7AC9C476F4649B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_D50CD1DF03C5427D9622B5078C25B4DB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1865,12 +1865,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_BB2BFA101A0F8DD41309046958E3500A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_344DA70754AE43188FD57641A0F813BC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2800,6 +2794,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_344DA70754AE43188FD57641A0F813BC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_33FAE04579A577FCE44475F102C7431E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -3682,6 +3682,26 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_69CD2B0344204FCB9E4A178B2C0EDA0F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0FCF76E672CA40AA972436082BB4ED15"
+            {
+            "SourcePath" = "8:D:\\복구\\Downloads\\icon.ico"
+            "TargetName" = "8:icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_6F48224F69AF4F93A3DD92EA6E45A57E"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -7175,7 +7195,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:GreenLock, Version=2.0.9.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:GreenLock, Version=2.0.11.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_B50C7280AED045E696B910AC607E5046"
@@ -7826,7 +7846,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:GreenLock.resources, Version=2.0.9.0, Culture=en-US, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:GreenLock.resources, Version=2.0.11.0, Culture=en-US, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_C6B42F479F5740ABBBD2E3E87CC7A4A0"
@@ -8163,26 +8183,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D3BBBC1C22AA44FA8A7AC9C476F4649B"
-            {
-            "SourcePath" = "8:C:\\Users\\dd\\Downloads\\icon.ico"
-            "TargetName" = "8:icon.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_6F48224F69AF4F93A3DD92EA6E45A57E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D50CD1DF03C5427D9622B5078C25B4DB"
             {
             "SourcePath" = "8:C:\\Users\\dd\\Documents\\카카오톡 받은 파일\\ic_launcher\\pc.png"
@@ -8300,7 +8300,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:GreenLock.resources, Version=2.0.9.0, Culture=ko-KR, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:GreenLock.resources, Version=2.0.11.0, Culture=ko-KR, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_DA3FBD6388BF4A259C1EA563824B4CF6"
@@ -9728,7 +9728,7 @@
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.0.3"
+        "ProductVersion" = "8:2.0.11"
         "Manufacturer" = "8:hanscreative"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -9738,7 +9738,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_D3BBBC1C22AA44FA8A7AC9C476F4649B"
+        "ARPPRODUCTICON" = "8:_0FCF76E672CA40AA972436082BB4ED15"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -9902,7 +9902,7 @@
             "Target" = "8:_B50C7280AED045E696B910AC607E5046"
             "Folder" = "8:_9756E288C95240E29BD87671196CCAC4"
             "WorkingFolder" = "8:_6F48224F69AF4F93A3DD92EA6E45A57E"
-            "Icon" = "8:_D3BBBC1C22AA44FA8A7AC9C476F4649B"
+            "Icon" = "8:_0FCF76E672CA40AA972436082BB4ED15"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E17E0D7EA68F46D4949338596B5D32AC"
@@ -9916,7 +9916,7 @@
             "Target" = "8:_B50C7280AED045E696B910AC607E5046"
             "Folder" = "8:_37C28591D458480BA400203A36274E7D"
             "WorkingFolder" = "8:_6F48224F69AF4F93A3DD92EA6E45A57E"
-            "Icon" = "8:_D3BBBC1C22AA44FA8A7AC9C476F4649B"
+            "Icon" = "8:_0FCF76E672CA40AA972436082BB4ED15"
             "Feature" = "8:"
             }
         }

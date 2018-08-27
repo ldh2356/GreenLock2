@@ -5,16 +5,20 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace TestForm
 {
     public partial class Form2 : Form
     {
+        public bool isflag = false;
+        public SoundPlayer Player = new SoundPlayer();
 
         [DllImport(@"User32", SetLastError = true, EntryPoint = "RegisterPowerSettingNotification",
     CallingConvention = CallingConvention.StdCall)]
@@ -33,13 +37,45 @@ namespace TestForm
             public byte Data;
         }
 
+
+        public enum EXECUTION_STATE : uint
+        {
+            ES_AWAYMODE_REQUIRED = 0x00000040,
+            ES_CONTINUOUS = 0x80000000,
+             ES_SYSTEM_REQUIRED = 0x00000001,
+            ES_DISPLAY_REQUIRED = 0x00000002,
+        }
+
+        internal class NativeMethods
+        {
+            [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+            public static extern EXECUTION_STATE SetThreadExecutionState(EXECUTION_STATE esFlags);
+        }
+
+
         private bool? _previousLidState = null;
 
 
-      
-          
 
-      
+
+
+        private void OnPoweModerChange(object s, PowerModeChangedEventArgs e)
+        {
+
+           
+
+            //Debug.Write("aaaa");
+            //Player.SoundLocation = "Alert.wav";
+                //MessageBox.Show("Lid is now closed3");
+
+            //Player.PlayLooping();
+
+                
+
+           
+            
+        }
+
 
         [SecurityPermissionAttribute(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         protected override void WndProc(ref Message m)
@@ -47,7 +83,7 @@ namespace TestForm
             switch (m.Msg)
             {
                 case WM_POWERBROADCAST:
-                    Debug.Write("WM_POWERBROADCAST");
+                    //Debug.Write("WM_POWERBROADCAST");
                     OnPowerBroadcast(m.WParam, m.LParam);
                     break;
                 default:
@@ -93,13 +129,23 @@ namespace TestForm
         {
             if (isLidOpen)
             {
+                isflag = false;
                 //Do some action on lid open event
-                MessageBox.Show("Lid is now open");
+                //MessageBox.Show("Lid is now open");
             }
             else
             {
+      
+                Console.Beep(15000, 5000);
+
+                //   System.Media.SystemSounds.Beep.Play();
+                //   System.Media.SystemSounds.Asterisk.Play();
+                //   System.Media.SystemSounds.Exclamation.Play();
+                //   System.Media.SystemSounds.Question.Play();
+                //   System.Media.SystemSounds.Hand.Play();
+
                 //Do some action on lid close event
-                MessageBox.Show("Lid is now closed");
+                //MessageBox.Show("Lid is now closed");
             }
         }
    
@@ -109,7 +155,12 @@ namespace TestForm
             InitializeComponent();
              RegisterForPowerNotifications();
 
-    }
+            SystemEvents.PowerModeChanged += OnPoweModerChange;
+
+          
+            NativeMethods.SetThreadExecutionState(EXECUTION_STATE.ES_CONTINUOUS | EXECUTION_STATE.ES_SYSTEM_REQUIRED);
+
+        }
 
 
 
@@ -140,8 +191,15 @@ namespace TestForm
         {
             PowerStatus si = SystemInformation.PowerStatus;
 
-            //Debug.WriteLine(si.PowerLineStatus);
+            Debug.WriteLine(si.PowerLineStatus);
 
+            if (isflag)
+            {
+               // Player.SoundLocation = "Alert.wav";
+                //MessageBox.Show("Lid is now closed3");
+
+                //Player.PlayLooping();
+            }
         }
 
 
