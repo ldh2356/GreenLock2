@@ -20,20 +20,23 @@ namespace GreenLock.Common
 
                 if (!SoundService.isUsingSoundService)
                 {
-                    if (powerStatus.PowerLineStatus == PowerLineStatus.Offline || powerStatus.PowerLineStatus == PowerLineStatus.Unknown)
-                    {
-                        SoundService.AlertSoundStart();
-                    }
-                    else
-                    {
-
-                        SoundService.AlertSoundStop();
-                    }
-
-
+                    // 알람 사용이 아닐경우
                     if (!SoundService.isAlramUseOn)
                     {
                         SoundService.AlertSoundStop();
+                    }
+                    // 알람을 사용할경우
+                    else
+                    {
+                        if (powerStatus.PowerLineStatus == PowerLineStatus.Offline || powerStatus.PowerLineStatus == PowerLineStatus.Unknown)
+                        {
+                            SoundService.AlertSoundStart();
+                        }
+                        else
+                        {
+
+                            SoundService.AlertSoundStop();
+                        }
                     }
                 }
 
