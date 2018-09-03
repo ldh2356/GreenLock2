@@ -331,6 +331,10 @@ namespace GreenLock.UC_Controls
                         }
 
 
+                        unlockTotalMinute = unlockTotalMinute + GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate);
+                        _series_Unlock.Points.Add(new SeriesPoint(_currentCulture.DateTimeFormat.GetShortestDayName(day.RegDate.DayOfWeek), new double[] { GetDayOfMinute(day.StartDate), GetDayOfMinute(day.EndDate) }));
+                        lastUnlock = day;
+
                         // 평균값 계산을 위한 분할
                         if (!unLockDayOfWeeks.Contains(day.RegDate.DayOfWeek) && !isAllNight)
                         {
@@ -344,9 +348,7 @@ namespace GreenLock.UC_Controls
                             unLockDayOfWeeks.Add(day.RegDate.DayOfWeek);
                         }
 
-                        unlockTotalMinute = unlockTotalMinute + GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate);
-                        _series_Unlock.Points.Add(new SeriesPoint(_currentCulture.DateTimeFormat.GetShortestDayName(day.RegDate.DayOfWeek), new double[] { GetDayOfMinute(day.StartDate), GetDayOfMinute(day.EndDate) }));
-                        lastUnlock = day;
+                        
                     }
                     // 락인경우 
                     else
@@ -402,6 +404,10 @@ namespace GreenLock.UC_Controls
                             }
                         }
 
+                        lockTotalMinute = lockTotalMinute + GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate);
+                        _series_Lock.Points.Add(new SeriesPoint(_currentCulture.DateTimeFormat.GetShortestDayName(day.RegDate.DayOfWeek), new double[] { GetDayOfMinute(day.StartDate), GetDayOfMinute(day.EndDate) }));
+                        lastLock = day;
+
                         // 평균값 계산을 위한 분할
                         if (!lockDayOfWeeks.Contains(day.RegDate.DayOfWeek) && !isAllNight)
                         {
@@ -414,10 +420,6 @@ namespace GreenLock.UC_Controls
                             avgLockStart = avgLockStart + Convert.ToInt32(GetDayOfMinute(day.StartDate));
                             lockDayOfWeeks.Add(day.RegDate.DayOfWeek);
                         }
-
-                        lockTotalMinute = lockTotalMinute + GetDayOfMinute(day.EndDate) - GetDayOfMinute(day.StartDate);
-                        _series_Lock.Points.Add(new SeriesPoint(_currentCulture.DateTimeFormat.GetShortestDayName(day.RegDate.DayOfWeek), new double[] { GetDayOfMinute(day.StartDate), GetDayOfMinute(day.EndDate) }));
-                        lastLock = day;
                     }
                 }
 
@@ -720,8 +722,9 @@ namespace GreenLock.UC_Controls
             this.ChartControl.CrosshairOptions.ShowCrosshairLabels = false;
             this.ChartControl.ToolTipEnabled = DevExpress.Utils.DefaultBoolean.False;
             this.ChartControl.Click += Uc_TabSecurity_Click;
-            this.ChartControl.CrosshairOptions.ShowArgumentLine = true;
-            this.ChartControl.CrosshairOptions.ShowValueLine = true;
+            // 수직선 제거
+            //this.ChartControl.CrosshairOptions.ShowArgumentLine = true;
+            //this.ChartControl.CrosshairOptions.ShowValueLine = true;
         }
 
 
