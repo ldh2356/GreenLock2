@@ -333,4 +333,16 @@ from savings</value>
   <data name="currency" xml:space="preserve">
     <value>{0,10:N2}</value>
   </data>
+  <data name="Uc_TabEnerge_Excel_Sheet_Title_1" xml:space="preserve">
+    <value>GreenLock Energy saving data</value>
+  </data>
+  <data name="Uc_TabEnerge_Excel_Sheet_Title_2" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Uc_TabEnerge_Excel_Sheet_Title_3" xml:space="preserve">
+    <value>Reduced energies</value>
+  </data>
+  <data name="Uc_TabEnerge_Excel_Sheet_Title_4" xml:space="preserve">
+    <value>Reduce energies</value>
+  </data>
 </root>

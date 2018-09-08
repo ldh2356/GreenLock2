@@ -120,7 +120,7 @@ namespace GreenLock.UC_Controls
                 if (!excelDir.Exists)
                     excelDir.Create();
 
-                string fileName = Path.Combine(languages.GreenLock.Uc_TabSecurity_ExcelFilePath, "Energy.xlsx");
+                string fileName = Path.Combine(languages.GreenLock.Uc_TabSecurity_ExcelFilePath, $"{DateTime.Now.ToString("yyyy-MM-dd-hhmmss")}.xlsx");
 
                 // 임시 파일 스트림 생성
                 using (Stream fileStream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None))
@@ -128,98 +128,112 @@ namespace GreenLock.UC_Controls
                     using (ExcelPackage package = new ExcelPackage(fileStream))
                     {
                         // 워크시트 추가
-                        ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("에너지절감");
+                        ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(languages.GreenLock.Uc_TabEnerge_Excel_Sheet_Title_4);
 
                         // Export
                         string[] backColors = { "#EFF3FB", "#FFFFFF" };
                         int columnCount = 1;
 
-                        // 헤더 추가
-                        worksheet.Cells[1, 1].Value = "항목";
-                        worksheet.Cells[1, 2].Value = "절감량";
-                   
+                        // 최상단 헤더 추가
+                        worksheet.Cells["A1:B1"].Merge = true;
+                        worksheet.Cells[1, 1].Value = languages.GreenLock.Uc_TabEnerge_Excel_Sheet_Title_1;
+                        worksheet.Cells[1, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        worksheet.Cells[1, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
 
-                        // 헤더 색상 및 테두리 설정
-                        using (var cells = worksheet.Cells[1, 1, 1, columnCount])
-                        {
-                            cells.Style.Font.Bold = true;
-                            cells.Style.Border.BorderAround(ExcelBorderStyle.Thin);
-                            cells.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                            cells.Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml("#F3F3F3"));
-                        }
+                        worksheet.Cells[1, 1].Style.Font.Bold = true;
+                        worksheet.Cells[1, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                        worksheet.Cells[1, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet.Cells[1, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml("#F3F3F3"));
+
+
+                        worksheet.Cells[1, 2].Style.Font.Bold = true;
+                        worksheet.Cells[1, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                        worksheet.Cells[1, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet.Cells[1, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml("#F3F3F3"));
+
+
+                        worksheet.Row(1).Height = 40;
+
+                        worksheet.Cells[2, 1].Value = languages.GreenLock.Uc_TabEnerge_Excel_Sheet_Title_2;
+                        worksheet.Cells[2, 1].Style.Font.Bold = true;
+                        worksheet.Cells[2, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                        worksheet.Cells[2, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        worksheet.Cells[2, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet.Cells[2, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml("#F3F3F3"));
+
+                        worksheet.Cells[2, 2].Value = languages.GreenLock.Uc_TabEnerge_Excel_Sheet_Title_4;
+                        worksheet.Cells[2, 2].Style.Font.Bold = true;
+                        worksheet.Cells[2, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                        worksheet.Cells[2, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        worksheet.Cells[2, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet.Cells[2, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml("#F3F3F3"));
+
+                        
 
                         int no = 0;
                         int rowIndex = 0;
 
                         // 리스트 처리
-                     
-                         
-                           
+                        worksheet.Cells[3, 1].Value = GreenLock.languages.GreenLock.power;
+                        worksheet.Cells[3, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet.Cells[3, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet.Cells[3, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[no % 2]));
+                        worksheet.Cells[3, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet.Cells[3, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                        worksheet.Cells[3, 1].AutoFitColumns(120.0);
 
-                            worksheet.Cells[2, 1].Value = "에너지절감량(kwh)";
-                            worksheet.Cells[2, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-                            worksheet.Cells[2, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                            worksheet.Cells[2, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[no % 2]));
-                            worksheet.Cells[2, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
-                            worksheet.Cells[2, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                        worksheet.Cells[3, 2].Value = SaveEnergy.Instance.UsedKwh;
+                        worksheet.Cells[3, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet.Cells[3, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[no % 2]));
+                        worksheet.Cells[3, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet.Cells[3, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                            worksheet.Cells[2, 2].Value = SaveEnergy.Instance.UsedKwh;
-                            worksheet.Cells[2, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                            worksheet.Cells[2, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[no % 2]));
-                            worksheet.Cells[2, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
-                            worksheet.Cells[2, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
-
-
-                            worksheet.Cells[3, 1].Value = "전기료절감액(원)";
-                            worksheet.Cells[3, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-                            worksheet.Cells[3, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                            worksheet.Cells[3, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[no % 2]));
-                            worksheet.Cells[3, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
-                            worksheet.Cells[3, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
-
-                            worksheet.Cells[3, 2].Value = SaveEnergy.Instance.UsedCost;
-                            worksheet.Cells[3, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                            worksheet.Cells[3, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[no % 2]));
-                            worksheet.Cells[3, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
-                            worksheet.Cells[3, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
-
-
-                        worksheet.Cells[4, 1].Value = "C02절감(원)";
+                        worksheet.Cells[4, 1].Value = string.Format(GreenLock.languages.GreenLock.cost, AppConfig.Instance.ElecUnit);
                         worksheet.Cells[4, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                         worksheet.Cells[4, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
                         worksheet.Cells[4, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[no % 2]));
                         worksheet.Cells[4, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet.Cells[4, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                        worksheet.Cells[4, 2].Value = SaveEnergy.Instance.Co2;
+                        worksheet.Cells[4, 2].Value = SaveEnergy.Instance.UsedCost;
                         worksheet.Cells[4, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
                         worksheet.Cells[4, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[no % 2]));
                         worksheet.Cells[4, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet.Cells[4, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-
-
-                        worksheet.Cells[5, 1].Value = "환경보호(그루)";
+                        worksheet.Cells[5, 1].Value = GreenLock.languages.GreenLock.co2;
                         worksheet.Cells[5, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
                         worksheet.Cells[5, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
                         worksheet.Cells[5, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[no % 2]));
                         worksheet.Cells[5, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet.Cells[5, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                        worksheet.Cells[5, 2].Value = SaveEnergy.Instance.Tree;
+                        worksheet.Cells[5, 2].Value = SaveEnergy.Instance.Co2;
                         worksheet.Cells[5, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
                         worksheet.Cells[5, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[no % 2]));
                         worksheet.Cells[5, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
                         worksheet.Cells[5, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
+                        worksheet.Cells[6, 1].Value = GreenLock.languages.GreenLock.tree;
+                        worksheet.Cells[6, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        worksheet.Cells[6, 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet.Cells[6, 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[no % 2]));
+                        worksheet.Cells[6, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet.Cells[6, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                        worksheet.Cells[6, 2].Value = SaveEnergy.Instance.Tree;
+                        worksheet.Cells[6, 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                        worksheet.Cells[6, 2].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml(backColors[no % 2]));
+                        worksheet.Cells[6, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+                        worksheet.Cells[6, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
 
-                        for (int index = 0; index < 1; index++)
+                        for (int index = 0; index < 2; index++)
                         {
                             // 폰트 설정 (나눔 고딕)
-                            worksheet.Cells[1, index + 1, worksheet.Cells.Rows, index + 1].Style.Font.Name = "NanumGothic";
+                            worksheet.Cells[2, index + 1, worksheet.Cells.Rows, index + 1].Style.Font.Name = "NanumGothic";
                             // 컬럼 넓이를 자동 조정
-                            worksheet.Column(index + 1).AutoFit();
+                            worksheet.Column(index + 1).AutoFit(40);
                         }
 
                         // 내용 저장
