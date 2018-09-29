@@ -21,6 +21,20 @@ namespace GreenLock
         public const int SWP_HIDEWINDOW = 128;
         public const int SWP_SHOWWINDOW = 64;
         public static int WINDOWSTATUS;
+        private frmMain _main;
+
+
+        public  frmMain Main
+        {
+            set
+            {
+                _main = value;
+            }
+            get
+            {
+                return _main;
+            }
+        }
 
         //win32 dll 함수 선언**********************************************
         [DllImport("user32.dll")]
@@ -185,6 +199,8 @@ namespace GreenLock
                 case WM_SYSKEYDOWN:
                 case WM_SYSKEYUP:
 
+                    if(frmMain._screensaverStatus == true && SoundService.isAlramUseOn == true)
+                            SoundService.AlertSoundStart();
                     //if (lParam.vkCode == VK_ESCAPE) // ESC 후킹
                     //{
                     //    FormScreenSaverCancel.instance.Show();

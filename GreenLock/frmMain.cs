@@ -51,7 +51,7 @@ namespace GreenLock
 
         public static Log _log = new Log();
 
-        public bool _screensaverStatus = false;
+        public static bool  _screensaverStatus = false;
         public bool _screensaverPasswordflag = false;
 
         private string _macAddress = string.Empty;
@@ -474,7 +474,7 @@ namespace GreenLock
         /// </summary>
         private void StartScreenSaver()
         {
-            if (frmMain._isLock == false)
+            if (SoundService.isAlramUseOn = true && frmMain._isLock == false)
                 return;
 
             _calcReduction.OperationEndTime = DateTime.Now;
