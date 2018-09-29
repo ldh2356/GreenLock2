@@ -22,9 +22,7 @@ namespace GreenLock
         /// <summary>
         /// 알람 사용 여부
         /// </summary>
-        /// 
-
-        public static bool _isAlarmUseOn = true;
+        public static bool _isAlarmUseOn = false;
         public static bool isAlramUseOn
         {
             get
