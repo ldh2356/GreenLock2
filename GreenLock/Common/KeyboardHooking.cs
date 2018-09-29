@@ -199,8 +199,10 @@ namespace GreenLock
                 case WM_SYSKEYDOWN:
                 case WM_SYSKEYUP:
 
-                    if(frmMain._screensaverStatus == true && SoundService.isAlramUseOn == true)
-                            SoundService.AlertSoundStart();
+                    if (frmMain._screensaverStatus == true && SoundService.isAlramUseOn == true)
+                    {
+                        frmMain._isKeyArarm = true;
+                    }
                     //if (lParam.vkCode == VK_ESCAPE) // ESC 후킹
                     //{
                     //    FormScreenSaverCancel.instance.Show();

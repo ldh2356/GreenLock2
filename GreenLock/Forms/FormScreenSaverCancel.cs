@@ -104,5 +104,10 @@ namespace GreenLock
             }
 
         }
+
+        private void FormScreenSaverCancel_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmMain._isShowPasswordPopup = false;
+        }
     }
 }

@@ -99,6 +99,7 @@ namespace GreenLock
 #if DEBUG
                 Debug.WriteLine("폼2 클릭");
 #endif
+                frmMain._isShowPasswordPopup = true;
                 ActivePasswordDialog();
             }
             catch (Exception ex)

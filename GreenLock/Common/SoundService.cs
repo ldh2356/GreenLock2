@@ -88,7 +88,7 @@ namespace GreenLock
                         isSoundPlaying = true;
 
                         // 재생직전 볼륨을 저장한다
-                        frmMain._log.write(AudioManager.GetMasterVolume().ToString());
+                        frmMain._log.write(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")  +  " - "  +  AudioManager.GetMasterVolume().ToString());
                         lastVolumePercentage = int.Parse(AudioManager.GetMasterVolume().ToString());
 
                         AudioManager.ToggleMasterVolumeUnMute();

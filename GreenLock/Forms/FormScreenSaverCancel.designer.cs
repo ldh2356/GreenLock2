@@ -88,6 +88,7 @@
             this.ShowIcon = false;
             this.Text = "화면잠금 해제";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormScreenSaverCancel_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

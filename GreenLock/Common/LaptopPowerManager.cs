@@ -17,6 +17,7 @@ namespace GreenLock.Common
             try
             {
                 PowerStatus powerStatus = SystemInformation.PowerStatus;
+                bool isTurnOnSound = false;
 
                 if (!SoundService.isUsingSoundService)
                 {
@@ -28,13 +29,32 @@ namespace GreenLock.Common
                     // 알람을 사용할경우
                     else
                     {
-                        if (powerStatus.PowerLineStatus == PowerLineStatus.Offline || powerStatus.PowerLineStatus == PowerLineStatus.Unknown)
+                        // 전원이 분리되었을때
+                        if(powerStatus.PowerLineStatus == PowerLineStatus.Offline || powerStatus.PowerLineStatus == PowerLineStatus.Unknown)
+                        {
+                            isTurnOnSound = true;
+                        }
+                        // 키업이 일어났을때
+                        else if (frmMain._isKeyArarm)
+                        {
+                            isTurnOnSound = true;
+
+                            // 키업이 일어났지만 패스워드 팝업이 떠있는 경우 ( 유저가 패스워드 입력을 시도하는 경우 )
+                            if (frmMain._isShowPasswordPopup)
+                            {
+                                isTurnOnSound = false;
+                            }
+                        }
+
+
+                        // 사운드를 실행해야 하는경우
+                        if (isTurnOnSound)
                         {
                             SoundService.AlertSoundStart();
                         }
+                        // 사운드를 멈춰야 하는경우
                         else
                         {
-
                             SoundService.AlertSoundStop();
                         }
                     }

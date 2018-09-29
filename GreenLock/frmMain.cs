@@ -40,12 +40,21 @@ namespace GreenLock
 
         TimeSheetDispatcher _dispatcher = new TimeSheetDispatcher();
 
+        int intLLKey;
+
         /// <summary>
         /// 신규 로우 생성을 위한..
         /// </summary>
         private static bool _isFirstOn = true;
+
+        public static bool _isKeyArarm = false;
+        public static bool _isShowPasswordPopup = false;
+
+
         public static bool _isLock = true;
         private bool _isFirstPower = true;
+
+
 
         GreenLock.UC_Controls.Uc_TabMain _uc_TabMain;
 
@@ -308,6 +317,7 @@ namespace GreenLock
             
             // 키보드 후킹 해제
             KeyboardHooking.UnBlockCtrlAltDel();
+            intLLKey = KeyboardHooking.SetHook(KeyboardHooking.hookProc);
 
             _uc_TabMain = new UC_Controls.Uc_TabMain();
             _uc_TabMain.Main = this;
@@ -335,6 +345,7 @@ namespace GreenLock
         /// <param name="e"></param>
         private void Bt32FeetDevice_OnIsSevrice(object sender, EventArgs e)
         {
+            frmMain._isKeyArarm = false;
             LaptopPowerManager.DoCheckPowerCableCheckAndAlarm();
 
             // 언락 데이터 타임 기록
@@ -901,6 +912,9 @@ namespace GreenLock
         {
             try
             {
+                // 키보드 후킹 해제
+                KeyboardHooking.UnHookWindowsEx(intLLKey);
+
                 System.Diagnostics.Process.GetCurrentProcess().Kill();
             }
             catch(Exception ea)
