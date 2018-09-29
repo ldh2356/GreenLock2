@@ -97,7 +97,7 @@
             this.pnlEnergy.Controls.Add(this.lblEnergyAmt);
             this.pnlEnergy.Controls.Add(this.lblEnergy);
             this.pnlEnergy.Location = new System.Drawing.Point(38, 320);
-            this.pnlEnergy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlEnergy.Margin = new System.Windows.Forms.Padding(2);
             this.pnlEnergy.Name = "pnlEnergy";
             this.pnlEnergy.Size = new System.Drawing.Size(160, 141);
             this.pnlEnergy.TabIndex = 30;
@@ -107,7 +107,7 @@
             this.pictureBox1.BackgroundImage = global::GreenLock.Properties.Resources.line;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(70, 70);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(19, 13);
             this.pictureBox1.TabIndex = 2;
@@ -123,7 +123,7 @@
             this.lblEnergyAmt.Name = "lblEnergyAmt";
             this.lblEnergyAmt.Size = new System.Drawing.Size(160, 36);
             this.lblEnergyAmt.TabIndex = 1;
-            this.lblEnergyAmt.Text = "0";
+            this.lblEnergyAmt.Text = "54";
             this.lblEnergyAmt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblEnergy
@@ -144,7 +144,7 @@
             this.pnlCost.Controls.Add(this.lblCostAmt);
             this.pnlCost.Controls.Add(this.lblCost);
             this.pnlCost.Location = new System.Drawing.Point(218, 320);
-            this.pnlCost.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlCost.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCost.Name = "pnlCost";
             this.pnlCost.Size = new System.Drawing.Size(160, 141);
             this.pnlCost.TabIndex = 31;
@@ -154,7 +154,7 @@
             this.pictureBox2.BackgroundImage = global::GreenLock.Properties.Resources.line;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox2.Location = new System.Drawing.Point(70, 70);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(19, 13);
             this.pictureBox2.TabIndex = 3;
@@ -191,7 +191,7 @@
             this.pnlCo2.Controls.Add(this.lblCo2Amt);
             this.pnlCo2.Controls.Add(this.lblCo2);
             this.pnlCo2.Location = new System.Drawing.Point(410, 320);
-            this.pnlCo2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlCo2.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCo2.Name = "pnlCo2";
             this.pnlCo2.Size = new System.Drawing.Size(160, 141);
             this.pnlCo2.TabIndex = 31;
@@ -201,7 +201,7 @@
             this.pictureBox3.BackgroundImage = global::GreenLock.Properties.Resources.line;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox3.Location = new System.Drawing.Point(70, 70);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(19, 13);
             this.pictureBox3.TabIndex = 4;
@@ -238,7 +238,7 @@
             this.pnlTree.Controls.Add(this.lblTreeAmt);
             this.pnlTree.Controls.Add(this.lblTree);
             this.pnlTree.Location = new System.Drawing.Point(595, 320);
-            this.pnlTree.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlTree.Margin = new System.Windows.Forms.Padding(2);
             this.pnlTree.Name = "pnlTree";
             this.pnlTree.Size = new System.Drawing.Size(160, 141);
             this.pnlTree.TabIndex = 32;
@@ -248,7 +248,7 @@
             this.pictureBox4.BackgroundImage = global::GreenLock.Properties.Resources.line;
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox4.Location = new System.Drawing.Point(70, 70);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(19, 13);
             this.pictureBox4.TabIndex = 5;

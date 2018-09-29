@@ -169,7 +169,8 @@ namespace GreenLock.UC_Controls
             }
             catch (Exception ex)
             {
-             frmMain._log.write(ex.Message);
+                frmMain._log.write(ex.Message);
+                frmMain._log.write(ex.StackTrace);
             }
         }
 

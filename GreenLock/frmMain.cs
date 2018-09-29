@@ -44,6 +44,8 @@ namespace GreenLock
         /// 신규 로우 생성을 위한..
         /// </summary>
         private static bool _isFirstOn = true;
+        public static bool _isLock = true;
+        private bool _isFirstPower = true;
 
         GreenLock.UC_Controls.Uc_TabMain _uc_TabMain;
 
@@ -128,6 +130,15 @@ namespace GreenLock
             {
                 case WM_POWERBROADCAST:
                     Debug.Write("WM_POWERBROADCAST");
+
+                    if (_isFirstPower == false)
+                    {
+                        _isLock = false;
+                        StopScreenSaver();
+                    }
+
+                    _isFirstPower = false;
+
                     OnPowerBroadcast(m.WParam, m.LParam);
                     break;
                 default:
@@ -399,6 +410,7 @@ namespace GreenLock
             catch(Exception ea)
             {
                 _log.write(ea.Message);
+                frmMain._log.write(ea.StackTrace);
             }
 
             _screensaverStatus = false;
@@ -446,6 +458,7 @@ namespace GreenLock
                 {
                     this.Invoke(new System.Windows.Forms.MethodInvoker(delegate ()
                     {
+                        if(_isLock)
                         StartScreenSaver();
                     }));
                 }
@@ -461,6 +474,9 @@ namespace GreenLock
         /// </summary>
         private void StartScreenSaver()
         {
+            if (frmMain._isLock == false)
+                return;
+
             _calcReduction.OperationEndTime = DateTime.Now;
 
             //this.sendPCEnergy("2");
@@ -725,6 +741,7 @@ namespace GreenLock
             catch (Exception ex)
             {
                 frmMain._log.write(ex.Message);
+                frmMain._log.write(ex.StackTrace);
             }
         }
 
@@ -749,6 +766,7 @@ namespace GreenLock
             catch (ObjectDisposedException ex)
             {
                 frmMain._log.write(ex.Message);
+                frmMain._log.write(ex.StackTrace);
             }
         }
 
@@ -761,6 +779,7 @@ namespace GreenLock
             catch (Exception ex)
             {
                 _log.write(ex.Message);
+                frmMain._log.write(ex.StackTrace);
             }
         }
         void DualMonitor(Screen[] screen, int primaryNum)
@@ -830,6 +849,7 @@ namespace GreenLock
             catch (Exception ex)
             {
                 frmMain._log.write(ex.Message);
+                frmMain._log.write(ex.StackTrace);
             }
         }
 
@@ -886,6 +906,7 @@ namespace GreenLock
             catch(Exception ea)
             {
                 _log.write(ea.Message);
+                frmMain._log.write(ea.StackTrace);
             }
 
         }

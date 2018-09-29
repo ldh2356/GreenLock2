@@ -2,9 +2,10 @@
 <AppConfig>
   <TotalTime>0</TotalTime>
   <UserPassword>0000</UserPassword>
-  <DeviceAddress></DeviceAddress>
+  <DeviceAddress>00:00:00:00:00:00</DeviceAddress>
   <SleepMode>0</SleepMode>
   <Model>0</Model>
   <ElecRate>183</ElecRate>
+  <EleUnit>KRW</EleUnit>
   <PcPower>160</PcPower>
 </AppConfig>

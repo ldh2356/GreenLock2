@@ -39,6 +39,7 @@ namespace GreenLock
         public event EventHandler OnNotService;
         public event EventHandler OnErrorService;
 
+
         ConnectLog _log = new ConnectLog();
 
         private string oldServiceName = "";
@@ -283,8 +284,9 @@ namespace GreenLock
 
                             Debug.WriteLine("oldServiceName ====> " + oldServiceName, " curSvcName  =>>> " + curSvcName);
                             // 알람끄기
-                            if (curSvcName.CompareTo("GreenLock1") == 0)
+                            if (curSvcName.CompareTo("GreenLock0") == 0)
                             {
+                                frmMain._isLock = true;
                                 SoundService.isAlramUseOn = false;
                                
                                 if (oldServiceName != "" && oldServiceName.CompareTo(curSvcName) != 0)
@@ -305,8 +307,9 @@ namespace GreenLock
                                 break;
                             }
                             // 알람키기
-                            else if ( curSvcName.CompareTo("GreenLock2") == 0)
+                            else if ( curSvcName.CompareTo("GreenLock1") == 0)
                             {
+                                frmMain._isLock = true;
                                 SoundService.isAlramUseOn = false;
                                
                                 if (oldServiceName != "" && oldServiceName.CompareTo(curSvcName) != 0)
@@ -324,8 +327,9 @@ namespace GreenLock
                                     OnNotService(this, null);
                                 break;
                             }
-                            else if( curSvcName.CompareTo("GreenLock3") == 0)
+                            else if( curSvcName.CompareTo("GreenLock2") == 0)
                             {
+                                frmMain._isLock = true;
                                 SoundService.isAlramUseOn = true;
                                 if (oldServiceName != "" && oldServiceName.CompareTo(curSvcName) != 0)
                                 {
@@ -342,7 +346,7 @@ namespace GreenLock
                                     OnIsService(this, null);
                                 break;
                             }
-                            else if( curSvcName.CompareTo("GreenLock4") == 0)
+                            else if( curSvcName.CompareTo("GreenLock3") == 0)
                             {
                                 SoundService.isAlramUseOn = true;
                                 if (oldServiceName != "" && oldServiceName.CompareTo(curSvcName) != 0)

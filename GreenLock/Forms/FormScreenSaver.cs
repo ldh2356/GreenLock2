@@ -126,6 +126,7 @@ namespace GreenLock
             catch (Exception ex)
             {
                 frmMain._log.write(ex.Message);
+                frmMain._log.write(ex.StackTrace);
             }
         }
 

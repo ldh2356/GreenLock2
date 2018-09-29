@@ -100,7 +100,21 @@ namespace ClientUpdater
                 XElement root = XElement.Load(updateInfoPath);
                 IEnumerable<XElement> updateConfigs = from el in root.Elements("Database") select el;
 
-                root.Element("CurrentVersion").Value = DateTimeToString(updateTime);
+
+                DataSet dataset = MySqlHelper.ExecuteDataset(conn, "SELECT Version FROM TBL_GREENLOCK_UPDATE_HITORY ORDER BY REGDATE DESC  LIMIT 1");
+
+                if (dataset != null)
+                {
+                    if (dataset.Tables[0].Rows.Count > 0)
+                    {
+                        string version = dataset.Tables[0].Rows[0].Field<string>("Version");                   
+                        {
+                            root.SetElementValue("CurrentVersion", version);                        
+                        }
+                    }
+                }
+
+                //root.Element("CurrentVersion").Value = DateTimeToString(updateTime);
 
                 root.Save(updateInfoPath);
                 this.downLoadUnpackingWizardPage.AllowNext = true;

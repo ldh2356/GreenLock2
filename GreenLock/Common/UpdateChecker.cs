@@ -26,7 +26,7 @@ namespace GreenLock
         public static bool NeedUpdate(frmMain pmain)
         {
 #if debug
-            UpdateInfoXmlUpdate();
+            //UpdateInfoXmlUpdate();
 #endif
             try
             {
@@ -66,11 +66,12 @@ namespace GreenLock
                     {
                         string version = dataset.Tables[0].Rows[0].Field<string>("Version");
 
-                        if (!currentVersion.Equals(version))                            
+                        if (currentVersion.CompareTo(version) < 0  )                            
                         {
                             //MessageBox.Show("현재 최신 버젼 날짜 :" + currentVersion + "서버 최신 버젼 날짜 : " + timeString);
                             return true;
                         }
+
                     }
                     else
                         return false;
